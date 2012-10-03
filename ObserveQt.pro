@@ -11,8 +11,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        adquisiciondatos.cpp
+        adquisiciondatos.cpp \
+    cabecerasfits.cpp
 
-HEADERS  += adquisiciondatos.h
+HEADERS  += adquisiciondatos.h \
+    cabecerasfits.h
 
-FORMS    += adquisiciondatos.ui
+FORMS    += adquisiciondatos.ui \
+    cabecerasfits.ui
