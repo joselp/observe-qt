@@ -32,7 +32,7 @@
       <x>90</x>
       <y>10</y>
       <width>341</width>
-      <height>21</height>
+      <height>23</height>
      </rect>
     </property>
     <property name="font">
@@ -60,6 +60,9 @@
        <property name="text">
         <string>QNX1</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -74,6 +77,9 @@
        </property>
        <property name="text">
         <string>QNX2</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -90,6 +96,9 @@
        <property name="text">
         <string>QNX3</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -104,6 +113,9 @@
        </property>
        <property name="text">
         <string>QNX4</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -283,7 +295,7 @@
       <x>10</x>
       <y>310</y>
       <width>521</width>
-      <height>91</height>
+      <height>95</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -466,7 +478,7 @@
      <string>Posicion para los Dedos (x,y,z,t):</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="posXLineEdit">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -476,7 +488,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="posYLineEdit">
     <property name="geometry">
      <rect>
       <x>315</x>
@@ -486,7 +498,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_4">
+   <widget class="QLineEdit" name="posZLineEdit">
     <property name="geometry">
      <rect>
       <x>395</x>
@@ -496,7 +508,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_5">
+   <widget class="QLineEdit" name="posTLineEdit">
     <property name="geometry">
      <rect>
       <x>475</x>
@@ -505,6 +517,105 @@
       <height>27</height>
      </rect>
     </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>550</y>
+      <width>531</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Secuencia de Foco:</string>
+    </property>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>231</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Tiempo de Exposicion (seg):</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>55</y>
+       <width>191</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Numero de Exposiciones:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="tiempoExposicionFocoLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>15</y>
+       <width>61</width>
+       <height>27</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="IniciarSec1PushButton">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>11</y>
+       <width>201</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Iniciar Sec N0. 1</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="numeroExposicionesLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>50</y>
+       <width>61</width>
+       <height>27</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="AbortarSecPushButton">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>50</y>
+       <width>201</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Abortar Secuencia</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -554,6 +665,78 @@
     <property name="text">
      <string>Comando de Observacion: </string>
     </property>
+   </widget>
+   <widget class="QTextEdit" name="LogTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>10</y>
+      <width>431</width>
+      <height>481</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>500</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Control de Hardware</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>530</y>
+      <width>431</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="formatoDeLaImagenLabel">
+       <property name="text">
+        <string>Formato de la Imagen:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="formatoDeLaImagenComboBox"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="lineaDeDatosPorArchivoLabel">
+       <property name="text">
+        <string>Linea de Datos por Archivo:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineaDeDatosPorArchivoLineEdit"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="indiceDeLaObservacionLabel">
+       <property name="text">
+        <string>Indice de la Observacion:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="indiceDeLaObservacionLineEdit"/>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
