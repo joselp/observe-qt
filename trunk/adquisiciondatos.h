@@ -16,11 +16,16 @@ class AdquisicionDatos : public QMainWindow
 public:
     explicit AdquisicionDatos(QWidget *parent = 0);
     void cargarGui();
+    void logicaGui();
     ~AdquisicionDatos();
 
 private slots:
+    void slotComandoDeObservacion(int);
+    void slotModoLineaReloj(int);
 
 private:
+    bool primero;
+    bool eliminar;
     Ui::AdquisicionDatos *ui;
 };
 
