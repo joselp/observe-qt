@@ -12,10 +12,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         adquisiciondatos.cpp \
-    cabecerasfits.cpp
+    cabecerasfits.cpp \
+    nombreproyectowidget.cpp
 
 HEADERS  += adquisiciondatos.h \
-    cabecerasfits.h
+    cabecerasfits.h \
+    nombreproyectowidget.h
 
 FORMS    += adquisiciondatos.ui \
-    cabecerasfits.ui
+    cabecerasfits.ui \
+    nombreproyectowidget.ui

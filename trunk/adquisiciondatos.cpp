@@ -6,13 +6,13 @@ AdquisicionDatos::AdquisicionDatos(QWidget *parent) :
     ui(new Ui::AdquisicionDatos)
 {
     ui->setupUi(this);
-    cargarGui();
+    iniciarGui();
     logicaGui();
     primero=true;
     eliminar=true;
 }
 
-void AdquisicionDatos::cargarGui()
+void AdquisicionDatos::iniciarGui()
 {
 
     //Panel de control de los CCD
