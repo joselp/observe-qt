@@ -15,7 +15,7 @@ class AdquisicionDatos : public QMainWindow
 
 public:
     explicit AdquisicionDatos(QWidget *parent = 0);
-    void cargarGui();
+    void iniciarGui();
     void logicaGui();
     ~AdquisicionDatos();
 
@@ -24,8 +24,8 @@ private slots:
     void slotModoLineaReloj(int);
 
 private:
-    bool primero;
-    bool eliminar;
+    bool primero; //Para determinar la primera entrada al sistema y colocar en ComboBox "seleccione"
+    bool eliminar; //Para eliminar el valor de "seleccione" de los ComboBox
     Ui::AdquisicionDatos *ui;
 };
 
