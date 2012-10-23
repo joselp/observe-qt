@@ -14,32 +14,32 @@ class NombreProyectoWidget : public QWidget
 
 public:
     explicit NombreProyectoWidget(QWidget *parent = 0);
-    void iniciarConnects(QPushButton *, char *);
+    void iniciarConnects(QPushButton *, char *); //Inicia todos los conects para los botones
+                                                 // del Widget NombreProyecto.
     ~NombreProyectoWidget();
 
 private slots:
     void cambiarTexto1();
-//    void cambiarTexto2(QPushButton *);
-//    void cambiarTexto3(QPushButton);
-//    void cambiarTexto4(QPushButton);
-//    void cambiarTexto5(QPushButton);
-//    void cambiarTexto6(QPushButton);
-//    void cambiarTexto7(QPushButton);
-//    void cambiarTexto8(QPushButton);
-//    void cambiarTexto9(QPushButton);
-//    void cambiarTexto10(QPushButton);
-//    void cambiarTexto11(QPushButton);
-//    void cambiarTexto12(QPushButton);
-//    void cambiarTexto13(QPushButton);
-//    void cambiarTexto14(QPushButton);
-//    void cambiarTexto15(QPushButton);
-//    void cambiarTexto16(QPushButton);
-//    void cambiarTexto17(QPushButton);
-//    void cambiarTexto18(QPushButton);
-//    void cambiarTexto19(QPushButton);
-//    void cambiarTexto20(QPushButton);
-//    void cambiarTexto21(QPushButton);
-//    void cambiarTexto22(QPushButton);
+    void cambiarTexto2();
+    void cambiarTexto3();
+    void cambiarTexto4();
+    void cambiarTexto5();
+    void cambiarTexto6();
+    void cambiarTexto7();
+    void cambiarTexto8();
+    void cambiarTexto9();
+    void cambiarTexto10();
+    void cambiarTexto11();
+    void cambiarTexto12();
+    void cambiarTexto13();
+    void cambiarTexto14();
+    void cambiarTexto15();
+    void cambiarTexto16();
+    void cambiarTexto17();
+    void cambiarTexto18();
+    void cambiarTexto19();
+    void cambiarTexto20();
+    void cambiarTexto21();
 
 
 private:

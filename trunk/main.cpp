@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     CabecerasFits VentanaCabeceraFits;
 
     VentanaCabeceraFits.show();
-    //VentanaAdquisicionDatos.show();
+    VentanaAdquisicionDatos.show();
 
     return a.exec();
 }
