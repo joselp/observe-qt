@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
+    <width>812</width>
     <height>443</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1024</width>
+    <width>790</width>
     <height>424</height>
    </size>
   </property>
@@ -56,7 +56,8 @@
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -99,7 +100,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -142,7 +144,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -185,7 +188,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -228,7 +232,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -271,7 +276,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -314,7 +320,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -357,7 +364,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -400,7 +408,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -443,7 +452,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -486,7 +496,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -529,7 +540,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -572,7 +584,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -615,7 +628,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -658,7 +672,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -701,7 +716,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -744,7 +760,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -787,7 +804,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -830,7 +848,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -873,7 +892,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 
@@ -919,7 +939,8 @@ QPushButton:pressed {
  }
 
 QPushButton:hover{
-	 background-color: rgb(224, 0, 0);
+	 
+	background-color: rgb(213, 213, 213);
      border-style: inset;
 }
 

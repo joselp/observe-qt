@@ -104,9 +104,211 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             }
         }
         primero=false;
+
+        if(item==1){
+            ui->modoDeLaLineaDelRelojComboBox->setCurrentIndex(0);
+
+            ui->tasaDeLecturaHzLineEdit->setText("No Usado");
+            ui->tasaDeLecturaHzLineEdit->setEnabled(false);
+
+            ui->declinacionGradosDecLineEdit->setText("0.0");
+            ui->declinacionGradosDecLineEdit->setEnabled(true);
+
+            ui->indiceDeLaObservacionLineEdit->setText("400");
+
+            ui->NumeroLineasLeerlineEdit->setText("4096");
+            ui->NumeroLineasLeerlineEdit->setEnabled(true);
+
+            ui->tiempoExposicionlineEdit->setText("No Usado");
+            ui->tiempoExposicionlineEdit->setEnabled(false);
+
+            ui->ObservarPushButton->setEnabled(true);
+
+            ui->IniciarSec1PushButton->setEnabled(false);
+
+        }
+
+        if(item==2){
+            ui->modoDeLaLineaDelRelojComboBox->setCurrentIndex(1);
+
+            ui->tasaDeLecturaHzLineEdit->setText("15.0");
+            ui->tasaDeLecturaHzLineEdit->setEnabled(true);
+
+            ui->declinacionGradosDecLineEdit->setText("0.0");
+            ui->declinacionGradosDecLineEdit->setEnabled(true);
+
+            ui->indiceDeLaObservacionLineEdit->setText("500");
+
+            ui->NumeroLineasLeerlineEdit->setText("4096");
+            ui->NumeroLineasLeerlineEdit->setEnabled(true);
+
+            ui->tiempoExposicionlineEdit->setText("No Usado");
+            ui->tiempoExposicionlineEdit->setEnabled(false);
+
+            ui->ObservarPushButton->setEnabled(true);
+
+            ui->IniciarSec1PushButton->setEnabled(false);
+
+        }
+
+        if (item==3){
+            ui->modoDeLaLineaDelRelojComboBox->setCurrentIndex(1);
+
+            ui->tasaDeLecturaHzLineEdit->setText("17.0");
+            ui->tasaDeLecturaHzLineEdit->setEnabled(true);
+
+            ui->declinacionGradosDecLineEdit->setText("No Usado");
+            ui->declinacionGradosDecLineEdit->setEnabled(false);
+
+            ui->indiceDeLaObservacionLineEdit->setText("700");
+
+            ui->NumeroLineasLeerlineEdit->setText("No Usado");
+            ui->NumeroLineasLeerlineEdit->setEnabled(false);
+
+            ui->tiempoExposicionlineEdit->setText("10");
+            ui->tiempoExposicionlineEdit->setEnabled(true);
+
+            ui->ObservarPushButton->setEnabled(true);
+
+            ui->IniciarSec1PushButton->setEnabled(false);
+
+        }
+
+        if(item==4){
+            ui->modoDeLaLineaDelRelojComboBox->setCurrentIndex(1);
+
+            ui->tasaDeLecturaHzLineEdit->setText("17.0");
+            ui->tasaDeLecturaHzLineEdit->setEnabled(true);
+
+            ui->declinacionGradosDecLineEdit->setText("No Usado");
+            ui->declinacionGradosDecLineEdit->setEnabled(false);
+
+            ui->indiceDeLaObservacionLineEdit->setText("200");
+
+            ui->NumeroLineasLeerlineEdit->setText("No Usado");
+            ui->NumeroLineasLeerlineEdit->setEnabled(false);
+
+            ui->tiempoExposicionlineEdit->setText("10");
+            ui->tiempoExposicionlineEdit->setEnabled(true);
+
+            ui->ObservarPushButton->setEnabled(true);
+
+            ui->IniciarSec1PushButton->setEnabled(false);
+        }
+
+        if(item==5){
+            ui->modoDeLaLineaDelRelojComboBox->setCurrentIndex(0);
+
+            ui->tasaDeLecturaHzLineEdit->setText("No Usado");
+            ui->tasaDeLecturaHzLineEdit->setEnabled(false);
+
+            ui->declinacionGradosDecLineEdit->setText("0.0");
+            ui->declinacionGradosDecLineEdit->setEnabled(true);
+
+            ui->indiceDeLaObservacionLineEdit->setText("200");
+
+            ui->NumeroLineasLeerlineEdit->setText("20480");
+            ui->NumeroLineasLeerlineEdit->setEnabled(true);
+
+            ui->tiempoExposicionlineEdit->setText("No Usado");
+            ui->tiempoExposicionlineEdit->setEnabled(false);
+
+            ui->ObservarPushButton->setEnabled(true);
+
+            ui->IniciarSec1PushButton->setEnabled(false);
+        }
+
+        if(item==6){
+            ui->modoDeLaLineaDelRelojComboBox->setCurrentIndex(1);
+
+            ui->tasaDeLecturaHzLineEdit->setText("17.0");
+            ui->tasaDeLecturaHzLineEdit->setEnabled(true);
+
+            ui->declinacionGradosDecLineEdit->setText("No Usado");
+            ui->declinacionGradosDecLineEdit->setEnabled(false);
+
+            ui->indiceDeLaObservacionLineEdit->setText("300");
+
+            ui->NumeroLineasLeerlineEdit->setText("No Usado");
+            ui->NumeroLineasLeerlineEdit->setEnabled(false);
+
+            ui->tiempoExposicionlineEdit->setText("10");
+            ui->tiempoExposicionlineEdit->setEnabled(true);
+
+            ui->ObservarPushButton->setEnabled(true);
+
+            ui->IniciarSec1PushButton->setEnabled(false);
+        }
+
+        if(item==7){
+            ui->modoDeLaLineaDelRelojComboBox->setCurrentIndex(1);
+
+            ui->tasaDeLecturaHzLineEdit->setText("17.0");
+            ui->tasaDeLecturaHzLineEdit->setEnabled(true);
+
+            ui->declinacionGradosDecLineEdit->setText("No Usado");
+            ui->declinacionGradosDecLineEdit->setEnabled(false);
+
+            ui->indiceDeLaObservacionLineEdit->setText("300");
+
+            ui->NumeroLineasLeerlineEdit->setText("20480");
+            ui->NumeroLineasLeerlineEdit->setEnabled(true);
+
+            ui->tiempoExposicionlineEdit->setText("No Usado");
+            ui->tiempoExposicionlineEdit->setEnabled(false);
+
+            ui->ObservarPushButton->setEnabled(true);
+
+            ui->IniciarSec1PushButton->setEnabled(false);
+        }
+
+        if(item==8){
+            ui->modoDeLaLineaDelRelojComboBox->setCurrentIndex(1);
+
+            ui->tasaDeLecturaHzLineEdit->setText("17.0");
+            ui->tasaDeLecturaHzLineEdit->setEnabled(true);
+
+            ui->declinacionGradosDecLineEdit->setText("No Usado");
+            ui->declinacionGradosDecLineEdit->setEnabled(false);
+
+            ui->indiceDeLaObservacionLineEdit->setText("100");
+
+            ui->NumeroLineasLeerlineEdit->setText("No Usado");
+            ui->NumeroLineasLeerlineEdit->setEnabled(false);
+
+            ui->tiempoExposicionlineEdit->setText("0");
+            ui->tiempoExposicionlineEdit->setEnabled(true);
+
+            ui->ObservarPushButton->setEnabled(true);
+
+            ui->IniciarSec1PushButton->setEnabled(false);
+        }
+
+        if(item==9){
+            ui->modoDeLaLineaDelRelojComboBox->setCurrentIndex(1);
+
+            ui->tasaDeLecturaHzLineEdit->setText("17.0");
+            ui->tasaDeLecturaHzLineEdit->setEnabled(true);
+
+            ui->declinacionGradosDecLineEdit->setText("No Usado");
+            ui->declinacionGradosDecLineEdit->setEnabled(false);
+
+            ui->indiceDeLaObservacionLineEdit->setText("600");
+
+            ui->NumeroLineasLeerlineEdit->setText("No Usado");
+            ui->NumeroLineasLeerlineEdit->setEnabled(false);
+
+            ui->tiempoExposicionlineEdit->setText("0");
+            ui->tiempoExposicionlineEdit->setEnabled(false);
+
+            ui->ObservarPushButton->setEnabled(false);
+
+            ui->IniciarSec1PushButton->setEnabled(true);
+        }
     }
 
     else{
+
         if(item==0){
             ui->modoDeLaLineaDelRelojComboBox->setCurrentIndex(0);
 

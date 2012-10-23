@@ -12,8 +12,10 @@ CabecerasFits::CabecerasFits(QWidget *parent) :
     activarNombreProyectoWidget = new char[1];
     activarNombreProyectoWidget[0] = 's';
 
+    activarFiltroWidget = new char[1];
+    activarFiltroWidget[0] = 's';
+
     iniciarGui();
-    iniciarNombreProyectoWidget();
 
 }
 
@@ -25,48 +27,117 @@ CabecerasFits::~CabecerasFits()
 void CabecerasFits::iniciarGui()
 {
 
-//    comboBox = new QComboBoxEvent;
+    connect(ui->nombreProyectopushButton,SIGNAL(clicked()),this,SLOT(slotMostrarNombreProyectoWidget()));
+    connect(ui->filtro1PushButton,SIGNAL(clicked()),this,SLOT(slotMostrarFiltro1Widget()));
+    connect(ui->filtro2PushButton,SIGNAL(clicked()),this,SLOT(slotMostrarFiltro2Widget()));
+    connect(ui->filtro3PushButton,SIGNAL(clicked()),this,SLOT(slotMostrarFiltro3Widget()));
+    connect(ui->filtro4PushButton,SIGNAL(clicked()),this,SLOT(slotMostrarFiltro4Widget()));
+    connect(ui->cerrarPushButton,SIGNAL(clicked()),this,SLOT(slotcerrar()));
 
-//    ui->verticalLayout->addWidget(comboBox);
+    QStringList declinacionAnguloItems;
+    declinacionAnguloItems << "Este" << "Oeste" << "Meridiano";
+    ui->declinacionAnguloComboBox->addItems(declinacionAnguloItems);
 
-//    QStringList itemNombreProyecto;
-//    itemNombreProyecto << "A Southern Sky Survey for Pluto Size Trans-Neptunians Object"
-//                       << "Buscando Estrellas Jovenes Variables en la Cabeza de Orion"
-//                       << "Busqueda de Estrellas Tardias en la Via Lactea"
-//                       << "Busqueda de Planetas Menores, Transneptunianos, Cometas y otros Objetos del Sistema"
-//                       << "Caracterizacion de la Poblacion de RR Lyrae en el Disco Grueso de la Galaxia"
-//                       <<"";
-//    comboBox->addItems(itemNombreProyecto);
+    QStringList condicionesCieloItems;
+    condicionesCieloItems << "Despejado" << "Nublado" << "50% Nublado" << "25% Nublado" << "Despejado Bruma Alta";
+    ui->condicionesCieloComboBox->addItems(condicionesCieloItems);
 
-    //ui->comboBox->setItemData(1,QVariant(QString("HOLA")),0);
-    //ui->comboBox->setItemText(2,"HOLAMUNDO");
+    ui->temperaturaNeveraLineEdit->setText("-65");
 
-    //connect(ui->comboBox,SIGNAL(activated(int)),this,SLOT(cambiarNombreProyecto(int)));
+    ui->orientacionPrismaLineEdit->setText("-1");
+    ui->orientacionPrismaLineEdit->setEnabled(false);
 
-    connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(mostrarNombreProyectoWidget()));
+    ui->frecuenciaYicLineEdit->setText("0.0");
+    ui->frecuenciaYicLineEdit->setEnabled(false);
+
+    ui->frecuenciaRaLineEdit->setText("0.0");
+    ui->frecuenciaRaLineEdit->setEnabled(false);
+
+    ui->frecuenciaDecLineEdit->setText("0.0");
+    ui->frecuenciaDecLineEdit->setEnabled(false);
 
 }
 
-void CabecerasFits::iniciarNombreProyectoWidget()
+void CabecerasFits::slotMostrarNombreProyectoWidget()
 {
-
-
-}
-
-void CabecerasFits::mostrarNombreProyectoWidget()
-{
-
 
     if(activarNombreProyectoWidget[0] == 's'){
-        //iniciarNombreProyectoWidget();
-        activarNombreProyectoWidget[0] = 'n';
-        qDebug()<< activarNombreProyectoWidget[0];
 
-        nombreProyecto = new NombreProyectoWidget();
-        ui->verticalLayout->addWidget(nombreProyecto);
-        nombreProyecto->iniciarConnects(ui->pushButton,activarNombreProyectoWidget);
+        activarNombreProyectoWidget[0] = 'n';
+
+        nombreProyecto = new NombreProyectoWidget(this);
+        nombreProyecto->setGeometry(233, 25, 812, 443);
+        nombreProyecto->setVisible(true);
+
+        nombreProyecto->iniciarConnects(ui->nombreProyectopushButton,activarNombreProyectoWidget);
 
     }
 
 }
+
+void CabecerasFits::slotMostrarFiltro1Widget()
+{
+    if(activarFiltroWidget[0] == 's'){
+
+        activarFiltroWidget[0] = 'n';
+
+        filtro = new Filtro1Widget(this);
+        filtro->setGeometry(694, 25, 155, 423);
+        filtro->setVisible(true);
+
+        filtro->iniciarConnects(ui->filtro1PushButton,activarFiltroWidget);
+
+    }
+
+}
+
+void CabecerasFits::slotMostrarFiltro2Widget()
+{
+    if(activarFiltroWidget[0] == 's'){
+
+        activarFiltroWidget[0] = 'n';
+
+        filtro = new Filtro1Widget(this);
+        filtro->setGeometry(694, 48, 155, 423);
+        filtro->setVisible(true);
+
+        filtro->iniciarConnects(ui->filtro2PushButton,activarFiltroWidget);
+
+    }
+}
+
+void CabecerasFits::slotMostrarFiltro3Widget()
+{
+    if(activarFiltroWidget[0] == 's'){
+
+        activarFiltroWidget[0] = 'n';
+
+        filtro = new Filtro1Widget(this);
+        filtro->setGeometry(694, 83, 155, 423);
+        filtro->setVisible(true);
+
+        filtro->iniciarConnects(ui->filtro3PushButton,activarFiltroWidget);
+
+    }
+}
+
+void CabecerasFits::slotMostrarFiltro4Widget()
+{
+    if(activarFiltroWidget[0] == 's'){
+
+        activarFiltroWidget[0] = 'n';
+
+        filtro = new Filtro1Widget(this);
+        filtro->setGeometry(694, 118, 155, 423);
+        filtro->setVisible(true);
+
+        filtro->iniciarConnects(ui->filtro4PushButton,activarFiltroWidget);
+
+    }
+}
+
+void CabecerasFits::slotcerrar(){
+    this->close();
+}
+
 
