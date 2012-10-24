@@ -16,6 +16,7 @@ CabecerasFits::CabecerasFits(QWidget *parent) :
     activarFiltroWidget[0] = 's';
 
     iniciarGui();
+    validarCampos();
 
 }
 
@@ -38,6 +39,8 @@ void CabecerasFits::iniciarGui()
     declinacionAnguloItems << "Este" << "Oeste" << "Meridiano";
     ui->declinacionAnguloComboBox->addItems(declinacionAnguloItems);
 
+    ui->noRadioButto->setChecked(true);
+
     QStringList condicionesCieloItems;
     condicionesCieloItems << "Despejado" << "Nublado" << "50% Nublado" << "25% Nublado" << "Despejado Bruma Alta";
     ui->condicionesCieloComboBox->addItems(condicionesCieloItems);
@@ -55,6 +58,16 @@ void CabecerasFits::iniciarGui()
 
     ui->frecuenciaDecLineEdit->setText("0.0");
     ui->frecuenciaDecLineEdit->setEnabled(false);
+
+    ui->instrumentoUsadoComboBox->addItem("YIC");
+    ui->instrumentoUsadoComboBox->addItem("YIC+PRISMA");
+
+    QStringList observadores;
+    observadores << "Alfredo Mejia" << "Bolivia Cuevas" << "Cecilia Mateu" << "Cesar Bricenno" << "Elvis LaCruz" << "Fabiola Hernandez"
+                 << "Ismael Santana" << "Ivan Vivas" << "Ivan Cabrera" << "Jesus Hernandez" << "Jose Fernandez" << "Juan Downes"
+                 << "Kathy Vivas" << "Leidy Penna" << "Luz Zambrano" << "Madeleine Rodriguez" << "Maria Batista" << "Maria Ocando"
+                 << "Nidia Lugo" << "Quriaky Gomez" << "Rafael Gamez" << "Yolanda Landaeta" << "Observador Invitado";
+    ui->observadorComboBox->addItems(observadores);
 
 }
 
@@ -138,6 +151,22 @@ void CabecerasFits::slotMostrarFiltro4Widget()
 
 void CabecerasFits::slotcerrar(){
     this->close();
+}
+
+void CabecerasFits::activarFrecuenciaDM(bool b)
+{
+    ui->frecuenciaYicLineEdit->setEnabled(b);
+    ui->frecuenciaRaLineEdit->setEnabled(b);
+    ui->frecuenciaDecLineEdit->setEnabled(b);
+}
+
+void CabecerasFits::validarCampos()
+{
+    ui->raHhLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-2][0-3]|[0-9]|[0-1][0-9])"),this));
+    ui->raMmLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]|[0-5][0-9])"),this));
+    ui->raSsLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]\\.[0-9]|[0-9]\\.[0-9][0-9]|[0-5][0-9]\\.[0-9]|[0-5][0-9]\\.[0-9][0-9])"),this));
+    ui->focoTelescopioLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]{3})"),this));
+
 }
 
 
