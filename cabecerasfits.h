@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QDebug>
 #include <QMouseEvent>
+#include <QRegExp>
 #include "nombreproyectowidget.h"
 #include "filtro1widget.h"
 
@@ -18,6 +19,9 @@ class CabecerasFits : public QWidget
 public:
     explicit CabecerasFits(QWidget *parent = 0);
     void iniciarGui(); //Inicia toda la GUI de la ventana CabeceraFits.
+    void validarCampos();
+    void activarFrecuenciaDM(bool); //Activa los campos para la Freecuencia en una observacion DrifScan Modificada.
+
     ~CabecerasFits();
 
 private slots:
@@ -35,6 +39,7 @@ private:
 
     Filtro1Widget *filtro;
     char *activarFiltroWidget; //Para activar o no el Widget Filtro
+
 
     Ui::CabecerasFits *ui;
 

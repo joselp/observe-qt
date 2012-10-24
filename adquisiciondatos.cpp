@@ -14,6 +14,9 @@ AdquisicionDatos::AdquisicionDatos(QWidget *parent) :
 
 void AdquisicionDatos::iniciarGui()
 {
+    ventanaCabeceraFits = new CabecerasFits();
+    ventanaCabeceraFits->show();
+
 
     //Panel de control de los CCD
     QStringList itemsComandoDeObservacion;
@@ -126,6 +129,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
+
         }
 
         if(item==2){
@@ -148,6 +153,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(true);
 
         }
 
@@ -172,6 +179,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
+
         }
 
         if(item==4){
@@ -194,6 +203,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==5){
@@ -216,6 +227,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==6){
@@ -238,6 +251,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==7){
@@ -260,6 +275,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==8){
@@ -282,6 +299,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==9){
@@ -304,6 +323,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(false);
 
             ui->IniciarSec1PushButton->setEnabled(true);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
     }
 
@@ -330,6 +351,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
+
         }
 
         if(item==1){
@@ -352,6 +375,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(true);
 
         }
 
@@ -376,6 +401,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
+
         }
 
         if(item==3){
@@ -398,6 +425,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==4){
@@ -420,6 +449,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==5){
@@ -442,6 +473,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==6){
@@ -464,6 +497,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==7){
@@ -486,6 +521,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==8){
@@ -508,6 +545,8 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->ObservarPushButton->setEnabled(false);
 
             ui->IniciarSec1PushButton->setEnabled(true);
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
     }
 

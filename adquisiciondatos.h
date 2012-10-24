@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QDateTime>
 #include <QDebug>
+#include <cabecerasfits.h>
 
 namespace Ui {
     class AdquisicionDatos;
@@ -26,6 +27,8 @@ private slots:
 private:
     bool primero; //Para determinar la primera entrada al sistema y colocar en ComboBox "seleccione"
     bool eliminar; //Para eliminar el valor de "seleccione" de los ComboBox
+
+    CabecerasFits *ventanaCabeceraFits;
     Ui::AdquisicionDatos *ui;
 };
 
