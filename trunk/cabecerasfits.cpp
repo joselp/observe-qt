@@ -173,7 +173,7 @@ void CabecerasFits::validarCampos()
     ui->focoTelescopioLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]{3})"),this));
 
     ui->anguloHorarioHhLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-6])"),this));
-    ui->anguloHorarioMmLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]|[0-5][0-9])"),this));
+    //ui->anguloHorarioMmLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]|[0-5][0-9])"),this));
 
 
 }
