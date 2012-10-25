@@ -33,7 +33,6 @@ private:
 
     CabecerasFits *ventanaCabeceraFits;
     Ui::AdquisicionDatos *ui;
-    int i;
 };
 
 #endif // ADQUISICIONDATOS_H
