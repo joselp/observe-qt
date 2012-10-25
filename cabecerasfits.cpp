@@ -33,11 +33,16 @@ void CabecerasFits::iniciarGui()
     connect(ui->filtro2PushButton,SIGNAL(clicked()),this,SLOT(slotMostrarFiltro2Widget()));
     connect(ui->filtro3PushButton,SIGNAL(clicked()),this,SLOT(slotMostrarFiltro3Widget()));
     connect(ui->filtro4PushButton,SIGNAL(clicked()),this,SLOT(slotMostrarFiltro4Widget()));
+    connect(ui->raSsLineEdit,SIGNAL(editingFinished()),this,SLOT(slotVerificarRaSs()));
+    connect(ui->anguloHorarioSsLineEdit,SIGNAL(editingFinished()),this,SLOT(slotVerificarAHSs()));
     connect(ui->cerrarPushButton,SIGNAL(clicked()),this,SLOT(slotcerrar()));
 
     QStringList declinacionAnguloItems;
     declinacionAnguloItems << "Este" << "Oeste" << "Meridiano";
     ui->declinacionAnguloComboBox->addItems(declinacionAnguloItems);
+
+    ui->raSsLineEdit->setText("00.00");
+    ui->anguloHorarioSsLineEdit->setText("00.00");
 
     ui->noRadioButto->setChecked(true);
 
@@ -164,9 +169,91 @@ void CabecerasFits::validarCampos()
 {
     ui->raHhLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-2][0-3]|[0-9]|[0-1][0-9])"),this));
     ui->raMmLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]|[0-5][0-9])"),this));
-    ui->raSsLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]\\.[0-9]|[0-9]\\.[0-9][0-9]|[0-5][0-9]\\.[0-9]|[0-5][0-9]\\.[0-9][0-9])"),this));
+
     ui->focoTelescopioLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]{3})"),this));
 
+    ui->anguloHorarioHhLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-6])"),this));
+    ui->anguloHorarioMmLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]|[0-5][0-9])"),this));
+
+
 }
+
+void CabecerasFits::slotVerificarRaSs()
+{
+    timer = new QTimer(this);
+    timer->setInterval(200);
+    connect(timer,SIGNAL(timeout()),this,SLOT(slotTimerRa()));
+
+
+    QRegExp rx("([0-9]\\.[0-9]|[0-9]\\.[0-9][0-9]|[0-5][0-9]\\.[0-9]|[0-5][0-9]\\.[0-9][0-9])");
+    if(rx.exactMatch(ui->raSsLineEdit->text())){
+        ui->raSsLineEdit->setStyleSheet("background-color:white;"); 
+    }
+
+    else{
+        contador = 0;
+        ui->raSsLineEdit->setFocus();
+        timer->start();
+    }
+
+}
+
+void CabecerasFits::slotTimerRa(){
+
+    if(contador%2==0){
+
+        ui->raSsLineEdit->setStyleSheet("background-color:RED;");
+    }
+    else{
+        ui->raSsLineEdit->setStyleSheet("background-color:white;");
+
+    }
+    if(contador==5){
+        timer->stop();
+        delete timer;
+    }
+
+    contador++;
+}
+
+void CabecerasFits::slotVerificarAHSs()
+{
+    timer = new QTimer(this);
+    timer->setInterval(200);
+    connect(timer,SIGNAL(timeout()),this,SLOT(slotTimerAH()));
+
+
+    QRegExp rx("([0-9]\\.[0-9]|[0-9]\\.[0-9][0-9]|[0-5][0-9]\\.[0-9]|[0-5][0-9]\\.[0-9][0-9])");
+    if(rx.exactMatch(ui->anguloHorarioSsLineEdit->text())){
+        ui->anguloHorarioSsLineEdit->setStyleSheet("background-color:white;");
+    }
+
+    else{
+        contador = 0;
+        ui->anguloHorarioSsLineEdit->setFocus();
+        timer->start();
+    }
+
+}
+
+void CabecerasFits::slotTimerAH()
+{
+    if(contador%2==0){
+
+        ui->anguloHorarioSsLineEdit->setStyleSheet("background-color:RED;");
+    }
+    else{
+        ui->anguloHorarioSsLineEdit->setStyleSheet("background-color:white;");
+
+    }
+    if(contador==5){
+        timer->stop();
+        delete timer;
+    }
+
+    contador++;
+}
+
+
 
 

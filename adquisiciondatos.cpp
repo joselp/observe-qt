@@ -579,3 +579,8 @@ void AdquisicionDatos::slotModoLineaReloj(int item)
     }
 
 }
+
+void AdquisicionDatos::closeEvent(QCloseEvent *)
+{
+    exit(0);
+}

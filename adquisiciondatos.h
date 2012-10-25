@@ -1,10 +1,12 @@
 #ifndef ADQUISICIONDATOS_H
 #define ADQUISICIONDATOS_H
 
+
 #include <QMainWindow>
 #include <QDateTime>
 #include <QDebug>
 #include <cabecerasfits.h>
+
 
 namespace Ui {
     class AdquisicionDatos;
@@ -18,11 +20,12 @@ public:
     explicit AdquisicionDatos(QWidget *parent = 0);
     void iniciarGui();
     void logicaGui();
+    void closeEvent(QCloseEvent *); //Captura el evento cerrar Aplicacion.
     ~AdquisicionDatos();
 
 private slots:
-    void slotComandoDeObservacion(int);
-    void slotModoLineaReloj(int);
+    void slotComandoDeObservacion(int); //Cambiar GUI segun asignacion
+    void slotModoLineaReloj(int); //Cambia GUI segun asignacion
 
 private:
     bool primero; //Para determinar la primera entrada al sistema y colocar en ComboBox "seleccione"
@@ -30,6 +33,7 @@ private:
 
     CabecerasFits *ventanaCabeceraFits;
     Ui::AdquisicionDatos *ui;
+    int i;
 };
 
 #endif // ADQUISICIONDATOS_H
