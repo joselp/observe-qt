@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QMouseEvent>
 #include <QRegExp>
+#include <QTimer>
 #include "nombreproyectowidget.h"
 #include "filtro1widget.h"
 
@@ -30,6 +31,10 @@ private slots:
     void slotMostrarFiltro2Widget(); //Muestra el widget Filtro al dar click en filtro2PushButton
     void slotMostrarFiltro3Widget(); //Muestra el widget Filtro al dar click en filtro3PushButton
     void slotMostrarFiltro4Widget(); //Muestra el widget Filtro al dar click en filtro3PushButton
+    void slotVerificarRaSs(); //Verifica el campo Ss de RA Angulo Horario
+    void slotVerificarAHSs(); //Verifica el campo Ss de Angulo Horario
+    void slotTimerRa(); //Crear la animacion de error para el campo Ss de RA
+    void slotTimerAH(); //Crear la animacion de error para el campo Ss de Angulo Horario
     void slotcerrar();
 
 private:
@@ -40,6 +45,8 @@ private:
     Filtro1Widget *filtro;
     char *activarFiltroWidget; //Para activar o no el Widget Filtro
 
+    QTimer *timer;
+    int contador;
 
     Ui::CabecerasFits *ui;
 
