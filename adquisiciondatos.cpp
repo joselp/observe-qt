@@ -125,12 +125,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("No Usado");
             ui->tiempoExposicionlineEdit->setEnabled(false);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
 
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
         }
 
         if(item==2){
@@ -150,11 +152,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("No Usado");
             ui->tiempoExposicionlineEdit->setEnabled(false);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(true);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
 
         }
 
@@ -175,11 +180,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("10");
             ui->tiempoExposicionlineEdit->setEnabled(true);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
 
         }
 
@@ -200,11 +208,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("10");
             ui->tiempoExposicionlineEdit->setEnabled(true);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
         }
 
         if(item==5){
@@ -224,11 +235,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("No Usado");
             ui->tiempoExposicionlineEdit->setEnabled(false);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
         }
 
         if(item==6){
@@ -248,11 +262,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("10");
             ui->tiempoExposicionlineEdit->setEnabled(true);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
         }
 
         if(item==7){
@@ -272,11 +289,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("No Usado");
             ui->tiempoExposicionlineEdit->setEnabled(false);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
         }
 
         if(item==8){
@@ -296,11 +316,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("0");
             ui->tiempoExposicionlineEdit->setEnabled(true);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
         }
 
         if(item==9){
@@ -320,11 +343,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("0");
             ui->tiempoExposicionlineEdit->setEnabled(false);
 
-            ui->ObservarPushButton->setEnabled(false);
+            ui->observarPushButton->setEnabled(false);
 
             ui->IniciarSec1PushButton->setEnabled(true);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
         }
     }
 
@@ -347,11 +373,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("No Usado");
             ui->tiempoExposicionlineEdit->setEnabled(false);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
 
         }
 
@@ -372,16 +401,22 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("No Usado");
             ui->tiempoExposicionlineEdit->setEnabled(false);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(true);
 
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
+
         }
 
         if (item==2){
             ui->modoDeLaLineaDelRelojComboBox->setCurrentIndex(1);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
 
             ui->tasaDeLecturaHzLineEdit->setText("17.0");
             ui->tasaDeLecturaHzLineEdit->setEnabled(true);
@@ -397,11 +432,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("10");
             ui->tiempoExposicionlineEdit->setEnabled(true);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
 
         }
 
@@ -422,11 +460,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("10");
             ui->tiempoExposicionlineEdit->setEnabled(true);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
         }
 
         if(item==4){
@@ -446,11 +487,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("No Usado");
             ui->tiempoExposicionlineEdit->setEnabled(false);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
         }
 
         if(item==5){
@@ -470,11 +514,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("10");
             ui->tiempoExposicionlineEdit->setEnabled(true);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
         }
 
         if(item==6){
@@ -494,11 +541,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("No Usado");
             ui->tiempoExposicionlineEdit->setEnabled(false);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
         }
 
         if(item==7){
@@ -518,11 +568,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("0");
             ui->tiempoExposicionlineEdit->setEnabled(true);
 
-            ui->ObservarPushButton->setEnabled(true);
+            ui->observarPushButton->setEnabled(true);
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(false);
+            ui->numeroExposicionesLineEdit->setEnabled(false);
         }
 
         if(item==8){
@@ -542,11 +595,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionlineEdit->setText("0");
             ui->tiempoExposicionlineEdit->setEnabled(false);
 
-            ui->ObservarPushButton->setEnabled(false);
+            ui->observarPushButton->setEnabled(false);
 
             ui->IniciarSec1PushButton->setEnabled(true);
 
             ventanaCabeceraFits->activarFrecuenciaDM(false);
+
+            ui->tiempoExposicionFocoLineEdit->setEnabled(true);
+            ui->numeroExposicionesLineEdit->setEnabled(true);
         }
     }
 

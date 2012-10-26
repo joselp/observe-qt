@@ -35,6 +35,9 @@ void CabecerasFits::iniciarGui()
     connect(ui->filtro4PushButton,SIGNAL(clicked()),this,SLOT(slotMostrarFiltro4Widget()));
     connect(ui->raSsLineEdit,SIGNAL(editingFinished()),this,SLOT(slotVerificarRaSs()));
     connect(ui->anguloHorarioSsLineEdit,SIGNAL(editingFinished()),this,SLOT(slotVerificarAHSs()));
+    connect(ui->declinacionSsLineEdit,SIGNAL(editingFinished()),this,SLOT(slotVerificarDeSs()));
+    connect(ui->temperaturaNeveraLineEdit,SIGNAL(editingFinished()),this,SLOT(slotVerificarTempNev()));
+    connect(ui->temperaturaDomoLineEdit,SIGNAL(editingFinished()),this,SLOT(slotVerificarTemDomo()));
     connect(ui->cerrarPushButton,SIGNAL(clicked()),this,SLOT(slotcerrar()));
 
     QStringList declinacionAnguloItems;
@@ -43,6 +46,7 @@ void CabecerasFits::iniciarGui()
 
     ui->raSsLineEdit->setText("00.00");
     ui->anguloHorarioSsLineEdit->setText("00.00");
+    ui->declinacionSsLineEdit->setText("00.00");
 
     ui->noRadioButto->setChecked(true);
 
@@ -100,7 +104,7 @@ void CabecerasFits::slotMostrarFiltro1Widget()
         activarFiltroWidget[0] = 'n';
 
         filtro = new Filtro1Widget(this);
-        filtro->setGeometry(694, 25, 155, 423);
+        filtro->setGeometry(700, 28, 155, 423);
         filtro->setVisible(true);
 
         filtro->iniciarConnects(ui->filtro1PushButton,activarFiltroWidget);
@@ -116,7 +120,7 @@ void CabecerasFits::slotMostrarFiltro2Widget()
         activarFiltroWidget[0] = 'n';
 
         filtro = new Filtro1Widget(this);
-        filtro->setGeometry(694, 48, 155, 423);
+        filtro->setGeometry(700, 58, 155, 423);
         filtro->setVisible(true);
 
         filtro->iniciarConnects(ui->filtro2PushButton,activarFiltroWidget);
@@ -131,7 +135,7 @@ void CabecerasFits::slotMostrarFiltro3Widget()
         activarFiltroWidget[0] = 'n';
 
         filtro = new Filtro1Widget(this);
-        filtro->setGeometry(694, 83, 155, 423);
+        filtro->setGeometry(700, 88, 155, 423);
         filtro->setVisible(true);
 
         filtro->iniciarConnects(ui->filtro3PushButton,activarFiltroWidget);
@@ -146,7 +150,7 @@ void CabecerasFits::slotMostrarFiltro4Widget()
         activarFiltroWidget[0] = 'n';
 
         filtro = new Filtro1Widget(this);
-        filtro->setGeometry(694, 118, 155, 423);
+        filtro->setGeometry(700, 118, 155, 423);
         filtro->setVisible(true);
 
         filtro->iniciarConnects(ui->filtro4PushButton,activarFiltroWidget);
@@ -173,8 +177,30 @@ void CabecerasFits::validarCampos()
     ui->focoTelescopioLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]{3})"),this));
 
     ui->anguloHorarioHhLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-6])"),this));
-    //ui->anguloHorarioMmLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]|[0-5][0-9])"),this));
+    ui->anguloHorarioMmLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]|[0-5][0-9])"),this));
 
+    ui->declinacionGgLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]{3})"),this));
+    ui->declinacionMmLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]|[0-5][0-9])"),this));
+
+    ui->nombreObjetoLineEdit->setValidator(new QRegExpValidator(QRegExp("([^\\s]*)"),this));
+
+    ui->posicionDedosXLineEdit->setValidator(new QRegExpValidator(QRegExp("([0]|[1-9]{3})"),this));
+    ui->posicionDedosYLineEdit->setValidator(new QRegExpValidator(QRegExp("([0]|[1-9]{3})"),this));
+    ui->posicionDedosZLineEdit->setValidator(new QRegExpValidator(QRegExp("([0]|[1-9]{3})"),this));
+    ui->posicionDedosTLineEdit->setValidator(new QRegExpValidator(QRegExp("([0]|[1-9]{3})"),this));
+
+    ui->temperaturaDedosXLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]|[1-2][0])"),this));
+    ui->temperaturaDedosYLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]|[1-2][0])"),this));
+    ui->temperaturaDedosZLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]|[1-2][0])"),this));
+    ui->temperaturaDedosTLineEdit->setValidator(new QRegExpValidator(QRegExp("([0-9]|[1-2][0])"),this));
+
+    ui->vacioCamaralineEdit->setValidator(new QRegExpValidator(QRegExp("([0]|[1-4][0-9]{2})"),this));
+
+    ui->vacioLineaInferiorLineEdit->setValidator(new QRegExpValidator(QRegExp("([0]|[1-4][0-9]{2})"),this));
+
+    ui->vacioLineaSuperiorLineEdit->setValidator(new QRegExpValidator(QRegExp("([0]|[1-4][0-9]{2})"),this));
+
+    ui->humedadDomoLineEdit->setValidator(new QRegExpValidator(QRegExp("([0]|[1-9][0-9]|[1][0]{2})"),this));
 
 }
 
@@ -254,6 +280,111 @@ void CabecerasFits::slotTimerAH()
     contador++;
 }
 
+void CabecerasFits::slotVerificarDeSs()
+{
+    timer = new QTimer(this);
+    timer->setInterval(200);
+    connect(timer,SIGNAL(timeout()),this,SLOT(slotTimerDe()));
 
 
+    QRegExp rx("([0-9]\\.[0-9]|[0-9]\\.[0-9][0-9]|[0-5][0-9]\\.[0-9]|[0-5][0-9]\\.[0-9][0-9])");
+    if(rx.exactMatch(ui->declinacionSsLineEdit->text())){
+        ui->declinacionSsLineEdit->setStyleSheet("background-color:white;");
+    }
 
+    else{
+        contador = 0;
+        ui->declinacionSsLineEdit->setFocus();
+        timer->start();
+    }
+}
+
+void CabecerasFits::slotTimerDe()
+{
+    if(contador%2==0){
+
+        ui->declinacionSsLineEdit->setStyleSheet("background-color:RED;");
+    }
+    else{
+        ui->declinacionSsLineEdit->setStyleSheet("background-color:white;");
+
+    }
+    if(contador==5){
+        timer->stop();
+        delete timer;
+    }
+
+    contador++;
+}
+
+void CabecerasFits::slotVerificarTempNev()
+{
+    timer = new QTimer(this);
+    timer->setInterval(200);
+    connect(timer,SIGNAL(timeout()),this,SLOT(slotTimerTempNev()));
+
+    QRegExp rx("([-][4][9]|[-][5-7][0-9]|[-][8][0])");
+    if(rx.exactMatch(ui->temperaturaNeveraLineEdit->text())){
+        ui->temperaturaNeveraLineEdit->setStyleSheet("background-color:white;");
+    }
+
+    else{
+        contador = 0;
+        ui->temperaturaNeveraLineEdit->setFocus();
+        timer->start();
+    }
+}
+
+void CabecerasFits::slotTimerTempNev()
+{
+    if(contador%2==0){
+
+        ui->temperaturaNeveraLineEdit->setStyleSheet("background-color:RED;");
+    }
+    else{
+        ui->temperaturaNeveraLineEdit->setStyleSheet("background-color:white;");
+
+    }
+    if(contador==5){
+        timer->stop();
+        delete timer;
+    }
+
+    contador++;
+}
+
+void CabecerasFits::slotVerificarTemDomo()
+{
+    timer = new QTimer(this);
+    timer->setInterval(200);
+    connect(timer,SIGNAL(timeout()),this,SLOT(slotTimerTemDomo()));
+
+    QRegExp rx("([-][1-5]|[1][0-9]|[2][0-5]|[0-9])");
+    if(rx.exactMatch(ui->temperaturaDomoLineEdit->text())){
+        ui->temperaturaDomoLineEdit->setStyleSheet("background-color:white;");
+    }
+
+    else{
+        contador = 0;
+        ui->temperaturaDomoLineEdit->setFocus();
+        timer->start();
+    }
+}
+
+void CabecerasFits::slotTimerTemDomo()
+{
+    if(contador%2==0){
+
+        ui->temperaturaDomoLineEdit->setStyleSheet("background-color:RED;");
+    }
+    else{
+        ui->temperaturaDomoLineEdit->setStyleSheet("background-color:white;");
+
+    }
+    if(contador==5){
+        timer->stop();
+        delete timer;
+    }
+
+    contador++;
+}
