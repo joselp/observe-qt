@@ -33,8 +33,14 @@ private slots:
     void slotMostrarFiltro4Widget(); //Muestra el widget Filtro al dar click en filtro3PushButton
     void slotVerificarRaSs(); //Verifica el campo Ss de RA Angulo Horario
     void slotVerificarAHSs(); //Verifica el campo Ss de Angulo Horario
+    void slotVerificarDeSs(); //Verifica el campo Ss de Declinacion Horario
+    void slotVerificarTempNev(); //Verifica el campo de temperatura de la nevera
+    void slotVerificarTemDomo();//Verifica el campo de temperatura del Domo
     void slotTimerRa(); //Crear la animacion de error para el campo Ss de RA
     void slotTimerAH(); //Crear la animacion de error para el campo Ss de Angulo Horario
+    void slotTimerDe(); //Crear la animacion de error para el campo Ss de declinacion
+    void slotTimerTempNev(); //Crear la animacion de error para el campo temperatura nevera.
+    void slotTimerTemDomo(); //Crear la animacion de error para el campo temperatura del domo
     void slotcerrar();
 
 private:
