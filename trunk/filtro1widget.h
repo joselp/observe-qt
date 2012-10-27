@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QDebug>
+#include <QSignalMapper>
 
 namespace Ui {
     class Filtro1Widget;
@@ -21,32 +22,14 @@ public:
 
 private slots:
 
-    void cambiarTexto1();
-    void cambiarTexto2();
-    void cambiarTexto3();
-    void cambiarTexto4();
-    void cambiarTexto5();
-    void cambiarTexto6();
-    void cambiarTexto7();
-    void cambiarTexto8();
-    void cambiarTexto9();
-    void cambiarTexto10();
-    void cambiarTexto11();
-    void cambiarTexto12();
-    void cambiarTexto13();
-    void cambiarTexto14();
-    void cambiarTexto15();
-    void cambiarTexto16();
-    void cambiarTexto17();
-    void cambiarTexto18();
-    void cambiarTexto19();
-    void cambiarTexto20();
-    void cambiarTexto21();
+    void cambiarTexto(int); //Cambia el texto de los Botones para los Filtros.
 
 private:
     QPushButton *auxButton;
     char *auxActivar;
     Ui::Filtro1Widget *ui;
+
+    QSignalMapper *mapper;
 };
 
 #endif // FILTRO1WIDGET_H
