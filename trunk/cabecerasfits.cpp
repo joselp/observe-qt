@@ -142,6 +142,8 @@ void CabecerasFits::iniciarConnects()
     connect(ui->filtro3PushButton,SIGNAL(clicked()),this,SLOT(slotMostrarFiltro3Widget()));
     connect(ui->filtro4PushButton,SIGNAL(clicked()),this,SLOT(slotMostrarFiltro4Widget()));
 
+    connect(ui->instrumentoUsadoComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(slotInstrumentoUsado(int)));
+
     connect(ui->cerrarPushButton,SIGNAL(clicked()),this,SLOT(slotcerrar()));
 }
 
@@ -164,15 +166,15 @@ void CabecerasFits::slotMostrarNombreProyectoWidget()
 
 void CabecerasFits::slotMostrarFiltro1Widget()
 {
-    if(activarFiltroWidget[0] == 's'){
 
+    if(activarFiltroWidget[0] == 's'){
         activarFiltroWidget[0] = 'n';
 
         filtro = new Filtro1Widget(this);
         filtro->setGeometry(700, 28, 155, 423);
         filtro->setVisible(true);
 
-        filtro->iniciarConnects(ui->filtro1PushButton,activarFiltroWidget);
+        filtro->iniciarConnects(ui->filtro1PushButton,ui->filtro2PushButton,ui->filtro3PushButton,ui->filtro4PushButton,activarFiltroWidget);
 
     }
 
@@ -188,7 +190,7 @@ void CabecerasFits::slotMostrarFiltro2Widget()
         filtro->setGeometry(700, 58, 155, 423);
         filtro->setVisible(true);
 
-        filtro->iniciarConnects(ui->filtro2PushButton,activarFiltroWidget);
+        filtro->iniciarConnects(ui->filtro2PushButton,ui->filtro1PushButton,ui->filtro3PushButton,ui->filtro4PushButton,activarFiltroWidget);
 
     }
 }
@@ -203,7 +205,7 @@ void CabecerasFits::slotMostrarFiltro3Widget()
         filtro->setGeometry(700, 88, 155, 423);
         filtro->setVisible(true);
 
-        filtro->iniciarConnects(ui->filtro3PushButton,activarFiltroWidget);
+        filtro->iniciarConnects(ui->filtro3PushButton,ui->filtro1PushButton,ui->filtro2PushButton,ui->filtro4PushButton,activarFiltroWidget);
 
     }
 }
@@ -218,13 +220,13 @@ void CabecerasFits::slotMostrarFiltro4Widget()
         filtro->setGeometry(700, 118, 155, 423);
         filtro->setVisible(true);
 
-        filtro->iniciarConnects(ui->filtro4PushButton,activarFiltroWidget);
+        filtro->iniciarConnects(ui->filtro4PushButton,ui->filtro1PushButton,ui->filtro2PushButton,ui->filtro3PushButton,activarFiltroWidget);
 
     }
 }
 
 void CabecerasFits::slotcerrar(){
-    this->close();
+    this->hide();
 }
 
 void CabecerasFits::activarFrecuenciaDM(bool b)
@@ -460,7 +462,7 @@ void CabecerasFits::slotVerificar(int i)
     }
 
     if(i==12){
-        QRegExp rx("([0]|[0-9]|[0-9]{2}|[0-9]{3})");
+        QRegExp rx("([0-9]|[0-9]{2}|[0-9]{3})");
 
         if(rx.exactMatch(ui->posicionDedosXLineEdit->text()) || ui->posicionDedosXLineEdit->text().size()==0){
             ui->posicionDedosXLineEdit->setStyleSheet("background-color:white;");
@@ -480,7 +482,7 @@ void CabecerasFits::slotVerificar(int i)
     }
 
     if(i==13){
-        QRegExp rx("([0]|[0-9]|[0-9]{2}|[0-9]{3})");
+        QRegExp rx("([0-9]|[0-9]{2}|[0-9]{3})");
 
         if(rx.exactMatch(ui->posicionDedosYLineEdit->text()) || ui->posicionDedosYLineEdit->text().size()==0){
             ui->posicionDedosYLineEdit->setStyleSheet("background-color:white;");
@@ -500,7 +502,7 @@ void CabecerasFits::slotVerificar(int i)
     }
 
     if(i==14){
-        QRegExp rx("([0]|[0-9]|[0-9]{2}|[0-9]{3})");
+        QRegExp rx("([0-9]|[0-9]{2}|[0-9]{3})");
 
         if(rx.exactMatch(ui->posicionDedosZLineEdit->text()) || ui->posicionDedosZLineEdit->text().size()==0){
             ui->posicionDedosZLineEdit->setStyleSheet("background-color:white;");
@@ -520,7 +522,7 @@ void CabecerasFits::slotVerificar(int i)
     }
 
     if(i==15){
-        QRegExp rx("([0]|[0-9]|[0-9]{2}|[0-9]{3})");
+        QRegExp rx("([0-9]|[0-9]{2}|[0-9]{3})");
 
         if(rx.exactMatch(ui->posicionDedosTLineEdit->text()) || ui->posicionDedosTLineEdit->text().size()==0){
             ui->posicionDedosTLineEdit->setStyleSheet("background-color:white;");
@@ -540,7 +542,7 @@ void CabecerasFits::slotVerificar(int i)
     }
 
     if(i==16){
-        QRegExp rx("([0-9]|[1][0-9]|[2][0])");
+        QRegExp rx("([-][0-9]|[-][0-7][0-9]|[-][8][0]|[0-9]|[1][0-9]|[2][0])");
 
         if(rx.exactMatch(ui->temperaturaDedosXLineEdit->text()) || ui->temperaturaDedosXLineEdit->text().size()==0){
             ui->temperaturaDedosXLineEdit->setStyleSheet("background-color:white;");
@@ -560,7 +562,7 @@ void CabecerasFits::slotVerificar(int i)
     }
 
     if(i==17){
-        QRegExp rx("([0-9]|[1][0-9]|[2][0])");
+        QRegExp rx("([-][0-9]|[-][0-7][0-9]|[-][8][0]|[0-9]|[1][0-9]|[2][0])");
 
         if(rx.exactMatch(ui->temperaturaDedosYLineEdit->text()) || ui->temperaturaDedosYLineEdit->text().size()==0){
             ui->temperaturaDedosYLineEdit->setStyleSheet("background-color:white;");
@@ -580,7 +582,7 @@ void CabecerasFits::slotVerificar(int i)
     }
 
     if(i==18){
-        QRegExp rx("([0-9]|[1][0-9]|[2][0])");
+        QRegExp rx("([-][0-9]|[-][0-7][0-9]|[-][8][0]|[0-9]|[1][0-9]|[2][0])");
 
         if(rx.exactMatch(ui->temperaturaDedosZLineEdit->text()) || ui->temperaturaDedosZLineEdit->text().size()==0){
             ui->temperaturaDedosZLineEdit->setStyleSheet("background-color:white;");
@@ -600,7 +602,7 @@ void CabecerasFits::slotVerificar(int i)
     }
 
     if(i==19){
-        QRegExp rx("([0-9]|[1][0-9]|[2][0])");
+        QRegExp rx("([-][0-9]|[-][0-7][0-9]|[-][8][0]|[0-9]|[1][0-9]|[2][0])");
 
         if(rx.exactMatch(ui->temperaturaDedosTLineEdit->text()) || ui->temperaturaDedosTLineEdit->text().size()==0){
             ui->temperaturaDedosTLineEdit->setStyleSheet("background-color:white;");
@@ -620,7 +622,7 @@ void CabecerasFits::slotVerificar(int i)
     }
 
     if(i==20){
-        QRegExp rx("([0]|[0-9]{2}|[1-4][0-9]{2})");
+        QRegExp rx("([0-9]|[0-9][0-9]|[1-4][0-9]{2})");
 
         if(rx.exactMatch(ui->vacioCamaralineEdit->text()) || ui->vacioCamaralineEdit->text().size()==0){
             ui->vacioCamaralineEdit->setStyleSheet("background-color:white;");
@@ -640,7 +642,7 @@ void CabecerasFits::slotVerificar(int i)
     }
 
     if(i==21){
-        QRegExp rx("([0]|[0-9]{2}|[1-4][0-9]{2})");
+        QRegExp rx("([0-9]|[0-9][0-9]|[1-4][0-9]{2})");
 
         if(rx.exactMatch(ui->vacioLineaSuperiorLineEdit->text()) || ui->vacioLineaSuperiorLineEdit->text().size()==0){
             ui->vacioLineaSuperiorLineEdit->setStyleSheet("background-color:white;");
@@ -660,7 +662,7 @@ void CabecerasFits::slotVerificar(int i)
     }
 
     if(i==22){
-        QRegExp rx("([0]|[0-9]{2}|[1-4][0-9]{2})");
+        QRegExp rx("([0-9]|[0-9][0-9]|[1-4][0-9]{2})");
 
         if(rx.exactMatch(ui->vacioLineaInferiorLineEdit->text()) || ui->vacioLineaInferiorLineEdit->text().size()==0){
             ui->vacioCamaralineEdit->setStyleSheet("background-color:white;");
@@ -1202,5 +1204,167 @@ void CabecerasFits::slotTimerHumDomo()
     contador++;
 }
 
+void CabecerasFits::slotInstrumentoUsado(int i)
+{
+    if(i==0){
+        ui->orientacionPrismaLineEdit->setEnabled(false);
+        ui->orientacionPrismaLineEdit->setText("-1");
+    }
+    if(i==1){
+        ui->orientacionPrismaLineEdit->setEnabled(true);
+        ui->orientacionPrismaLineEdit->setText("");
+    }
+}
 
+////////////////////////Getters////////////////////////////////////////////
+QString CabecerasFits::getRaHh()
+{
+    return ui->raHhLineEdit->text();
+}
+
+QString CabecerasFits::getRaMm()
+{
+    return ui->raMmLineEdit->text();
+}
+
+QString CabecerasFits::getRaSs()
+{
+    return ui->raSsLineEdit->text();
+}
+
+QString CabecerasFits::getFocoTelescopio()
+{
+    return ui->focoTelescopioLineEdit->text();
+}
+
+QString CabecerasFits::getAHorarioHh()
+{
+    return ui->anguloHorarioHhLineEdit->text();
+}
+
+QString CabecerasFits::getAHorarioMm()
+{
+    return ui->anguloHorarioMmLineEdit->text();
+}
+
+QString CabecerasFits::getAHorarioSs()
+{
+    return ui->anguloHorarioSsLineEdit->text();
+}
+
+QString CabecerasFits::getDeclinacionGg()
+{
+    return ui->declinacionGgLineEdit->text();
+}
+
+QString CabecerasFits::getDeclinacionMm()
+{
+    return ui->declinacionMmLineEdit->text();
+}
+
+QString CabecerasFits::getDeclinacionSs()
+{
+    return ui->declinacionSsLineEdit->text();
+}
+
+QString CabecerasFits::getNombreObjeto()
+{
+    return ui->nombreObjetoLineEdit->text();
+}
+
+QString CabecerasFits::getPosDedosX()
+{
+    return ui->posicionDedosXLineEdit->text();
+}
+
+QString CabecerasFits::getPosDedosY()
+{
+    return ui->posicionDedosYLineEdit->text();
+}
+
+QString CabecerasFits::getPosDedosZ()
+{
+    return ui->posicionDedosZLineEdit->text();
+}
+
+QString CabecerasFits::getPosDedosT()
+{
+    return ui->posicionDedosTLineEdit->text();
+}
+
+QString CabecerasFits::getTemDedosX()
+{
+    return ui->temperaturaDedosXLineEdit->text();
+}
+
+QString CabecerasFits::getTemDedosY()
+{
+    return ui->temperaturaDedosYLineEdit->text();
+}
+
+QString CabecerasFits::getTemDedosZ()
+{
+    return ui->temperaturaDedosZLineEdit->text();
+}
+
+QString CabecerasFits::getTemDedosT()
+{
+    return ui->temperaturaDedosTLineEdit->text();
+}
+
+QString CabecerasFits::getVacioCamara()
+{
+    return ui->vacioCamaralineEdit->text();
+}
+
+QString CabecerasFits::getVacioLineaSuperior()
+{
+    return ui->vacioLineaSuperiorLineEdit->text();
+}
+
+QString CabecerasFits::getVacioLineaInferior()
+{
+    return ui->vacioLineaInferiorLineEdit->text();
+}
+
+QString CabecerasFits::getTempNevera()
+{
+    return ui->temperaturaNeveraLineEdit->text();
+}
+
+QString CabecerasFits::getTempDomo()
+{
+    return ui->temperaturaDomoLineEdit->text();
+}
+
+QString CabecerasFits::getHumedadDomo()
+{
+    return ui->humedadDomoLineEdit->text();
+}
+
+QString CabecerasFits::getFrecuenciaYic()
+{
+    return ui->frecuenciaYicLineEdit->text();
+}
+
+QString CabecerasFits::getFrecuenciaRa()
+{
+    return ui->frecuenciaRaLineEdit->text();
+}
+
+QString CabecerasFits::getFrecuenciaDec()
+{
+    return ui->frecuenciaDecLineEdit->text();
+}
+
+QString CabecerasFits::getOrientacionPrisma()
+{
+    return ui->orientacionPrismaLineEdit->text();
+}
+
+////////////////Setters/////////////////////////////////
+void CabecerasFits::setNombreObjeto(QString text)
+{
+    ui->nombreObjetoLineEdit->setText(text);
+}
 
