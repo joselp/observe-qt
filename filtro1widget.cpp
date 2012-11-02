@@ -11,6 +11,8 @@ Filtro1Widget::Filtro1Widget(QWidget *parent) :
 
     mapper = new QSignalMapper(this);
 
+    filtroUnico = false;
+
 }
 
 Filtro1Widget::~Filtro1Widget()
@@ -18,10 +20,13 @@ Filtro1Widget::~Filtro1Widget()
     delete ui;
 }
 
-void Filtro1Widget::iniciarConnects(QPushButton *a, char *b)
+void Filtro1Widget::iniciarConnects(QPushButton *a,QPushButton *b,QPushButton *c,QPushButton *d, char *e)
 {
     auxButton = a;
-    auxActivar = b;
+    auxButton2 = b;
+    auxButton3 = c;
+    auxButton4 = d;
+    auxActivar = e;
 
     //Conecto todos los botones al QSignalMapper.
 
@@ -162,7 +167,7 @@ void Filtro1Widget::cambiarTexto(int i)
         auxActivar[0] = 's';
 
         this->hide();
-        delete this;
+        delete this;;
     }
 
     if(i==12){
@@ -191,14 +196,21 @@ void Filtro1Widget::cambiarTexto(int i)
 
     if(i==15){
         auxButton->setText("CLR");
+        auxButton2->setText("CLR");
+        auxButton3->setText("CLR");
+        auxButton4->setText("CLR");
         auxActivar[0] = 's';
 
         this->hide();
         delete this;
+        filtroUnico = true;
     }
 
     if(i==16){
-        auxButton->setText("CLR");
+        auxButton->setText("HOT");
+        auxButton2->setText("HOT");
+        auxButton3->setText("HOT");
+        auxButton4->setText("HOT");
         auxActivar[0] = 's';
 
         this->hide();
@@ -207,6 +219,9 @@ void Filtro1Widget::cambiarTexto(int i)
 
     if(i==17){
         auxButton->setText("UHa");
+        auxButton2->setText("UHa");
+        auxButton3->setText("UHa");
+        auxButton4->setText("UHa");
         auxActivar[0] = 's';
 
         this->hide();
@@ -245,4 +260,5 @@ void Filtro1Widget::cambiarTexto(int i)
         delete this;
     }
 }
+
 

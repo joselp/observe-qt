@@ -12,7 +12,7 @@
 #include "filtro1widget.h"
 
 namespace Ui {
-    class CabecerasFits;
+class CabecerasFits;
 }
 
 class CabecerasFits : public QWidget
@@ -25,6 +25,40 @@ public:
     void iniciarConnects();
     void activarFrecuenciaDM(bool); //Activa los campos para la Freecuencia en una observacion DrifScan Modificada.
 
+    //Getters
+    QString getRaHh();
+    QString getRaMm();
+    QString getRaSs();
+    QString getFocoTelescopio();
+    QString getAHorarioHh();
+    QString getAHorarioMm();
+    QString getAHorarioSs();
+    QString getDeclinacionGg();
+    QString getDeclinacionMm();
+    QString getDeclinacionSs();
+    QString getNombreObjeto();
+    QString getPosDedosX();
+    QString getPosDedosY();
+    QString getPosDedosZ();
+    QString getPosDedosT();
+    QString getTemDedosX();
+    QString getTemDedosY();
+    QString getTemDedosZ();
+    QString getTemDedosT();
+    QString getVacioCamara();
+    QString getVacioLineaSuperior();
+    QString getVacioLineaInferior();
+    QString getTempNevera();
+    QString getOrientacionPrisma();
+    QString getTempDomo();
+    QString getHumedadDomo();
+    QString getFrecuenciaYic();
+    QString getFrecuenciaRa();
+    QString getFrecuenciaDec();
+
+    //Setter
+    void setNombreObjeto(QString);
+
     ~CabecerasFits();
 
 private slots:
@@ -34,8 +68,10 @@ private slots:
     void slotMostrarFiltro3Widget(); //Muestra el widget Filtro al dar click en filtro3PushButton
     void slotMostrarFiltro4Widget(); //Muestra el widget Filtro al dar click en filtro3PushButton
 
+    //Slot para verificar los campos
     void slotVerificar(int);
 
+    //Slots para crear animaciones de los campos al haber valores erroneos.
     void slotTimerRaHh();
     void slotTimerRaMm();
     void slotTimerRaSs(); //Crear la animacion de error para el campo Ss de RA
@@ -62,6 +98,7 @@ private slots:
     void slotTimerTempDomo(); //Crear la animacion de error para el campo temperatura del domo
     void slotTimerHumDomo();
 
+    void slotInstrumentoUsado(int);
 
     void slotcerrar();
 
@@ -74,7 +111,6 @@ private:
     char *activarFiltroWidget; //Para activar o no el Widget Filtro
 
     QTimer *timer[29];
-    QTimer *t3;
 
     int contador;
 

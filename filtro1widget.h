@@ -16,8 +16,8 @@ class Filtro1Widget : public QWidget
 
 public:
     explicit Filtro1Widget(QWidget *parent = 0);
-    void iniciarConnects(QPushButton *, char *); //Inicia todos los conects para los botones
-                                                 // del Widget NombreProyecto.
+    void iniciarConnects(QPushButton *,QPushButton *,QPushButton *,QPushButton *, char *); //Inicia todos los conects para los botones
+
     ~Filtro1Widget();
 
 private slots:
@@ -26,10 +26,15 @@ private slots:
 
 private:
     QPushButton *auxButton;
+    QPushButton *auxButton2;
+    QPushButton *auxButton3;
+    QPushButton *auxButton4;
     char *auxActivar;
+    QSignalMapper *mapper;
+    bool filtroUnico;
+
     Ui::Filtro1Widget *ui;
 
-    QSignalMapper *mapper;
 };
 
 #endif // FILTRO1WIDGET_H

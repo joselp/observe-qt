@@ -72,7 +72,7 @@ void AdquisicionDatos::iniciarGui()
     ui->LogTextEdit->setText("ARCHIVO DE LOG: "+NombreDia+" "+" "+NombreMes+" "+QString::number(dia)+" "+hora+
                              " VET "+ QString::number(anyo)+"\n\n"+"TAIL OF ERROR LOG:");
 
-    ui->LogTextEdit->setReadOnly(true);
+    //ui->LogTextEdit->setReadOnly(true);
 
     //Titulo ventana
 
@@ -86,6 +86,10 @@ void AdquisicionDatos::logicaGui()
     connect(ui->modoDeLaLineaDelRelojComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(slotModoLineaReloj(int)));
 
     connect(ui->modoDeLaLineaDelRelojComboBox,SIGNAL(activated(int)),this,SLOT(slotModoLineaReloj(int)));
+
+    connect(ui->emcabezadosPushButton,SIGNAL(clicked()),this,SLOT(slotEmcabezados()));
+
+    connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotObservar()));
 }
 
 AdquisicionDatos::~AdquisicionDatos()
@@ -639,4 +643,182 @@ void AdquisicionDatos::slotModoLineaReloj(int item)
 void AdquisicionDatos::closeEvent(QCloseEvent *)
 {
     exit(0);
+}
+
+void AdquisicionDatos::slotEmcabezados()
+{
+    ventanaCabeceraFits->show();
+}
+
+void AdquisicionDatos::slotObservar()
+{
+    verificarDatos();
+}
+
+void AdquisicionDatos::verificarDatos()
+{
+    QString error;
+    error = "<font color=""red"">Error: </font>";
+
+    QRegExp rx;
+
+    rx=QRegExp("([0-2][0-3]|[0-9]|[0-1][0-9])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getRaHh())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo hora (HH) de RA");
+        return;
+    }
+
+    rx=QRegExp("([0-9]|[0-5][0-9])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getRaMm())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo hora (MM) de RA");
+        return;
+    }
+
+    rx=QRegExp("([0-9]\\.[0-9]|[0-9]\\.[0-9][0-9]|[0-5][0-9]\\.[0-9]|[0-5][0-9]\\.[0-9][0-9])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getRaSs())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo hora (SS) de RA");
+        return;
+    }
+
+    rx=QRegExp("([0-9]|[0-9]{2}|[0-9]{3})");
+    if(!rx.exactMatch(ventanaCabeceraFits->getFocoTelescopio())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo Foco del Telescopio");
+        return;
+    }
+
+    rx=QRegExp("([0-6])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getAHorarioHh())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo hora (HH) del Angulo Horario");
+        return;
+    }
+
+    rx=QRegExp("([0-9]|[0-5][0-9])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getAHorarioMm())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo hora (MM) del Angulo Horario");
+        return;
+    }
+
+    rx=QRegExp("([0-9]\\.[0-9]|[0-9]\\.[0-9][0-9]|[0-5][0-9]\\.[0-9]|[0-5][0-9]\\.[0-9][0-9])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getAHorarioSs())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo hora (SS) del Angulo Horario");
+        return;
+    }
+
+    rx=QRegExp("([0-9]|[0-8][0-9]|[9][0])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getDeclinacionGg())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo grados (GG) de la Declinacion");
+        return;
+    }
+
+    rx=QRegExp("([0-9]|[0-5][0-9])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getDeclinacionMm())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo grados (MM) de la Declinacion");
+        return;
+    }
+
+    rx=QRegExp("([0-9]\\.[0-9]|[0-9]\\.[0-9][0-9]|[0-5][0-9]\\.[0-9]|[0-5][0-9]\\.[0-9][0-9])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getDeclinacionSs())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo grados (Ss) de la Declinacion");
+        return;
+    }
+
+    rx=QRegExp("([^\\s]*)");
+    if(!rx.exactMatch(ventanaCabeceraFits->getNombreObjeto()) || ventanaCabeceraFits->getNombreObjeto().size()==0){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo nombre del objeto");
+        return;
+    }
+
+    rx=QRegExp("([0-9]|[0-9]{2}|[0-9]{3})");
+    if(!rx.exactMatch(ventanaCabeceraFits->getPosDedosX())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Posicion del Dedo X");
+        return;
+    }
+
+    rx=QRegExp("([0-9]|[0-9]{2}|[0-9]{3})");
+    if(!rx.exactMatch(ventanaCabeceraFits->getPosDedosY())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Posicion del Dedo Y");
+        return;
+    }
+
+    rx=QRegExp("([0-9]|[0-9]{2}|[0-9]{3})");
+    if(!rx.exactMatch(ventanaCabeceraFits->getPosDedosZ())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Posicion del Dedo Z");
+        return;
+    }
+
+    rx=QRegExp("([0-9]|[0-9]{2}|[0-9]{3})");
+    if(!rx.exactMatch(ventanaCabeceraFits->getPosDedosT())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Posicion del Dedo T");
+        return;
+    }
+
+    rx=QRegExp("([-][0-9]|[-][0-7][0-9]|[-][8][0]|[0-9]|[1][0-9]|[2][0])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getTemDedosX())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Temperatura del Dedo X");
+        return;
+    }
+
+    rx=QRegExp("([-][0-9]|[-][0-7][0-9]|[-][8][0]|[0-9]|[1][0-9]|[2][0])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getTemDedosY())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Temperatura del Dedo Y");
+        return;
+    }
+
+    rx=QRegExp("([-][0-9]|[-][0-7][0-9]|[-][8][0]|[0-9]|[1][0-9]|[2][0])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getTemDedosZ())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Temperatura del Dedo Z");
+        return;
+    }
+
+    rx=QRegExp("([-][0-9]|[-][0-7][0-9]|[-][8][0]|[0-9]|[1][0-9]|[2][0])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getTemDedosT())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Temperatura del Dedo T");
+        return;
+    }
+
+    /////////////////Falta colocar a los siguientes tres valores el warning de torr./////////////////
+    rx=QRegExp("([0-9]|[0-9][0-9]|[1-4][0-9]{2})");
+    if(!rx.exactMatch(ventanaCabeceraFits->getVacioCamara())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el Vacio de la Camara");
+        return;
+    }
+
+    rx=QRegExp("([0-9]|[0-9][0-9]|[1-4][0-9]{2})");
+    if(!rx.exactMatch(ventanaCabeceraFits->getVacioLineaSuperior())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el Vacio de la Linea Superior");
+        return;
+    }
+
+    rx=QRegExp("([0-9]|[0-9][0-9]|[1-4][0-9]{2})");
+    if(!rx.exactMatch(ventanaCabeceraFits->getVacioLineaInferior())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el Vacio de la Linea Inferior");
+        return;
+    }
+
+    rx=QRegExp("([-][4][9]|[-][5-7][0-9]|[-][8][0])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getTempNevera())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Temperatura de la Nevera");
+        return;
+    }
+
+    rx=QRegExp("([0-9]|[0-9]{2}|[1-2][0-9]{2}|[3][0-5][0-9]|[3][6][0])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getOrientacionPrisma())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo Orientacion del Prisma");
+        return;
+    }
+
+    rx=QRegExp("([-][1-5]|[1][0-9]|[2][0-5]|[0-9])");
+    if(!rx.exactMatch(ventanaCabeceraFits->getTempDomo())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo Temperatura del Domo");
+        return;
+    }
+
+    rx=QRegExp("([0]|[1-9][0-9]|[1][0]{2})");
+    if(!rx.exactMatch(ventanaCabeceraFits->getHumedadDomo())){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+" Verifique el campo Humedad del Domo");
+        return;
+    }
+
+
+
 }
