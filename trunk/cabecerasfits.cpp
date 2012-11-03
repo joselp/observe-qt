@@ -33,11 +33,12 @@ CabecerasFits::~CabecerasFits()
 void CabecerasFits::iniciarGui()
 {   
 
+    ui->raSsLineEdit->setText("00.00");
+
     QStringList declinacionAnguloItems;
     declinacionAnguloItems << "Este" << "Oeste" << "Meridiano";
     ui->declinacionAnguloComboBox->addItems(declinacionAnguloItems);
 
-    ui->raSsLineEdit->setText("00.00");
     ui->anguloHorarioSsLineEdit->setText("00.00");
     ui->declinacionSsLineEdit->setText("00.00");
 
@@ -70,6 +71,34 @@ void CabecerasFits::iniciarGui()
                  << "Kathy Vivas" << "Leidy Penna" << "Luz Zambrano" << "Madeleine Rodriguez" << "Maria Batista" << "Maria Ocando"
                  << "Nidia Lugo" << "Quriaky Gomez" << "Rafael Gamez" << "Yolanda Landaeta" << "Observador Invitado";
     ui->observadorComboBox->addItems(observadores);
+
+    //Tooltips para los campos.
+    ui->raHhLineEdit->setToolTip("[0;23]");
+    ui->raMmLineEdit->setToolTip("[0;59]");
+    ui->raSsLineEdit->setToolTip("[0.00;59.99]");
+    ui->focoTelescopioLineEdit->setToolTip("[0;999]");
+    ui->anguloHorarioHhLineEdit->setToolTip("[0;6]");
+    ui->anguloHorarioMmLineEdit->setToolTip("[0;59]");
+    ui->anguloHorarioSsLineEdit->setToolTip("[0.0;59.99]");
+    ui->declinacionGgLineEdit->setToolTip("[0;90]");
+    ui->declinacionMmLineEdit->setToolTip("[0;59]");
+    ui->declinacionSsLineEdit->setToolTip("[0.0,59.9]");
+    ui->nombreObjetoLineEdit->setToolTip("<p>No debe estar vac&iacute;a ni tener espacios en blanco");
+    ui->posicionDedosXLineEdit->setToolTip("[0;999]");
+    ui->posicionDedosYLineEdit->setToolTip("[0;999]");
+    ui->posicionDedosZLineEdit->setToolTip("[0;999]");
+    ui->posicionDedosTLineEdit->setToolTip("[0;999]");
+    ui->temperaturaDedosXLineEdit->setToolTip("[-80;2 0]");
+    ui->temperaturaDedosXLineEdit->setToolTip("[-80;2 0]");
+    ui->temperaturaDedosYLineEdit->setToolTip("[-80;2 0]");
+    ui->temperaturaDedosZLineEdit->setToolTip("[-80;2 0]");
+    ui->temperaturaDedosTLineEdit->setToolTip("[-80;2 0]");
+    ui->vacioLineaInferiorLineEdit->setToolTip("[0;499]");
+    ui->vacioLineaInferiorLineEdit->setToolTip("[0;499]");
+    ui->temperaturaNeveraLineEdit->setToolTip("[-50;-80]");
+    ui->orientacionPrismaLineEdit->setToolTip("[0-360]");
+    ui->temperaturaDomoLineEdit->setToolTip("[-5, 25]");
+    ui->humedadDomoLineEdit->setToolTip("[0-100]");
 
 }
 
@@ -422,7 +451,7 @@ void CabecerasFits::slotVerificar(int i)
     }
 
     if(i==10){
-        QRegExp rx("([0-9]\\.[0-9]|[0-9]\\.[0-9][0-9]|[0-5][0-9]\\.[0-9]|[0-5][0-9]\\.[0-9][0-9])");
+        QRegExp rx("([0-9]\\.[0-9]|[0-5][0-9]\\.[0-9]|[0-9]\\.[0][0]|[0-5][0-9]\\.[0][0])");
 
         if(rx.exactMatch(ui->declinacionSsLineEdit->text()) || ui->declinacionSsLineEdit->text().size()==0){
             ui->declinacionSsLineEdit->setStyleSheet("background-color:white;");
@@ -722,7 +751,7 @@ void CabecerasFits::slotVerificar(int i)
     }
 
     if(i==25){
-        QRegExp rx("([0]|[1-9][0-9]|[1][0]{2})");
+        QRegExp rx("([0-9]|[0-9][0-9]|[1][0]{2})");
 
         if(rx.exactMatch(ui->humedadDomoLineEdit->text()) || ui->humedadDomoLineEdit->text().size()==0){
             ui->humedadDomoLineEdit->setStyleSheet("background-color:white;");
@@ -1215,6 +1244,12 @@ void CabecerasFits::slotInstrumentoUsado(int i)
         ui->orientacionPrismaLineEdit->setText("");
     }
 }
+
+bool CabecerasFits::orientacionPrimasIsActive()
+{
+    return ui->orientacionPrismaLineEdit->isEnabled();
+}
+
 
 ////////////////////////Getters////////////////////////////////////////////
 QString CabecerasFits::getRaHh()

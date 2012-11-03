@@ -698,7 +698,7 @@ void AdquisicionDatos::verificarDatos()
         return;
     }
 
-    rx=QRegExp("([0-9]\\.[0-9]|[0-9]\\.[0-9][0-9]|[0-5][0-9]\\.[0-9]|[0-5][0-9]\\.[0-9][0-9])");
+    rx=QRegExp("([0-9]\\.[0-9]|[0-5][0-9]\\.[0-9]|[0-9]\\.[0][0]|[0-5][0-9]\\.[0][0])");
     if(!rx.exactMatch(ventanaCabeceraFits->getAHorarioSs())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo hora (SS) del Angulo Horario");
         return;
@@ -801,10 +801,12 @@ void AdquisicionDatos::verificarDatos()
         return;
     }
 
-    rx=QRegExp("([0-9]|[0-9]{2}|[1-2][0-9]{2}|[3][0-5][0-9]|[3][6][0])");
-    if(!rx.exactMatch(ventanaCabeceraFits->getOrientacionPrisma())){
-        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo Orientacion del Prisma");
-        return;
+    if(ventanaCabeceraFits->orientacionPrimasIsActive()){
+        rx=QRegExp("([0-9]|[0-9]{2}|[1-2][0-9]{2}|[3][0-5][0-9]|[3][6][0])");
+        if(!rx.exactMatch(ventanaCabeceraFits->getOrientacionPrisma())){
+            ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo Orientacion del Prisma");
+            return;
+        }
     }
 
     rx=QRegExp("([-][1-5]|[1][0-9]|[2][0-5]|[0-9])");
@@ -813,12 +815,10 @@ void AdquisicionDatos::verificarDatos()
         return;
     }
 
-    rx=QRegExp("([0]|[1-9][0-9]|[1][0]{2})");
+    rx=QRegExp("([0-9]|[0-9][0-9]|[1][0]{2})");
     if(!rx.exactMatch(ventanaCabeceraFits->getHumedadDomo())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+" Verifique el campo Humedad del Domo");
         return;
     }
-
-
 
 }
