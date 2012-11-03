@@ -83,7 +83,9 @@ void Filtro1Widget::iniciarConnects(QPushButton *a,QPushButton *b,QPushButton *c
 void Filtro1Widget::cambiarTexto(int i)
 {
     if(i==1){
-        auxButton->setText("U1");
+        if(auxButton2->text()!="U1" && auxButton3->text()!="U1" && auxButton4->text()!="U1"){
+            auxButton->setText("U1");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -91,7 +93,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==2){
-        auxButton->setText("U2");
+        if(auxButton2->text()!="U2" && auxButton3->text()!="U2" && auxButton4->text()!="U2"){
+            auxButton->setText("U2");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -99,7 +103,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==3){
-        auxButton->setText("B1");
+        if(auxButton2->text()!="B1" && auxButton3->text()!="B1" && auxButton4->text()!="B1"){
+            auxButton->setText("B1");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -107,7 +113,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==4){
-        auxButton->setText("B2");
+        if(auxButton2->text()!="B2" && auxButton3->text()!="B2" && auxButton4->text()!="B2"){
+            auxButton->setText("B2");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -115,7 +123,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==5){
-        auxButton->setText("V1");
+        if(auxButton2->text()!="V1" && auxButton3->text()!="V1" && auxButton4->text()!="V1"){
+            auxButton->setText("V1");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -123,7 +133,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==6){
-        auxButton->setText("V2");
+        if(auxButton2->text()!="V2" && auxButton3->text()!="V2" && auxButton4->text()!="V2"){
+            auxButton->setText("V2");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -131,7 +143,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==7){
-        auxButton->setText("V3");
+        if(auxButton2->text()!="V3" && auxButton3->text()!="V3" && auxButton4->text()!="V3"){
+            auxButton->setText("V3");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -139,7 +153,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==8){
-        auxButton->setText("V4");
+        if(auxButton2->text()!="V4" && auxButton3->text()!="V4" && auxButton4->text()!="V4"){
+            auxButton->setText("V4");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -147,7 +163,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==9){
-        auxButton->setText("R1");
+        if(auxButton2->text()!="R1" && auxButton3->text()!="R1" && auxButton4->text()!="R1"){
+            auxButton->setText("R1");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -155,7 +173,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==10){
-        auxButton->setText("R2");
+        if(auxButton2->text()!="R2" && auxButton3->text()!="R2" && auxButton4->text()!="R2"){
+            auxButton->setText("R2");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -163,7 +183,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==11){
-        auxButton->setText("R3");
+        if(auxButton2->text()!="R3" && auxButton3->text()!="R3" && auxButton4->text()!="R3"){
+            auxButton->setText("R3");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -171,7 +193,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==12){
-        auxButton->setText("Ha1");
+        if(auxButton2->text()!="Ha1" && auxButton3->text()!="Ha1" && auxButton4->text()!="Ha1"){
+            auxButton->setText("Ha1");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -179,7 +203,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==13){
-        auxButton->setText("l1");
+        if(auxButton2->text()!="l1" && auxButton3->text()!="l1" && auxButton4->text()!="l1"){
+            auxButton->setText("l1");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -187,7 +213,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==14){
-        auxButton->setText("l2");
+        if(auxButton2->text()!="l2" && auxButton3->text()!="l2" && auxButton4->text()!="l2"){
+            auxButton->setText("l2");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -229,7 +257,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==18){
-        auxButton->setText("BP1");
+        if(auxButton2->text()!="BP1" && auxButton3->text()!="BP1" && auxButton4->text()!="BP1"){
+            auxButton->setText("BP1");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -237,7 +267,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==19){
-        auxButton->setText("BP2");
+        if(auxButton2->text()!="BP2" && auxButton3->text()!="BP2" && auxButton4->text()!="BP2"){
+            auxButton->setText("BP2");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -245,7 +277,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==20){
-        auxButton->setText("RP1");
+        if(auxButton2->text()!="RP1" && auxButton3->text()!="RP1" && auxButton4->text()!="RP1"){
+            auxButton->setText("RP1");
+        }
         auxActivar[0] = 's';
 
         this->hide();
@@ -253,7 +287,9 @@ void Filtro1Widget::cambiarTexto(int i)
     }
 
     if(i==21){
-        auxButton->setText("RP2");
+        if(auxButton2->text()!="RP2" && auxButton3->text()!="RP2" && auxButton4->text()!="RP2"){
+            auxButton->setText("RP2");
+        }
         auxActivar[0] = 's';
 
         this->hide();

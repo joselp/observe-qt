@@ -817,8 +817,19 @@ void AdquisicionDatos::verificarDatos()
 
     rx=QRegExp("([0-9]|[0-9][0-9]|[1][0]{2})");
     if(!rx.exactMatch(ventanaCabeceraFits->getHumedadDomo())){
-        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+" Verifique el campo Humedad del Domo");
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo Humedad del Domo");
         return;
+    }
+
+    if(ventanaCabeceraFits->verificarFiltros()!=0){
+        if(ventanaCabeceraFits->verificarFiltros()==1)
+            ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Todos los filtros deben ser Clear Window (CLR)");
+
+        if(ventanaCabeceraFits->verificarFiltros()==2)
+            ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Todos los filtros deben ser Yale Hot Mirror (HOT)");
+
+        if(ventanaCabeceraFits->verificarFiltros()==3)
+            ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Todos los filtros deben ser UCM Halfa (UHa)");
     }
 
 }
