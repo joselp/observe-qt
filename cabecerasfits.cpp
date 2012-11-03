@@ -266,6 +266,31 @@ void CabecerasFits::activarFrecuenciaDM(bool b)
 }
 
 
+//Retorna 1 cuando todos los filtros deberian ser CLR
+//Retorna 2 cuando todos los filtros deberian ser HOT
+//Retorna 3 cuando todos los filtros deberian ser UHa
+//Retorna 0 si los filtros estan seleccionados correctamente
+int CabecerasFits::verificarFiltros()
+{
+    if( (ui->filtro1PushButton->text()=="CLR" || ui->filtro2PushButton->text()=="CLR" || ui->filtro3PushButton->text()=="CLR" ||
+        ui->filtro4PushButton->text()=="CLR") && (ui->filtro1PushButton->text()!="CLR" || ui->filtro2PushButton->text()!="CLR" ||
+        ui->filtro3PushButton->text()!="CLR" || ui->filtro4PushButton->text()!="CLR") ){
+    return 1;
+    }
+    if( (ui->filtro1PushButton->text()=="HOT" || ui->filtro2PushButton->text()=="HOT" || ui->filtro3PushButton->text()=="HOT" ||
+        ui->filtro4PushButton->text()=="HOT") && (ui->filtro1PushButton->text()!="HOT" || ui->filtro2PushButton->text()!="HOT" ||
+        ui->filtro3PushButton->text()!="HOT" || ui->filtro4PushButton->text()!="HOT") ){
+    return 2;
+    }
+    if( (ui->filtro1PushButton->text()=="UHa" || ui->filtro2PushButton->text()=="UHa" || ui->filtro3PushButton->text()=="UHa" ||
+        ui->filtro4PushButton->text()=="UHa") && (ui->filtro1PushButton->text()!="UHa" || ui->filtro2PushButton->text()!="UHa" ||
+        ui->filtro3PushButton->text()!="UHa" || ui->filtro4PushButton->text()!="UHa") ){
+    return 3;
+    }
+    return 0;
+}
+
+
 ///////////////Verificacion de campos bien escritos mas no vacios///////////////////////////////////////////
 
 void CabecerasFits::slotVerificar(int i)
@@ -1402,4 +1427,5 @@ void CabecerasFits::setNombreObjeto(QString text)
 {
     ui->nombreObjetoLineEdit->setText(text);
 }
+
 
