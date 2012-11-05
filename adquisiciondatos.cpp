@@ -833,3 +833,4 @@ void AdquisicionDatos::verificarDatos()
     }
 
 }
+

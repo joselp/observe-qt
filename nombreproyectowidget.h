@@ -16,6 +16,8 @@ public:
     explicit NombreProyectoWidget(QWidget *parent = 0);
     void iniciarConnects(QPushButton *, char *); //Inicia todos los conects para los botones
                                                  // del Widget NombreProyecto.
+    void eliminarWidgetNombreProyecto(); //Elimina el widget nombre proyecto.
+
     ~NombreProyectoWidget();
 
 private slots:

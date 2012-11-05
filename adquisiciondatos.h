@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <QDateTime>
 #include <QDebug>
+#include <QMouseEvent>
 #include "cabecerasfits.h"
 
 
