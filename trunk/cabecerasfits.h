@@ -61,6 +61,42 @@ public:
 
     //Setter
     void setNombreObjeto(QString);
+    void setRaHh(QString);
+    void setRaMm(QString);
+    void setRaSs(QString);
+    void setFocoTelescopio(QString);
+    void setFocoChequeado(bool);
+    void setAHorarioHh(QString);
+    void setAHorarioMm(QString);
+    void setAHorarioSs(QString);
+    void setDeclinacionAngulo(int);
+    void setDeclinacionGg(QString);
+    void setDeclinacionMm(QString);
+    void setDeclinacionSs(QString);
+    void setPosDedosX(QString);
+    void setPosDedosY(QString);
+    void setPosDedosZ(QString);
+    void setPosDedosT(QString);
+    void setTemDedosX(QString);
+    void setTemDedosY(QString);
+    void setTemDedosZ(QString);
+    void setTemDedosT(QString);
+    void setVacioCamara(QString);
+    void setVacioLineaSuperior(QString);
+    void setVacioLineaInferior(QString);
+    void setTempNevera(QString);
+    void setFiltro1(QString);
+    void setFiltro2(QString);
+    void setFiltro3(QString);
+    void setFiltro4(QString);
+    void setInstrumentoUsado(int);
+    void setObservador(int);
+    void setCondicionesCielo(int);
+    void setTempDomo(QString);
+    void setHumedadDomo(QString);
+    void setFrecuenciaYic(QString);
+    void setFrecuenciaRa(QString);
+    void setFrecuenciaDec(QString);
 
     ~CabecerasFits();
 
