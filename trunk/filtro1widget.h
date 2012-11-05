@@ -17,6 +17,7 @@ class Filtro1Widget : public QWidget
 public:
     explicit Filtro1Widget(QWidget *parent = 0);
     void iniciarConnects(QPushButton *,QPushButton *,QPushButton *,QPushButton *, char *); //Inicia todos los conects para los botones
+    void eliminarWidgetFiltro(); //Elimina el widget filtro.
 
     ~Filtro1Widget();
 
@@ -31,7 +32,6 @@ private:
     QPushButton *auxButton4;
     char *auxActivar;
     QSignalMapper *mapper;
-    bool filtroUnico;
 
     Ui::Filtro1Widget *ui;
 

@@ -26,6 +26,7 @@ public:
     void activarFrecuenciaDM(bool); //Activa los campos para la Freecuencia en una observacion DrifScan Modificada.
     bool orientacionPrimasIsActive(); //Verifico si esta activo la orientacion del prisma para validas este dato o no.
     int verificarFiltros(); //Verifica que los filtros colocados sean los adecuados.
+    void mousePressEvent(QMouseEvent *);
 
     //Getters
     QString getRaHh();

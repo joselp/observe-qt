@@ -1428,4 +1428,22 @@ void CabecerasFits::setNombreObjeto(QString text)
     ui->nombreObjetoLineEdit->setText(text);
 }
 
+/////////////////Reimplementacion del metodo PressEvent//////////////////////////////////
+//Para eliminar los widgets Filtro o NombreProyecto si estan activos al pulsar sobre ///
+//la ventana cabecera Fits                                                           ///
+////////////////////////////////////////////////////////////////////////////////////////
+void CabecerasFits::mousePressEvent(QMouseEvent *e)
+{
+    if(e->button()==Qt::LeftButton){
 
+        if(activarFiltroWidget[0]=='n'){
+            filtro->eliminarWidgetFiltro();
+            activarFiltroWidget[0]='s';
+        }
+
+        if(activarNombreProyectoWidget[0]=='n'){
+            nombreProyecto->eliminarWidgetNombreProyecto();
+            activarNombreProyectoWidget[0]='s';
+        }
+    }
+}

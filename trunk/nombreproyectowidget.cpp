@@ -52,8 +52,7 @@ void NombreProyectoWidget::cambiarTexto1()
     auxButton->setText("SS-TNOs");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 
 }
 
@@ -62,8 +61,7 @@ void NombreProyectoWidget::cambiarTexto2()
     auxButton->setText("JH-CABEZAORION");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto3()
@@ -71,8 +69,7 @@ void NombreProyectoWidget::cambiarTexto3()
     auxButton->setText("FF-TARDIAS");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto4()
@@ -80,8 +77,7 @@ void NombreProyectoWidget::cambiarTexto4()
     auxButton->setText("ON-TNO");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto5()
@@ -89,8 +85,7 @@ void NombreProyectoWidget::cambiarTexto5()
     auxButton->setText("MY-RRLYRAE");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();;
 }
 
 void NombreProyectoWidget::cambiarTexto6()
@@ -98,8 +93,7 @@ void NombreProyectoWidget::cambiarTexto6()
     auxButton->setText("KV-LMC");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto7()
@@ -107,8 +101,7 @@ void NombreProyectoWidget::cambiarTexto7()
     auxButton->setText("JH-PRISMORI");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto8()
@@ -116,8 +109,7 @@ void NombreProyectoWidget::cambiarTexto8()
     auxButton->setText("JH-PRISMSERP");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto9()
@@ -125,8 +117,7 @@ void NombreProyectoWidget::cambiarTexto9()
     auxButton->setText("JD-PELAIDES");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto10()
@@ -134,8 +125,7 @@ void NombreProyectoWidget::cambiarTexto10()
     auxButton->setText("CB-MCNEIL");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto11()
@@ -143,8 +133,7 @@ void NombreProyectoWidget::cambiarTexto11()
     auxButton->setText("PS-TNO");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto12()
@@ -152,8 +141,7 @@ void NombreProyectoWidget::cambiarTexto12()
     auxButton->setText("KV-OCEN");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto13()
@@ -161,8 +149,7 @@ void NombreProyectoWidget::cambiarTexto13()
     auxButton->setText("IF-SSS");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto14()
@@ -170,8 +157,7 @@ void NombreProyectoWidget::cambiarTexto14()
     auxButton->setText("JH-PRISM-ORION");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto15()
@@ -179,8 +165,7 @@ void NombreProyectoWidget::cambiarTexto15()
     auxButton->setText("CB-VARIABILIDAD");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto16()
@@ -188,8 +173,7 @@ void NombreProyectoWidget::cambiarTexto16()
     auxButton->setText("CB-L1641");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto17()
@@ -197,8 +181,7 @@ void NombreProyectoWidget::cambiarTexto17()
     auxButton->setText("BS-BAADES");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto18()
@@ -206,8 +189,7 @@ void NombreProyectoWidget::cambiarTexto18()
     auxButton->setText("GJ-SEXTANS-CEPH");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto19()
@@ -215,8 +197,7 @@ void NombreProyectoWidget::cambiarTexto19()
     auxButton->setText("JD-ENANASMARRONES");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto20()
@@ -224,8 +205,7 @@ void NombreProyectoWidget::cambiarTexto20()
     auxButton->setText("CB-YETI");
     auxActivar[0] = 's';
 
-    this->hide();
-    delete this;
+    eliminarWidgetNombreProyecto();
 }
 
 void NombreProyectoWidget::cambiarTexto21()
@@ -233,6 +213,12 @@ void NombreProyectoWidget::cambiarTexto21()
     auxButton->setText("PRUEBAS");
     auxActivar[0] = 's';
 
+    eliminarWidgetNombreProyecto();
+
+}
+
+void NombreProyectoWidget::eliminarWidgetNombreProyecto()
+{
     this->hide();
     delete this;
 }

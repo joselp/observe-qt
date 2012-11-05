@@ -11,7 +11,6 @@ Filtro1Widget::Filtro1Widget(QWidget *parent) :
 
     mapper = new QSignalMapper(this);
 
-    filtroUnico = false;
 
 }
 
@@ -88,8 +87,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==2){
@@ -98,8 +96,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==3){
@@ -108,8 +105,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==4){
@@ -118,8 +114,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==5){
@@ -128,8 +123,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==6){
@@ -138,8 +132,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==7){
@@ -148,8 +141,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==8){
@@ -158,8 +150,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==9){
@@ -168,8 +159,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==10){
@@ -178,8 +168,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==11){
@@ -188,8 +177,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;;
+        eliminarWidgetFiltro();
     }
 
     if(i==12){
@@ -198,8 +186,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==13){
@@ -208,8 +195,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==14){
@@ -218,8 +204,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==15){
@@ -229,9 +214,8 @@ void Filtro1Widget::cambiarTexto(int i)
         auxButton4->setText("CLR");
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
-        filtroUnico = true;
+        eliminarWidgetFiltro();
+
     }
 
     if(i==16){
@@ -241,8 +225,7 @@ void Filtro1Widget::cambiarTexto(int i)
         auxButton4->setText("HOT");
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==17){
@@ -252,8 +235,7 @@ void Filtro1Widget::cambiarTexto(int i)
         auxButton4->setText("UHa");
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==18){
@@ -262,8 +244,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==19){
@@ -272,8 +253,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==20){
@@ -282,8 +262,7 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
 
     if(i==21){
@@ -292,9 +271,14 @@ void Filtro1Widget::cambiarTexto(int i)
         }
         auxActivar[0] = 's';
 
-        this->hide();
-        delete this;
+        eliminarWidgetFiltro();
     }
+}
+
+void Filtro1Widget::eliminarWidgetFiltro()
+{
+    this->hide();
+    delete this;
 }
 
 
