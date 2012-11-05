@@ -30,6 +30,7 @@ private slots:
     void slotModoLineaReloj(int); //Cambia GUI segun asignacion
     void slotEmcabezados(); //Activa la ventana CabeceraFits
     void slotObservar(); //Comienza la observacion.
+    void slotSalir();
 
 private:
     bool primero; //Para determinar la primera entrada al sistema y colocar en ComboBox "seleccione"

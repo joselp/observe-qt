@@ -1428,6 +1428,104 @@ void CabecerasFits::setNombreObjeto(QString text)
     ui->nombreObjetoLineEdit->setText(text);
 }
 
+void CabecerasFits::setRaHh(QString text)
+{
+    ui->raHhLineEdit->setText(text);
+}
+
+void CabecerasFits::setRaMm(QString text)
+{
+    ui->raMmLineEdit->setText(text);
+}
+
+void CabecerasFits::setRaSs(QString text)
+{
+    ui->raSsLineEdit->setText(text);
+}
+
+void CabecerasFits::setFocoTelescopio(QString text)
+{
+    ui->focoTelescopioLineEdit->setText(text);
+}
+
+void CabecerasFits::setFocoChequeado(bool chk)
+{
+    if(chk==false)
+        ui->noRadioButto->setChecked(true);
+    else
+        ui->siRadioButton->setChecked(true);
+}
+
+void CabecerasFits::setAHorarioHh(QString text)
+{
+    ui->anguloHorarioHhLineEdit->setText(text);
+}
+
+void CabecerasFits::setAHorarioMm(QString text)
+{
+    ui->anguloHorarioMmLineEdit->setText(text);
+}
+
+void CabecerasFits::setAHorarioSs(QString text)
+{
+    ui->anguloHorarioSsLineEdit->setText(text);
+}
+
+void CabecerasFits::setDeclinacionAngulo(int index)
+{
+    ui->declinacionAnguloComboBox->setCurrentIndex(index);
+}
+
+void CabecerasFits::setDeclinacionGg(QString text)
+{
+    ui->declinacionGgLineEdit->setText(text);
+}
+
+void CabecerasFits::setDeclinacionMm(QString text)
+{
+    ui->declinacionMmLineEdit->setText(text);
+}
+
+void CabecerasFits::setPosDedosX(QString text)
+{
+    ui->posicionDedosXLineEdit->setText(text);
+}
+
+void CabecerasFits::setPosDedosY(QString text)
+{
+    ui->posicionDedosYLineEdit->setText(text);
+}
+
+void CabecerasFits::setPosDedosZ(QString text)
+{
+    ui->posicionDedosZLineEdit->setText(text);
+}
+
+void CabecerasFits::setPosDedosT(QString text)
+{
+    ui->posicionDedosTLineEdit->setText(text);
+}
+
+void CabecerasFits::setTemDedosX(QString text)
+{
+    ui->temperaturaDedosXLineEdit->setText(text);
+}
+
+void CabecerasFits::setTemDedosY(QString text)
+{
+    ui->temperaturaDedosYLineEdit->setText(text);
+}
+
+void CabecerasFits::setTemDedosZ(QString text)
+{
+    ui->temperaturaDedosZLineEdit->setText(text);
+}
+
+void CabecerasFits::setTemDedosT(QString text)
+{
+    ui->temperaturaDedosTLineEdit->setText(text);
+}
+
 /////////////////Reimplementacion del metodo PressEvent//////////////////////////////////
 //Para eliminar los widgets Filtro o NombreProyecto si estan activos al pulsar sobre ///
 //la ventana cabecera Fits                                                           ///
@@ -1446,4 +1544,89 @@ void CabecerasFits::mousePressEvent(QMouseEvent *e)
             activarNombreProyectoWidget[0]='s';
         }
     }
+}
+
+void CabecerasFits::setVacioCamara(QString text)
+{
+    ui->vacioCamaralineEdit->setText(text);
+}
+
+void CabecerasFits::setVacioLineaSuperior(QString text)
+{
+    ui->vacioLineaSuperiorLineEdit->setText(text);
+}
+
+void CabecerasFits::setVacioLineaInferior(QString text)
+{
+    ui->vacioLineaInferiorLineEdit->setText(text);
+}
+
+void CabecerasFits::setTempNevera(QString text)
+{
+    ui->temperaturaNeveraLineEdit->setText(text);
+}
+
+void CabecerasFits::setFiltro1(QString text)
+{
+    ui->filtro1PushButton->setText(text);
+}
+
+void CabecerasFits::setFiltro2(QString text)
+{
+    ui->filtro2PushButton->setText(text);
+}
+
+void CabecerasFits::setFiltro3(QString text)
+{
+    ui->filtro3PushButton->setText(text);
+}
+
+void CabecerasFits::setFiltro4(QString text)
+{
+    ui->filtro4PushButton->setText(text);
+}
+
+void CabecerasFits::setInstrumentoUsado(int i)
+{
+    ui->instrumentoUsadoComboBox->setCurrentIndex(i);
+}
+
+void CabecerasFits::setObservador(int i)
+{
+    ui->observadorComboBox->setCurrentIndex(i);
+}
+
+void CabecerasFits::setCondicionesCielo(int i)
+{
+    ui->condicionesCieloComboBox->setCurrentIndex(i);
+}
+
+void CabecerasFits::setTempDomo(QString text)
+{
+    ui->temperaturaDomoLineEdit->setText(text);
+}
+
+void CabecerasFits::setHumedadDomo(QString text)
+{
+    ui->humedadDomoLineEdit->setText(text);
+}
+
+void CabecerasFits::setFrecuenciaYic(QString text)
+{
+    ui->frecuenciaYicLineEdit->setText(text);
+}
+
+void CabecerasFits::setFrecuenciaRa(QString text)
+{
+    ui->frecuenciaRaLineEdit->setText(text);
+}
+
+void CabecerasFits::setFrecuenciaDec(QString text)
+{
+    ui->frecuenciaDecLineEdit->setText(text);
+}
+
+void CabecerasFits::setDeclinacionSs(QString text)
+{
+    ui->declinacionSsLineEdit->setText(text);
 }

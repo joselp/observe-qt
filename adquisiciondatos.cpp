@@ -90,6 +90,8 @@ void AdquisicionDatos::logicaGui()
     connect(ui->emcabezadosPushButton,SIGNAL(clicked()),this,SLOT(slotEmcabezados()));
 
     connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotObservar()));
+
+    connect(ui->salirPushButton,SIGNAL(clicked()),this,SLOT(slotSalir()));
 }
 
 AdquisicionDatos::~AdquisicionDatos()
@@ -133,10 +135,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==2){
@@ -160,10 +166,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(true);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(true);
 
         }
 
@@ -188,10 +198,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
 
         }
 
@@ -216,10 +230,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("Darks_Guiado");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==5){
@@ -243,10 +261,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("Darks_Driftscan");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==6){
@@ -270,10 +292,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("Flats_Guiado");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==7){
@@ -297,10 +323,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("Flats_Driftscan");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==8){
@@ -324,10 +354,27 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setRaHh("0");
+            ventanaCabeceraFits->setRaMm("0");
+            ventanaCabeceraFits->setRaSs("0.00");
+
+            ventanaCabeceraFits->setFocoTelescopio("0");
+
+            ventanaCabeceraFits->setAHorarioHh("0");
+            ventanaCabeceraFits->setAHorarioMm("0");
+            ventanaCabeceraFits->setAHorarioSs("0");
+
+            ventanaCabeceraFits->setDeclinacionGg("0");
+            ventanaCabeceraFits->setDeclinacionMm("0");
+            ventanaCabeceraFits->setDeclinacionSs("0.00");
+
+            ventanaCabeceraFits->setNombreObjeto("Bias");
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==9){
@@ -351,10 +398,27 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(true);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setRaHh("0");
+            ventanaCabeceraFits->setRaMm("0");
+            ventanaCabeceraFits->setRaSs("0.00");
+
+            ventanaCabeceraFits->setFocoTelescopio("0");
+
+            ventanaCabeceraFits->setAHorarioHh("0");
+            ventanaCabeceraFits->setAHorarioMm("0");
+            ventanaCabeceraFits->setAHorarioSs("0");
+
+            ventanaCabeceraFits->setDeclinacionGg("0");
+            ventanaCabeceraFits->setDeclinacionMm("0");
+            ventanaCabeceraFits->setDeclinacionSs("0.00");
+
+            ventanaCabeceraFits->setNombreObjeto("Foco");
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
     }
 
@@ -381,10 +445,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
 
         }
 
@@ -414,6 +482,12 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
 
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(true);
+
         }
 
         if (item==2){
@@ -440,10 +514,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
 
         }
 
@@ -468,10 +546,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("Darks_Guiado");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==4){
@@ -495,10 +577,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("Darks_Driftscan");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==5){
@@ -522,10 +608,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("Flats_Guiado");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==6){
@@ -549,10 +639,14 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setNombreObjeto("Flats_Driftscan");
+
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==7){
@@ -576,10 +670,27 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(false);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(false);
             ui->numeroExposicionesLineEdit->setEnabled(false);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setRaHh("0");
+            ventanaCabeceraFits->setRaMm("0");
+            ventanaCabeceraFits->setRaSs("0.00");
+
+            ventanaCabeceraFits->setFocoTelescopio("0");
+
+            ventanaCabeceraFits->setAHorarioHh("0");
+            ventanaCabeceraFits->setAHorarioMm("0");
+            ventanaCabeceraFits->setAHorarioSs("0");
+
+            ventanaCabeceraFits->setDeclinacionGg("0");
+            ventanaCabeceraFits->setDeclinacionMm("0");
+            ventanaCabeceraFits->setDeclinacionSs("0.00");
+
+            ventanaCabeceraFits->setNombreObjeto("Bias");
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
 
         if(item==8){
@@ -603,10 +714,27 @@ void AdquisicionDatos::slotComandoDeObservacion(int item)
 
             ui->IniciarSec1PushButton->setEnabled(true);
 
-            ventanaCabeceraFits->activarFrecuenciaDM(false);
-
             ui->tiempoExposicionFocoLineEdit->setEnabled(true);
             ui->numeroExposicionesLineEdit->setEnabled(true);
+
+            ////////////Cambios en cabecera Fits.//////////////
+
+            ventanaCabeceraFits->setRaHh("0");
+            ventanaCabeceraFits->setRaMm("0");
+            ventanaCabeceraFits->setRaSs("0.00");
+
+            ventanaCabeceraFits->setFocoTelescopio("0");
+
+            ventanaCabeceraFits->setAHorarioHh("0");
+            ventanaCabeceraFits->setAHorarioMm("0");
+            ventanaCabeceraFits->setAHorarioSs("0");
+
+            ventanaCabeceraFits->setDeclinacionGg("0");
+            ventanaCabeceraFits->setDeclinacionMm("0");
+            ventanaCabeceraFits->setDeclinacionSs("0.00");
+
+            ventanaCabeceraFits->setNombreObjeto("Foco");
+            ventanaCabeceraFits->activarFrecuenciaDM(false);
         }
     }
 
@@ -650,10 +778,17 @@ void AdquisicionDatos::slotEmcabezados()
     ventanaCabeceraFits->show();
 }
 
+void AdquisicionDatos::slotSalir()
+{
+        exit(0);
+}
+
 void AdquisicionDatos::slotObservar()
 {
     verificarDatos();
 }
+
+///////////////////////////Verificar datos antes de observar///////////////////////////////////////////
 
 void AdquisicionDatos::verificarDatos()
 {
@@ -833,4 +968,5 @@ void AdquisicionDatos::verificarDatos()
     }
 
 }
+
 
