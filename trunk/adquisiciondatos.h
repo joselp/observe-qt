@@ -33,6 +33,7 @@ private slots:
     void slotSalir();
 
 private:
+    bool realizarObservacion; //Determina si se debe hacer la observacion o no
     bool primero; //Para determinar la primera entrada al sistema y colocar en ComboBox "seleccione"
     bool eliminar; //Para eliminar el valor de "seleccione" de los ComboBox
     bool datosCorrectos; //Para determinar si todos los datos estan correctos y comenzar con la observacion.
