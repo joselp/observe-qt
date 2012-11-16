@@ -10,6 +10,7 @@ AdquisicionDatos::AdquisicionDatos(QWidget *parent) :
     logicaGui();
     primero=true;
     eliminar=true;
+
 }
 
 void AdquisicionDatos::iniciarGui()
@@ -780,18 +781,24 @@ void AdquisicionDatos::slotEmcabezados()
 
 void AdquisicionDatos::slotSalir()
 {
-        exit(0);
+    exit(0);
 }
 
 void AdquisicionDatos::slotObservar()
 {
     verificarDatos();
+    if(realizarObservacion==true)
+        qDebug()<<"Comenzando Observacion";
+    if(realizarObservacion==false)
+        qDebug()<<"Observacion no realizada";
 }
 
 ///////////////////////////Verificar datos antes de observar///////////////////////////////////////////
 
 void AdquisicionDatos::verificarDatos()
 {
+
+    realizarObservacion=true;
     QString error;
     error = "<font color=""red"">Error: </font>";
 
@@ -800,114 +807,133 @@ void AdquisicionDatos::verificarDatos()
     rx=QRegExp("([0-2][0-3]|[0-9]|[0-1][0-9])");
     if(!rx.exactMatch(ventanaCabeceraFits->getRaHh())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo hora (HH) de RA");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]|[0-5][0-9])");
     if(!rx.exactMatch(ventanaCabeceraFits->getRaMm())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo hora (MM) de RA");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]\\.[0-9]|[0-9]\\.[0-9][0-9]|[0-5][0-9]\\.[0-9]|[0-5][0-9]\\.[0-9][0-9])");
     if(!rx.exactMatch(ventanaCabeceraFits->getRaSs())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo hora (SS) de RA");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]|[0-9]{2}|[0-9]{3})");
     if(!rx.exactMatch(ventanaCabeceraFits->getFocoTelescopio())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo Foco del Telescopio");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-6])");
     if(!rx.exactMatch(ventanaCabeceraFits->getAHorarioHh())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo hora (HH) del Angulo Horario");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]|[0-5][0-9])");
     if(!rx.exactMatch(ventanaCabeceraFits->getAHorarioMm())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo hora (MM) del Angulo Horario");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]\\.[0-9]|[0-5][0-9]\\.[0-9]|[0-9]\\.[0][0]|[0-5][0-9]\\.[0][0])");
     if(!rx.exactMatch(ventanaCabeceraFits->getAHorarioSs())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo hora (SS) del Angulo Horario");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]|[0-8][0-9]|[9][0])");
     if(!rx.exactMatch(ventanaCabeceraFits->getDeclinacionGg())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo grados (GG) de la Declinacion");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]|[0-5][0-9])");
     if(!rx.exactMatch(ventanaCabeceraFits->getDeclinacionMm())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo grados (MM) de la Declinacion");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]\\.[0-9]|[0-9]\\.[0-9][0-9]|[0-5][0-9]\\.[0-9]|[0-5][0-9]\\.[0-9][0-9])");
     if(!rx.exactMatch(ventanaCabeceraFits->getDeclinacionSs())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo grados (Ss) de la Declinacion");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([^\\s]*)");
     if(!rx.exactMatch(ventanaCabeceraFits->getNombreObjeto()) || ventanaCabeceraFits->getNombreObjeto().size()==0){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo nombre del objeto");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]|[0-9]{2}|[0-9]{3})");
     if(!rx.exactMatch(ventanaCabeceraFits->getPosDedosX())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Posicion del Dedo X");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]|[0-9]{2}|[0-9]{3})");
     if(!rx.exactMatch(ventanaCabeceraFits->getPosDedosY())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Posicion del Dedo Y");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]|[0-9]{2}|[0-9]{3})");
     if(!rx.exactMatch(ventanaCabeceraFits->getPosDedosZ())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Posicion del Dedo Z");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]|[0-9]{2}|[0-9]{3})");
     if(!rx.exactMatch(ventanaCabeceraFits->getPosDedosT())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Posicion del Dedo T");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([-][0-9]|[-][0-7][0-9]|[-][8][0]|[0-9]|[1][0-9]|[2][0])");
     if(!rx.exactMatch(ventanaCabeceraFits->getTemDedosX())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Temperatura del Dedo X");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([-][0-9]|[-][0-7][0-9]|[-][8][0]|[0-9]|[1][0-9]|[2][0])");
     if(!rx.exactMatch(ventanaCabeceraFits->getTemDedosY())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Temperatura del Dedo Y");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([-][0-9]|[-][0-7][0-9]|[-][8][0]|[0-9]|[1][0-9]|[2][0])");
     if(!rx.exactMatch(ventanaCabeceraFits->getTemDedosZ())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Temperatura del Dedo Z");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([-][0-9]|[-][0-7][0-9]|[-][8][0]|[0-9]|[1][0-9]|[2][0])");
     if(!rx.exactMatch(ventanaCabeceraFits->getTemDedosT())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Temperatura del Dedo T");
+        realizarObservacion=false;
         return;
     }
 
@@ -915,24 +941,28 @@ void AdquisicionDatos::verificarDatos()
     rx=QRegExp("([0-9]|[0-9][0-9]|[1-4][0-9]{2})");
     if(!rx.exactMatch(ventanaCabeceraFits->getVacioCamara())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el Vacio de la Camara");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]|[0-9][0-9]|[1-4][0-9]{2})");
     if(!rx.exactMatch(ventanaCabeceraFits->getVacioLineaSuperior())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el Vacio de la Linea Superior");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]|[0-9][0-9]|[1-4][0-9]{2})");
     if(!rx.exactMatch(ventanaCabeceraFits->getVacioLineaInferior())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el Vacio de la Linea Inferior");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([-][4][9]|[-][5-7][0-9]|[-][8][0])");
     if(!rx.exactMatch(ventanaCabeceraFits->getTempNevera())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique la Temperatura de la Nevera");
+        realizarObservacion=false;
         return;
     }
 
@@ -940,6 +970,7 @@ void AdquisicionDatos::verificarDatos()
         rx=QRegExp("([0-9]|[0-9]{2}|[1-2][0-9]{2}|[3][0-5][0-9]|[3][6][0])");
         if(!rx.exactMatch(ventanaCabeceraFits->getOrientacionPrisma())){
             ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo Orientacion del Prisma");
+            realizarObservacion=false;
             return;
         }
     }
@@ -947,25 +978,32 @@ void AdquisicionDatos::verificarDatos()
     rx=QRegExp("([-][1-5]|[1][0-9]|[2][0-5]|[0-9])");
     if(!rx.exactMatch(ventanaCabeceraFits->getTempDomo())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo Temperatura del Domo");
+        realizarObservacion=false;
         return;
     }
 
     rx=QRegExp("([0-9]|[0-9][0-9]|[1][0]{2})");
     if(!rx.exactMatch(ventanaCabeceraFits->getHumedadDomo())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el campo Humedad del Domo");
+        realizarObservacion=false;
         return;
     }
 
     if(ventanaCabeceraFits->verificarFiltros()!=0){
-        if(ventanaCabeceraFits->verificarFiltros()==1)
+        if(ventanaCabeceraFits->verificarFiltros()==1){
             ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Todos los filtros deben ser Clear Window (CLR)");
-
-        if(ventanaCabeceraFits->verificarFiltros()==2)
+            realizarObservacion=false;
+        }
+        if(ventanaCabeceraFits->verificarFiltros()==2){
             ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Todos los filtros deben ser Yale Hot Mirror (HOT)");
-
-        if(ventanaCabeceraFits->verificarFiltros()==3)
+            realizarObservacion=false;
+        }
+        if(ventanaCabeceraFits->verificarFiltros()==3){
             ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Todos los filtros deben ser UCM Halfa (UHa)");
+            realizarObservacion=false;
+        }
     }
+
 
 }
 
