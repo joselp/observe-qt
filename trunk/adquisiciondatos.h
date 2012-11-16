@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <QDateTime>
 #include <QDebug>
+#include <QMessageBox>
 #include <QMouseEvent>
 #include "cabecerasfits.h"
 
@@ -22,6 +23,7 @@ public:
     void iniciarGui();
     void logicaGui();
     void verificarDatos(); //Verifica si todos los datos son correcto para comenzar la observacion.
+    void crearRetardoFit();
     void closeEvent(QCloseEvent *); //Captura el evento cerrar Aplicacion.
     ~AdquisicionDatos();
 
@@ -30,13 +32,18 @@ private slots:
     void slotModoLineaReloj(int); //Cambia GUI segun asignacion
     void slotEmcabezados(); //Activa la ventana CabeceraFits
     void slotObservar(); //Comienza la observacion.
+    void slotLogTimer(); //crea la el retardo para el log
     void slotSalir();
 
 private:
     bool realizarObservacion; //Determina si se debe hacer la observacion o no
     bool primero; //Para determinar la primera entrada al sistema y colocar en ComboBox "seleccione"
     bool eliminar; //Para eliminar el valor de "seleccione" de los ComboBox
-    bool datosCorrectos; //Para determinar si todos los datos estan correctos y comenzar con la observacion.
+    bool datosCorrectos; //Para determinar si todos los datos estan correctos y comenzar con la observacion
+
+    int lineasLeidas; //Cantidad  de lineas leidas desde los ccds
+
+    QTimer *logTimer; //Variable para crear el tiempo de creacion de un archivo fits
 
     CabecerasFits *ventanaCabeceraFits;
     Ui::AdquisicionDatos *ui;

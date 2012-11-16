@@ -10,6 +10,7 @@ AdquisicionDatos::AdquisicionDatos(QWidget *parent) :
     logicaGui();
     primero=true;
     eliminar=true;
+    lineasLeidas=0;
 
 }
 
@@ -787,8 +788,11 @@ void AdquisicionDatos::slotSalir()
 void AdquisicionDatos::slotObservar()
 {
     verificarDatos();
-    if(realizarObservacion==true)
+    if(realizarObservacion==true){
         qDebug()<<"Comenzando Observacion";
+        crearRetardoFit();
+    }
+
     if(realizarObservacion==false)
         qDebug()<<"Observacion no realizada";
 }
@@ -944,6 +948,11 @@ void AdquisicionDatos::verificarDatos()
         realizarObservacion=false;
         return;
     }
+    if(ventanaCabeceraFits->getVacioCamara().toInt()>200){
+        QMessageBox msg;
+        msg.warning(this,"ADVERTENCIA","El valor vacio de la camara ("+ventanaCabeceraFits->getVacioCamara()+"<br>mTorr) es muy elevado<br><br>Por favor, llame al tecnico de<br>guardia");
+        msg.show();
+    }
 
     rx=QRegExp("([0-9]|[0-9][0-9]|[1-4][0-9]{2})");
     if(!rx.exactMatch(ventanaCabeceraFits->getVacioLineaSuperior())){
@@ -1002,9 +1011,42 @@ void AdquisicionDatos::verificarDatos()
             ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Todos los filtros deben ser UCM Halfa (UHa)");
             realizarObservacion=false;
         }
+        return;
+    }
+
+    if(ui->comandoDeObservacionComboBox->currentText()=="Seleccione un Modo"){
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>**************************************<br>"+
+                                                                   "Seleccione un Modo de Observacion<br>"+
+                                                                    "**************************************");
+        realizarObservacion=false;
     }
 
 
+}
+
+void AdquisicionDatos::crearRetardoFit()
+{
+    logTimer = new QTimer(this);
+    logTimer->setInterval(4000);
+    connect(logTimer,SIGNAL(timeout()),this,SLOT(slotLogTimer()));
+    logTimer->start();
+}
+
+void AdquisicionDatos::slotLogTimer()
+{
+
+    if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Drifscan"){
+        if(lineasLeidas < ui->NumeroLineasLeerlineEdit->text().toInt(0))
+            ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"1024 lineas leidas");
+
+        if(lineasLeidas > ui->NumeroLineasLeerlineEdit->text().toInt(0)){
+            logTimer->stop();
+            delete logTimer;
+            lineasLeidas=0;
+        }
+
+        lineasLeidas+=1024;
+    }
 }
 
 
