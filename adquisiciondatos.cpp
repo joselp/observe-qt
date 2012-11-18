@@ -57,8 +57,9 @@ void AdquisicionDatos::iniciarGui()
     //Control de software
     QStringList itemsFormatoImagen;
 
-    itemsFormatoImagen << "Compressed FITS format" << "Formato FITS" << "Formato FITS Comprimido";
+    itemsFormatoImagen << "FITS Format" << "Compressed FITS Format";
     ui->formatoDeLaImagenComboBox->addItems(itemsFormatoImagen);
+    ui->formatoDeLaImagenComboBox->setCurrentIndex(1);
 
     ui->lineaDeDatosPorArchivoLineEdit->setText("2048");
     ui->indiceDeLaObservacionLineEdit->setText("400");
@@ -950,7 +951,7 @@ void AdquisicionDatos::verificarDatos()
     }
     if(ventanaCabeceraFits->getVacioCamara().toInt()>200){
         QMessageBox msg;
-        msg.warning(this,"ADVERTENCIA","El valor vacio de la camara ("+ventanaCabeceraFits->getVacioCamara()+"<br>mTorr) es muy elevado<br><br>Por favor, llame al tecnico de<br>guardia");
+        msg.warning(this,"ADVERTENCIA","El valor vacio de la camara ("+ventanaCabeceraFits->getVacioCamara()+"<br>mTorr) es muy elevado!<br><br>Por favor, llame al tecnico de<br>guardia");
         msg.show();
     }
 
@@ -960,12 +961,25 @@ void AdquisicionDatos::verificarDatos()
         realizarObservacion=false;
         return;
     }
+    if(ventanaCabeceraFits->getVacioLineaSuperior().toInt()>200){
+        QMessageBox msg;
+        msg.warning(this,"ADVERTENCIA","El valor de vacio de la linea <br> superior ("+ventanaCabeceraFits->getVacioLineaSuperior()+
+                    "mTorr) es muy<br>elevado!<br><br>Por favor, llame al tecnico de<br>guardia");
+        msg.show();
+
+    }
 
     rx=QRegExp("([0-9]|[0-9][0-9]|[1-4][0-9]{2})");
     if(!rx.exactMatch(ventanaCabeceraFits->getVacioLineaInferior())){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+error+"Verifique el Vacio de la Linea Inferior");
         realizarObservacion=false;
         return;
+    }
+    if(ventanaCabeceraFits->getVacioLineaSuperior().toInt()>200){
+        QMessageBox msg;
+        msg.warning(this,"ADVERTENCIA","El valor de vacio de la linea <br> inferior ("+ventanaCabeceraFits->getVacioLineaInferior()+
+                    "mTorr) es muy<br>elevado!<br><br>Por favor, llame al tecnico de<br>guardia");
+        msg.show();
     }
 
     rx=QRegExp("([-][4][9]|[-][5-7][0-9]|[-][8][0])");
