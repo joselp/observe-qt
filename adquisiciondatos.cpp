@@ -1,5 +1,6 @@
 #include "adquisiciondatos.h"
 #include "ui_adquisiciondatos.h"
+#include <qstyle.h>
 
 AdquisicionDatos::AdquisicionDatos(QWidget *parent) :
     QMainWindow(parent),
@@ -81,6 +82,7 @@ void AdquisicionDatos::iniciarGui()
 
     //this->setWindowTitle("Adquisicion de Datos "+QString::number(dia)+" "+NombreMes+" "+QString::number(anyo));
     this->setWindowTitle("Adquisicion de Datos "+dateTime.currentDateTime().date().toString());
+
 }
 
 void AdquisicionDatos::logicaGui()
@@ -95,6 +97,7 @@ void AdquisicionDatos::logicaGui()
     connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotObservar()));
 
     connect(ui->salirPushButton,SIGNAL(clicked()),this,SLOT(slotSalir()));
+
 }
 
 AdquisicionDatos::~AdquisicionDatos()
@@ -790,12 +793,32 @@ void AdquisicionDatos::slotObservar()
 {
     verificarDatos();
     if(realizarObservacion==true){
-        qDebug()<<"Comenzando Observacion";
+        disconnect(ui->observarPushButton,SIGNAL(clicked()),0,0);
+        ui->observarPushButton->setStyleSheet("background-color:RED;"
+                                              "border-style: inset;"
+                                              "border-width: 1px;"
+                                              "border-radius: 1px;"
+                                              "border-color: black;");
+        ui->observarPushButton->setText("Abortar");
+        connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotCancelarObservacion()));
+        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Iniciada");
         crearRetardoFit();
     }
 
     if(realizarObservacion==false)
         qDebug()<<"Observacion no realizada";
+}
+
+void AdquisicionDatos::slotCancelarObservacion()
+{
+    ui->observarPushButton->setStyleSheet("");
+    ui->observarPushButton->setText("Observar");
+    disconnect(ui->observarPushButton,SIGNAL(clicked()),0,0);
+    connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotObservar()));
+    ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Cancelada");
+    logTimer->stop();
+    delete logTimer;
+    lineasLeidas=0;
 }
 
 ///////////////////////////Verificar datos antes de observar///////////////////////////////////////////
@@ -975,7 +998,7 @@ void AdquisicionDatos::verificarDatos()
         realizarObservacion=false;
         return;
     }
-    if(ventanaCabeceraFits->getVacioLineaSuperior().toInt()>200){
+    if(ventanaCabeceraFits->getVacioLineaInferior().toInt()>200){
         QMessageBox msg;
         msg.warning(this,"ADVERTENCIA","El valor de vacio de la linea <br> inferior ("+ventanaCabeceraFits->getVacioLineaInferior()+
                     "mTorr) es muy<br>elevado!<br><br>Por favor, llame al tecnico de<br>guardia");
@@ -1030,8 +1053,8 @@ void AdquisicionDatos::verificarDatos()
 
     if(ui->comandoDeObservacionComboBox->currentText()=="Seleccione un Modo"){
         ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>**************************************<br>"+
-                                                                   "Seleccione un Modo de Observacion<br>"+
-                                                                    "**************************************");
+                                 "Seleccione un Modo de Observacion<br>"+
+                                 "**************************************");
         realizarObservacion=false;
     }
 
@@ -1052,14 +1075,15 @@ void AdquisicionDatos::slotLogTimer()
     if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Drifscan"){
         if(lineasLeidas < ui->NumeroLineasLeerlineEdit->text().toInt(0))
             ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"1024 lineas leidas");
-
-        if(lineasLeidas > ui->NumeroLineasLeerlineEdit->text().toInt(0)){
+        lineasLeidas+=1024;
+        if(lineasLeidas >= ui->NumeroLineasLeerlineEdit->text().toInt(0)){
+            ui->observarPushButton->setStyleSheet("");
             logTimer->stop();
             delete logTimer;
             lineasLeidas=0;
+            ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Terminada");
         }
 
-        lineasLeidas+=1024;
     }
 }
 
