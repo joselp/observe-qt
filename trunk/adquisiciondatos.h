@@ -32,6 +32,7 @@ private slots:
     void slotModoLineaReloj(int); //Cambia GUI segun asignacion
     void slotEmcabezados(); //Activa la ventana CabeceraFits
     void slotObservar(); //Comienza la observacion.
+    void slotCancelarObservacion(); //Cancela la observacion una vez iniciada
     void slotLogTimer(); //crea la el retardo para el log
     void slotSalir();
 
