@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/cidaicon.png</file>
+        <file>images/warning.png</file>
+    </qresource>
+</RCC>

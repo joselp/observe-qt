@@ -1,6 +1,5 @@
 #include "adquisiciondatos.h"
 #include "ui_adquisiciondatos.h"
-#include <qstyle.h>
 
 AdquisicionDatos::AdquisicionDatos(QWidget *parent) :
     QMainWindow(parent),
@@ -19,7 +18,6 @@ void AdquisicionDatos::iniciarGui()
 {
     ventanaCabeceraFits = new CabecerasFits();
     ventanaCabeceraFits->show();
-
 
     //Panel de control de los CCD
     QStringList itemsComandoDeObservacion;
@@ -81,7 +79,9 @@ void AdquisicionDatos::iniciarGui()
     //Titulo ventana
 
     //this->setWindowTitle("Adquisicion de Datos "+QString::number(dia)+" "+NombreMes+" "+QString::number(anyo));
+    this->setWindowIcon(QIcon(":/images/cidaicon.png"));
     this->setWindowTitle("Adquisicion de Datos "+dateTime.currentDateTime().date().toString());
+
 
 }
 
@@ -95,6 +95,8 @@ void AdquisicionDatos::logicaGui()
     connect(ui->emcabezadosPushButton,SIGNAL(clicked()),this,SLOT(slotEmcabezados()));
 
     connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotObservar()));
+
+    connect(ui->modiaPushButton,SIGNAL(clicked()),this,SLOT(slotModia()));
 
     connect(ui->salirPushButton,SIGNAL(clicked()),this,SLOT(slotSalir()));
 
@@ -809,6 +811,14 @@ void AdquisicionDatos::slotObservar()
         qDebug()<<"Observacion no realizada";
 }
 
+void AdquisicionDatos::slotModia()
+{
+    Visualizador *visualizador = new Visualizador();
+    visualizador->show();
+//    visualizadosFits = new VisualizadorFits();
+//    visualizadosFits->show();
+}
+
 void AdquisicionDatos::slotCancelarObservacion()
 {
     ui->observarPushButton->setStyleSheet("");
@@ -974,8 +984,12 @@ void AdquisicionDatos::verificarDatos()
     }
     if(ventanaCabeceraFits->getVacioCamara().toInt()>200){
         QMessageBox msg;
-        msg.warning(this,"ADVERTENCIA","El valor vacio de la camara ("+ventanaCabeceraFits->getVacioCamara()+"<br>mTorr) es muy elevado!<br><br>Por favor, llame al tecnico de<br>guardia");
-        msg.show();
+        msg.setText("El valor vacio de la camara ("+ventanaCabeceraFits->getVacioCamara()+"<br>mTorr) es muy elevado!<br><br>Por favor, llame al tecnico de<br>guardia");
+        msg.setWindowTitle("ADVERTENCIA");
+        msg.setIconPixmap(QPixmap(":/images/warning.png"));
+        msg.setStandardButtons(QMessageBox::Ok);
+        msg.setDefaultButton(QMessageBox::Ok);
+        msg.exec();
     }
 
     rx=QRegExp("([0-9]|[0-9][0-9]|[1-4][0-9]{2})");
@@ -986,9 +1000,13 @@ void AdquisicionDatos::verificarDatos()
     }
     if(ventanaCabeceraFits->getVacioLineaSuperior().toInt()>200){
         QMessageBox msg;
-        msg.warning(this,"ADVERTENCIA","El valor de vacio de la linea <br> superior ("+ventanaCabeceraFits->getVacioLineaSuperior()+
-                    "mTorr) es muy<br>elevado!<br><br>Por favor, llame al tecnico de<br>guardia");
-        msg.show();
+        msg.setText("El valor de vacio de la linea <br> superior ("+ventanaCabeceraFits->getVacioLineaSuperior()+
+                       "mTorr) es muy<br>elevado!<br><br>Por favor, llame al tecnico de<br>guardia");
+        msg.setWindowTitle("ADVERTENCIA");
+        msg.setIconPixmap(QPixmap(":/images/warning.png"));
+        msg.setStandardButtons(QMessageBox::Ok);
+        msg.setDefaultButton(QMessageBox::Ok);
+        msg.exec();
 
     }
 
@@ -1000,9 +1018,13 @@ void AdquisicionDatos::verificarDatos()
     }
     if(ventanaCabeceraFits->getVacioLineaInferior().toInt()>200){
         QMessageBox msg;
-        msg.warning(this,"ADVERTENCIA","El valor de vacio de la linea <br> inferior ("+ventanaCabeceraFits->getVacioLineaInferior()+
+        msg.setText("El valor de vacio de la linea <br> inferior ("+ventanaCabeceraFits->getVacioLineaInferior()+
                     "mTorr) es muy<br>elevado!<br><br>Por favor, llame al tecnico de<br>guardia");
-        msg.show();
+        msg.setWindowTitle("ADVERTENCIA");
+        msg.setIconPixmap(QPixmap(":/images/warning.png"));
+        msg.setStandardButtons(QMessageBox::Ok);
+        msg.setDefaultButton(QMessageBox::Ok);
+        msg.exec();
     }
 
     rx=QRegExp("([-][4][9]|[-][5-7][0-9]|[-][8][0])");
@@ -1086,5 +1108,6 @@ void AdquisicionDatos::slotLogTimer()
 
     }
 }
+
 
 
