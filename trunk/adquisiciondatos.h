@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QMouseEvent>
 #include "cabecerasfits.h"
+#include "visualizador.h"
 
 
 namespace Ui {
@@ -32,6 +33,7 @@ private slots:
     void slotModoLineaReloj(int); //Cambia GUI segun asignacion
     void slotEmcabezados(); //Activa la ventana CabeceraFits
     void slotObservar(); //Comienza la observacion.
+    void slotModia(); //Despliega la imagen
     void slotCancelarObservacion(); //Cancela la observacion una vez iniciada
     void slotLogTimer(); //crea la el retardo para el log
     void slotSalir();
@@ -47,6 +49,7 @@ private:
     QTimer *logTimer; //Variable para crear el tiempo de creacion de un archivo fits
 
     CabecerasFits *ventanaCabeceraFits;
+    Visualizador *visualizador;
     Ui::AdquisicionDatos *ui;
 };
 

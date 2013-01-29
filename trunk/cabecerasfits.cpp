@@ -100,6 +100,8 @@ void CabecerasFits::iniciarGui()
     ui->temperaturaDomoLineEdit->setToolTip("[-5, 25]");
     ui->humedadDomoLineEdit->setToolTip("[0-100]");
 
+    this->setWindowIcon(QIcon(":/images/cidaicon.png"));
+
 }
 
 void CabecerasFits::iniciarConnects()
