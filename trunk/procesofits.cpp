@@ -5,13 +5,11 @@
 ProcesoFits::ProcesoFits(QWidget *parent) :
     QWidget(parent)
 {
-    resize(2048,1024);
+    resize(2048,2048);
     image = new QImage(2048, 2100, QImage::Format_ARGB32_Premultiplied);
 
-    image2 = new QImage(1, 2100, QImage::Format_ARGB32_Premultiplied);
-
-    target.setRect(0, 0, 2048, 2000);
-    source.setRect(0, 0, 2048, 2000);
+    target.setRect(0, 0, 2048, 2048);
+    source.setRect(0, 0, 2048, 2048);
 
     lineas = 0;
     line = 0;
@@ -26,7 +24,7 @@ ProcesoFits::ProcesoFits(QWidget *parent) :
 
 void ProcesoFits::leerFits()
 {
-    startTimer(10);
+    startTimer(5);
     fitsfile *fptr;
     ushort nullval, pline[2049];
     int status = 0, anynull=0;
@@ -71,16 +69,16 @@ void ProcesoFits::leerFits()
         qDebug()<<card; /* print the keyword card */
     }
 
-    for (int i=0; i<2047; i++)
+    for (int i=0; i<2048; i++)
     {
 
         if ( fits_read_img(fptr, TUSHORT, fpixel, 2048, &nullval, pline, &anynull, &status) )
                    printerror( status );
 
-        for (int j=0; j<1024; j++){
-            matrix(i, j) = pline[j];
+        for (int j=0; j<2048; j++){
+            //matrix(i, j) = pline[j];
 
-            image->setPixel(i, j, qRgb(scalar8bit(pline[j]),scalar8bit(pline[j]),scalar8bit(pline[j])));
+            image->setPixel(j,2048-i, qRgb(scalar8bit(pline[j]),scalar8bit(pline[j]),scalar8bit(pline[j])));
             //image->setPixel(i,j,qGray(matrix(i, j)));
 
         }
@@ -135,7 +133,7 @@ void ProcesoFits::timerEvent(QTimerEvent *e)
     target.setHeight(line);
     line=line+1;
 
-    if ( line==1000 )
+    if ( line==2048 )
            killTimer(e->timerId());
 
         repaint(); /* NO OLVIDAR */
