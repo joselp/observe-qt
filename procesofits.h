@@ -42,7 +42,7 @@ private:
     long nelements;                                 /*!< Almacena la cantidad de píxeles de la nueva imagen, es decir: 512 * 2048. Se utiliza como parámetro en algunas funciones para el manejo de archivos Fits.*/
     long naxis;                                     /*!< Almacena la cantidad de ejes de la imagen. Obviamente para una imagen bidimensional su valor es 2. Se utiliza como parámetro en algunas funciones para el manejo de archivos Fits.*/
     long naxes[2];
-    QGenericMatrix<2000, 2048, ushort> matrix; //<columnas, filas, tipo>
+    QGenericMatrix<2048, 2048, ushort> matrix; //<columnas, filas, tipo>
 
     //ushort line[2048];
     int line;
