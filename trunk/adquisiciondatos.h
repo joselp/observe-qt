@@ -1,15 +1,18 @@
 #ifndef ADQUISICIONDATOS_H
 #define ADQUISICIONDATOS_H
 
-
 #include <QMainWindow>
 #include <QDateTime>
 #include <QDebug>
 #include <QMessageBox>
 #include <QMouseEvent>
+#include<QSqlDatabase>
+#include<QSqlQuery>
+#include<QDebug>
+#include <QRegExp>
 #include "cabecerasfits.h"
 #include "visualizador.h"
-
+#include "paneladministrativo.h"
 
 namespace Ui {
     class AdquisicionDatos;
@@ -37,6 +40,7 @@ private slots:
     void slotCancelarObservacion(); //Cancela la observacion una vez iniciada
     void slotLogTimer(); //crea la el retardo para el log
     void slotSalir();
+    void slotIngresar(); //Verifica si puede entrar al panel administrativo
 
 private:
     bool realizarObservacion; //Determina si se debe hacer la observacion o no
@@ -50,6 +54,7 @@ private:
 
     CabecerasFits *ventanaCabeceraFits;
     Visualizador *visualizador;
+    PanelAdministrativo *panelAdministrativo;
     Ui::AdquisicionDatos *ui;
 };
 

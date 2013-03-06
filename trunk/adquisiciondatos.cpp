@@ -1,5 +1,6 @@
 #include "adquisiciondatos.h"
 #include "ui_adquisiciondatos.h"
+#include "conexion.h"
 
 AdquisicionDatos::AdquisicionDatos(QWidget *parent) :
     QMainWindow(parent),
@@ -18,6 +19,8 @@ void AdquisicionDatos::iniciarGui()
 {
     ventanaCabeceraFits = new CabecerasFits();
     ventanaCabeceraFits->show();
+
+    visualizador = new Visualizador();
 
     //Panel de control de los CCD
     QStringList itemsComandoDeObservacion;
@@ -99,6 +102,10 @@ void AdquisicionDatos::logicaGui()
     connect(ui->modiaPushButton,SIGNAL(clicked()),this,SLOT(slotModia()));
 
     connect(ui->salirPushButton,SIGNAL(clicked()),this,SLOT(slotSalir()));
+
+    connect(ui->IngresarPushButton,SIGNAL(clicked()),this,SLOT(slotIngresar()));
+
+    connect(ui->actionPanel_Administrativo,SIGNAL(triggered()),this,SLOT(slotIngresar()));
 
 }
 
@@ -791,29 +798,49 @@ void AdquisicionDatos::slotSalir()
     exit(0);
 }
 
+void AdquisicionDatos::slotIngresar()
+{
+    crearConexion();
+
+//    if (panelAdministrativo == NULL){
+//        panelAdministrativo = new PanelAdministrativo();
+//        panelAdministrativo->show();
+//    }
+
+//    else
+    panelAdministrativo = new PanelAdministrativo();
+        panelAdministrativo->show();
+
+}
+
 void AdquisicionDatos::slotObservar()
 {
-    verificarDatos();
-    if(realizarObservacion==true){
-        disconnect(ui->observarPushButton,SIGNAL(clicked()),0,0);
-        ui->observarPushButton->setStyleSheet("background-color:RED;"
-                                              "border-style: inset;"
-                                              "border-width: 1px;"
-                                              "border-radius: 1px;"
-                                              "border-color: black;");
-        ui->observarPushButton->setText("Abortar");
-        connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotCancelarObservacion()));
-        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Iniciada");
-        crearRetardoFit();
-    }
+//    verificarDatos();
+//    if(realizarObservacion==true){
+//        disconnect(ui->observarPushButton,SIGNAL(clicked()),0,0);
+//        ui->observarPushButton->setStyleSheet("background-color:GRAY;"
+//                                              "color:RED;"
+//                                              "border-style: inset;"
+//                                              "border-width: 1px;"
+//                                              "border-radius: 1px;"
+//                                              "border-color: black;");
+//        ui->observarPushButton->setText("Abortar");
+//        connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotCancelarObservacion()));
+//        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Iniciada");
+//        crearRetardoFit();
 
-    if(realizarObservacion==false)
-        qDebug()<<"Observacion no realizada";
+//        //if(visualizador->isVisible())
+//            visualizador->initLectura();
+//    }
+
+//    if(realizarObservacion==false)
+//        qDebug()<<"Observacion no realizada";
+
+    visualizador->initLectura();
 }
 
 void AdquisicionDatos::slotModia()
 {
-    Visualizador *visualizador = new Visualizador();
     visualizador->show();
 //    visualizadosFits = new VisualizadorFits();
 //    visualizadosFits->show();
@@ -1108,6 +1135,8 @@ void AdquisicionDatos::slotLogTimer()
 
     }
 }
+
+
 
 
 
