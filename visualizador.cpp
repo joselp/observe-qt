@@ -15,18 +15,24 @@ void Visualizador::initGui()
     this->setFixedSize(1024,710);
     this->setWindowIcon(QIcon(":/images/cidaicon.png"));
 
-    //Connecto los botonos de zoom
-    connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(zoomIn()));
-    connect(ui->pushButton_2,SIGNAL(clicked()),this,SLOT(zoomOut()));
-    connect(ui->pushButton_3,SIGNAL(clicked()),this,SLOT(zoomNormal()));
 
     //Creo el proceso de la lectura de la imagen y lo enserto en la scena para poder hacer los zoom
     procesoFits = new ProcesoFits;
 
+    visor = new GraphWidget(this);
+    visor->setGeometry(10,170,1000,532);
+
     scene = new QGraphicsScene();
-    ui->graphicsView->setScene(scene);
+    visor->setScene(scene);
+    //ui->graphicsView->setScene(scene);
 
     scene->addWidget(procesoFits);
+
+    //Connecto los botonos de zoom
+    connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(zoomIn()));
+    connect(ui->pushButton_2,SIGNAL(clicked()),this,SLOT(zoomOut()));
+    connect(ui->pushButton_3,SIGNAL(clicked()),this,SLOT(zoomNormal()));
+    connect(visor, SIGNAL(mousePressed(int, int)), this, SLOT(slotParaManejarRaton(int, int)));
 
     //Asigno los textos de los Label de la ventana visualizador
     ui->labelCcds->setText("<h3><i><font color=blue>CCDs:</font></i></h3>");
@@ -50,22 +56,28 @@ void Visualizador::initLectura()
 
 void Visualizador::zoomIn()
 {
-    ui->graphicsView->scale(1.1,1.1);
+    visor->scale(1.1,1.1);
 }
 
 void Visualizador::zoomOut()
 {
-    ui->graphicsView->scale(0.9,0.9);
+    visor->scale(0.9,0.9);
 }
 
 void Visualizador::zoomNormal()
 {
-    ui->graphicsView->resetTransform();
+    visor->resetTransform();
 }
 
 Visualizador::~Visualizador()
 {
     delete ui;
+}
+
+void Visualizador::slotParaManejarRaton(int x, int y)
+{
+    ui->labelValorXEdit->setText(QString::number(x));
+    ui->labelValorYEdit->setText(QString::number(y));
 }
 
 

@@ -24,7 +24,7 @@ public:
     void iniciarGui(); //Inicia toda la GUI de la ventana CabeceraFits.
     void iniciarConnects();
     void activarFrecuenciaDM(bool); //Activa los campos para la Freecuencia en una observacion DrifScan Modificada.
-    bool orientacionPrimasIsActive(); //Verifico si esta activo la orientacion del prisma para validas este dato o no.
+    bool orientacionPrimasIsActive(); //Verifico si esta activo la orientacion del prisma para validar este dato o no.
     int verificarFiltros(); //Verifica que los filtros colocados sean los adecuados.
     void mousePressEvent(QMouseEvent *);
 

@@ -16,7 +16,7 @@ ProcesoFits::ProcesoFits(QWidget *parent) :
     lineas = 0;
     line = 0;
 
-    startTimer(20);
+
 }
 
 //ProcesoFits::~ProcesoFits()
@@ -26,7 +26,7 @@ ProcesoFits::ProcesoFits(QWidget *parent) :
 
 void ProcesoFits::leerFits()
 {
-    //startTimer(400);
+    startTimer(10);
     fitsfile *fptr;
     ushort nullval, pline[2049];
     int status = 0, anynull=0;
