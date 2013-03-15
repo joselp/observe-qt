@@ -15,15 +15,23 @@ void Visualizador::initGui()
     this->setFixedSize(1024,710);
     this->setWindowIcon(QIcon(":/images/cidaicon.png"));
 
-
     //Creo el proceso de la lectura de la imagen y lo enserto en la scena para poder hacer los zoom
     procesoFits = new ProcesoFits;
 
-    visor = new GraphWidget(this);
-    visor->setGeometry(10,170,1000,532);
+    //Creo el GraphWidget donde se mostrara la imagen fits
+    visor = new GraphWidget();
+    visor->setGeometry(0,0,2050,2050);
 
     scene = new QGraphicsScene();
     visor->setScene(scene);
+
+    //Creo un scroll area donde se insertara el GraphWidget ya que este es mucho mas grande
+    scrollArea = new QScrollArea(this);
+    scrollArea->setGeometry(10,170,1000,532);
+    scrollArea->setWidget(visor);
+
+    //ui->scrollArea->setWidget(visor);
+
     //ui->graphicsView->setScene(scene);
 
     scene->addWidget(procesoFits);
@@ -51,6 +59,7 @@ void Visualizador::initGui()
 void Visualizador::initLectura()
 {
    procesoFits->leerFits();
+
 }
 
 
@@ -78,6 +87,7 @@ void Visualizador::slotParaManejarRaton(int x, int y)
 {
     ui->labelValorXEdit->setText(QString::number(x));
     ui->labelValorYEdit->setText(QString::number(y));
+    ui->labelValorEdit->setText(QString::number(procesoFits->valorMatriz(x,y)));
 }
 
 

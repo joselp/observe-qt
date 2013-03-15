@@ -10,9 +10,9 @@ GraphWidget::GraphWidget(QWidget *parent) : QGraphicsView(parent) {
 ratón y almacenarlas en las variables enteras xRaton y yRaton respectivamente */
 
 void GraphWidget::mousePressEvent(QMouseEvent *event){
+
     int xRaton = event->pos().x();
     int yRaton = event->pos().y();
-
     //emitir la señal mousePressed
     emit mousePressed(xRaton, yRaton);
 

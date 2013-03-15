@@ -5,6 +5,7 @@
 ProcesoFits::ProcesoFits(QWidget *parent) :
     QWidget(parent)
 {
+
     resize(2048,2048);
     image = new QImage(2048, 2100, QImage::Format_ARGB32_Premultiplied);
 
@@ -13,7 +14,6 @@ ProcesoFits::ProcesoFits(QWidget *parent) :
 
     lineas = 0;
     line = 0;
-
 
 }
 
@@ -76,17 +76,17 @@ void ProcesoFits::leerFits()
                    printerror( status );
 
         for (int j=0; j<2048; j++){
-            //matrix(i, j) = pline[j];
+            matriz(j, 2047-i) = pline[j];
 
             image->setPixel(j,2048-i, qRgb(scalar8bit(pline[j]),scalar8bit(pline[j]),scalar8bit(pline[j])));
-            //image->setPixel(i,j,qGray(matrix(i, j)));
+            //image->setPixel(i,j,qGray(matriz(i, j)));
 
         }
 
         fpixel = fpixel + 2100;
     }
-    qDebug()<< matrix(400,400);
-    qDebug()<<qGray(matrix(400,400));
+    qDebug()<< matriz(400,400);
+    qDebug()<<qGray(matriz(400,400));
     qDebug()<<image->pixel(400,400);
 
 }
@@ -104,6 +104,7 @@ int ProcesoFits::scalar8bit(int valor)
         return ( (valor*255.0)/65535.0 );
     }
 }
+
 
 void ProcesoFits::printerror(int)
 {
@@ -123,7 +124,7 @@ void ProcesoFits::dibujarLinea()
 
 void ProcesoFits::paintEvent(QPaintEvent *event)
 {
-    QPainter painter (this);
+    QPainter painter(this);
     painter.drawImage(source, *image, target,Qt::PreferDither);
 }
 
@@ -136,7 +137,17 @@ void ProcesoFits::timerEvent(QTimerEvent *e)
     if ( line==2048 )
            killTimer(e->timerId());
 
-        repaint(); /* NO OLVIDAR */
+    repaint(); /* NO OLVIDAR */
+
+}
+
+int ProcesoFits::valorMatriz(int x, int y)
+{
+    if(line < y)
+        return 0;
+
+    else
+        return matriz(x,y);
 }
 
 
