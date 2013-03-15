@@ -2,8 +2,10 @@
 #define VISUALIZADOR_H
 
 #include <QWidget>
+#include <QtGui>
 #include "procesofits.h"
 #include <QGraphicsView>
+#include <QScrollArea>
 #include "graphwidget.h"
 
 namespace Ui {
@@ -32,6 +34,7 @@ private:
     QGraphicsScene *scene;
     GraphWidget *visor;
     Ui::Visualizador *ui;
+    QScrollArea *scrollArea;  /*!< Área de scroll.  */
 };
 
 #endif // VISUALIZADOR_H
