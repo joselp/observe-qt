@@ -6,7 +6,7 @@ ProcesoFits::ProcesoFits(QWidget *parent) :
     QWidget(parent)
 {
 
-    resize(2048,2048);
+    resize(2048,512);
     image = new QImage(2048, 2100, QImage::Format_ARGB32_Premultiplied);
 
     target.setRect(0, 0, 2048, 2048);
@@ -59,7 +59,6 @@ void ProcesoFits::leerFits()
         printerror( status );
 
     qDebug()<<nkeys;
-
     //Imprime la cabecera del archivo fits
     qDebug()<<"Header listing for HDU"<< nkeys;
     for (int i = 1; i <= nkeys; i++)  {
@@ -85,9 +84,6 @@ void ProcesoFits::leerFits()
 
         fpixel = fpixel + 2100;
     }
-    qDebug()<< matriz(400,400);
-    qDebug()<<qGray(matriz(400,400));
-    qDebug()<<image->pixel(400,400);
 
 }
 
@@ -117,9 +113,12 @@ void ProcesoFits::printerror(int)
 
 void ProcesoFits::dibujarLinea()
 {
+    qApp->processEvents();
+
     source.setHeight(line);
     target.setHeight(line);
-    qApp->processEvents();
+    resize(2048,line+1);
+
 }
 
 void ProcesoFits::paintEvent(QPaintEvent *event)
@@ -130,12 +129,25 @@ void ProcesoFits::paintEvent(QPaintEvent *event)
 
 void ProcesoFits::timerEvent(QTimerEvent *e)
 {
+//        source.setHeight(line);
+//        target.setHeight(line);
+//        line=line+1;
+
+    qApp->processEvents();
+
+    if(line>532){
+        resize(2048,line+1);
+        scrollAux->verticalScrollBar()->setValue(line);
+    }
+
     source.setHeight(line);
     target.setHeight(line);
+
     line=line+1;
 
     if ( line==2048 )
-           killTimer(e->timerId());
+        killTimer(e->timerId());
+
 
     repaint(); /* NO OLVIDAR */
 
@@ -148,6 +160,12 @@ int ProcesoFits::valorMatriz(int x, int y)
 
     else
         return matriz(x,y);
+}
+
+void ProcesoFits::barraVisualizador(QScrollArea *scrollArea)
+{
+    scrollAux = new QScrollArea;
+    scrollAux = scrollArea;
 }
 
 

@@ -1,6 +1,7 @@
 #ifndef PROCESOFITS_H
 #define PROCESOFITS_H
 
+#include <QtGui>
 #include <QWidget>
 #include <QPainter>
 #include <QScrollArea>
@@ -20,6 +21,7 @@ public:
     int valorMatriz(int x,int y); //Devuelve el valor del pixel que contiene la matriz de la imagen
     void printerror(int );
     void dibujarLinea();
+    void barraVisualizador(QScrollArea *scrollArea);
 
 protected:
     /*!
@@ -60,10 +62,10 @@ private:
 
     //para la imagen
     QLabel *imageLabel;
-    QScrollArea *scrollArea;
     double scaleFactor;
 
     QVBoxLayout *vlayout;
+    QScrollArea *scrollAux;
 signals:
 
 public slots:

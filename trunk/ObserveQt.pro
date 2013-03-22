@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     procesofits.cpp \
     visualizador.cpp \
     paneladministrativo.cpp \
-    graphwidget.cpp
+    graphwidget.cpp \
+    myscrollarea.cpp
 
 HEADERS  += adquisiciondatos.h \
     cabecerasfits.h \
@@ -28,7 +29,8 @@ HEADERS  += adquisiciondatos.h \
     visualizador.h \
     conexion.h \
     paneladministrativo.h \
-    graphwidget.h
+    graphwidget.h \
+    myscrollarea.h
 
 FORMS    += adquisiciondatos.ui \
     cabecerasfits.ui \

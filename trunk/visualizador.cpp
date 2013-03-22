@@ -19,28 +19,37 @@ void Visualizador::initGui()
     procesoFits = new ProcesoFits;
 
     //Creo el GraphWidget donde se mostrara la imagen fits
-    visor = new GraphWidget();
-    visor->setGeometry(0,0,2050,2050);
+    //visor = new GraphWidget(this);
+    //visor->setGeometry(10,170,1000,532);
+    //visor->setGeometry(0,0,2050,2050);
 
-    scene = new QGraphicsScene();
-    visor->setScene(scene);
+    //scene = new QGraphicsScene();
+    //visor->setScene(scene);
 
     //Creo un scroll area donde se insertara el GraphWidget ya que este es mucho mas grande
-    scrollArea = new QScrollArea(this);
-    scrollArea->setGeometry(10,170,1000,532);
-    scrollArea->setWidget(visor);
+
+//    scrollArea->setGeometry(10,170,1000,532);
+//    scrollArea->setWidget(visor);
 
     //ui->scrollArea->setWidget(visor);
 
     //ui->graphicsView->setScene(scene);
 
-    scene->addWidget(procesoFits);
+    //scene->addWidget(procesoFits);
+
+
+    //Scroll donde se insertara el widget.
+    myScroll = new MyScrollArea;
+    myScroll->verticalScrollBar()->setHidden(true);
+    myScroll->setWidget(procesoFits);
+    ui->verticalLayout->addWidget(myScroll);
+    procesoFits->barraVisualizador(myScroll);
 
     //Connecto los botonos de zoom
     connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(zoomIn()));
     connect(ui->pushButton_2,SIGNAL(clicked()),this,SLOT(zoomOut()));
     connect(ui->pushButton_3,SIGNAL(clicked()),this,SLOT(zoomNormal()));
-    connect(visor, SIGNAL(mousePressed(int, int)), this, SLOT(slotParaManejarRaton(int, int)));
+    connect(myScroll, SIGNAL(mousePressed(int, int)), this, SLOT(slotParaManejarRaton(int, int)));
 
     //Asigno los textos de los Label de la ventana visualizador
     ui->labelCcds->setText("<h3><i><font color=blue>CCDs:</font></i></h3>");
@@ -65,17 +74,17 @@ void Visualizador::initLectura()
 
 void Visualizador::zoomIn()
 {
-    visor->scale(1.1,1.1);
+    //visor->scale(1.1,1.1);
 }
 
 void Visualizador::zoomOut()
 {
-    visor->scale(0.9,0.9);
+    //visor->scale(0.9,0.9);
 }
 
 void Visualizador::zoomNormal()
 {
-    visor->resetTransform();
+   // visor->resetTransform();
 }
 
 Visualizador::~Visualizador()
