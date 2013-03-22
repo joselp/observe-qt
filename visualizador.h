@@ -7,6 +7,7 @@
 #include <QGraphicsView>
 #include <QScrollArea>
 #include "graphwidget.h"
+#include "myscrollarea.h"
 
 namespace Ui {
     class Visualizador;
@@ -35,6 +36,7 @@ private:
     GraphWidget *visor;
     Ui::Visualizador *ui;
     QScrollArea *scrollArea;  /*!< Área de scroll.  */
+    MyScrollArea *myScroll;
 };
 
 #endif // VISUALIZADOR_H
