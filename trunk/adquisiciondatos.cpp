@@ -12,6 +12,8 @@ AdquisicionDatos::AdquisicionDatos(QWidget *parent) :
     primero=true;
     eliminar=true;
     lineasLeidas=0;
+    tiempoExposicion=0;
+    contadorTiempoExposicion=0;
 
 }
 
@@ -802,48 +804,61 @@ void AdquisicionDatos::slotIngresar()
 {
     crearConexion();
 
-//    if (panelAdministrativo == NULL){
-//        panelAdministrativo = new PanelAdministrativo();
-//        panelAdministrativo->show();
-//    }
+    //    if (panelAdministrativo == NULL){
+    //        panelAdministrativo = new PanelAdministrativo();
+    //        panelAdministrativo->show();
+    //    }
 
-//    else
+    //    else
     panelAdministrativo = new PanelAdministrativo();
-        panelAdministrativo->show();
+    panelAdministrativo->show();
 
 }
 
 void AdquisicionDatos::slotObservar()
 {
-//    verificarDatos();
-//    if(realizarObservacion==true){
-//        disconnect(ui->observarPushButton,SIGNAL(clicked()),0,0);
-//        ui->observarPushButton->setStyleSheet("background-color:GRAY;"
-//                                              "color:RED;"
-//                                              "border-style: inset;"
-//                                              "border-width: 1px;"
-//                                              "border-radius: 1px;"
-//                                              "border-color: black;");
-//        ui->observarPushButton->setText("Abortar");
-//        connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotCancelarObservacion()));
-//        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Iniciada");
-//        crearRetardoFit();
+    //    verificarDatos();
+    //    if(realizarObservacion==true){
+    //        disconnect(ui->observarPushButton,SIGNAL(clicked()),0,0);
+    //        ui->observarPushButton->setStyleSheet("background-color:GRAY;"
+    //                                              "color:RED;"
+    //                                              "border-style: inset;"
+    //                                              "border-width: 1px;"
+    //                                              "border-radius: 1px;"
+    //                                              "border-color: black;");
+    //        ui->observarPushButton->setText("Abortar");
+    //        connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotCancelarObservacion()));
+    //        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Iniciada");
+    //        crearRetardoFit();
 
-//        //if(visualizador->isVisible())
-//            visualizador->initLectura();
-//    }
 
-//    if(realizarObservacion==false)
-//        qDebug()<<"Observacion no realizada";
+    //Verifico el tipo de observacion para asi determinar el total de lineas a mostrar en el visualizador
+
+    if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Guiada" || ui->comandoDeObservacionComboBox->currentText()=="Darks Guiado" ||
+            ui->comandoDeObservacionComboBox->currentText()=="Flats Guiado" || ui->comandoDeObservacionComboBox->currentText()=="Bias"){
+
+        visualizador->setTotalLineas(2048);
+
+    }
+    else
+        //        //if(visualizador->isVisible()){
+        visualizador->setTotalLineas(ui->NumeroLineasLeerlineEdit->text().toInt());
+    //            visualizador->initLectura();
+    // }
+    //    }
+
+    //    if(realizarObservacion==false)
+    //        qDebug()<<"Observacion no realizada";
 
     visualizador->initLectura();
+    crearRetardoFit();
 }
 
 void AdquisicionDatos::slotModia()
 {
     visualizador->show();
-//    visualizadosFits = new VisualizadorFits();
-//    visualizadosFits->show();
+    //    visualizadosFits = new VisualizadorFits();
+    //    visualizadosFits->show();
 }
 
 void AdquisicionDatos::slotCancelarObservacion()
@@ -1028,7 +1043,7 @@ void AdquisicionDatos::verificarDatos()
     if(ventanaCabeceraFits->getVacioLineaSuperior().toInt()>200){
         QMessageBox msg;
         msg.setText("El valor de vacio de la linea <br> superior ("+ventanaCabeceraFits->getVacioLineaSuperior()+
-                       "mTorr) es muy<br>elevado!<br><br>Por favor, llame al tecnico de<br>guardia");
+                    "mTorr) es muy<br>elevado!<br><br>Por favor, llame al tecnico de<br>guardia");
         msg.setWindowTitle("ADVERTENCIA");
         msg.setIconPixmap(QPixmap(":/images/warning.png"));
         msg.setStandardButtons(QMessageBox::Ok);
@@ -1113,27 +1128,75 @@ void AdquisicionDatos::verificarDatos()
 void AdquisicionDatos::crearRetardoFit()
 {
     logTimer = new QTimer(this);
-    logTimer->setInterval(4000);
+
     connect(logTimer,SIGNAL(timeout()),this,SLOT(slotLogTimer()));
     logTimer->start();
+
+    if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Guiada" || ui->comandoDeObservacionComboBox->currentText()=="Darks Guiado" ||
+            ui->comandoDeObservacionComboBox->currentText()=="Flats Guiado" || ui->comandoDeObservacionComboBox->currentText()=="Bias"){
+
+        tiempoExposicion=ui->tiempoExposicionlineEdit->text().toInt();
+        logTimer->setInterval(1000);
+
+    }
+    else
+        logTimer->setInterval(4000);
+
 }
 
 void AdquisicionDatos::slotLogTimer()
 {
 
-    if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Drifscan"){
-        if(lineasLeidas < ui->NumeroLineasLeerlineEdit->text().toInt(0))
-            ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"1024 lineas leidas");
-        lineasLeidas+=1024;
-        if(lineasLeidas >= ui->NumeroLineasLeerlineEdit->text().toInt(0)){
-            ui->observarPushButton->setStyleSheet("");
+    //Verifico si el tipo de observacion implica tiempo de exposicion y se hace su simulacion
+    if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Guiada" || ui->comandoDeObservacionComboBox->currentText()=="Darks Guiado" ||
+            ui->comandoDeObservacionComboBox->currentText()=="Flats Guiado" || ui->comandoDeObservacionComboBox->currentText()=="Bias"){
+
+
+        ui->tiempoExposicionlineEdit->setText(QString::number(contadorTiempoExposicion)+"/"+QString::number(tiempoExposicion));
+
+
+
+        if(contadorTiempoExposicion%4==0)
+                ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"1024 lineas leidas");
+
+        if(contadorTiempoExposicion==tiempoExposicion){
             logTimer->stop();
-            delete logTimer;
-            lineasLeidas=0;
             ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Terminada");
+        }
+        contadorTiempoExposicion++;
+    }
+
+    //Verifico si el tipo de observacion no implica tiempo de exposicion y se hace su simulacion
+    else{
+
+        //if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Drifscan"){
+        if(contadorTiempoExposicion%4==0){
+            if(lineasLeidas < ui->NumeroLineasLeerlineEdit->text().toInt(0))
+                ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"1024 lineas leidas");
+            lineasLeidas+=1024;
+            if(lineasLeidas >= ui->NumeroLineasLeerlineEdit->text().toInt(0)){
+                ui->observarPushButton->setStyleSheet("");
+                logTimer->stop();
+                delete logTimer;
+                lineasLeidas=0;
+                ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Terminada");
+            }
         }
 
     }
+
+}
+
+void AdquisicionDatos::slotTiempoExposicion()
+{
+    ui->tiempoExposicionlineEdit->setText(QString::number(contadorTiempoExposicion)+"/"+QString::number(tiempoExposicion));
+
+    contadorTiempoExposicion++;
+    qDebug()<<contadorTiempoExposicion;
+    qDebug()<<tiempoExposicion;
+
+    if(contadorTiempoExposicion==tiempoExposicion)
+        tiempoExposicionTimer->stop();
 }
 
 

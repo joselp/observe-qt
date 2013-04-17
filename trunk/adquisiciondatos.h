@@ -39,6 +39,7 @@ private slots:
     void slotModia(); //Despliega la imagen
     void slotCancelarObservacion(); //Cancela la observacion una vez iniciada
     void slotLogTimer(); //crea la el retardo para el log
+    void slotTiempoExposicion();//Crea el contador del tiempo de exposicion.
     void slotSalir();
     void slotIngresar(); //Verifica si puede entrar al panel administrativo
 
@@ -49,8 +50,11 @@ private:
     bool datosCorrectos; //Para determinar si todos los datos estan correctos y comenzar con la observacion
 
     int lineasLeidas; //Cantidad  de lineas leidas desde los ccds
+    int tiempoExposicion; //Tiempo de exposicion para algunos tipos de imagenes.
+    int contadorTiempoExposicion; //LLeva la cantidad de tiempo que ha transcurrido.
 
     QTimer *logTimer; //Variable para crear el tiempo de creacion de un archivo fits
+    QTimer *tiempoExposicionTimer;//Variable para crear el contador del tiempo de exposcion.
 
     CabecerasFits *ventanaCabeceraFits;
     Visualizador *visualizador;

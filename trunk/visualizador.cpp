@@ -17,6 +17,9 @@ void Visualizador::initGui()
 
     //Creo el proceso de la lectura de la imagen y lo enserto en la scena para poder hacer los zoom
     procesoFits = new ProcesoFits;
+    //procesoFits = new Utils;
+
+
 
     //Creo el GraphWidget donde se mostrara la imagen fits
     //visor = new GraphWidget(this);
@@ -28,8 +31,8 @@ void Visualizador::initGui()
 
     //Creo un scroll area donde se insertara el GraphWidget ya que este es mucho mas grande
 
-//    scrollArea->setGeometry(10,170,1000,532);
-//    scrollArea->setWidget(visor);
+    //    scrollArea->setGeometry(10,170,1000,532);
+    //    scrollArea->setWidget(visor);
 
     //ui->scrollArea->setWidget(visor);
 
@@ -41,6 +44,7 @@ void Visualizador::initGui()
     //Scroll donde se insertara el widget.
     myScroll = new MyScrollArea;
     myScroll->verticalScrollBar()->setHidden(true);
+    //myScroll->verticalScrollBar()->setDisabled(true);
     myScroll->setWidget(procesoFits);
     ui->verticalLayout->addWidget(myScroll);
     procesoFits->barraVisualizador(myScroll);
@@ -61,13 +65,29 @@ void Visualizador::initGui()
     ui->labelMu->setText("<h3><i>&mu; =  <i></h3>");
     ui->labelSigma->setText("<h3><i>&sigma; =  </i></h3>");
 
-    //Inicio el proceso para leer el archivo fits asi como mostrarlo
-    //
+
+    //Se definen los connects para los botones QNX y CCDs
+    connect(ui->pushButtonQnx1,SIGNAL(clicked()),this,SLOT(slotQnx1()));
+    connect(ui->pushButtonQnx2,SIGNAL(clicked()),this,SLOT(slotQnx2()));
+    connect(ui->pushButtonQnx3,SIGNAL(clicked()),this,SLOT(slotQnx3()));
+    connect(ui->pushButtonQnx4,SIGNAL(clicked()),this,SLOT(slotQnx4()));
+    connect(ui->pushButtonCcd1,SIGNAL(clicked()),this,SLOT(slotCcd1()));
+    connect(ui->pushButtonCcd2,SIGNAL(clicked()),this,SLOT(slotCcd2()));
+    connect(ui->pushButtonCcd3,SIGNAL(clicked()),this,SLOT(slotCcd3()));
+    connect(ui->pushButtonCcd4,SIGNAL(clicked()),this,SLOT(slotCcd4()));
+
+    //Por defecto se reciben datos de QNX1 y CCD1
+    ui->pushButtonQnx1->setEnabled(false);
+    ui->pushButtonCcd1->setEnabled(false);
+
 }
+
+//Inicio el proceso para leer el archivo fits asi como mostrarlo
 
 void Visualizador::initLectura()
 {
-   procesoFits->leerFits();
+    procesoFits->setTotalLineas(totalLineas);
+    procesoFits->leerFits();
 
 }
 
@@ -84,7 +104,7 @@ void Visualizador::zoomOut()
 
 void Visualizador::zoomNormal()
 {
-   // visor->resetTransform();
+    // visor->resetTransform();
 }
 
 Visualizador::~Visualizador()
@@ -98,5 +118,92 @@ void Visualizador::slotParaManejarRaton(int x, int y)
     ui->labelValorYEdit->setText(QString::number(y));
     ui->labelValorEdit->setText(QString::number(procesoFits->valorMatriz(x,y)));
 }
+
+void Visualizador::setTotalLineas(int total)
+{
+    totalLineas = total;
+}
+
+//Definicion de los slots para manejar los botones QNX y CCDs
+
+void Visualizador::slotQnx1()
+{
+    ui->pushButtonQnx1->setEnabled(false);
+    ui->pushButtonQnx2->setEnabled(true);
+    ui->pushButtonQnx3->setEnabled(true);
+    ui->pushButtonQnx4->setEnabled(true);
+
+    procesoFits->resetProceso();
+}
+
+void Visualizador::slotQnx2()
+{
+    ui->pushButtonQnx1->setEnabled(true);
+    ui->pushButtonQnx2->setEnabled(false);
+    ui->pushButtonQnx3->setEnabled(true);
+    ui->pushButtonQnx4->setEnabled(true);
+
+    procesoFits->resetProceso();
+}
+
+void Visualizador::slotQnx3()
+{
+    ui->pushButtonQnx1->setEnabled(true);
+    ui->pushButtonQnx2->setEnabled(true);
+    ui->pushButtonQnx3->setEnabled(false);
+    ui->pushButtonQnx4->setEnabled(true);
+
+    procesoFits->resetProceso();
+}
+
+void Visualizador::slotQnx4()
+{
+    ui->pushButtonQnx1->setEnabled(true);
+    ui->pushButtonQnx2->setEnabled(true);
+    ui->pushButtonQnx3->setEnabled(true);
+    ui->pushButtonQnx4->setEnabled(false);
+
+    procesoFits->resetProceso();
+}
+
+void Visualizador::slotCcd1()
+{
+    ui->pushButtonCcd1->setEnabled(false);
+    ui->pushButtonCcd2->setEnabled(true);
+    ui->pushButtonCcd3->setEnabled(true);
+    ui->pushButtonCcd4->setEnabled(true);
+
+    procesoFits->resetProceso();
+}
+
+void Visualizador::slotCcd2()
+{
+    ui->pushButtonCcd1->setEnabled(true);
+    ui->pushButtonCcd2->setEnabled(false);
+    ui->pushButtonCcd3->setEnabled(true);
+    ui->pushButtonCcd4->setEnabled(true);
+
+    procesoFits->resetProceso();
+}
+void Visualizador::slotCcd3()
+{
+    ui->pushButtonCcd1->setEnabled(true);
+    ui->pushButtonCcd2->setEnabled(true);
+    ui->pushButtonCcd3->setEnabled(false);
+    ui->pushButtonCcd4->setEnabled(true);
+
+    procesoFits->resetProceso();
+}
+void Visualizador::slotCcd4()
+{
+    ui->pushButtonCcd1->setEnabled(true);
+    ui->pushButtonCcd2->setEnabled(true);
+    ui->pushButtonCcd3->setEnabled(true);
+    ui->pushButtonCcd4->setEnabled(false);
+
+    procesoFits->resetProceso();
+}
+
+
 
 

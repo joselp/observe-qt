@@ -9,6 +9,10 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QTimerEvent>
+#include <string>
+#include "stdio.h"
+#include "iostream"
+#include "stdlib.h"
 #include <fitsio.h> //Libreria para cargar imagenes fits
 
 class ProcesoFits : public QWidget
@@ -22,6 +26,8 @@ public:
     void printerror(int );
     void dibujarLinea();
     void barraVisualizador(QScrollArea *scrollArea);
+    void setTotalLineas(int total);
+    void resetProceso();
 
 protected:
     /*!
@@ -52,6 +58,7 @@ private:
     QString fileLine, value;
 
     int lineas;
+    int totalLineas; //Total de lineas que se deben leer segun Adquisicion de datos.
 
     QPainter *painter;
 
@@ -63,9 +70,12 @@ private:
     //para la imagen
     QLabel *imageLabel;
     double scaleFactor;
+    int multiplo;
 
     QVBoxLayout *vlayout;
     QScrollArea *scrollAux;
+
+    bool primera; //Permite saber si es la primera imagen que se muestra
 signals:
 
 public slots:
