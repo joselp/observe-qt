@@ -27,6 +27,8 @@ ProcesoFits::ProcesoFits(QWidget *parent) :
 void ProcesoFits::leerFits()
 {
 
+    qDebug()<<"entro";
+
     qApp->processEvents();
 
     fitsfile *fptr;

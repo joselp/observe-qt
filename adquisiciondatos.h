@@ -12,7 +12,6 @@
 #include <QRegExp>
 #include "cabecerasfits.h"
 #include "visualizador.h"
-#include "paneladministrativo.h"
 
 namespace Ui {
     class AdquisicionDatos;
@@ -29,6 +28,7 @@ public:
     void verificarDatos(); //Verifica si todos los datos son correcto para comenzar la observacion.
     void crearRetardoFit();
     void closeEvent(QCloseEvent *); //Captura el evento cerrar Aplicacion.
+    CabecerasFits* obtenerCabeceraFits();
     ~AdquisicionDatos();
 
 private slots:
@@ -41,7 +41,6 @@ private slots:
     void slotLogTimer(); //crea la el retardo para el log
     void slotTiempoExposicion();//Crea el contador del tiempo de exposicion.
     void slotSalir();
-    void slotIngresar(); //Verifica si puede entrar al panel administrativo
 
 private:
     bool realizarObservacion; //Determina si se debe hacer la observacion o no
@@ -58,7 +57,6 @@ private:
 
     CabecerasFits *ventanaCabeceraFits;
     Visualizador *visualizador;
-    PanelAdministrativo *panelAdministrativo;
     Ui::AdquisicionDatos *ui;
 };
 

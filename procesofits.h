@@ -13,7 +13,9 @@
 #include "stdio.h"
 #include "iostream"
 #include "stdlib.h"
-#include <fitsio.h> //Libreria para cargar imagenes fits
+//#include <fitsio.h> //Libreria para cargar imagenes fits
+#include <cfitsio/fitsio.h>
+
 
 class ProcesoFits : public QWidget
 {

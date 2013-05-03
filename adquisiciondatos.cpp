@@ -20,7 +20,7 @@ AdquisicionDatos::AdquisicionDatos(QWidget *parent) :
 void AdquisicionDatos::iniciarGui()
 {
     ventanaCabeceraFits = new CabecerasFits();
-    ventanaCabeceraFits->show();
+    //ventanaCabeceraFits->show();
 
     visualizador = new Visualizador();
 
@@ -104,10 +104,6 @@ void AdquisicionDatos::logicaGui()
     connect(ui->modiaPushButton,SIGNAL(clicked()),this,SLOT(slotModia()));
 
     connect(ui->salirPushButton,SIGNAL(clicked()),this,SLOT(slotSalir()));
-
-    connect(ui->IngresarPushButton,SIGNAL(clicked()),this,SLOT(slotIngresar()));
-
-    connect(ui->actionPanel_Administrativo,SIGNAL(triggered()),this,SLOT(slotIngresar()));
 
 }
 
@@ -787,7 +783,15 @@ void AdquisicionDatos::slotModoLineaReloj(int item)
 
 void AdquisicionDatos::closeEvent(QCloseEvent *)
 {
-    exit(0);
+    //delete ventanaCabeceraFits;
+    //ventanaCabeceraFits->close();
+    this->close();
+    //exit(0);
+}
+
+CabecerasFits *AdquisicionDatos::obtenerCabeceraFits()
+{
+    return ventanaCabeceraFits;
 }
 
 void AdquisicionDatos::slotEmcabezados()
@@ -800,20 +804,6 @@ void AdquisicionDatos::slotSalir()
     exit(0);
 }
 
-void AdquisicionDatos::slotIngresar()
-{
-    crearConexion();
-
-    //    if (panelAdministrativo == NULL){
-    //        panelAdministrativo = new PanelAdministrativo();
-    //        panelAdministrativo->show();
-    //    }
-
-    //    else
-    panelAdministrativo = new PanelAdministrativo();
-    panelAdministrativo->show();
-
-}
 
 void AdquisicionDatos::slotObservar()
 {
@@ -1198,8 +1188,3 @@ void AdquisicionDatos::slotTiempoExposicion()
     if(contadorTiempoExposicion==tiempoExposicion)
         tiempoExposicionTimer->stop();
 }
-
-
-
-
-
