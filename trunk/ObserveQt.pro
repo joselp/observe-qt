@@ -19,7 +19,10 @@ SOURCES += main.cpp\
     visualizador.cpp \
     paneladministrativo.cpp \
     graphwidget.cpp \
-    myscrollarea.cpp
+    myscrollarea.cpp \
+    simulador.cpp \
+    formhome.cpp \
+    formsimulador.cpp
 
 HEADERS  += adquisiciondatos.h \
     cabecerasfits.h \
@@ -30,22 +33,28 @@ HEADERS  += adquisiciondatos.h \
     conexion.h \
     paneladministrativo.h \
     graphwidget.h \
-    myscrollarea.h
+    myscrollarea.h \
+    simulador.h \
+    formhome.h \
+    formsimulador.h
 
 FORMS    += adquisiciondatos.ui \
     cabecerasfits.ui \
     nombreproyectowidget.ui \
     filtro1widget.ui \
     visualizador.ui \
-    paneladministrativo.ui
+    paneladministrativo.ui \
+    simulador.ui \
+    formhome.ui \
+    formsimulador.ui
 
 RESOURCES += \
     resource.qrc
 
 LIBS += -L. \
-        -lcfitsio \
         -lm \
         -lnsl \
+        -lcfitsio \
 
 OTHER_FILES += \
     BD/SimuladorDB.db

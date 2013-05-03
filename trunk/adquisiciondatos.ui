@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>720</height>
+    <height>680</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>1024</width>
-    <height>720</height>
+    <height>680</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -29,8 +29,8 @@
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>60</y>
+      <x>90</x>
+      <y>10</y>
       <width>341</width>
       <height>23</height>
      </rect>
@@ -139,8 +139,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>190</y>
+      <x>410</x>
+      <y>140</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -157,8 +157,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>200</y>
+      <x>10</x>
+      <y>150</y>
       <width>181</width>
       <height>16</height>
      </rect>
@@ -176,8 +176,8 @@
    <widget class="QLineEdit" name="NumeroLineasLeerlineEdit">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>190</y>
+      <x>230</x>
+      <y>140</y>
       <width>161</width>
       <height>27</height>
      </rect>
@@ -186,8 +186,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>235</y>
+      <x>10</x>
+      <y>185</y>
       <width>211</width>
       <height>21</height>
      </rect>
@@ -205,8 +205,8 @@
    <widget class="QLineEdit" name="tiempoExposicionlineEdit">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>230</y>
+      <x>230</x>
+      <y>180</y>
       <width>161</width>
       <height>27</height>
      </rect>
@@ -215,8 +215,8 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>230</y>
+      <x>410</x>
+      <y>180</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -233,8 +233,8 @@
    <widget class="QPushButton" name="observarPushButton">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>270</y>
+      <x>40</x>
+      <y>220</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -251,8 +251,8 @@
    <widget class="QPushButton" name="salirPushButton">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>270</y>
+      <x>160</x>
+      <y>220</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -269,8 +269,8 @@
    <widget class="QPushButton" name="emcabezadosPushButton">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>270</y>
+      <x>290</x>
+      <y>220</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -287,8 +287,8 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>320</y>
+      <x>190</x>
+      <y>270</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -307,8 +307,8 @@
    <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>360</y>
+      <x>10</x>
+      <y>310</y>
       <width>521</width>
       <height>95</height>
      </rect>
@@ -367,8 +367,8 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>460</y>
+      <x>10</x>
+      <y>410</y>
       <width>526</width>
       <height>81</height>
      </rect>
@@ -477,8 +477,8 @@
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>550</y>
+      <x>10</x>
+      <y>500</y>
       <width>231</width>
       <height>27</height>
      </rect>
@@ -496,8 +496,8 @@
    <widget class="QLineEdit" name="posXLineEdit">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>550</y>
+      <x>240</x>
+      <y>500</y>
       <width>65</width>
       <height>27</height>
      </rect>
@@ -506,8 +506,8 @@
    <widget class="QLineEdit" name="posYLineEdit">
     <property name="geometry">
      <rect>
-      <x>325</x>
-      <y>550</y>
+      <x>315</x>
+      <y>500</y>
       <width>65</width>
       <height>27</height>
      </rect>
@@ -516,8 +516,8 @@
    <widget class="QLineEdit" name="posZLineEdit">
     <property name="geometry">
      <rect>
-      <x>405</x>
-      <y>550</y>
+      <x>395</x>
+      <y>500</y>
       <width>65</width>
       <height>27</height>
      </rect>
@@ -526,8 +526,8 @@
    <widget class="QLineEdit" name="posTLineEdit">
     <property name="geometry">
      <rect>
-      <x>485</x>
-      <y>550</y>
+      <x>475</x>
+      <y>500</y>
       <width>65</width>
       <height>27</height>
      </rect>
@@ -536,8 +536,8 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>600</y>
+      <x>10</x>
+      <y>550</y>
       <width>531</width>
       <height>80</height>
      </rect>
@@ -635,8 +635,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>100</y>
+      <x>60</x>
+      <y>50</y>
       <width>431</width>
       <height>31</height>
      </rect>
@@ -655,8 +655,8 @@
    <widget class="QComboBox" name="comandoDeObservacionComboBox">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>150</y>
+      <x>230</x>
+      <y>100</y>
       <width>291</width>
       <height>31</height>
      </rect>
@@ -665,8 +665,8 @@
    <widget class="QLabel" name="comandoDeObservacionLabel">
     <property name="geometry">
      <rect>
-      <x>21</x>
-      <y>161</y>
+      <x>11</x>
+      <y>111</y>
       <width>201</width>
       <height>17</height>
      </rect>
@@ -684,8 +684,8 @@
    <widget class="QTextEdit" name="LogTextEdit">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>60</y>
+      <x>570</x>
+      <y>10</y>
       <width>431</width>
       <height>481</height>
      </rect>
@@ -694,8 +694,8 @@
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>550</y>
+      <x>670</x>
+      <y>500</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -714,8 +714,8 @@
    <widget class="QWidget" name="formLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>580</y>
+      <x>570</x>
+      <y>530</y>
       <width>431</width>
       <height>101</height>
      </rect>
@@ -756,8 +756,8 @@
    <widget class="QPushButton" name="modiaPushButton">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>270</y>
+      <x>410</x>
+      <y>220</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -770,132 +770,6 @@
     <property name="text">
      <string>Modia</string>
     </property>
-   </widget>
-   <widget class="QGroupBox" name="groupBox_2">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>0</y>
-      <width>671</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-color: rgb(0, 0, 0);</string>
-    </property>
-    <property name="title">
-     <string>Panel Administrativo:</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-    </property>
-    <widget class="QLabel" name="label_13">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>20</y>
-       <width>51</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Correo:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="usuariolineEdit">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>20</y>
-       <width>113</width>
-       <height>21</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_15">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>20</y>
-       <width>91</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Contraseña:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="passwordLineEdit">
-     <property name="geometry">
-      <rect>
-       <x>300</x>
-       <y>20</y>
-       <width>113</width>
-       <height>21</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="IngresarPushButton">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>20</y>
-       <width>97</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Ingresar</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="olvidoPasswordpushButton">
-     <property name="geometry">
-      <rect>
-       <x>540</x>
-       <y>20</y>
-       <width>120</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>120</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="focusPolicy">
-      <enum>Qt::NoFocus</enum>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"> QPushButton{
-     border-style: inset;
-     border-width: 0px;
-     border-radius: 0px;
-     border-color: beige;
-	 border-color: rgb(217, 217, 217);
-     font: bold 10px;
-     min-width: 10em;
-     text-align:left;
- }
-
-QPushButton:hover{
-    color:rgb(0, 0, 116);
-    border-style: inset;
-}
-
-QPushButton:pressed {
-     border-style: inset;
- }
-
-</string>
-     </property>
-     <property name="text">
-      <string>¿Olvido su contraseña?</string>
-     </property>
-    </widget>
    </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -919,32 +793,9 @@ QPushButton:pressed {
     <property name="title">
      <string>Archivo</string>
     </property>
-    <addaction name="actionIniciar_Prueba"/>
-    <addaction name="actionPanel_Administrativo"/>
-    <addaction name="actionSalir"/>
    </widget>
    <addaction name="menuArchivo"/>
   </widget>
-  <action name="actionIniciar_Prueba">
-   <property name="text">
-    <string>Iniciar Prueba</string>
-   </property>
-  </action>
-  <action name="actionCrear_Prueba">
-   <property name="text">
-    <string>Crear Prueba</string>
-   </property>
-  </action>
-  <action name="actionPanel_Administrativo">
-   <property name="text">
-    <string>Panel Administrativo</string>
-   </property>
-  </action>
-  <action name="actionSalir">
-   <property name="text">
-    <string>Salir</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

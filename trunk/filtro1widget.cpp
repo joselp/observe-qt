@@ -278,7 +278,7 @@ void Filtro1Widget::cambiarTexto(int i)
 void Filtro1Widget::eliminarWidgetFiltro()
 {
     this->hide();
-    delete this;
+    delete ui;
 }
 
 
