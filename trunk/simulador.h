@@ -19,8 +19,8 @@ public:
     explicit Simulador(QWidget *parent = 0);
     void cambiarPanel(QWidget*); //Me permite cambiar los paneles de la ventana principal del simulador
     void removerContenidoWidget(); //Remueve el widget que se encuentre en el layout de contenido
-    void mostrarMenu();
-    void ocultarMenu();
+    void mostrarMenu();//Muestra el menu del lado izquierdo
+    void ocultarMenu();//Oculta el menu del lado izquierdo
     void resizeEvent(QResizeEvent *);
     ~Simulador();
     

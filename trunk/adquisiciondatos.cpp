@@ -794,6 +794,31 @@ CabecerasFits *AdquisicionDatos::obtenerCabeceraFits()
     return ventanaCabeceraFits;
 }
 
+Visualizador *AdquisicionDatos::obtenerVisualizador()
+{
+    return visualizador;
+}
+
+QPushButton *AdquisicionDatos::obtenerBotonObservar()
+{
+    return ui->observarPushButton;
+}
+
+QComboBox *AdquisicionDatos::obtenerComandoDeObservacionComboBox()
+{
+    return ui->comandoDeObservacionComboBox;
+}
+
+QLineEdit *AdquisicionDatos::obtenerNumeroLineasLeer()
+{
+    return ui->NumeroLineasLeerlineEdit;
+}
+
+bool AdquisicionDatos::obtenerRealizarObservacion()
+{
+    return realizarObservacion;
+}
+
 void AdquisicionDatos::slotEmcabezados()
 {
     ventanaCabeceraFits->show();
@@ -807,41 +832,43 @@ void AdquisicionDatos::slotSalir()
 
 void AdquisicionDatos::slotObservar()
 {
-    //    verificarDatos();
-    //    if(realizarObservacion==true){
-    //        disconnect(ui->observarPushButton,SIGNAL(clicked()),0,0);
-    //        ui->observarPushButton->setStyleSheet("background-color:GRAY;"
-    //                                              "color:RED;"
-    //                                              "border-style: inset;"
-    //                                              "border-width: 1px;"
-    //                                              "border-radius: 1px;"
-    //                                              "border-color: black;");
-    //        ui->observarPushButton->setText("Abortar");
-    //        connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotCancelarObservacion()));
-    //        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Iniciada");
-    //        crearRetardoFit();
+
+//    //    verificarDatos();
+//    //    if(realizarObservacion==true){
+//    //        disconnect(ui->observarPushButton,SIGNAL(clicked()),0,0);
+//    //        ui->observarPushButton->setStyleSheet("background-color:GRAY;"
+//    //                                              "color:RED;"
+//    //                                              "border-style: inset;"
+//    //                                              "border-width: 1px;"
+//    //                                              "border-radius: 1px;"
+//    //                                              "border-color: black;");
+//    //        ui->observarPushButton->setText("Abortar");
+//    //        connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotCancelarObservacion()));
+//    //        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Iniciada");
+//    //        crearRetardoFit();
 
 
-    //Verifico el tipo de observacion para asi determinar el total de lineas a mostrar en el visualizador
+//    //Verifico el tipo de observacion para asi determinar el total de lineas a mostrar en el visualizador
 
-    if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Guiada" || ui->comandoDeObservacionComboBox->currentText()=="Darks Guiado" ||
-            ui->comandoDeObservacionComboBox->currentText()=="Flats Guiado" || ui->comandoDeObservacionComboBox->currentText()=="Bias"){
+//    if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Guiada" || ui->comandoDeObservacionComboBox->currentText()=="Darks Guiado" ||
+//            ui->comandoDeObservacionComboBox->currentText()=="Flats Guiado" || ui->comandoDeObservacionComboBox->currentText()=="Bias"){
 
-        visualizador->setTotalLineas(2048);
+//        visualizador->setTotalLineas(2048);
 
-    }
-    else
-        //        //if(visualizador->isVisible()){
-        visualizador->setTotalLineas(ui->NumeroLineasLeerlineEdit->text().toInt());
-    //            visualizador->initLectura();
-    // }
-    //    }
+//    }
+//    else
+//        //        //if(visualizador->isVisible()){
+//        visualizador->setTotalLineas(ui->NumeroLineasLeerlineEdit->text().toInt());
+//    //            visualizador->initLectura();
+//    // }
+//    //    }
 
-    //    if(realizarObservacion==false)
-    //        qDebug()<<"Observacion no realizada";
+//    //    if(realizarObservacion==false)
+//    //        qDebug()<<"Observacion no realizada";
 
-    visualizador->initLectura();
-    crearRetardoFit();
+//    visualizador->initLectura();
+//    crearRetardoFit();
+
 }
 
 void AdquisicionDatos::slotModia()

@@ -22,8 +22,8 @@ Simulador::Simulador(QWidget *parent) :
     //connect(ui->actionAbrir,SIGNAL(triggered()),this,SLOT(slotAcceder()));
     connect(ui->actionPanel_Administrativo,SIGNAL(triggered()),this,SLOT(slotPanelAdministrativo()));
 
-    connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(slotImagenesNormales()));
-    ui->pushButton->setText("Imagenes\nNormales");
+    connect(ui->pushButtonNormales,SIGNAL(clicked()),this,SLOT(slotImagenesNormales()));
+    ui->pushButtonNormales->setText("Imagenes\nNormales");
 
     ocultarMenu();
 }
@@ -45,7 +45,16 @@ void Simulador::mostrarMenu()
 {
     ui->toolBar->setVisible(true);
     ui->label->setVisible(true);
-    ui->pushButton->setVisible(true);
+    ui->pushButtonNormales->setVisible(true);
+    ui->pushButtonNublado->setVisible(true);
+    ui->pushButtonViento->setVisible(true);
+    ui->pushButtonBias->setVisible(true);
+    ui->pushButtonDarks->setVisible(true);
+    ui->pushButtonFlats->setVisible(true);
+    ui->pushButtonDedos->setVisible(true);
+    ui->pushButtonFoco->setVisible(true);
+    ui->pushButtonObturador->setVisible(true);
+    ui->pushButtonPrisma->setVisible(true);
     ui->menubar->setVisible(true);
 }
 
@@ -53,7 +62,16 @@ void Simulador::ocultarMenu()
 {
     ui->toolBar->setVisible(false);
     ui->label->setVisible(false);
-    ui->pushButton->setVisible(false);
+    ui->pushButtonNormales->setVisible(false);
+    ui->pushButtonNublado->setVisible(false);
+    ui->pushButtonViento->setVisible(false);
+    ui->pushButtonBias->setVisible(false);
+    ui->pushButtonDarks->setVisible(false);
+    ui->pushButtonFlats->setVisible(false);
+    ui->pushButtonDedos->setVisible(false);
+    ui->pushButtonFoco->setVisible(false);
+    ui->pushButtonObturador->setVisible(false);
+    ui->pushButtonPrisma->setVisible(false);
     ui->menubar->setVisible(false);
 }
 
@@ -88,4 +106,5 @@ void Simulador::slotPanelAdministrativo()
 void Simulador::slotImagenesNormales()
 {
     formSimulador->asignarVentanas();
+    ui->actionCargar_Prueba->setDisabled(true);
 }

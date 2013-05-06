@@ -16,7 +16,12 @@ class FormSimulador : public QWidget
 public:
     explicit FormSimulador(QWidget *parent = 0);
     void asignarVentanas();
+    void iniciarVisualizador();
     ~FormSimulador();
+
+
+public slots:
+    void slotIniciarObservacion();
     
 private:
     Ui::FormSimulador *ui;

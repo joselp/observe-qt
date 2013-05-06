@@ -12,7 +12,7 @@ Visualizador::Visualizador(QWidget *parent) :
 
 void Visualizador::initGui()
 {
-    this->setFixedSize(1024,710);
+    this->setFixedSize(1024,620);
     this->setWindowIcon(QIcon(":/images/cidaicon.png"));
 
     //Creo el proceso de la lectura de la imagen y lo enserto en la scena para poder hacer los zoom
