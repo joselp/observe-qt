@@ -176,7 +176,7 @@ void ProcesoFits::timerEvent(QTimerEvent *e)
 
         }
 
-        if(line>512){
+        if(line>440){
             resize(2048,line+1);
             //source.moveTop(line+1-512);
             scrollAux->verticalScrollBar()->setValue(line);
@@ -198,7 +198,6 @@ void ProcesoFits::timerEvent(QTimerEvent *e)
         target.setHeight(line);
 
         line=line+1;
-
 
 
         //qDebug()<<line;

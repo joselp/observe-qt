@@ -31,9 +31,72 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="pushButtonNormales">
         <property name="text">
          <string>Normales</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonNublado">
+        <property name="text">
+         <string>Nublado</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonViento">
+        <property name="text">
+         <string>Mucho Viento</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonFoco">
+        <property name="text">
+         <string>Mal Foco</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonObturador">
+        <property name="text">
+         <string>Obturador</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonFlats">
+        <property name="text">
+         <string>Flats</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonDarks">
+        <property name="text">
+         <string>Darks</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonBias">
+        <property name="text">
+         <string>Bias</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonPrisma">
+        <property name="text">
+         <string>Prisma</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonDedos">
+        <property name="text">
+         <string>Dedos</string>
         </property>
        </widget>
       </item>

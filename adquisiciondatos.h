@@ -10,6 +10,7 @@
 #include<QSqlQuery>
 #include<QDebug>
 #include <QRegExp>
+#include <QComboBox>
 #include "cabecerasfits.h"
 #include "visualizador.h"
 
@@ -28,7 +29,12 @@ public:
     void verificarDatos(); //Verifica si todos los datos son correcto para comenzar la observacion.
     void crearRetardoFit();
     void closeEvent(QCloseEvent *); //Captura el evento cerrar Aplicacion.
-    CabecerasFits* obtenerCabeceraFits();
+    CabecerasFits* obtenerCabeceraFits(); //Retorna el objeto cabeceraFits creado.
+    Visualizador* obtenerVisualizador(); //Retorna el obteto visualizador creado.
+    QPushButton* obtenerBotonObservar(); //Retorna el boton Observar
+    QComboBox* obtenerComandoDeObservacionComboBox(); //Retorna la variable comandoDeObservacionComboBox.
+    QLineEdit* obtenerNumeroLineasLeer(); //Retorna la variable NumeroLineasLeerlineEdit.
+    bool obtenerRealizarObservacion(); //Retorna el valor de la variable realizarObservacion.
     ~AdquisicionDatos();
 
 private slots:
