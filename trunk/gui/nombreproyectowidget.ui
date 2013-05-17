@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NombreProyectoWidget</class>
+ <widget class="QWidget" name="NombreProyectoWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>812</width>
+    <height>443</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>790</width>
+    <height>424</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1024</width>
+    <height>490</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(190, 190, 190);</string>
+  </property>
+  <widget class="QPushButton" name="pushButton4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>65</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Busqueda de Planetas Menores, Transneptunianos, Cometas y otros Objetos del Sistema</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton5">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>85</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Caracterizacion de la Poblacion de RR Lyrae en el Disco Grueso de la Galaxia</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton7">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>125</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Estudio espetroscopico de estrellas jovenes en Orion</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton6">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>105</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Estudio de las regiones ecternas de la LMC a partir de las variables RR Lyrae</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton8">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>145</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Estudio espetroscopicode estrellas jovenes en Serpens</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>45</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Busqueda de Estrellas Tardias en la Via Lactea</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton11">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>205</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Rastreo del Cielo Sur para Buscar Planetas Enanos y Objetos Transneptunianos  Gigantes</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton1">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>5</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>A Southern Sky Survey for Pluto Size Trans-Neptunians Object</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>25</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Buscando Estrellas Jovenes Variables en la Cabeza de Orion</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton9">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>165</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Estudio fotometrico y cinematico de la poblacion estelar y subestelar de las Pleidas</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton10">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>185</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Monitoreo Fotometrico de V1647 Ori (Nebula McNeil)</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton12">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>225</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Rastreo de la Galaxia Asociada a Omega Centauro</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton13">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>245</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Solar System Science</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton14">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>265</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Sondeo de Prisma Objetivo en Orion</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton15">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>285</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Sondeo deVariabilidad Ecuatorial</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton16">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>305</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Sondeo Fotometrico de la Nube Oscura L1641</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton17">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>325</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Studying The Nature of Blue Variable{s in the Baade's window</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton18">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>345</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>The distance to de Sextans A and B galaxies from Cepheid variables</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton19">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>365</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Variabilidad de Objetos Subesteleares en la agrupacion 25Ori</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton20">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>385</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Young exoplanet Transit Initiative</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton21">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>405</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 13px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+	 
+	background-color: rgb(213, 213, 213);
+     border-style: inset;
+}
+
+QPushButton:pressed {
+     background-color:blue;
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Pruebas</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

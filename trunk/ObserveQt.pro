@@ -10,48 +10,50 @@ TARGET = ObserveQt
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        adquisiciondatos.cpp \
-    cabecerasfits.cpp \
-    nombreproyectowidget.cpp \
-    filtro1widget.cpp \
-    procesofits.cpp \
-    visualizador.cpp \
-    paneladministrativo.cpp \
-    graphwidget.cpp \
-    myscrollarea.cpp \
-    simulador.cpp \
-    formhome.cpp \
-    formsimulador.cpp \
-    mybuttonicon.cpp
+SOURCES += bd/manejadorbd.cpp \
+    src/visualizador.cpp \
+    src/simulador.cpp \
+    src/procesofits.cpp \
+    src/paneladministrativo.cpp \
+    src/nombreproyectowidget.cpp \
+    src/myscrollarea.cpp \
+    src/mybuttonicon.cpp \
+    src/main.cpp \
+    src/graphwidget.cpp \
+    src/formsimulador.cpp \
+    src/formhome.cpp \
+    src/filtro1widget.cpp \
+    src/cabecerasfits.cpp \
+    src/adquisiciondatos.cpp
 
-HEADERS  += adquisiciondatos.h \
-    cabecerasfits.h \
-    nombreproyectowidget.h \
-    filtro1widget.h \
-    procesofits.h \
-    visualizador.h \
-    conexion.h \
-    paneladministrativo.h \
-    graphwidget.h \
-    myscrollarea.h \
-    simulador.h \
-    formhome.h \
-    formsimulador.h \
-    mybuttonicon.h
+HEADERS  += bd/manejadorbd.h \
+    headers/visualizador.h \
+    headers/simulador.h \
+    headers/procesofits.h \
+    headers/nombreproyectowidget.h \
+    headers/myscrollarea.h \
+    headers/mybuttonicon.h \
+    headers/graphwidget.h \
+    headers/formsimulador.h \
+    headers/formhome.h \
+    headers/filtro1widget.h \
+    headers/conexion.h \
+    headers/cabecerasfits.h \
+    headers/adquisiciondatos.h \
+    headers/paneladministrativo.h
 
-FORMS    += adquisiciondatos.ui \
-    cabecerasfits.ui \
-    nombreproyectowidget.ui \
-    filtro1widget.ui \
-    visualizador.ui \
-    paneladministrativo.ui \
-    simulador.ui \
-    formhome.ui \
-    formsimulador.ui
+FORMS    += gui/visualizador.ui \
+    gui/simulador.ui \
+    gui/paneladministrativo.ui \
+    gui/nombreproyectowidget.ui \
+    gui/formsimulador.ui \
+    gui/formhome.ui \
+    gui/filtro1widget.ui \
+    gui/cabecerasfits.ui \
+    gui/adquisiciondatos.ui
 
 RESOURCES += \
-    resource.qrc
+    resource.qrc \
 
 LIBS += -L. \
         -lm \
