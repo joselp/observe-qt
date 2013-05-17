@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "adquisiciondatos.h"
 #include "cabecerasfits.h"
+#include "mybuttonicon.h"
 
 namespace Ui {
 class FormSimulador;
@@ -22,10 +23,12 @@ public:
 
 public slots:
     void slotIniciarObservacion();
+    void slotControlShmidt();
     
 private:
     Ui::FormSimulador *ui;
     AdquisicionDatos *adquisicionDatos;
+    myButtonIcon *iconControlSchmidt;
     //CabecerasFits *cabecerasFits;
 
 };

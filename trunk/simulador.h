@@ -26,8 +26,9 @@ public:
     
 public slots:
     void slotAcceder(); //Verifico si puedo acceder al simulador
-    void slotPanelAdministrativo();
+    void slotPanelAdministrativo(); //Inicia la ventana de panel administrativo
     void slotImagenesNormales();
+    void slotSalir(); //Cierra el sistema
 
 
 private:

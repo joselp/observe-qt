@@ -4,5 +4,7 @@
         <file>images/warning.png</file>
         <file>images/cidaHome.jpg</file>
         <file>images/cargarPrueba.jpeg</file>
+        <file>images/fedora17.png</file>
+        <file>images/iconControlS.jpg</file>
     </qresource>
 </RCC>
