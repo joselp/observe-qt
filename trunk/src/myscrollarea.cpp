@@ -1,4 +1,4 @@
-#include "myscrollarea.h"
+#include "headers/myscrollarea.h"
 
 MyScrollArea::MyScrollArea(QWidget *parent) : QScrollArea(parent)
 {

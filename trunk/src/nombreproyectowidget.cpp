@@ -1,4 +1,4 @@
-#include "nombreproyectowidget.h"
+#include "headers/nombreproyectowidget.h"
 #include "ui_nombreproyectowidget.h"
 #include<QDebug>
 

@@ -1,4 +1,4 @@
-#include "graphwidget.h"
+#include "headers/graphwidget.h"
 #include <QDebug>
 
 GraphWidget::GraphWidget(QWidget *parent) : QGraphicsView(parent) {

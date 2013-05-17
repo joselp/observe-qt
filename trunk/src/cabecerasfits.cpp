@@ -1,4 +1,4 @@
-#include "cabecerasfits.h"
+#include "headers/cabecerasfits.h"
 #include "ui_cabecerasfits.h"
 #include <QLayout>
 
