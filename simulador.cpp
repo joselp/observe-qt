@@ -8,6 +8,7 @@ Simulador::Simulador(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    connect(ui->actionSalir,SIGNAL(triggered()),this,SLOT(slotSalir()));
     //this->showMaximized();
 
     panelAdministrativo = new PanelAdministrativo;
@@ -78,7 +79,7 @@ void Simulador::ocultarMenu()
 //Para redimensionar todos los elementos de la ventana cuando cambie de tamaño.
 void Simulador::resizeEvent(QResizeEvent *)
 {
-    ui->verticalLayoutContenido->setGeometry(QRect(ui->verticalLayoutContenido->geometry().x(),ui->verticalLayoutContenido->geometry().y(),ui->verticalLayoutContenido->geometry().width(),ui->centralwidget->height()-30));
+    ui->verticalLayoutContenido->setGeometry(QRect(ui->verticalLayoutContenido->geometry().x(),ui->verticalLayoutContenido->geometry().y(),ui->verticalLayoutContenido->geometry().width(),ui->centralwidget->height()-10));
 }
 
 Simulador::~Simulador()
@@ -106,5 +107,10 @@ void Simulador::slotPanelAdministrativo()
 void Simulador::slotImagenesNormales()
 {
     formSimulador->asignarVentanas();
-    ui->actionCargar_Prueba->setDisabled(true);
+    //ui->actionCargar_Prueba->setDisabled(true);
+}
+
+void Simulador::slotSalir()
+{
+    exit(0);
 }

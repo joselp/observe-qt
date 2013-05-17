@@ -6,16 +6,33 @@ FormSimulador::FormSimulador(QWidget *parent) :
     ui(new Ui::FormSimulador)
 {
     ui->setupUi(this);
+
+    ui->mdiArea->setBackground(*new QBrush(*new QPixmap(":/images/fedora17.png")));
+    ui->mdiArea->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+
     adquisicionDatos= new AdquisicionDatos;
     //cabecerasFits = new CabecerasFits;
     connect(adquisicionDatos->obtenerBotonObservar(),SIGNAL(clicked()),this,SLOT(slotIniciarObservacion()));
+
+    //Boton que emula icono en el escritorio.
+
+//    QPushButton *boton;
+//    boton = new QPushButton(ui->mdiArea);
+//    boton->setGeometry(QRect(20,20,50,50));
+//    boton->setStyleSheet( "QPushButton{background-color: white;background-image:url(':/images/cidaicon.png'); border-style: inset;border-width: 0px;border-radius: 0px;border-color: beige;border-color: rgb(217, 217, 217);font: bold 10px; min-width: 10em; text-align:left;}");
+//    connect(boton,SIGNAL(clicked()),this,SLOT(slotControlShmidt()));
+
+
+    iconControlSchmidt = new myButtonIcon(ui->mdiArea);
+    iconControlSchmidt->setGeometry(QRect(20,20,32,30));
+    iconControlSchmidt->setToolTip("Control Schmidt");
+    iconControlSchmidt->setStyleSheet( "QPushButton{background-color: white;background-image:url(':/images/iconControlS.jpg'); border-style: inset;border-width: 0px;border-radius: 0px;border-color: beige;border-color: rgb(217, 217, 217);font: bold 10px; text-align:left} QPushButton:pressed {background-color:blue; border-style: inset;}");
+    connect(iconControlSchmidt,SIGNAL(doubleclick()),this,SLOT(slotControlShmidt()));
+
 }
 
 void FormSimulador::asignarVentanas()
 {
-
-        qDebug()<<"Hola Mundo";
-
         ui->mdiArea->addSubWindow(adquisicionDatos);
         ui->mdiArea->addSubWindow(adquisicionDatos->obtenerCabeceraFits());
         adquisicionDatos->show();
@@ -65,6 +82,11 @@ void FormSimulador::slotIniciarObservacion()
 
     ui->mdiArea->addSubWindow(adquisicionDatos->obtenerVisualizador());
     //adquisicionDatos->obtenerVisualizador();
+}
+
+void FormSimulador::slotControlShmidt()
+{
+    qDebug()<<"HOLA MUNDO";
 }
 
 

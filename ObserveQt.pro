@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     myscrollarea.cpp \
     simulador.cpp \
     formhome.cpp \
-    formsimulador.cpp
+    formsimulador.cpp \
+    mybuttonicon.cpp
 
 HEADERS  += adquisiciondatos.h \
     cabecerasfits.h \
@@ -36,7 +37,8 @@ HEADERS  += adquisiciondatos.h \
     myscrollarea.h \
     simulador.h \
     formhome.h \
-    formsimulador.h
+    formsimulador.h \
+    mybuttonicon.h
 
 FORMS    += adquisiciondatos.ui \
     cabecerasfits.ui \

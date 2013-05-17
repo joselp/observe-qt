@@ -99,7 +99,7 @@ void AdquisicionDatos::logicaGui()
 
     connect(ui->emcabezadosPushButton,SIGNAL(clicked()),this,SLOT(slotEmcabezados()));
 
-    connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotObservar()));
+    //connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotObservar()));
 
     connect(ui->modiaPushButton,SIGNAL(clicked()),this,SLOT(slotModia()));
 
