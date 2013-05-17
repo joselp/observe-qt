@@ -1,4 +1,4 @@
-#include "formsimulador.h"
+#include "headers/formsimulador.h"
 #include "ui_formsimulador.h"
 
 FormSimulador::FormSimulador(QWidget *parent) :

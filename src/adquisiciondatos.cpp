@@ -1,6 +1,6 @@
-#include "adquisiciondatos.h"
+#include "headers/adquisiciondatos.h"
 #include "ui_adquisiciondatos.h"
-#include "conexion.h"
+
 
 AdquisicionDatos::AdquisicionDatos(QWidget *parent) :
     QMainWindow(parent),

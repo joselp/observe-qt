@@ -1,4 +1,4 @@
-#include "visualizador.h"
+#include "headers/visualizador.h"
 #include "ui_visualizador.h"
 
 Visualizador::Visualizador(QWidget *parent) :

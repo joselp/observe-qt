@@ -1,4 +1,4 @@
-#include "procesofits.h"
+#include "headers/procesofits.h"
 #include <QApplication>
 #include <math.h>
 

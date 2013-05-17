@@ -1,4 +1,4 @@
-#include "filtro1widget.h"
+#include "headers/filtro1widget.h"
 #include "ui_filtro1widget.h"
 
 Filtro1Widget::Filtro1Widget(QWidget *parent) :

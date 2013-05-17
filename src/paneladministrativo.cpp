@@ -1,4 +1,4 @@
-#include "paneladministrativo.h"
+#include "headers/paneladministrativo.h"
 #include "ui_paneladministrativo.h"
 
 PanelAdministrativo::PanelAdministrativo(QWidget *parent) :
