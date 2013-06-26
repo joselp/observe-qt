@@ -21,13 +21,18 @@ public:
     explicit Visualizador(QWidget *parent = 0);
     void initGui();
     void initLectura(); //Comienza la lectura de linea de datos del archivo fits.
-    void setTotalLineas(int total); //Coloca el total de lineas para asignarlo al proceso fits
     ~Visualizador();
 
+    //Setters
+    void setTotalLineas(int total); //Asigna el total de lineas para al proceso fits
+    void setPrueba(QString); //Asigna la variable prueba que se realizara en proceso fits
+    void setNumeroLineaActual(int); //Asigna el numero de linea que se esta leyendo al procesoFits
+    void setCondicionesCielo(QString ); //Envia las condiciones del cielo a procesoFits
+
 private slots:
-    void zoomIn();
-    void zoomOut();
-    void zoomNormal();
+//    void zoomIn();
+//    void zoomOut();
+//    void zoomNormal();
     void slotParaManejarRaton(int, int);
     void slotQnx1();
     void slotQnx2();
@@ -40,7 +45,6 @@ private slots:
 
 private:
 
-
     ProcesoFits *procesoFits;
     QGraphicsScene *scene;
     GraphWidget *visor;
@@ -48,6 +52,8 @@ private:
     QScrollArea *scrollArea;  /*!< Área de scroll.  */
     MyScrollArea *myScroll;
     int totalLineas;
+    QString prueba;
+
 };
 
 #endif // VISUALIZADOR_H

@@ -15,7 +15,7 @@ class FormHome : public QWidget
 public:
     explicit FormHome(QWidget *parent = 0);
     void asignarForm(QWidget *);
-    QPushButton* obtenerButtonAcceder();
+    QPushButton* getButtonAcceder();
 
     bool autenticar();
     ~FormHome();

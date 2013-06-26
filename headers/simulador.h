@@ -17,6 +17,7 @@ class Simulador : public QMainWindow
     
 public:
     explicit Simulador(QWidget *parent = 0);
+    void initGui();
     void cambiarPanel(QWidget*); //Me permite cambiar los paneles de la ventana principal del simulador
     void removerContenidoWidget(); //Remueve el widget que se encuentre en el layout de contenido
     void mostrarMenu();//Muestra el menu del lado izquierdo
@@ -27,7 +28,10 @@ public:
 public slots:
     void slotAcceder(); //Verifico si puedo acceder al simulador
     void slotPanelAdministrativo(); //Inicia la ventana de panel administrativo
-    void slotImagenesNormales();
+    void slotDrifscan();
+    void slotDrifscanMod();
+    void slotBias();
+    void slotDarkDrifscan();
     void slotSalir(); //Cierra el sistema
 
 

@@ -101,7 +101,7 @@ void AdquisicionDatos::logicaGui()
 
     //connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotObservar()));
 
-    connect(ui->modiaPushButton,SIGNAL(clicked()),this,SLOT(slotModia()));
+    //connect(ui->modiaPushButton,SIGNAL(clicked()),this,SLOT(slotModia()));
 
     connect(ui->salirPushButton,SIGNAL(clicked()),this,SLOT(slotSalir()));
 
@@ -789,32 +789,50 @@ void AdquisicionDatos::closeEvent(QCloseEvent *)
     //exit(0);
 }
 
-CabecerasFits *AdquisicionDatos::obtenerCabeceraFits()
+CabecerasFits *AdquisicionDatos::getCabeceraFits()
 {
     return ventanaCabeceraFits;
 }
 
-Visualizador *AdquisicionDatos::obtenerVisualizador()
+Visualizador *AdquisicionDatos::getVisualizador()
 {
     return visualizador;
 }
 
-QPushButton *AdquisicionDatos::obtenerBotonObservar()
+QPushButton *AdquisicionDatos::getBotonObservar()
 {
     return ui->observarPushButton;
 }
 
-QComboBox *AdquisicionDatos::obtenerComandoDeObservacionComboBox()
+QPushButton *AdquisicionDatos::getBotonModia()
+{
+    return ui->modiaPushButton;
+}
+
+QComboBox *AdquisicionDatos::getComandoDeObservacionComboBox()
 {
     return ui->comandoDeObservacionComboBox;
 }
 
-QLineEdit *AdquisicionDatos::obtenerNumeroLineasLeer()
+QLineEdit *AdquisicionDatos::getNumeroLineasLeer()
 {
     return ui->NumeroLineasLeerlineEdit;
 }
 
-bool AdquisicionDatos::obtenerRealizarObservacion()
+int AdquisicionDatos::getLineasLeidas()
+{
+    return lineasLeidas;
+}
+
+void AdquisicionDatos::seleccionarComandoDeObservacionComboBox(int i)
+{
+    if(primero==true)
+        ui->comandoDeObservacionComboBox->setCurrentIndex(i);
+    else
+        ui->comandoDeObservacionComboBox->setCurrentIndex(i-1);
+}
+
+bool AdquisicionDatos::getRealizarObservacion()
 {
     return realizarObservacion;
 }
@@ -1157,12 +1175,13 @@ void AdquisicionDatos::crearRetardoFit()
 
     }
     else
-        logTimer->setInterval(4000);
+        logTimer->setInterval(30);
 
 }
 
 void AdquisicionDatos::slotLogTimer()
 {
+
 
     //Verifico si el tipo de observacion implica tiempo de exposicion y se hace su simulacion
     if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Guiada" || ui->comandoDeObservacionComboBox->currentText()=="Darks Guiado" ||
@@ -1170,7 +1189,6 @@ void AdquisicionDatos::slotLogTimer()
 
 
         ui->tiempoExposicionlineEdit->setText(QString::number(contadorTiempoExposicion)+"/"+QString::number(tiempoExposicion));
-
 
 
         if(contadorTiempoExposicion%4==0)
@@ -1187,10 +1205,13 @@ void AdquisicionDatos::slotLogTimer()
     else{
 
         //if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Drifscan"){
-        if(contadorTiempoExposicion%4==0){
+        lineasLeidas++;
+        //visualizador->setNumeroLineaActual(lineasLeidas);
+        if(lineasLeidas%1024==0){
+            //qDebug()<<"Lineas Leidas "<<lineasLeidas<<" Hola";
             if(lineasLeidas < ui->NumeroLineasLeerlineEdit->text().toInt(0))
                 ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"1024 lineas leidas");
-            lineasLeidas+=1024;
+            //lineasLeidas++;
             if(lineasLeidas >= ui->NumeroLineasLeerlineEdit->text().toInt(0)){
                 ui->observarPushButton->setStyleSheet("");
                 logTimer->stop();

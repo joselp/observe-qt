@@ -31,51 +31,51 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButtonNormales">
+       <widget class="QPushButton" name="pushButtonDrifscan">
         <property name="text">
-         <string>Normales</string>
+         <string>Drifscan</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButtonNublado">
+       <widget class="QPushButton" name="pushButtonDMod">
         <property name="text">
-         <string>Nublado</string>
+         <string>Drifscan/</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButtonViento">
+       <widget class="QPushButton" name="pushButtonGuiada">
         <property name="text">
-         <string>Mucho Viento</string>
+         <string>Guiada</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButtonFoco">
+       <widget class="QPushButton" name="pushButtonDarksGuiada">
         <property name="text">
-         <string>Mal Foco</string>
+         <string>Darks Guiada</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButtonObturador">
+       <widget class="QPushButton" name="pushButtonDarksDrif">
         <property name="text">
-         <string>Obturador</string>
+         <string>Darks Drisfcan</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButtonFlats">
+       <widget class="QPushButton" name="pushButtonFlatsGuiada">
         <property name="text">
-         <string>Flats</string>
+         <string>Flats Guiada</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButtonDarks">
+       <widget class="QPushButton" name="pushButtonFlatsDrif">
         <property name="text">
-         <string>Darks</string>
+         <string>Flats Drifscan</string>
         </property>
        </widget>
       </item>
@@ -87,16 +87,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButtonPrisma">
+       <widget class="QPushButton" name="pushButtonFoco">
         <property name="text">
-         <string>Prisma</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonDedos">
-        <property name="text">
-         <string>Dedos</string>
+         <string>Foco</string>
         </property>
        </widget>
       </item>
@@ -207,7 +200,7 @@
   </action>
   <action name="actionCargar_Prueba">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/images/cargarPrueba.jpeg</normaloff>:/images/cargarPrueba.jpeg</iconset>
    </property>
    <property name="text">
@@ -234,7 +227,7 @@
   </action>
  </widget>
  <resources>
-  <include location="resource.qrc"/>
+  <include location="../resource.qrc"/>
  </resources>
  <connections/>
 </ui>

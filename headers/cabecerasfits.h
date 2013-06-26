@@ -58,6 +58,7 @@ public:
     QString getFrecuenciaYic();
     QString getFrecuenciaRa();
     QString getFrecuenciaDec();
+    QString getCondicionesCielo();
 
     //Setter
     void setNombreObjeto(QString);

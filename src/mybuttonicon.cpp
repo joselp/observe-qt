@@ -1,6 +1,6 @@
 #include "headers/mybuttonicon.h"
 
-myButtonIcon::myButtonIcon(QWidget *parent) :
+myButtonIcon::myButtonIcon(QWidget *parent):
     QPushButton(parent)
 {
 }

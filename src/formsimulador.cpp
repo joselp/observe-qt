@@ -7,12 +7,18 @@ FormSimulador::FormSimulador(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->mdiArea->setBackground(*new QBrush(*new QPixmap(":/images/fedora17.png")));
+    fondo.load(":/images/pantalla1.jpg");
+
+
+    //ui->mdiArea->setBackground(*new QBrush(*new QPixmap(":/images/fedora17.png")));
+
+    ui->mdiArea->setBackground(*new QBrush(scaledPixmap));
     ui->mdiArea->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 
-    adquisicionDatos= new AdquisicionDatos;
-    //cabecerasFits = new CabecerasFits;
-    connect(adquisicionDatos->obtenerBotonObservar(),SIGNAL(clicked()),this,SLOT(slotIniciarObservacion()));
+//    adquisicionDatos= new AdquisicionDatos;
+//    //cabecerasFits = new CabecerasFits;
+//    connect(adquisicionDatos->getBotonObservar(),SIGNAL(clicked()),this,SLOT(slotIniciarObservacion()));
+//    connect(adquisicionDatos->getBotonModia(),SIGNAL(clicked()),this,SLOT(slotModia()));
 
     //Boton que emula icono en el escritorio.
 
@@ -29,14 +35,26 @@ FormSimulador::FormSimulador(QWidget *parent) :
     iconControlSchmidt->setStyleSheet( "QPushButton{background-color: white;background-image:url(':/images/iconControlS.jpg'); border-style: inset;border-width: 0px;border-radius: 0px;border-color: beige;border-color: rgb(217, 217, 217);font: bold 10px; text-align:left} QPushButton:pressed {background-color:blue; border-style: inset;}");
     connect(iconControlSchmidt,SIGNAL(doubleclick()),this,SLOT(slotControlShmidt()));
 
+
 }
 
 void FormSimulador::asignarVentanas()
 {
+        //delete adquisicionDatos;
+        //adquisicionDatos= new AdquisicionDatos;
+
+    adquisicionDatos= new AdquisicionDatos;
+    //cabecerasFits = new CabecerasFits;
+    connect(adquisicionDatos->getBotonObservar(),SIGNAL(clicked()),this,SLOT(slotIniciarObservacion()));
+    connect(adquisicionDatos->getBotonModia(),SIGNAL(clicked()),this,SLOT(slotModia()));
+
+
+
         ui->mdiArea->addSubWindow(adquisicionDatos);
-        ui->mdiArea->addSubWindow(adquisicionDatos->obtenerCabeceraFits());
+        ui->mdiArea->addSubWindow(adquisicionDatos->getCabeceraFits());
         adquisicionDatos->show();
-        adquisicionDatos->obtenerCabeceraFits()->show();
+        adquisicionDatos->getCabeceraFits()->show();
+
 }
 
 void FormSimulador::slotIniciarObservacion()
@@ -59,15 +77,15 @@ void FormSimulador::slotIniciarObservacion()
 
     //Verifico el tipo de observacion para asi determinar el total de lineas a mostrar en el visualizador
 
-    if(adquisicionDatos->obtenerComandoDeObservacionComboBox()->currentText()=="Observacion Guiada" || adquisicionDatos->obtenerComandoDeObservacionComboBox()->currentText()=="Darks Guiado" ||
-            adquisicionDatos->obtenerComandoDeObservacionComboBox()->currentText()=="Flats Guiado" || adquisicionDatos->obtenerComandoDeObservacionComboBox()->currentText()=="Bias"){
+    if(adquisicionDatos->getComandoDeObservacionComboBox()->currentText()=="Observacion Guiada" || adquisicionDatos->getComandoDeObservacionComboBox()->currentText()=="Darks Guiado" ||
+            adquisicionDatos->getComandoDeObservacionComboBox()->currentText()=="Flats Guiado" || adquisicionDatos->getComandoDeObservacionComboBox()->currentText()=="Bias"){
 
-        adquisicionDatos->obtenerVisualizador()->setTotalLineas(2048);
+        adquisicionDatos->getVisualizador()->setTotalLineas(2048);
 
     }
     else
         //        //if(visualizador->isVisible()){
-        adquisicionDatos->obtenerVisualizador()->setTotalLineas(adquisicionDatos->obtenerNumeroLineasLeer()->text().toInt());
+        adquisicionDatos->getVisualizador()->setTotalLineas(adquisicionDatos->getNumeroLineasLeer()->text().toInt());
     //            visualizador->initLectura();
     // }
     //    }
@@ -75,13 +93,27 @@ void FormSimulador::slotIniciarObservacion()
     //    if(realizarObservacion==false)
     //        qDebug()<<"Observacion no realizada";
 
-    qDebug()<<adquisicionDatos->obtenerNumeroLineasLeer()->text().toInt();
+    adquisicionDatos->getVisualizador()->setCondicionesCielo(adquisicionDatos->getCabeceraFits()->getCondicionesCielo());
 
-    adquisicionDatos->obtenerVisualizador()->initLectura();
-    adquisicionDatos->crearRetardoFit();
+//    adquisicionDatos->getVisualizador()->initLectura();
+      adquisicionDatos->crearRetardoFit();
 
-    ui->mdiArea->addSubWindow(adquisicionDatos->obtenerVisualizador());
-    //adquisicionDatos->obtenerVisualizador();
+//    ui->mdiArea->addSubWindow(adquisicionDatos->getVisualizador());
+    //adquisicionDatos->getVisualizador();
+}
+
+void FormSimulador::slotModia()
+{
+
+    adquisicionDatos->getVisualizador()->setNumeroLineaActual(adquisicionDatos->getLineasLeidas());
+
+    adquisicionDatos->getVisualizador()->initLectura();
+
+    ui->mdiArea->addSubWindow(adquisicionDatos->getVisualizador());
+    adquisicionDatos->getVisualizador()->show();
+
+
+
 }
 
 void FormSimulador::slotControlShmidt()
@@ -89,9 +121,22 @@ void FormSimulador::slotControlShmidt()
     qDebug()<<"HOLA MUNDO";
 }
 
-
 FormSimulador::~FormSimulador()
 {
     delete ui;
+}
+
+
+void FormSimulador::resizeEvent(QResizeEvent *)
+{
+    scaledPixmap = fondo.scaled(ui->mdiArea->size());
+
+    ui->mdiArea->setBackground(*new QBrush(scaledPixmap));
+
+}
+
+AdquisicionDatos *FormSimulador::getAdquisicionDatos()
+{
+    return adquisicionDatos;
 }
 
