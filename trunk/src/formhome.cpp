@@ -20,7 +20,7 @@ FormHome::~FormHome()
     delete ui;
 }
 
-QPushButton *FormHome::obtenerButtonAcceder()
+QPushButton *FormHome::getButtonAcceder()
 {
     return ui->acccederPushButton;
 }

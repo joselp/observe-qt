@@ -1419,6 +1419,11 @@ QString CabecerasFits::getFrecuenciaDec()
     return ui->frecuenciaDecLineEdit->text();
 }
 
+QString CabecerasFits::getCondicionesCielo()
+{
+    return ui->condicionesCieloComboBox->currentText();
+}
+
 QString CabecerasFits::getOrientacionPrisma()
 {
     return ui->orientacionPrismaLineEdit->text();

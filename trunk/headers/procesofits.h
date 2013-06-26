@@ -10,6 +10,7 @@
 #include <QVBoxLayout>
 #include <QTimerEvent>
 #include <string>
+#include <QString>
 #include "stdio.h"
 #include "iostream"
 #include "stdlib.h"
@@ -28,8 +29,30 @@ public:
     void printerror(int );
     void dibujarLinea();
     void barraVisualizador(QScrollArea *scrollArea);
+    void resetProceso(); //Funcion que reinicia el proceso de lectura del archivo fits para comenzar la lectura de otro archivo fits
+
+    //Cargar Pruebas
+    void pruebaDriftScan();
+    void pruebaDriftScanModificado();
+    void pruebaGuiada();
+    void pruebaDarkGuiada();
+    void pruebaDarkDriftScan();
+    void pruebaDarkDriftScanNublado();
+    void pruebaFlatsGuiada();
+    void pruebaFlatsDriftScan();
+    void pruebaBias();
+
+
+    //Getters
+    QString getQnx();
+
+    //Setters
     void setTotalLineas(int total);
-    void resetProceso();
+    void setPrueba(QString); //Asigna la prueba que se realizara
+    void setQnx(QString);
+    void setCcd(QString);
+    void setLineaActual(int);
+    void setCondicionesCielo(QString condiciones);
 
 protected:
     /*!
@@ -59,8 +82,12 @@ private:
     int line;
     QString fileLine, value;
 
-    int lineas;
+    int lineas; //Total de lineas que se han leido
     int totalLineas; //Total de lineas que se deben leer segun Adquisicion de datos.
+    int lineaActual; //Linea que va procesando el simulador.
+    int lineaActualAux; //Variable que se usa para mantener el valor original de la variable lineaActual
+    int Numeroimagen; //Numero de imagenes que se han leido
+    int tam; //Tamaño que va creciendo target y source. (Los rectangulos donde se muestra la imagen)
 
     QPainter *painter;
 
@@ -73,11 +100,21 @@ private:
     QLabel *imageLabel;
     double scaleFactor;
     int multiplo;
+    QString ccd; //Indica el ccd en que se encuentra observando
+    QString qnx; //Indica el Qnx que se encuentra observando
+    QString condicionesCielo; //Condiciones en que se encuentra el cielo(Nublado-Despeado, etc)
 
     QVBoxLayout *vlayout;
     QScrollArea *scrollAux;
 
     bool primera; //Permite saber si es la primera imagen que se muestra
+    bool cambio; //Permite saber si se cambia de ccd o qnx
+    bool finalizado; //Permite saber si se finalizo la observacion
+    int initTimer; //Permite saber si se debe iniciar el timer
+    QString prueba;
+
+    QVector<QString> imagenesObservacion;
+
 signals:
 
 public slots:

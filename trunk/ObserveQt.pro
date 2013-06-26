@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql webkit qsqlpsql qsqlmysql
+
 
 TARGET = ObserveQt
 TEMPLATE = app
@@ -24,7 +25,9 @@ SOURCES += bd/manejadorbd.cpp \
     src/formhome.cpp \
     src/filtro1widget.cpp \
     src/cabecerasfits.cpp \
-    src/adquisiciondatos.cpp
+    src/adquisiciondatos.cpp \
+    src/miTextArea.cpp \
+    src/terminal.cpp
 
 HEADERS  += bd/manejadorbd.h \
     headers/visualizador.h \
@@ -40,7 +43,9 @@ HEADERS  += bd/manejadorbd.h \
     headers/conexion.h \
     headers/cabecerasfits.h \
     headers/adquisiciondatos.h \
-    headers/paneladministrativo.h
+    headers/paneladministrativo.h \
+    headers/miTextArea.h \
+    headers/terminal.h
 
 FORMS    += gui/visualizador.ui \
     gui/simulador.ui \
@@ -50,7 +55,8 @@ FORMS    += gui/visualizador.ui \
     gui/formhome.ui \
     gui/filtro1widget.ui \
     gui/cabecerasfits.ui \
-    gui/adquisiciondatos.ui
+    gui/adquisiciondatos.ui \
+    gui/terminal.ui
 
 RESOURCES += \
     resource.qrc \

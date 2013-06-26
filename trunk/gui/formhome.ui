@@ -18,7 +18,7 @@
     <rect>
      <x>9</x>
      <y>9</y>
-     <width>706</width>
+     <width>731</width>
      <height>200</height>
     </rect>
    </property>
@@ -26,52 +26,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="resource.qrc">:/images/cidaHome.jpg</pixmap>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="olvidoPasswordpushButton_2">
-   <property name="geometry">
-    <rect>
-     <x>421</x>
-     <y>330</y>
-     <width>120</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>120</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"> QPushButton{
-     border-style: inset;
-     border-width: 0px;
-     border-radius: 0px;
-     border-color: beige;
-	 border-color: rgb(217, 217, 217);
-     font: bold 10px;
-     min-width: 10em;
-     text-align:left;
- }
-
-QPushButton:hover{
-    color:rgb(0, 0, 116);
-    border-style: inset;
-}
-
-QPushButton:pressed {
-     border-style: inset;
- }
-
-</string>
-   </property>
-   <property name="text">
-    <string>Crear Cuenta</string>
+    <pixmap resource="../resource.qrc">:/images/cidaHome2.jpg</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="labelUser">
@@ -85,51 +40,6 @@ QPushButton:pressed {
    </property>
    <property name="text">
     <string>Usuario:</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="olvidoPasswordpushButton">
-   <property name="geometry">
-    <rect>
-     <x>421</x>
-     <y>307</y>
-     <width>120</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>120</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"> QPushButton{
-     border-style: inset;
-     border-width: 0px;
-     border-radius: 0px;
-     border-color: beige;
-	 border-color: rgb(217, 217, 217);
-     font: bold 10px;
-     min-width: 10em;
-     text-align:left;
- }
-
-QPushButton:hover{
-    color:rgb(0, 0, 116);
-    border-style: inset;
-}
-
-QPushButton:pressed {
-     border-style: inset;
- }
-
-</string>
-   </property>
-   <property name="text">
-    <string>¿Olvido su contraseña?</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="userLineEdit">
@@ -178,9 +88,109 @@ QPushButton:pressed {
     <string>Contraseña:</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="olvidoPasswordpushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>421</x>
+     <y>330</y>
+     <width>120</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 10px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+    color:rgb(0, 0, 116);
+    border-style: inset;
+}
+
+QPushButton:pressed {
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>Crear Cuenta</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="olvidoPasswordpushButton">
+   <property name="geometry">
+    <rect>
+     <x>421</x>
+     <y>307</y>
+     <width>120</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton{
+     border-style: inset;
+     border-width: 0px;
+     border-radius: 0px;
+     border-color: beige;
+	 border-color: rgb(217, 217, 217);
+     font: bold 10px;
+     min-width: 10em;
+     text-align:left;
+ }
+
+QPushButton:hover{
+    color:rgb(0, 0, 116);
+    border-style: inset;
+}
+
+QPushButton:pressed {
+     border-style: inset;
+ }
+
+</string>
+   </property>
+   <property name="text">
+    <string>¿Olvido su contraseña?</string>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>olvidoPasswordpushButton_2</zorder>
+  <zorder>labelUser</zorder>
+  <zorder>olvidoPasswordpushButton</zorder>
+  <zorder>userLineEdit</zorder>
+  <zorder>acccederPushButton</zorder>
+  <zorder>passLineEdi</zorder>
+  <zorder>labelContrasena</zorder>
+  <zorder>olvidoPasswordpushButton_2</zorder>
+  <zorder>olvidoPasswordpushButton</zorder>
  </widget>
  <resources>
-  <include location="resource.qrc"/>
+  <include location="../resource.qrc"/>
  </resources>
  <connections/>
 </ui>

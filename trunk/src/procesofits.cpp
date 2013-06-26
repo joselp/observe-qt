@@ -15,7 +15,15 @@ ProcesoFits::ProcesoFits(QWidget *parent) :
     lineas = 0;
     line = 0;
     primera = true;
-    multiplo=2047;
+    cambio=false;
+    finalizado=false;
+    initTimer=0;
+
+    ccd = "ccd1";
+    qnx = "qnx1";
+    Numeroimagen = 1;
+    tam=1;
+
 
 }
 
@@ -29,83 +37,148 @@ void ProcesoFits::leerFits()
 
     qDebug()<<"entro";
 
-    qApp->processEvents();
+    if(finalizado==false){
 
-    fitsfile *fptr;
-    ushort nullval, pline[2049];
-    int status = 0, anynull=0;
-    long fpixel = 1;
-    ushort value1 = 32768;
-    ushort value2 = 1;
-    int nkeys, keypos;
-    char keyname1[] = "BZERO";
-    char keyname2[] = "BSCALE";
-    char comment1[] = "offset data range to that of unsigned short";
-    char comment2[] = "default scaling factor";
-    char card[FLEN_CARD];   /* standard string lengths defined in fitsioc.h */
+        qApp->processEvents();
 
-    qDebug()<<multiplo;
-
-    if(primera==true){
-        qDebug()<<"ENTRE";
-        fileLine = "obs401.qnx3.ccd2.n110.fits";
-        image = new QImage(2048, totalLineas, QImage::Format_ARGB32_Premultiplied);
-        startTimer(30);
-    }
-
-    else{
-
-        fileLine = "obs401.qnx3.ccd2.n110.fits";
-        qDebug()<<(char *)fileLine.toStdString().c_str();
-    }
-
-    //char card[FLEN_CARD];   /* standard string lengths defined in fitsioc.h */
-
-    if (fits_open_file(&fptr, (char *)fileLine.toStdString().c_str(), READWRITE, &status)){
-        printerror(status);
-    }
-
-    /*Se cambian los valores de la cabecera BZERO y BSCALE a valores ushort para
-       que al leer la linea del fits, la lea como ushort y no como float.*/
-
-    if (fits_update_key(fptr, TUSHORT, keyname1, &value1, comment1, &status))
-        printerror(status);
-
-    if (fits_update_key(fptr, TUSHORT, keyname2, &value2, comment2, &status))
-        printerror(status);
-
-    /* get no. of keywords */
-    if (fits_get_hdrpos(fptr, &nkeys, &keypos, &status) )
-        printerror( status );
-
-    qDebug()<<nkeys;
-    //Imprime la cabecera del archivo fits
-    qDebug()<<"Header listing for HDU"<< nkeys;
+        fitsfile *fptr;
+        ushort nullval, pline[2049];
+        int status = 0, anynull=0;
+        long fpixel = 1; //Primer pixel perteneciente a la imagen (archivo fits)
+        ushort value1 = 32768;
+        ushort value2 = 1;
+        int nkeys, keypos;
+        char keyname1[] = "BZERO";
+        char keyname2[] = "BSCALE";
+        char comment1[] = "offset data range to that of unsigned short";
+        char comment2[] = "default scaling factor";
+        char card[FLEN_CARD];   /* standard string lengths defined in fitsioc.h */
+        fileLine.clear();
 
 
-    for (int i = 1; i <= nkeys; i++)  {
-        if ( fits_read_record(fptr, i, card, &status) )
-            printerror( status );
+        //Se cargan la secuencia de imagenes para la prueba DriftScanBuena
 
-        qDebug()<<card; /* print the keyword card */
-    }
+        if(prueba=="DriftScan" && condicionesCielo=="Despejado")
+            pruebaDriftScan();
 
-    //qApp->processEvents();
-    for (int i=0; i<2048; i++)
-    {
+        if(prueba=="DarkDriftScan" && condicionesCielo=="Nublado")
+            pruebaDarkDriftScanNublado();
 
-        if ( fits_read_img(fptr, TUSHORT, fpixel, 2048, &nullval, pline, &anynull, &status) )
-            printerror( status );
 
-        for (int j=0; j<2048; j++){
-            matriz(j, 2047-i) = pline[j];
+        qDebug()<<imagenesObservacion.value(0);
 
-            image->setPixel(j,multiplo-i, qRgb(scalar8bit(pline[j]),scalar8bit(pline[j]),scalar8bit(pline[j])));
+        //imagenesObservacion[0]="obs401.qnx3.ccd2.n110.fits";
+
+        if(primera==true){
+
+            multiplo=2047-lineaActual;
+
+            if(initTimer==0)
+                line = lineaActual;
+
+            fileLine = "../observe-qt/pruebas/"+prueba+"/"+condicionesCielo+"/"+qnx+"/"+imagenesObservacion.value(Numeroimagen-1);
+            image = new QImage(2048, totalLineas, QImage::Format_ARGB32_Premultiplied);
+
+
+            qDebug()<<fileLine ;
+
+            if(cambio==true){
+                lineaActual=lineas;
+                //line = lineaActual;
+                multiplo=2047-lineaActual;
+                cambio=false;
+            }
+
+            if(lineaActual>=2048)
+                lineaActual = 0; //Ecuacion o variable que me determine el numero de imagen en la que se encuentra la observacion
+
+            lineaActualAux = lineaActual;
+
+            if(primera==true && initTimer==0)
+                startTimer(30);
+
 
         }
 
-        fpixel = fpixel + 2100;
+        else{
+
+            fileLine = "../observe-qt/pruebas/"+prueba+"/"+condicionesCielo+"/"+qnx+"/"+imagenesObservacion.value(Numeroimagen-1);
+            qDebug()<<(char *)fileLine.toStdString().c_str();
+            lineaActual=0;
+
+        }
+
+        //char card[FLEN_CARD];   /* standard string lengths defined in fitsioc.h */
+
+        if(prueba=="DriftScan"){
+            if (fits_open_file(&fptr, (char *)fileLine.toStdString().c_str(), READWRITE, &status)){
+                printerror(status);
+
+            }
+        }
+        if(prueba=="DarkDriftScan"){
+            if (fits_open_file(&fptr, (char *)fileLine.toStdString().c_str(), READONLY, &status)){
+                printerror(status);
+
+            }
+        }
+
+        /*Se cambian los valores de la cabecera BZERO y BSCALE a valores ushort para
+       que al leer la linea del fits, la lea como ushort y no como float.*/
+
+        if (fits_update_key(fptr, TUSHORT, keyname1, &value1, comment1, &status))
+            printerror(status);
+
+        if (fits_update_key(fptr, TUSHORT, keyname2, &value2, comment2, &status))
+            printerror(status);
+
+        /* get no. of keywords */
+        if (fits_get_hdrpos(fptr, &nkeys, &keypos, &status) )
+            printerror( status );
+
+        qDebug()<<nkeys;
+        //Imprime la cabecera del archivo fits
+        qDebug()<<"Header listing for HDU"<< nkeys;
+
+
+        for (int i = 1; i <= nkeys; i++)  {
+            if ( fits_read_record(fptr, i, card, &status) )
+                printerror( status );
+
+            qDebug()<<card; /* print the keyword card */
+        }
+
+
+        //qApp->processEvents();
+        int comenzar=0; //Variable que me permite donde comenzara a leerse el archivo fits
+
+        if(primera==true)
+            comenzar=lineaActual;
+        else
+            comenzar=lineas;
+
+
+
+        for (int i=comenzar; i<2048; i++)
+        {
+
+            if ( fits_read_img(fptr, TUSHORT, fpixel, 2048, &nullval, pline, &anynull, &status) )
+                printerror( status );
+
+            for (int j=0; j<2048; j++){
+                matriz(j, 2047-i) = pline[j];
+
+                image->setPixel(j,(multiplo-i)+lineaActual, qRgb(scalar8bit(pline[j]),scalar8bit(pline[j]),scalar8bit(pline[j])));
+
+                //qDebug()<<"Lineas: "<<lineaActual<<" aux: "<<aux<<" j: " <<j;
+            }
+
+            fpixel = fpixel + 2100;
+        }
+
     }
+    if(Numeroimagen==10)
+        Numeroimagen=1;
 
 }
 
@@ -122,7 +195,6 @@ int ProcesoFits::scalar8bit(int valor)
         return ( (valor*255.0)/65535.0 );
     }
 }
-
 
 void ProcesoFits::printerror(int)
 {
@@ -155,32 +227,45 @@ void ProcesoFits::timerEvent(QTimerEvent *e)
     //        target.setHeight(line);
     //        line=line+1;
 
+    if ( line+1 >= (totalLineas) ){
 
-    if ( line+1>=totalLineas ){
+        qDebug()<<"Finalizar al "<<totalLineas;
         killTimer(e->timerId());
-        qDebug()<<line;
         qDebug()<<"termino";
+        finalizado=true;
     }
 
 
     //qApp->processEvents();
     //qDebug()<< (line+1)%2048;
     else{
-        if((line+1)%2048==0){
-            multiplo=multiplo+2047;
-            primera=false;
-            qDebug()<<"Segunda Imagen ";
-            //source.moveTop(1);
 
-            leerFits();
-
+        //Para pasar de la primera a la segunda imagen
+        if(primera==true){
+            if((line+1)%(2048)==0){
+                multiplo=(multiplo+2047);
+                qDebug()<<"Multiplo "<<multiplo;
+                primera=false;
+                qDebug()<<"Segunda Imagen ";
+                //source.moveTop(1);
+                Numeroimagen++;
+                lineas=0;
+                leerFits();
+            }
+        }
+        //Siguientes imagenes
+        else{
+            if((line+1)%(2048)==0){
+                multiplo=(multiplo+2047);
+                qDebug()<<"Multiplo "<<multiplo;
+                qDebug()<<"Siguiente Imagen ";
+                //source.moveTop(1);
+                lineas=0;
+                leerFits();
+            }
         }
 
-        if(line>440){
-            resize(2048,line+1);
-            //source.moveTop(line+1-512);
-            scrollAux->verticalScrollBar()->setValue(line);
-        }
+
 
         //        if(line<512){
         //            source.setHeight(line);
@@ -194,11 +279,19 @@ void ProcesoFits::timerEvent(QTimerEvent *e)
         //            source.moveTop(1);
         //        }
 
-        source.setHeight(line);
-        target.setHeight(line);
+
+        if(tam>440){
+            resize(2048,tam);
+            //source.moveTop(line+1-512);
+            scrollAux->verticalScrollBar()->setValue(tam);
+        }
+
+        source.setHeight(tam);
+        target.setHeight(tam);
 
         line=line+1;
-
+        lineas++;
+        tam++;
 
         //qDebug()<<line;
 
@@ -234,13 +327,115 @@ void ProcesoFits::resetProceso()
 {
     target.setRect(0, 0, 2048, 1);
     source.setRect(0, 0, 2048, 1);
-    line = 0;
-    multiplo = 2047;
-    primera = false;
+    //line = 0;
+    tam=0;
+    //multiplo = 2047;
+    primera = true;
+    lineaActual = 0;
     scrollAux->verticalScrollBar()->setValue(0);
     resize(2048,512);
     //delete(image);
+    cambio=true;
+    initTimer++;
     leerFits();
 }
 
+void ProcesoFits::pruebaDriftScan()
+{
+    imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+}
+
+void ProcesoFits::setPrueba(QString p)
+{
+    prueba=p;
+}
+
+void ProcesoFits::pruebaDarkDriftScanNublado()
+{
+
+    imagenesObservacion.clear();
+
+    if(qnx=="qnx1" && ccd=="ccd1"){
+
+        imagenesObservacion.append("obs205.qnx1.ccd1.n2.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n2.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n3.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n4.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n5.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n6.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n7.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n8.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n9.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n10.fits");
+
+    }
+
+    if(qnx=="qnx1" && ccd=="ccd2"){
+        imagenesObservacion.append("obs205.qnx1.ccd2.n2.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd2.n2.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd2.n3.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd2.n4.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd2.n5.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd2.n6.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd2.n7.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd2.n8.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd2.n9.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd2.n10.fits");
+
+    }
+
+    if(qnx=="qnx1" && ccd=="ccd3"){
+        imagenesObservacion.append("obs205.qnx1.ccd3.n2.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd3.n2.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd3.n3.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd3.n4.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd3.n5.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd3.n6.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd3.n7.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd3.n8.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd3.n9.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd3.n10.fits");
+
+    }
+
+    if(qnx=="qnx1" && ccd=="ccd4"){
+        imagenesObservacion.append("obs205.qnx1.ccd4.n2.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd4.n2.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd4.n3.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd4.n4.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd4.n5.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd4.n6.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd4.n7.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd4.n8.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd4.n9.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd4.n10.fits");
+    }
+
+}
+
+void ProcesoFits::setQnx(QString q)
+{
+    qnx = q;
+}
+
+void ProcesoFits::setCcd(QString c)
+{
+    ccd = c;
+}
+
+void ProcesoFits::setLineaActual(int l)
+{
+    lineaActual = l;
+}
+
+void ProcesoFits::setCondicionesCielo(QString condiciones)
+{
+    condicionesCielo=condiciones;
+}
+
+QString ProcesoFits::getQnx()
+{
+    return qnx;
+}
 

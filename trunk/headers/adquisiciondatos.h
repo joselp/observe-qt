@@ -29,13 +29,19 @@ public:
     void verificarDatos(); //Verifica si todos los datos son correcto para comenzar la observacion.
     void crearRetardoFit();
     void closeEvent(QCloseEvent *); //Captura el evento cerrar Aplicacion.
-    CabecerasFits* obtenerCabeceraFits(); //Retorna el objeto cabeceraFits creado.
-    Visualizador* obtenerVisualizador(); //Retorna el obteto visualizador creado.
-    QPushButton* obtenerBotonObservar(); //Retorna el boton Observar
-    QComboBox* obtenerComandoDeObservacionComboBox(); //Retorna la variable comandoDeObservacionComboBox.
-    QLineEdit* obtenerNumeroLineasLeer(); //Retorna la variable NumeroLineasLeerlineEdit.
-    bool obtenerRealizarObservacion(); //Retorna el valor de la variable realizarObservacion.
+    void seleccionarComandoDeObservacionComboBox(int);
     ~AdquisicionDatos();
+
+    //Getters
+    int getLineasLeidas();
+    CabecerasFits* getCabeceraFits(); //Retorna el objeto cabeceraFits creado.
+    Visualizador* getVisualizador(); //Retorna el obteto visualizador creado.
+    QPushButton* getBotonObservar(); //Retorna el boton Observar
+    QPushButton* getBotonModia(); //Retorna el boton Observar
+    QComboBox* getComandoDeObservacionComboBox(); //Retorna la variable comandoDeObservacionComboBox.
+    QLineEdit* getNumeroLineasLeer(); //Retorna la variable NumeroLineasLeerlineEdit.
+    bool getRealizarObservacion(); //Retorna el valor de la variable realizarObservacion.
+
 
 private slots:
     void slotComandoDeObservacion(int); //Cambiar GUI segun asignacion

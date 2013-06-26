@@ -50,9 +50,9 @@ void Visualizador::initGui()
     procesoFits->barraVisualizador(myScroll);
 
     //Connecto los botonos de zoom
-    connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(zoomIn()));
-    connect(ui->pushButton_2,SIGNAL(clicked()),this,SLOT(zoomOut()));
-    connect(ui->pushButton_3,SIGNAL(clicked()),this,SLOT(zoomNormal()));
+//    connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(zoomIn()));
+//    connect(ui->pushButton_2,SIGNAL(clicked()),this,SLOT(zoomOut()));
+//    connect(ui->pushButton_3,SIGNAL(clicked()),this,SLOT(zoomNormal()));
     connect(myScroll, SIGNAL(mousePressed(int, int)), this, SLOT(slotParaManejarRaton(int, int)));
 
     //Asigno los textos de los Label de la ventana visualizador
@@ -88,24 +88,22 @@ void Visualizador::initLectura()
 {
     procesoFits->setTotalLineas(totalLineas);
     procesoFits->leerFits();
-
 }
 
+//void Visualizador::zoomIn()
+//{
+//    //visor->scale(1.1,1.1);
+//}
 
-void Visualizador::zoomIn()
-{
-    //visor->scale(1.1,1.1);
-}
+//void Visualizador::zoomOut()
+//{
+//    //visor->scale(0.9,0.9);
+//}
 
-void Visualizador::zoomOut()
-{
-    //visor->scale(0.9,0.9);
-}
-
-void Visualizador::zoomNormal()
-{
-    // visor->resetTransform();
-}
+//void Visualizador::zoomNormal()
+//{
+//    // visor->resetTransform();
+//}
 
 Visualizador::~Visualizador()
 {
@@ -124,6 +122,22 @@ void Visualizador::setTotalLineas(int total)
     totalLineas = total;
 }
 
+void Visualizador::setPrueba(QString p)
+{
+
+    procesoFits->setPrueba(p);
+}
+
+void Visualizador::setNumeroLineaActual(int l)
+{
+    procesoFits->setLineaActual(l);
+}
+
+void Visualizador::setCondicionesCielo(QString condiciones)
+{
+    procesoFits->setCondicionesCielo(condiciones);
+}
+
 //Definicion de los slots para manejar los botones QNX y CCDs
 
 void Visualizador::slotQnx1()
@@ -132,6 +146,8 @@ void Visualizador::slotQnx1()
     ui->pushButtonQnx2->setEnabled(true);
     ui->pushButtonQnx3->setEnabled(true);
     ui->pushButtonQnx4->setEnabled(true);
+
+    procesoFits->setQnx("qnx1");
 
     procesoFits->resetProceso();
 }
@@ -143,6 +159,8 @@ void Visualizador::slotQnx2()
     ui->pushButtonQnx3->setEnabled(true);
     ui->pushButtonQnx4->setEnabled(true);
 
+    procesoFits->setQnx("qnx2");
+
     procesoFits->resetProceso();
 }
 
@@ -152,6 +170,8 @@ void Visualizador::slotQnx3()
     ui->pushButtonQnx2->setEnabled(true);
     ui->pushButtonQnx3->setEnabled(false);
     ui->pushButtonQnx4->setEnabled(true);
+
+    procesoFits->setQnx("qnx3");
 
     procesoFits->resetProceso();
 }
@@ -163,6 +183,8 @@ void Visualizador::slotQnx4()
     ui->pushButtonQnx3->setEnabled(true);
     ui->pushButtonQnx4->setEnabled(false);
 
+    procesoFits->setQnx("qnx4");
+
     procesoFits->resetProceso();
 }
 
@@ -172,6 +194,8 @@ void Visualizador::slotCcd1()
     ui->pushButtonCcd2->setEnabled(true);
     ui->pushButtonCcd3->setEnabled(true);
     ui->pushButtonCcd4->setEnabled(true);
+
+    procesoFits->setCcd("ccd1");
 
     procesoFits->resetProceso();
 }
@@ -183,6 +207,8 @@ void Visualizador::slotCcd2()
     ui->pushButtonCcd3->setEnabled(true);
     ui->pushButtonCcd4->setEnabled(true);
 
+    procesoFits->setCcd("ccd2");
+
     procesoFits->resetProceso();
 }
 void Visualizador::slotCcd3()
@@ -192,6 +218,8 @@ void Visualizador::slotCcd3()
     ui->pushButtonCcd3->setEnabled(false);
     ui->pushButtonCcd4->setEnabled(true);
 
+    procesoFits->setCcd("ccd3");
+
     procesoFits->resetProceso();
 }
 void Visualizador::slotCcd4()
@@ -200,6 +228,8 @@ void Visualizador::slotCcd4()
     ui->pushButtonCcd2->setEnabled(true);
     ui->pushButtonCcd3->setEnabled(true);
     ui->pushButtonCcd4->setEnabled(false);
+
+    procesoFits->setCcd("ccd4");
 
     procesoFits->resetProceso();
 }
