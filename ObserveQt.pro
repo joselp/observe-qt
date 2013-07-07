@@ -27,7 +27,8 @@ SOURCES += bd/manejadorbd.cpp \
     src/cabecerasfits.cpp \
     src/adquisiciondatos.cpp \
     src/miTextArea.cpp \
-    src/terminal.cpp
+    src/terminal.cpp \
+    src/sistemadatos.cpp
 
 HEADERS  += bd/manejadorbd.h \
     headers/visualizador.h \
@@ -45,7 +46,8 @@ HEADERS  += bd/manejadorbd.h \
     headers/adquisiciondatos.h \
     headers/paneladministrativo.h \
     headers/miTextArea.h \
-    headers/terminal.h
+    headers/terminal.h \
+    headers/sistemadatos.h
 
 FORMS    += gui/visualizador.ui \
     gui/simulador.ui \
@@ -56,7 +58,8 @@ FORMS    += gui/visualizador.ui \
     gui/filtro1widget.ui \
     gui/cabecerasfits.ui \
     gui/adquisiciondatos.ui \
-    gui/terminal.ui
+    gui/terminal.ui \
+    gui/sistemadatos.ui
 
 RESOURCES += \
     resource.qrc \

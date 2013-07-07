@@ -1,7 +1,6 @@
 #include <QtGui/QApplication>
 #include "headers/adquisiciondatos.h"
 #include "headers/simulador.h"
-#include "terminal.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,11 +10,11 @@ int main(int argc, char *argv[])
 
 //    VentanaAdquisicionDatos.show();
 
-//    Simulador simulador; Descomentar
-//    simulador.show();
+    Simulador simulador;
+    simulador.show();
 
-    Terminal terminal;
-    terminal.show();
+//    Terminal terminal;
+//    terminal.show();
 
     return a.exec();
 }

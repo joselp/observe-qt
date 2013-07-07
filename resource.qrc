@@ -8,5 +8,10 @@
         <file>images/iconControlS.jpg</file>
         <file>images/pantalla1.jpg</file>
         <file>images/cidaHome2.jpg</file>
+        <file>images/consola.png</file>
+        <file>images/qnx.png</file>
+        <file>images/qnxEncendida.png</file>
+        <file>images/pc.png</file>
+        <file>images/pcEncendida.png</file>
     </qresource>
 </RCC>

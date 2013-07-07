@@ -14,7 +14,6 @@ AdquisicionDatos::AdquisicionDatos(QWidget *parent) :
     lineasLeidas=0;
     tiempoExposicion=0;
     contadorTiempoExposicion=0;
-
 }
 
 void AdquisicionDatos::iniciarGui()
