@@ -9,6 +9,7 @@ Simulador::Simulador(QWidget *parent) :
     ui->setupUi(this);
 
     connect(ui->actionSalir,SIGNAL(triggered()),this,SLOT(slotSalir()));
+    connect(ui->actionSistema_de_Adquisici_on_de_Datos,SIGNAL(triggered()),this,SLOT(slotSistemaDatos()));
     //this->showMaximized();
 
     panelAdministrativo = new PanelAdministrativo;
@@ -182,4 +183,10 @@ void Simulador::slotDarkDrifscan()
 void Simulador::slotSalir()
 {
     exit(0);
+}
+
+void Simulador::slotSistemaDatos()
+{
+    formSimulador->abrirSitemaDatos();
+
 }

@@ -13,5 +13,6 @@
         <file>images/qnxEncendida.png</file>
         <file>images/pc.png</file>
         <file>images/pcEncendida.png</file>
+        <file>images/conexion.gif</file>
     </qresource>
 </RCC>

@@ -9,6 +9,7 @@ FormSimulador::FormSimulador(QWidget *parent) :
 
     fondo.load(":/images/pantalla1.jpg");
 
+    subWindowCabeceraFits = new MySubWindow();
 
     //ui->mdiArea->setBackground(*new QBrush(*new QPixmap(":/images/fedora17.png")));
 
@@ -51,12 +52,16 @@ void FormSimulador::asignarVentanas()
 
     adquisicionDatos= new AdquisicionDatos;
     //cabecerasFits = new CabecerasFits;
-    connect(adquisicionDatos->getBotonObservar(),SIGNAL(clicked()),this,SLOT(slotIniciarObservacion()));
-    connect(adquisicionDatos->getBotonModia(),SIGNAL(clicked()),this,SLOT(slotModia()));
+    connect(adquisicionDatos->getButtonObservar(),SIGNAL(clicked()),this,SLOT(slotIniciarObservacion()));
+    connect(adquisicionDatos->getButtonModia(),SIGNAL(clicked()),this,SLOT(slotModia()));
+    connect(adquisicionDatos->getButtonEncabezados(),SIGNAL(clicked()),this,SLOT(slotEncambezados()));
+    connect(adquisicionDatos->getCabeceraFits()->getButtonCerrar(),SIGNAL(clicked()),this,SLOT(slotCerrarCabeceras()));
 
+    subWindowCabeceraFits->setWidget(adquisicionDatos->getCabeceraFits());
 
     ui->mdiArea->addSubWindow(adquisicionDatos);
-    ui->mdiArea->addSubWindow(adquisicionDatos->getCabeceraFits());
+    //ui->mdiArea->addSubWindow(adquisicionDatos->getCabeceraFits());
+    ui->mdiArea->addSubWindow(subWindowCabeceraFits);
     adquisicionDatos->show();
     adquisicionDatos->getCabeceraFits()->show();
 
@@ -119,6 +124,16 @@ void FormSimulador::slotModia()
 
 }
 
+void FormSimulador::slotEncambezados()
+{
+    subWindowCabeceraFits->show();
+}
+
+void FormSimulador::slotCerrarCabeceras()
+{
+    subWindowCabeceraFits->hide();
+}
+
 void FormSimulador::slotControlShmidt()
 {
     qDebug()<<"HOLA MUNDO";
@@ -163,3 +178,9 @@ AdquisicionDatos *FormSimulador::getAdquisicionDatos()
     return adquisicionDatos;
 }
 
+void FormSimulador::abrirSitemaDatos()
+{
+    sistemaDatos = new SistemaDatos();
+    ui->mdiArea->addSubWindow(sistemaDatos);
+    sistemaDatos->show();
+}

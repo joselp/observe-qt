@@ -59,6 +59,7 @@ public:
     QString getFrecuenciaRa();
     QString getFrecuenciaDec();
     QString getCondicionesCielo();
+    QPushButton* getButtonCerrar();
 
     //Setter
     void setNombreObjeto(QString);

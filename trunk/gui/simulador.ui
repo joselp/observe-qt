@@ -167,6 +167,7 @@
      <string>Sistema</string>
     </property>
     <addaction name="actionPanel_Administrativo"/>
+    <addaction name="actionSistema_de_Adquisici_on_de_Datos"/>
    </widget>
    <widget class="QMenu" name="menuAyuda">
     <property name="title">
@@ -188,10 +189,11 @@
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>false</bool>
+    <bool>true</bool>
    </attribute>
    <addaction name="actionCargar_Prueba"/>
    <addaction name="separator"/>
+   <addaction name="actionSistema_de_Adquisici_on_de_Datos"/>
   </widget>
   <action name="actionPanel_Administrativo">
    <property name="text">
@@ -223,6 +225,20 @@
   <action name="actionSoporte">
    <property name="text">
     <string>Acerca</string>
+   </property>
+  </action>
+  <action name="actionSistema_de_Adquisicion_de_Datos">
+   <property name="text">
+    <string>Sistema de Adquisicion de Datos</string>
+   </property>
+  </action>
+  <action name="actionSistema_de_Adquisici_on_de_Datos">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/conexion.gif</normaloff>:/images/conexion.gif</iconset>
+   </property>
+   <property name="text">
+    <string>Sistema de Adquisición de Datos</string>
    </property>
   </action>
  </widget>

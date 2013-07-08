@@ -1424,6 +1424,11 @@ QString CabecerasFits::getCondicionesCielo()
     return ui->condicionesCieloComboBox->currentText();
 }
 
+QPushButton *CabecerasFits::getButtonCerrar()
+{
+    return ui->cerrarPushButton;
+}
+
 QString CabecerasFits::getOrientacionPrisma()
 {
     return ui->orientacionPrismaLineEdit->text();
