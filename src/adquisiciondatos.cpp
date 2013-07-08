@@ -798,14 +798,19 @@ Visualizador *AdquisicionDatos::getVisualizador()
     return visualizador;
 }
 
-QPushButton *AdquisicionDatos::getBotonObservar()
+QPushButton *AdquisicionDatos::getButtonObservar()
 {
     return ui->observarPushButton;
 }
 
-QPushButton *AdquisicionDatos::getBotonModia()
+QPushButton *AdquisicionDatos::getButtonModia()
 {
     return ui->modiaPushButton;
+}
+
+QPushButton *AdquisicionDatos::getButtonEncabezados()
+{
+    return ui->emcabezadosPushButton;
 }
 
 QComboBox *AdquisicionDatos::getComandoDeObservacionComboBox()

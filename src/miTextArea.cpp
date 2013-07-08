@@ -13,7 +13,6 @@ miTextArea::miTextArea(QWidget *parent):
 void miTextArea::keyPressEvent(QKeyEvent *e)
 {
 
-
     //qDebug()<<e->key();
 
     //Tecla borrar: 16777219

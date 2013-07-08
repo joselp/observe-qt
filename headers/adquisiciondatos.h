@@ -36,8 +36,9 @@ public:
     int getLineasLeidas();
     CabecerasFits* getCabeceraFits(); //Retorna el objeto cabeceraFits creado.
     Visualizador* getVisualizador(); //Retorna el obteto visualizador creado.
-    QPushButton* getBotonObservar(); //Retorna el boton Observar
-    QPushButton* getBotonModia(); //Retorna el boton Observar
+    QPushButton* getButtonObservar(); //Retorna el Button Observar
+    QPushButton* getButtonModia(); //Retorna el Button Observar
+    QPushButton* getButtonEncabezados(); //Retorna el Button Observar
     QComboBox* getComandoDeObservacionComboBox(); //Retorna la variable comandoDeObservacionComboBox.
     QLineEdit* getNumeroLineasLeer(); //Retorna la variable NumeroLineasLeerlineEdit.
     bool getRealizarObservacion(); //Retorna el valor de la variable realizarObservacion.

@@ -28,7 +28,8 @@ SOURCES += bd/manejadorbd.cpp \
     src/adquisiciondatos.cpp \
     src/miTextArea.cpp \
     src/terminal.cpp \
-    src/sistemadatos.cpp
+    src/sistemadatos.cpp \
+    src/mysubwindow.cpp
 
 HEADERS  += bd/manejadorbd.h \
     headers/visualizador.h \
@@ -47,7 +48,8 @@ HEADERS  += bd/manejadorbd.h \
     headers/paneladministrativo.h \
     headers/miTextArea.h \
     headers/terminal.h \
-    headers/sistemadatos.h
+    headers/sistemadatos.h \
+    headers/mysubwindow.h
 
 FORMS    += gui/visualizador.ui \
     gui/simulador.ui \

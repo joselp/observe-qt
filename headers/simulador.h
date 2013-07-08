@@ -5,6 +5,7 @@
 #include "headers/formhome.h"
 #include "headers/formsimulador.h"
 #include "headers/paneladministrativo.h"
+#include "headers/sistemadatos.h"
 
 
 namespace Ui {
@@ -33,6 +34,7 @@ public slots:
     void slotBias();
     void slotDarkDrifscan();
     void slotSalir(); //Cierra el sistema
+    void slotSistemaDatos(); //Inicia el sistema de adquisicion de datos
 
 
 private:

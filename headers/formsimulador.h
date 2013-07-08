@@ -4,10 +4,12 @@
 #include <QWidget>
 #include <QPixmap>
 #include <QMouseEvent>
+#include "headers/mysubwindow.h"
 #include "headers/adquisiciondatos.h"
 #include "headers/cabecerasfits.h"
 #include "headers/mybuttonicon.h"
 #include "headers/terminal.h"
+#include "headers/sistemadatos.h"
 
 namespace Ui {
 class FormSimulador;
@@ -24,12 +26,15 @@ public:
     void resizeEvent(QResizeEvent *); //Para redimensionar el fondo
     void mouseDoubleClickEvent(QMouseEvent *);
     AdquisicionDatos* getAdquisicionDatos(); //Retorna la variable adquisicionDatos;
+    void abrirSitemaDatos();
     ~FormSimulador();
 
 
 public slots:
     void slotIniciarObservacion();
     void slotModia();
+    void slotEncambezados();
+    void slotCerrarCabeceras();
     void slotControlShmidt();
     void slotTerminal();
     void slotParaManejarRaton(int, int);
@@ -43,9 +48,11 @@ private:
     Terminal *terminal;
     myButtonIcon *iconControlSchmidt;
     myButtonIcon *iconTerminal; //Botton que simula el icono de un terminal
+    SistemaDatos *sistemaDatos;
     //CabecerasFits *cabecerasFits;
     QPixmap fondo;
     QPixmap scaledPixmap;
+    MySubWindow *subWindowCabeceraFits;
 
 };
 
