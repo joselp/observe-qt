@@ -159,6 +159,7 @@ FormSimulador::~FormSimulador()
 
 void FormSimulador::resizeEvent(QResizeEvent *)
 {
+
     scaledPixmap = fondo.scaled(ui->mdiArea->size());
 
     ui->mdiArea->setBackground(*new QBrush(scaledPixmap));
@@ -181,6 +182,6 @@ AdquisicionDatos *FormSimulador::getAdquisicionDatos()
 void FormSimulador::abrirSitemaDatos()
 {
     sistemaDatos = new SistemaDatos();
-    ui->mdiArea->addSubWindow(sistemaDatos);
+    //ui->mdiArea->addSubWindow(sistemaDatos);
     sistemaDatos->show();
 }

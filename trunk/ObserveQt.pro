@@ -63,9 +63,6 @@ FORMS    += gui/visualizador.ui \
     gui/terminal.ui \
     gui/sistemadatos.ui
 
-RESOURCES += \
-    resource.qrc \
-
 LIBS += -L. \
         -lm \
         -lnsl \
@@ -73,3 +70,7 @@ LIBS += -L. \
 
 OTHER_FILES += \
     BD/SimuladorDB.db
+
+
+RESOURCES += \
+    resource.qrc

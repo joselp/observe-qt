@@ -167,7 +167,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>PC5</string>
+    <string>QNX5</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">
@@ -180,7 +180,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>PC6</string>
+    <string>QNX6</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonQnx1Encender">
@@ -261,7 +261,7 @@
     <string>Apagar</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonPc6Apagar">
+  <widget class="QPushButton" name="pushButtonQnx6Apagar">
    <property name="geometry">
     <rect>
      <x>690</x>
@@ -274,7 +274,7 @@
     <string>Apagar</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonPc6Encender">
+  <widget class="QPushButton" name="pushButtonQnx6Encender">
    <property name="geometry">
     <rect>
      <x>540</x>
@@ -287,7 +287,7 @@
     <string>Encerder</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonPc5Apagar">
+  <widget class="QPushButton" name="pushButtonQnx5Apagar">
    <property name="geometry">
     <rect>
      <x>420</x>
@@ -300,7 +300,7 @@
     <string>Apagar</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonPc5Encender">
+  <widget class="QPushButton" name="pushButtonQnx5Encender">
    <property name="geometry">
     <rect>
      <x>280</x>
@@ -352,7 +352,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../resource.qrc">:/images/qnx.png</pixmap>
+    <pixmap>:/images/qnx.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="labelQnx_2">
@@ -368,7 +368,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../resource.qrc">:/images/qnx.png</pixmap>
+    <pixmap>:/images/qnx.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="labelQnx_3">
@@ -384,7 +384,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../resource.qrc">:/images/qnx.png</pixmap>
+    <pixmap>:/images/qnx.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="labelQnx_4">
@@ -400,7 +400,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../resource.qrc">:/images/qnx.png</pixmap>
+    <pixmap>:/images/qnx.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="labelPc_5">
@@ -416,7 +416,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../resource.qrc">:/images/pc.png</pixmap>
+    <pixmap>:/images/pc.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="labelPc_6">
@@ -432,12 +432,10 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../resource.qrc">:/images/pc.png</pixmap>
+    <pixmap>:/images/pc.png</pixmap>
    </property>
   </widget>
  </widget>
- <resources>
-  <include location="../resource.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
