@@ -17,14 +17,14 @@ void SistemaDatos::initGui()
     qnx2=false;
     qnx3=false;
     qnx4=false;
-    pc5=false;
-    pc6=false;
+    Qnx5=false;
+    Qnx6=false;
     ui->pushButtonQnx1Apagar->setDisabled(true);
     ui->pushButtonQnx2Apagar->setDisabled(true);
     ui->pushButtonQnx3Apagar->setDisabled(true);
     ui->pushButtonQnx4Apagar->setDisabled(true);
-    ui->pushButtonPc5Apagar->setDisabled(true);
-    ui->pushButtonPc6Apagar->setDisabled(true);
+    ui->pushButtonQnx5Apagar->setDisabled(true);
+    ui->pushButtonQnx6Apagar->setDisabled(true);
 
     //Conecto todos los botones
 
@@ -32,15 +32,15 @@ void SistemaDatos::initGui()
     connect(ui->pushButtonQnx2Encender,SIGNAL(clicked()),this,SLOT(slotQnx2Encender()));
     connect(ui->pushButtonQnx3Encender,SIGNAL(clicked()),this,SLOT(slotQnx3Encender()));
     connect(ui->pushButtonQnx4Encender,SIGNAL(clicked()),this,SLOT(slotQnx4Encender()));
-    connect(ui->pushButtonPc5Encender,SIGNAL(clicked()),this,SLOT(slotPc5Encender()));
-    connect(ui->pushButtonPc6Encender,SIGNAL(clicked()),this,SLOT(slotPc6Encender()));
+    connect(ui->pushButtonQnx5Encender,SIGNAL(clicked()),this,SLOT(slotQnx5Encender()));
+    connect(ui->pushButtonQnx6Encender,SIGNAL(clicked()),this,SLOT(slotQnx6Encender()));
 
     connect(ui->pushButtonQnx1Apagar,SIGNAL(clicked()),this,SLOT(slotQnx1Apagar()));
     connect(ui->pushButtonQnx2Apagar,SIGNAL(clicked()),this,SLOT(slotQnx2Apagar()));
     connect(ui->pushButtonQnx3Apagar,SIGNAL(clicked()),this,SLOT(slotQnx3Apagar()));
     connect(ui->pushButtonQnx4Apagar,SIGNAL(clicked()),this,SLOT(slotQnx4Apagar()));
-    connect(ui->pushButtonPc5Apagar,SIGNAL(clicked()),this,SLOT(slotPc5Apagar()));
-    connect(ui->pushButtonPc6Apagar,SIGNAL(clicked()),this,SLOT(slotPc6Apagar()));
+    connect(ui->pushButtonQnx5Apagar,SIGNAL(clicked()),this,SLOT(slotQnx5Apagar()));
+    connect(ui->pushButtonQnx6Apagar,SIGNAL(clicked()),this,SLOT(slotQnx6Apagar()));
 }
 
 SistemaDatos::~SistemaDatos()
@@ -68,14 +68,14 @@ void SistemaDatos::setQnx4(bool a)
     qnx4=a;
 }
 
-void SistemaDatos::setPc5(bool a)
+void SistemaDatos::setQnx5(bool a)
 {
-    pc5=a;
+    Qnx5=a;
 }
 
-void SistemaDatos::setPc6(bool a)
+void SistemaDatos::setQnx6(bool a)
 {
-    pc6=a;
+    Qnx6=a;
 }
 
 bool SistemaDatos::getQnx1()
@@ -98,14 +98,14 @@ bool SistemaDatos::getQnx4()
     return qnx4;
 }
 
-bool SistemaDatos::getPc5()
+bool SistemaDatos::getQnx5()
 {
-    return pc5;
+    return Qnx5;
 }
 
-bool SistemaDatos::getPc6()
+bool SistemaDatos::getQnx6()
 {
-    return pc6;
+    return Qnx6;
 }
 
 void SistemaDatos::slotQnx1Encender()
@@ -168,13 +168,13 @@ void SistemaDatos::slotQnx4Encender()
     }
 }
 
-void SistemaDatos::slotPc5Encender()
+void SistemaDatos::slotQnx5Encender()
 {
 
     if(qnx4==true){
-        pc5=true;
-        ui->pushButtonPc5Encender->setDisabled(true);
-        ui->pushButtonPc5Apagar->setDisabled(false);
+        Qnx5=true;
+        ui->pushButtonQnx5Encender->setDisabled(true);
+        ui->pushButtonQnx5Apagar->setDisabled(false);
         ui->labelPc_5->setPixmap(QPixmap(":/images/pcEncendida.png"));
     }
     else{
@@ -186,17 +186,17 @@ void SistemaDatos::slotPc5Encender()
     }
 }
 
-void SistemaDatos::slotPc6Encender()
+void SistemaDatos::slotQnx6Encender()
 {
-    if(pc5==true){
-        pc6=true;
-        ui->pushButtonPc6Encender->setDisabled(true);
-        ui->pushButtonPc6Apagar->setDisabled(false);
+    if(Qnx5==true){
+        Qnx6=true;
+        ui->pushButtonQnx6Encender->setDisabled(true);
+        ui->pushButtonQnx6Apagar->setDisabled(false);
         ui->labelPc_6->setPixmap(QPixmap(":/images/pcEncendida.png"));
     }
     else{
         QMessageBox msg;
-        msg.setText("El protocolo indica que debe\nencerder primero Pc5");
+        msg.setText("El protocolo indica que debe\nencerder primero Qnx5");
         msg.setWindowTitle("ADVERTENCIA");
         msg.setIconPixmap(QPixmap(":/images/warning.png"));
         msg.exec();
@@ -235,18 +235,18 @@ void SistemaDatos::slotQnx4Apagar()
     ui->labelQnx_4->setPixmap(QPixmap(":/images/qnx.png"));
 }
 
-void SistemaDatos::slotPc5Apagar()
+void SistemaDatos::slotQnx5Apagar()
 {
     setQnx4(false);
-    ui->pushButtonPc5Encender->setDisabled(false);
-    ui->pushButtonPc5Apagar->setDisabled(true);
+    ui->pushButtonQnx5Encender->setDisabled(false);
+    ui->pushButtonQnx5Apagar->setDisabled(true);
     ui->labelPc_5->setPixmap(QPixmap(":/images/pc.png"));
 }
 
-void SistemaDatos::slotPc6Apagar()
+void SistemaDatos::slotQnx6Apagar()
 {
-    setPc6(false);
-    ui->pushButtonPc6Encender->setDisabled(false);
-    ui->pushButtonPc6Apagar->setDisabled(true);
+    setQnx6(false);
+    ui->pushButtonQnx6Encender->setDisabled(false);
+    ui->pushButtonQnx6Apagar->setDisabled(true);
     ui->labelPc_6->setPixmap(QPixmap(":/images/pc.png"));
 }

@@ -189,7 +189,7 @@
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>true</bool>
+    <bool>false</bool>
    </attribute>
    <addaction name="actionCargar_Prueba"/>
    <addaction name="separator"/>
@@ -225,11 +225,6 @@
   <action name="actionSoporte">
    <property name="text">
     <string>Acerca</string>
-   </property>
-  </action>
-  <action name="actionSistema_de_Adquisicion_de_Datos">
-   <property name="text">
-    <string>Sistema de Adquisicion de Datos</string>
    </property>
   </action>
   <action name="actionSistema_de_Adquisici_on_de_Datos">

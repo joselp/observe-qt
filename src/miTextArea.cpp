@@ -1,4 +1,7 @@
 #include"headers/miTextArea.h"
+#include <iostream>
+
+using namespace std;
 
 miTextArea::miTextArea(QWidget *parent):
     QTextEdit(parent)
@@ -17,12 +20,18 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
 
     //Tecla borrar: 16777219
     if(e->key()==16777219){
-        QString aux = this->toPlainText();
-        aux.truncate(this->toPlainText().count()-1);
-        this->setText(aux);
+
+        string aux2 = this->toPlainText().toStdString();
+
+        if(aux2.substr(aux2.size()-8,aux2.size()) != "usuario>"){
+            QString aux = this->toPlainText();
+            aux.truncate(this->toPlainText().count()-1);
+
+            this->setText(aux);
+        }
     }
 
-    //Tecla Enter
+    //Tecla Enter: 16777220
     else if(e->key()==16777220){
         QStringList listaComandos; //Variable que almacerá el comando a realizar el Qprocess
         listaComandos<<this->toPlainText().split(">");

@@ -26,7 +26,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../resource.qrc">:/images/cidaHome2.jpg</pixmap>
+    <pixmap resource="../resource.qrc">:/images/cidaHome2.jpeg</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="labelUser">
@@ -178,16 +178,6 @@ QPushButton:pressed {
     <string>¿Olvido su contraseña?</string>
    </property>
   </widget>
-  <zorder>label</zorder>
-  <zorder>olvidoPasswordpushButton_2</zorder>
-  <zorder>labelUser</zorder>
-  <zorder>olvidoPasswordpushButton</zorder>
-  <zorder>userLineEdit</zorder>
-  <zorder>acccederPushButton</zorder>
-  <zorder>passLineEdi</zorder>
-  <zorder>labelContrasena</zorder>
-  <zorder>olvidoPasswordpushButton_2</zorder>
-  <zorder>olvidoPasswordpushButton</zorder>
  </widget>
  <resources>
   <include location="../resource.qrc"/>
