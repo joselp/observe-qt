@@ -23,6 +23,7 @@ public:
     void removerContenidoWidget(); //Remueve el widget que se encuentre en el layout de contenido
     void mostrarMenu();//Muestra el menu del lado izquierdo
     void ocultarMenu();//Oculta el menu del lado izquierdo
+    FormSimulador *getFormSimulador(); //Retorna formSimulador para poder cambiar el fondo
     void resizeEvent(QResizeEvent *);
     ~Simulador();
     
@@ -35,6 +36,7 @@ public slots:
     void slotDarkDrifscan();
     void slotSalir(); //Cierra el sistema
     void slotSistemaDatos(); //Inicia el sistema de adquisicion de datos
+    void slotConsola();
 
 
 private:
@@ -42,6 +44,7 @@ private:
     FormHome *formHome;
     FormSimulador *formSimulador;
     PanelAdministrativo *panelAdministrativo;
+    SistemaDatos *sistemaDatos;
 
 };
 

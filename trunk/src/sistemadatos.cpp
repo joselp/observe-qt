@@ -7,10 +7,12 @@ SistemaDatos::SistemaDatos(QWidget *parent) :
 {
     ui->setupUi(this);
     initGui();
+
 }
 
 void SistemaDatos::initGui()
 {
+
     //Todas las computadoras inician apagadas
 
     qnx1=false;
@@ -25,6 +27,7 @@ void SistemaDatos::initGui()
     ui->pushButtonQnx4Apagar->setDisabled(true);
     ui->pushButtonQnx5Apagar->setDisabled(true);
     ui->pushButtonQnx6Apagar->setDisabled(true);
+
 
     //Conecto todos los botones
 
@@ -41,6 +44,11 @@ void SistemaDatos::initGui()
     connect(ui->pushButtonQnx4Apagar,SIGNAL(clicked()),this,SLOT(slotQnx4Apagar()));
     connect(ui->pushButtonQnx5Apagar,SIGNAL(clicked()),this,SLOT(slotQnx5Apagar()));
     connect(ui->pushButtonQnx6Apagar,SIGNAL(clicked()),this,SLOT(slotQnx6Apagar()));
+}
+
+void SistemaDatos::closeEvent(QCloseEvent *)
+{
+    this->hide();
 }
 
 SistemaDatos::~SistemaDatos()
@@ -76,6 +84,12 @@ void SistemaDatos::setQnx5(bool a)
 void SistemaDatos::setQnx6(bool a)
 {
     Qnx6=a;
+}
+
+void SistemaDatos::setFormSimulador(FormSimulador *f)
+{
+    formSimulador = new FormSimulador;
+    formSimulador = f;
 }
 
 bool SistemaDatos::getQnx1()
@@ -193,6 +207,8 @@ void SistemaDatos::slotQnx6Encender()
         ui->pushButtonQnx6Encender->setDisabled(true);
         ui->pushButtonQnx6Apagar->setDisabled(false);
         ui->labelPc_6->setPixmap(QPixmap(":/images/pcEncendida.png"));
+        //Esto debe ir al encender BABEL
+        formSimulador->asignarFondo(true);
     }
     else{
         QMessageBox msg;

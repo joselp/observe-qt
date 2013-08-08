@@ -23,7 +23,8 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
 
         string aux2 = this->toPlainText().toStdString();
 
-        if(aux2.substr(aux2.size()-8,aux2.size()) != "usuario>"){
+        //if(aux2.substr(aux2.size()-8,aux2.size()) != "usuario>"){
+        if(aux2.size()!=8 && aux2.substr(0,7)!="usuario>"){
             QString aux = this->toPlainText();
             aux.truncate(this->toPlainText().count()-1);
 
@@ -43,9 +44,12 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
     else
         this->setText(this->toPlainText()+e->text());
 
+    //this->setText(this->toPlainText().toStdString().substr(0,this->textCursor().position()).c_str()+e->text()+this->toPlainText().toStdString().substr(this->textCursor().position(),this->toPlainText().toStdString().size()).c_str());
+
     //Posiciono el cursor al final de la cadena de caracteres
     QTextCursor cursor(this->textCursor());
     cursor.movePosition(QTextCursor::End);
+    //cursor.setPosition(3);
     this->setTextCursor(cursor);
 }
 

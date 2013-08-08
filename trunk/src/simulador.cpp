@@ -10,16 +10,16 @@ Simulador::Simulador(QWidget *parent) :
 
     connect(ui->actionSalir,SIGNAL(triggered()),this,SLOT(slotSalir()));
     connect(ui->actionSistema_de_Adquisici_on_de_Datos,SIGNAL(triggered()),this,SLOT(slotSistemaDatos()));
+    connect(ui->actionConsola,SIGNAL(triggered()),this,SLOT(slotConsola()));
     //this->showMaximized();
 
     panelAdministrativo = new PanelAdministrativo;
     formSimulador = new FormSimulador;
-
     formHome = new FormHome;
+    sistemaDatos = new SistemaDatos;
 
     initGui();
     ocultarMenu();
-
 
 }
 
@@ -83,6 +83,11 @@ void Simulador::ocultarMenu()
     ui->pushButtonFoco->setVisible(false);
     ui->pushButtonFlatsGuiada->setVisible(false);
     ui->menubar->setVisible(false);
+}
+
+FormSimulador *Simulador::getFormSimulador()
+{
+    return formSimulador;
 }
 
 //Para redimensionar todos los elementos de la ventana cuando cambie de tamaño.
@@ -187,6 +192,18 @@ void Simulador::slotSalir()
 
 void Simulador::slotSistemaDatos()
 {
-    formSimulador->abrirSitemaDatos();
+        //ui->mdiArea->addSubWindow(sistemaDatos);
 
+    if(sistemaDatos->isHidden())
+        sistemaDatos->show();
+    else
+        sistemaDatos->activateWindow();
+
+    sistemaDatos->setFormSimulador(this->getFormSimulador());
+
+}
+
+void Simulador::slotConsola()
+{
+    formSimulador->slotTerminal();
 }
