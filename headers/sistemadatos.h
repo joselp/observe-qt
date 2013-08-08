@@ -4,7 +4,7 @@
 #include<QWidget>
 #include<QMessageBox>
 #include<QDebug>
-
+#include "headers/formsimulador.h"
 
 namespace Ui {
 class SistemaDatos;
@@ -13,10 +13,11 @@ class SistemaDatos;
 class SistemaDatos : public QWidget
 {
     Q_OBJECT
-    
+
 public:
     explicit SistemaDatos(QWidget *parent = 0);
     void initGui();
+    void closeEvent(QCloseEvent *); //Captura el evento cerrar Aplicacion.
     ~SistemaDatos();
 
     //setters
@@ -26,6 +27,7 @@ public:
     void setQnx4(bool a);
     void setQnx5(bool a);
     void setQnx6(bool a);
+    void setFormSimulador(FormSimulador *f);
 
     //getters
     bool getQnx1();
@@ -52,6 +54,7 @@ public slots:
 
 private:
     Ui::SistemaDatos *ui;
+    FormSimulador *formSimulador; //Variable que obtiene el FormSimulador actual y asi poder cambiar su fondo.
     bool qnx1; //Indica si qnx1 esta encendida o apagada
     bool qnx2; //Indica si qnx2 esta encendida o apagada
     bool qnx3; //Indica si qnx3 esta encendida o apagada
@@ -60,5 +63,8 @@ private:
     bool Qnx6; //Indica si Qnx6 esta encendida o apagada
 
 };
+
+
+
 
 #endif // SISTEMADATOS_H

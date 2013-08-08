@@ -9,7 +9,6 @@
 #include "headers/cabecerasfits.h"
 #include "headers/mybuttonicon.h"
 #include "headers/terminal.h"
-#include "headers/sistemadatos.h"
 
 namespace Ui {
 class FormSimulador;
@@ -27,6 +26,7 @@ public:
     void mouseDoubleClickEvent(QMouseEvent *);
     AdquisicionDatos* getAdquisicionDatos(); //Retorna la variable adquisicionDatos;
     void abrirSitemaDatos();
+    void asignarFondo(bool encendido);
     ~FormSimulador();
 
 
@@ -48,7 +48,6 @@ private:
     Terminal *terminal;
     myButtonIcon *iconControlSchmidt;
     myButtonIcon *iconTerminal; //Botton que simula el icono de un terminal
-    SistemaDatos *sistemaDatos;
     //CabecerasFits *cabecerasFits;
     QPixmap fondo;
     QPixmap scaledPixmap;
