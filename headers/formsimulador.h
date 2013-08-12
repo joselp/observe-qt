@@ -27,6 +27,7 @@ public:
     AdquisicionDatos* getAdquisicionDatos(); //Retorna la variable adquisicionDatos;
     void abrirSitemaDatos();
     void asignarFondo(bool encendido);
+    void abrirTerminal();
     ~FormSimulador();
 
 
@@ -36,11 +37,11 @@ public slots:
     void slotEncambezados();
     void slotCerrarCabeceras();
     void slotControlShmidt();
-    void slotTerminal();
     void slotParaManejarRaton(int, int);
 
 signals:
     void mousePressed(int x, int y);
+    void mostrarConsola();
     
 private:
     Ui::FormSimulador *ui;

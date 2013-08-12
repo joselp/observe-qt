@@ -29,7 +29,8 @@ SOURCES += bd/manejadorbd.cpp \
     src/miTextArea.cpp \
     src/terminal.cpp \
     src/sistemadatos.cpp \
-    src/mysubwindow.cpp
+    src/mysubwindow.cpp \
+    src/controlSchmidt/controlschmidt.cpp \
 
 HEADERS  += bd/manejadorbd.h \
     headers/visualizador.h \
@@ -49,7 +50,8 @@ HEADERS  += bd/manejadorbd.h \
     headers/miTextArea.h \
     headers/terminal.h \
     headers/sistemadatos.h \
-    headers/mysubwindow.h
+    headers/mysubwindow.h \
+    headers/controlSchmidt/controlschmidt.h \
 
 FORMS    += gui/visualizador.ui \
     gui/simulador.ui \
@@ -61,7 +63,8 @@ FORMS    += gui/visualizador.ui \
     gui/cabecerasfits.ui \
     gui/adquisiciondatos.ui \
     gui/terminal.ui \
-    gui/sistemadatos.ui
+    gui/sistemadatos.ui \
+    gui/controlSchmidt/controlschmidt.ui \
 
 LIBS += -L. \
         -lm \

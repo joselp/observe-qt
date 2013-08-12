@@ -141,12 +141,6 @@ void FormSimulador::slotControlShmidt()
     qDebug()<<"HOLA MUNDO";
 }
 
-void FormSimulador::slotTerminal()
-{
-    terminal = new Terminal();
-    ui->mdiArea->addSubWindow(terminal);
-    terminal->show();
-}
 
 void FormSimulador::slotParaManejarRaton(int x, int y)
 {
@@ -190,11 +184,18 @@ void FormSimulador::abrirSitemaDatos()
 
 void FormSimulador::asignarFondo(bool encendido)
 {
-
     if(encendido==true){
         fondo.load(":/images/pantalla1.jpg");
         ui->mdiArea->setBackground(*new QBrush(fondo));
         this->setGeometry(this->geometry().x(),this->geometry().y()+1,this->geometry().width(),this->geometry().height()+1);
     }
+    emit mostrarConsola();
 
+}
+
+void FormSimulador::abrirTerminal()
+{
+    terminal = new Terminal();
+    ui->mdiArea->addSubWindow(terminal);
+    terminal->show();
 }

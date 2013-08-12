@@ -51,7 +51,6 @@ public slots:
     void slotQnx5Apagar();
     void slotQnx6Apagar();
 
-
 private:
     Ui::SistemaDatos *ui;
     FormSimulador *formSimulador; //Variable que obtiene el FormSimulador actual y asi poder cambiar su fondo.

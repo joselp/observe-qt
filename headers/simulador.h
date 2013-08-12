@@ -7,7 +7,6 @@
 #include "headers/paneladministrativo.h"
 #include "headers/sistemadatos.h"
 
-
 namespace Ui {
 class Simulador;
 }
@@ -37,6 +36,7 @@ public slots:
     void slotSalir(); //Cierra el sistema
     void slotSistemaDatos(); //Inicia el sistema de adquisicion de datos
     void slotConsola();
+    void slotMostrarConsola();
 
 
 private:
