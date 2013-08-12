@@ -16,6 +16,7 @@ void Terminal::initGui()
     consolaComandos->setGeometry(0,0,this->width(),this->height());
 }
 
+
 Terminal::~Terminal()
 {
     delete ui;

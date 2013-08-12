@@ -13,6 +13,8 @@ Simulador::Simulador(QWidget *parent) :
     connect(ui->actionConsola,SIGNAL(triggered()),this,SLOT(slotConsola()));
     //this->showMaximized();
 
+    ui->actionConsola->setVisible(false);
+
     panelAdministrativo = new PanelAdministrativo;
     formSimulador = new FormSimulador;
     formHome = new FormHome;
@@ -25,6 +27,8 @@ Simulador::Simulador(QWidget *parent) :
 
 void Simulador::initGui()
 {
+    this->setWindowTitle("Simulador de Observaciones Astronomicas");
+
     formHome->setGeometry(ui->verticalLayoutContenido->geometry());
     //this->setWindowFlags(Qt::FramelessWindowHint);
     //formHome->showMaximized();
@@ -38,6 +42,8 @@ void Simulador::initGui()
     connect(ui->pushButtonDMod,SIGNAL(clicked()),this,SLOT(slotDrifscanMod()));
     connect(ui->pushButtonDarksDrif,SIGNAL(clicked()),this,SLOT(slotDarkDrifscan()));
     ui->pushButtonDMod->setText("Drifscan\nModificado");
+
+    connect(formSimulador,SIGNAL(mostrarConsola()),this,SLOT(slotMostrarConsola()));
 }
 
 void Simulador::cambiarPanel(QWidget *widget)
@@ -89,6 +95,7 @@ FormSimulador *Simulador::getFormSimulador()
 {
     return formSimulador;
 }
+
 
 //Para redimensionar todos los elementos de la ventana cuando cambie de tamaño.
 void Simulador::resizeEvent(QResizeEvent *)
@@ -192,7 +199,7 @@ void Simulador::slotSalir()
 
 void Simulador::slotSistemaDatos()
 {
-        //ui->mdiArea->addSubWindow(sistemaDatos);
+    //ui->mdiArea->addSubWindow(sistemaDatos);
 
     if(sistemaDatos->isHidden())
         sistemaDatos->show();
@@ -205,5 +212,10 @@ void Simulador::slotSistemaDatos()
 
 void Simulador::slotConsola()
 {
-    formSimulador->slotTerminal();
+    formSimulador->abrirTerminal();
+}
+
+void Simulador::slotMostrarConsola()
+{
+    ui->actionConsola->setVisible(true);
 }

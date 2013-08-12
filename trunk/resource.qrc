@@ -1,18 +1,23 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/cidaicon.png</file>
-        <file>images/warning.png</file>
-        <file>images/cidaHome.jpg</file>
         <file>images/cargarPrueba.jpeg</file>
-        <file>images/fedora17.png</file>
-        <file>images/iconControlS.jpg</file>
-        <file>images/pantalla1.jpg</file>
-        <file>images/cidaHome2.jpg</file>
-        <file>images/consola.png</file>
-        <file>images/qnx.png</file>
-        <file>images/qnxEncendida.png</file>
-        <file>images/pc.png</file>
-        <file>images/pcEncendida.png</file>
+        <file>images/cidaHome2.jpeg</file>
         <file>images/conexion.gif</file>
+        <file>images/fedora17.png</file>
+        <file>images/pantalla1.jpg</file>
+        <file>images/warning.png</file>
+        <file>images/pantallaApagada.jpeg</file>
+        <file>images/consola.png</file>
+        <file>images/adquisicionDatos.jpg</file>
+        <file>images/iconEncender.png</file>
+        <file>images/qnx1Encendida.jpg</file>
+        <file>images/qnx2Encendida.jpg</file>
+        <file>images/qnx3Encendida.jpg</file>
+        <file>images/qnx4Encendida.jpg</file>
+        <file>images/iconApagar.png</file>
+        <file>images/qnx5Apagada.jpg</file>
+        <file>images/qnx5Encendida.jpg</file>
+        <file>images/qnx6Apagada.jpg</file>
+        <file>images/qnx6Encendida.jpg</file>
     </qresource>
 </RCC>
