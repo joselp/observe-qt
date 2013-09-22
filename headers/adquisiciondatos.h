@@ -3,19 +3,18 @@
 
 #include <QMainWindow>
 #include <QDateTime>
-#include <QDebug>
 #include <QMessageBox>
 #include <QMouseEvent>
-#include<QSqlDatabase>
-#include<QSqlQuery>
-#include<QDebug>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QDebug>
 #include <QRegExp>
 #include <QComboBox>
 #include "cabecerasfits.h"
 #include "visualizador.h"
 
 namespace Ui {
-    class AdquisicionDatos;
+class AdquisicionDatos;
 }
 
 class AdquisicionDatos : public QMainWindow
@@ -71,6 +70,7 @@ private:
     CabecerasFits *ventanaCabeceraFits;
     Visualizador *visualizador;
     Ui::AdquisicionDatos *ui;
+
 };
 
 #endif // ADQUISICIONDATOS_H

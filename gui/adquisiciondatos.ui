@@ -310,7 +310,7 @@
       <x>10</x>
       <y>290</y>
       <width>521</width>
-      <height>81</height>
+      <height>95</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -370,7 +370,7 @@
       <x>10</x>
       <y>380</y>
       <width>521</width>
-      <height>51</height>
+      <height>70</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -717,7 +717,7 @@
       <x>570</x>
       <y>470</y>
       <width>431</width>
-      <height>91</height>
+      <height>95</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout_2">
@@ -777,7 +777,7 @@
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>false</bool>
+    <bool>true</bool>
    </attribute>
   </widget>
   <widget class="QMenuBar" name="menuBar">

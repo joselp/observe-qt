@@ -19,5 +19,38 @@
         <file>images/qnx5Encendida.jpg</file>
         <file>images/qnx6Apagada.jpg</file>
         <file>images/qnx6Encendida.jpg</file>
+        <file>images/interface2.png</file>
+        <file>images/foco.ico</file>
+        <file>images/limpiar.gif</file>
+        <file>images/observe.png</file>
+        <file>images/shutdall.gif</file>
+        <file>images/star.png</file>
+        <file>images/summary.ico</file>
+        <file>images/transferir.png</file>
+        <file>images/slayall.png</file>
+        <file>images/exit.png</file>
+        <file>images/help.png</file>
+        <file>images/cidaIcon.png</file>
+        <file>images/adquisicionDatos/babelEncendidoqnx1fail.png</file>
+        <file>images/adquisicionDatos/babelEncendidoqnx2fail.png</file>
+        <file>images/adquisicionDatos/babelEncendidoqnx3fail.png</file>
+        <file>images/adquisicionDatos/babelEncendidoqnx4fail.png</file>
+        <file>images/adquisicionDatos/babelEncendidoqnx5failqnx6fail.png</file>
+        <file>images/adquisicionDatos/babelEncendidoqnx5failqnx6ok.png</file>
+        <file>images/adquisicionDatos/babelEncendidoqnx5okqnx6fail.png</file>
+        <file>images/adquisicionDatos/babelEncendidoqnx5okqnx6ok.png</file>
+        <file>images/adquisicionDatos/qnx1Encendida.png</file>
+        <file>images/adquisicionDatos/qnx2Encendida.png</file>
+        <file>images/adquisicionDatos/qnx3Encendida.png</file>
+        <file>images/adquisicionDatos/qnx4Encendida.png</file>
+        <file>images/adquisicionDatos/qnx5Encendidaqnx1failqnx2ok.png</file>
+        <file>images/adquisicionDatos/qnx5Encendidaqnx1okqnx2ok.png</file>
+        <file>images/adquisicionDatos/qnx5Encendidoqnx1failqnx2fail.png</file>
+        <file>images/adquisicionDatos/qnx5Encendidoqnx1okqnx2fail.png</file>
+        <file>images/adquisicionDatos/qnx6Encendidoqnx3failqnx4fail.png</file>
+        <file>images/adquisicionDatos/qnx6Encendidoqnx3failqnx4ok.png</file>
+        <file>images/adquisicionDatos/qnx6Encendidoqnx3okqnx4fail.png</file>
+        <file>images/adquisicionDatos/qnx6Encendidoqnx3okqnx4ok.png</file>
+        <file>images/adquisicionDatos/sistemaDatos.png</file>
     </qresource>
 </RCC>
