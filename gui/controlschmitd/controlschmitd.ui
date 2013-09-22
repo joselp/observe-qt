@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Controlschmitd</class>
+ <widget class="QMainWindow" name="Controlschmitd">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>468</width>
+    <height>453</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>468</width>
+    <height>453</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>468</width>
+    <height>453</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="../resource.qrc">:/images/interface2.png</pixmap>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>468</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionFoco"/>
+   <addaction name="actionObserve"/>
+   <addaction name="separator"/>
+   <addaction name="actionSummary"/>
+   <addaction name="actionLimpiar"/>
+   <addaction name="actionTransferir"/>
+   <addaction name="actionAnalizar"/>
+   <addaction name="separator"/>
+   <addaction name="actionSlayall"/>
+   <addaction name="actionShutdAll"/>
+   <addaction name="separator"/>
+   <addaction name="actionAyuda"/>
+   <addaction name="actionSalir"/>
+  </widget>
+  <action name="actionFoco">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/foco.ico</normaloff>:/images/foco.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Foco</string>
+   </property>
+   <property name="toolTip">
+    <string>Foco</string>
+   </property>
+  </action>
+  <action name="actionObserve">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/observe.png</normaloff>:/images/observe.png</iconset>
+   </property>
+   <property name="text">
+    <string>Observe</string>
+   </property>
+   <property name="toolTip">
+    <string>Observe</string>
+   </property>
+  </action>
+  <action name="actionSummary">
+   <property name="icon">
+    <iconset theme="Summary" resource="../resource.qrc">
+     <normaloff>:/images/summary.ico</normaloff>:/images/summary.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Summary</string>
+   </property>
+  </action>
+  <action name="actionLimpiar">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/limpiar.gif</normaloff>:/images/limpiar.gif</iconset>
+   </property>
+   <property name="text">
+    <string>Limpiar</string>
+   </property>
+   <property name="toolTip">
+    <string>Limpiar</string>
+   </property>
+  </action>
+  <action name="actionTransferir">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/transferir.png</normaloff>:/images/transferir.png</iconset>
+   </property>
+   <property name="text">
+    <string>Transferir</string>
+   </property>
+   <property name="toolTip">
+    <string>Transferir</string>
+   </property>
+  </action>
+  <action name="actionAnalizar">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/star.png</normaloff>:/images/star.png</iconset>
+   </property>
+   <property name="text">
+    <string>Analizar</string>
+   </property>
+   <property name="toolTip">
+    <string>Analizar</string>
+   </property>
+  </action>
+  <action name="actionSlayall">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/slayall.png</normaloff>:/images/slayall.png</iconset>
+   </property>
+   <property name="text">
+    <string>Slayall</string>
+   </property>
+   <property name="toolTip">
+    <string>Slayall</string>
+   </property>
+  </action>
+  <action name="actionShutdAll">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/shutdall.gif</normaloff>:/images/shutdall.gif</iconset>
+   </property>
+   <property name="text">
+    <string>ShutdAll</string>
+   </property>
+   <property name="toolTip">
+    <string>ShutdAll</string>
+   </property>
+  </action>
+  <action name="actionAyuda">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/help.png</normaloff>:/images/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ayuda</string>
+   </property>
+   <property name="toolTip">
+    <string>Ayuda</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/exit.png</normaloff>:/images/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Salir</string>
+   </property>
+   <property name="toolTip">
+    <string>Salir</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>
