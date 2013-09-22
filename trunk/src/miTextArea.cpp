@@ -6,6 +6,7 @@ using namespace std;
 miTextArea::miTextArea(QWidget *parent):
     QTextEdit(parent)
 {
+    qnx=false;
     this->setText("usuario>");
     //Posiciono el cursor al final de la cadena de caracteres
     QTextCursor cursor(this->textCursor());
@@ -23,12 +24,23 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
 
         string aux2 = this->toPlainText().toStdString();
 
-        //if(aux2.substr(aux2.size()-8,aux2.size()) != "usuario>"){
-        if(aux2.size()!=8 && aux2.substr(0,7)!="usuario>"){
-            QString aux = this->toPlainText();
-            aux.truncate(this->toPlainText().count()-1);
+        if(qnx==false){
+            if( (aux2.size()!=8 && aux2.substr(aux2.size()-8,aux2.size())!="usuario>"))
+            {
+                QString aux = this->toPlainText();
+                aux.truncate(this->toPlainText().count()-1);
 
-            this->setText(aux);
+                this->setText(aux);
+            }
+        }
+        else{
+           qDebug()<< aux2.compare(aux2.size()-5,aux2.size(),"qnx1>");
+           if(aux2.size()!=5 && ( aux2.compare(aux2.size()-5,aux2.size(),"qnx1>")!=0))
+            {
+                QString aux = this->toPlainText();
+                aux.truncate(this->toPlainText().count()-1);
+                this->setText(aux);
+            }
         }
     }
 
@@ -55,14 +67,12 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
 
 void miTextArea::ejecutar(QString comando)
 {
-
     bool comandoValido=false; //Me permite saber si es un comando por los reconocidos en el simulador
 
     QProcess bash;
     bash.setWorkingDirectory("../observe-qt/analisisImagenes/");
     qDebug()<<bash.workingDirectory()<<" este es el directorio"<<endl;
     bash.start("bash");
-
     if(!bash.waitForStarted()){
         QMessageBox::critical(this,"ERROR","ERROR: bash no responde");
 
@@ -90,7 +100,8 @@ void miTextArea::ejecutar(QString comando)
         QString aux;
         aux.append(comando);
 
-        bash.write((const char *)aux.toStdString().c_str());
+        //bash.write((const char *)aux.toStdString().c_str());
+        bash.write("mkdir hola");
         comandoValido=true;
 
     }
@@ -107,6 +118,40 @@ void miTextArea::ejecutar(QString comando)
 
     }
 
+    if(comando=="rlogin qnx1"){
+        this->setText(this->toPlainText()+"\n"+"qnx1>");
+        qnx=true;
+    }
+
+    if(comando=="rlogin qnx2"){
+        this->setText(this->toPlainText()+"\n"+"qnx2>");
+        qnx=true;
+    }
+
+    if(comando=="rlogin qnx3"){
+        this->setText(this->toPlainText()+"\n"+"qnx3>");
+        qnx=true;
+    }
+
+    if(comando=="rlogin qnx4"){
+        this->setText(this->toPlainText()+"\n"+"qnx4>");
+        qnx=true;
+    }
+
+    if(comando=="rlogin qnx5"){
+        this->setText(this->toPlainText()+"\n"+"qnx5>");
+        qnx=true;
+    }
+
+    if(comando=="rlogin qnx6"){
+        this->setText(this->toPlainText()+"\n"+"qnx6>");
+        qnx=true;
+    }
+
+    if(comando=="exit" && qnx==true){
+        this->setText(this->toPlainText()+"\n"+"usuario>");
+        qnx=false;
+    }
 
     if(comandoValido==true){
         bash.closeWriteChannel();
@@ -131,9 +176,16 @@ void miTextArea::ejecutar(QString comando)
             qDebug()<< bash.readAllStandardOutput();
         }
     }
+    else if (comando=="exit"){
+
+    }
+
+    else if(qnx==true){
+
+    }
     else
         this->setText(this->toPlainText()+"\n"+"Orden no encontrada"+"\n"+"usuario>");
 
+
     bash.close();
 }
-

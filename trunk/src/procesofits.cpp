@@ -5,8 +5,6 @@
 ProcesoFits::ProcesoFits(QWidget *parent) :
     QWidget(parent)
 {
-
-
     resize(2048,512);
     //image = new QImage(2048, totalLineas, QImage::Format_ARGB32_Premultiplied);
     target.setRect(0, 0, 2048, 1);
@@ -24,6 +22,16 @@ ProcesoFits::ProcesoFits(QWidget *parent) :
     Numeroimagen = 1;
     tam=1;
 
+    //Inicio una consola
+    bash = new QProcess(this);
+    bash->setWorkingDirectory("../observe-qt/");
+    qDebug()<<bash->workingDirectory()<<" este es el directorio"<<endl;
+    bash->start("bash");
+
+    if(!bash->waitForStarted()){
+        QMessageBox::critical(this,"ERROR","ERROR: bash no responde");
+
+    }
 
 }
 
@@ -55,7 +63,6 @@ void ProcesoFits::leerFits()
         char card[FLEN_CARD];   /* standard string lengths defined in fitsioc.h */
         fileLine.clear();
 
-
         //Se cargan la secuencia de imagenes para la prueba DriftScanBuena
 
         if(prueba=="DriftScan" && condicionesCielo=="Despejado")
@@ -63,7 +70,6 @@ void ProcesoFits::leerFits()
 
         if(prueba=="DarkDriftScan" && condicionesCielo=="Nublado")
             pruebaDarkDriftScanNublado();
-
 
         qDebug()<<imagenesObservacion.value(0);
 
@@ -76,11 +82,10 @@ void ProcesoFits::leerFits()
             if(initTimer==0)
                 line = lineaActual;
 
-            fileLine = "../observe-qt/pruebas/"+prueba+"/"+condicionesCielo+"/"+qnx+"/"+imagenesObservacion.value(Numeroimagen-1);
+            fileLine = "../observe-qt/pruebas/"+prueba+"/"+condicionesCielo+"/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1);
             image = new QImage(2048, totalLineas, QImage::Format_ARGB32_Premultiplied);
 
-
-            qDebug()<<fileLine ;
+            qDebug()<<fileLine;
 
             if(cambio==true){
                 lineaActual=lineas;
@@ -97,12 +102,11 @@ void ProcesoFits::leerFits()
             if(primera==true && initTimer==0)
                 startTimer(30);
 
-
         }
 
         else{
 
-            fileLine = "../observe-qt/pruebas/"+prueba+"/"+condicionesCielo+"/"+qnx+"/"+imagenesObservacion.value(Numeroimagen-1);
+            fileLine = "../observe-qt/pruebas/"+prueba+"/"+condicionesCielo+"/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1);
             qDebug()<<(char *)fileLine.toStdString().c_str();
             lineaActual=0;
 
@@ -250,6 +254,9 @@ void ProcesoFits::timerEvent(QTimerEvent *e)
                 //source.moveTop(1);
                 Numeroimagen++;
                 lineas=0;
+
+                guardarImagenes();
+
                 leerFits();
             }
         }
@@ -342,6 +349,7 @@ void ProcesoFits::resetProceso()
 
 void ProcesoFits::pruebaDriftScan()
 {
+    imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
     imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
     imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
 }
@@ -437,5 +445,46 @@ void ProcesoFits::setCondicionesCielo(QString condiciones)
 QString ProcesoFits::getQnx()
 {
     return qnx;
+}
+
+void ProcesoFits::guardarImagenes()
+{
+    auxComando.append("cp pruebas/"+prueba+"/"+condicionesCielo+"/qnx1/"+"ccd1/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images1/"+imagenesObservacion.value(Numeroimagen-1));
+    bash->write((const char *)auxComando.toStdString().c_str());
+    auxComando.clear();
+    bash->closeWriteChannel();
+    if(!bash->waitForFinished()){
+        QMessageBox::critical(this,"ERROR","ERROR: comandos consumiendo recursos en sistemas ");
+
+    }
+
+    bash->start("bash");
+    auxComando.append("cp pruebas/"+prueba+"/"+condicionesCielo+"/qnx1/"+"ccd2/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images2/"+imagenesObservacion.value(Numeroimagen-1));
+    bash->write((const char *)auxComando.toStdString().c_str());
+    auxComando.clear();
+    bash->closeWriteChannel();
+    if(!bash->waitForFinished()){
+        QMessageBox::critical(this,"ERROR","ERROR: comandos consumiendo recursos en sistemas ");
+
+    }
+
+    bash->start("bash");
+    auxComando.append("cp pruebas/"+prueba+"/"+condicionesCielo+"/qnx1/"+"ccd3/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images3/"+imagenesObservacion.value(Numeroimagen-1));
+    bash->write((const char *)auxComando.toStdString().c_str());
+    auxComando.clear();
+    bash->closeWriteChannel();
+    if(!bash->waitForFinished()){
+        QMessageBox::critical(this,"ERROR","ERROR: comandos consumiendo recursos en sistemas ");
+
+    }
+
+    bash->start("bash");
+    auxComando.append("cp pruebas/"+prueba+"/"+condicionesCielo+"/qnx1/"+"ccd4/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images4/"+imagenesObservacion.value(Numeroimagen-1));
+    bash->write((const char *)auxComando.toStdString().c_str());
+    bash->closeWriteChannel();
+    if(!bash->waitForFinished()){
+        QMessageBox::critical(this,"ERROR","ERROR: comandos consumiendo recursos en sistemas ");
+
+    }
 }
 

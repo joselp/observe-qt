@@ -28,7 +28,7 @@ public:
     void printerror(int );
     void dibujarLinea();
     void barraVisualizador(QScrollArea *scrollArea);
-    void resetProceso(); //Funcion que reinicia el proceso de lectura del archivo fits para comenzar la lectura de otro archivo fits
+    void resetProceso(); //Funcion que reinicia el proceso de lectura del archivo fits para comenzar la lectura de un nuevo archivo fits
 
     //Cargar Pruebas
     void pruebaDriftScan();
@@ -41,6 +41,7 @@ public:
     void pruebaFlatsDriftScan();
     void pruebaBias();
 
+    void guardarImagenes();
 
     //Getters
     QString getQnx();
@@ -113,6 +114,9 @@ private:
     QString prueba;
 
     QVector<QString> imagenesObservacion;
+
+    QProcess *bash; //Variable para ejecutar comando en un terminal.
+    QString auxComando; //Variable que contendra el comando a ser  ejecutado en un terminal.
 
 signals:
 

@@ -168,7 +168,6 @@
     </property>
     <addaction name="actionPanel_Administrativo"/>
     <addaction name="actionSistema_de_Adquisici_on_de_Datos"/>
-    <addaction name="actionConsola"/>
    </widget>
    <widget class="QMenu" name="menuAyuda">
     <property name="title">
@@ -192,11 +191,12 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionCargar_Prueba"/>
-   <addaction name="separator"/>
    <addaction name="actionSistema_de_Adquisici_on_de_Datos"/>
    <addaction name="separator"/>
+   <addaction name="actionCargar_Prueba"/>
+   <addaction name="separator"/>
    <addaction name="actionConsola"/>
+   <addaction name="actionControlShmidt"/>
   </widget>
   <action name="actionPanel_Administrativo">
    <property name="text">
@@ -246,6 +246,18 @@
    </property>
    <property name="text">
     <string>Consola</string>
+   </property>
+  </action>
+  <action name="actionControlShmidt">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/cidaIcon.png</normaloff>:/images/cidaIcon.png</iconset>
+   </property>
+   <property name="text">
+    <string>ControlShmidt</string>
+   </property>
+   <property name="toolTip">
+    <string>ControlShmidt</string>
    </property>
   </action>
  </widget>

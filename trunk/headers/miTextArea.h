@@ -25,6 +25,7 @@ public slots:
 
 private:
     QTextCursor cursor;
+    bool qnx; //variable que me indica si estoy dentro de alguna qnx desde la consola
 
 };
 

@@ -11,6 +11,7 @@ Simulador::Simulador(QWidget *parent) :
     connect(ui->actionSalir,SIGNAL(triggered()),this,SLOT(slotSalir()));
     connect(ui->actionSistema_de_Adquisici_on_de_Datos,SIGNAL(triggered()),this,SLOT(slotSistemaDatos()));
     connect(ui->actionConsola,SIGNAL(triggered()),this,SLOT(slotConsola()));
+    connect(ui->actionControlShmidt,SIGNAL(triggered()),this,SLOT(slotControlShmitd()));
     //this->showMaximized();
 
     ui->actionConsola->setVisible(false);
@@ -18,7 +19,7 @@ Simulador::Simulador(QWidget *parent) :
     panelAdministrativo = new PanelAdministrativo;
     formSimulador = new FormSimulador;
     formHome = new FormHome;
-    sistemaDatos = new SistemaDatos;
+    //sistemaDatos = new SistemaDatos;
 
     initGui();
     ocultarMenu();
@@ -117,6 +118,7 @@ void Simulador::slotAcceder()
 
         cambiarPanel(formSimulador);
         mostrarMenu();
+        this->setGeometry(0,0,QApplication::desktop()->width(),QApplication::desktop()->height());
     }
 }
 
@@ -199,14 +201,16 @@ void Simulador::slotSalir()
 
 void Simulador::slotSistemaDatos()
 {
-    //ui->mdiArea->addSubWindow(sistemaDatos);
+    //ui->->addSubWindow(sistemaDatos);
 
-    if(sistemaDatos->isHidden())
-        sistemaDatos->show();
-    else
-        sistemaDatos->activateWindow();
+    formSimulador->abrirSitemaDatos();
 
-    sistemaDatos->setFormSimulador(this->getFormSimulador());
+//    if(sistemaDatos->isHidden())
+//        sistemaDatos->show();
+//    else
+//        sistemaDatos->activateWindow();
+
+//    sistemaDatos->setFormSimulador(this->getFormSimulador());
 
 }
 
@@ -215,7 +219,22 @@ void Simulador::slotConsola()
     formSimulador->abrirTerminal();
 }
 
+void Simulador::slotControlShmitd()
+{
+    controlSchmitd = new Controlschmitd();
+    controlSchmitd->show();
+}
+
 void Simulador::slotMostrarConsola()
 {
-    ui->actionConsola->setVisible(true);
+   ui->actionConsola->setVisible(true);
+   disconnect(formSimulador,SIGNAL(mostrarConsola()),this,SLOT(slotMostrarConsola()));
+   connect(formSimulador,SIGNAL(ocultarConsola()),this,SLOT(slotOcultarConsola()));
+}
+
+void Simulador::slotOcultarConsola()
+{
+    ui->actionConsola->setVisible(false);
+    disconnect(formSimulador,SIGNAL(ocultarConsola()),this,SLOT(slotOcultarConsola()));
+    connect(formSimulador,SIGNAL(mostrarConsola()),this,SLOT(slotMostrarConsola()));
 }

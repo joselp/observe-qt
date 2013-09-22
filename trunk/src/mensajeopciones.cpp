@@ -6,6 +6,9 @@ MensajeOpciones::MensajeOpciones(QWidget *parent) :
     ui(new Ui::MensajeOpciones)
 {
     ui->setupUi(this);
+    this->setWindowFlags(Qt::Window|Qt::CustomizeWindowHint|Qt::WindowTitleHint);
+    this->setWindowModality(Qt::ApplicationModal);
+    this->setWindowTitle("Error de comunicacion");
     connect(ui->pushButtonAceptar,SIGNAL(clicked()),this,SLOT(slotAceptar()));
     cargarOpciones();
 }
@@ -15,8 +18,8 @@ void MensajeOpciones::cargarOpciones()
     int num = rand()%4; //Numero aleatorio para elegir la opcion correta
     int num2 = rand()%4; //Numero aleatorio para elegir la opcion correta
 
-    correctas << "Desconectar y conectar el cable de red" << "LLamar al tecnico" << "Reiniciar la computadora en conflicto y volver a sincronizar usando synch.sh" << "Reiniciar todo el sistema de adquisicion de datos";
-    errores << "Reiniciar la computadora en conflicto y volver a sincronizar usando synch.pl" << "Dejarla la computadora sin conexion" << "No hacer nada" << "Otra opcion 1" << "No hacer nada 2";
+    correctas << "Desconectar y conectar el cable de red" << "LLamar al tecnico" << "Reiniciar la computadora en conflicto\n y volver a sincronizar usando synch.sh" << "Reiniciar todo el sistema\n de adquisicion de datos";
+    errores << "Reiniciar la computadora en conflicto\n y volver a sincronizar usando synch.pl" << "Dejarla la computadora sin conexion" << "No hacer nada" << "Otra opcion 1" << "No hacer nada 2";
 
     if(num == 0){
     ui->radioButtonOpcion1->setText(correctas.value(num2));

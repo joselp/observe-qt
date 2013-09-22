@@ -5,7 +5,8 @@
 #include "headers/formhome.h"
 #include "headers/formsimulador.h"
 #include "headers/paneladministrativo.h"
-#include "headers/sistemadatos.h"
+#include "headers/controlschmitd/controlschmitd.h"
+#include <QDesktopWidget>
 
 namespace Ui {
 class Simulador;
@@ -36,15 +37,16 @@ public slots:
     void slotSalir(); //Cierra el sistema
     void slotSistemaDatos(); //Inicia el sistema de adquisicion de datos
     void slotConsola();
+    void slotControlShmitd();
     void slotMostrarConsola();
-
+    void slotOcultarConsola();
 
 private:
     Ui::Simulador *ui;
     FormHome *formHome;
     FormSimulador *formSimulador;
     PanelAdministrativo *panelAdministrativo;
-    SistemaDatos *sistemaDatos;
+    Controlschmitd *controlSchmitd;
 
 };
 

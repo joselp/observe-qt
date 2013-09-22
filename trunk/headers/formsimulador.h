@@ -9,6 +9,7 @@
 #include "headers/cabecerasfits.h"
 #include "headers/mybuttonicon.h"
 #include "headers/terminal.h"
+#include "headers/sistemadatos.h"
 
 namespace Ui {
 class FormSimulador;
@@ -37,11 +38,14 @@ public slots:
     void slotEncambezados();
     void slotCerrarCabeceras();
     void slotControlShmidt();
+    void slotMostrarFondo();
+    void slotOcultarFondo();
     void slotParaManejarRaton(int, int);
 
 signals:
     void mousePressed(int x, int y);
     void mostrarConsola();
+    void ocultarConsola();
     
 private:
     Ui::FormSimulador *ui;
@@ -53,6 +57,8 @@ private:
     QPixmap fondo;
     QPixmap scaledPixmap;
     MySubWindow *subWindowCabeceraFits;
+    MySubWindow *subWindowSistemaDatos;
+    SistemaDatos *sistemaDatos;
 
 };
 
