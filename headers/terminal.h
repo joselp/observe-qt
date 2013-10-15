@@ -15,11 +15,12 @@ class Terminal : public QWidget
 public:
     explicit Terminal(QWidget *parent = 0);
     void initGui();
+    miTextArea * obtenerConsolaComandos(); //Funcion que retorna el textArea que simula la consola de comandos
     ~Terminal();
     
 private:
     Ui::Terminal *ui;
     miTextArea *consolaComandos; //Variable que me permitira simular un terminal
-};
+    };
 
 #endif // TERMINAL_H

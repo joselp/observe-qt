@@ -6,6 +6,7 @@
 #include "headers/formsimulador.h"
 #include "headers/paneladministrativo.h"
 #include "headers/controlschmitd/controlschmitd.h"
+#include "bd/manejadorbd.h"
 #include <QDesktopWidget>
 
 namespace Ui {
@@ -19,12 +20,14 @@ class Simulador : public QMainWindow
 public:
     explicit Simulador(QWidget *parent = 0);
     void initGui();
+    void configurarSesionBd(); //Configura las variables para establecer la conexion con la base de datos
     void cambiarPanel(QWidget*); //Me permite cambiar los paneles de la ventana principal del simulador
     void removerContenidoWidget(); //Remueve el widget que se encuentre en el layout de contenido
     void mostrarMenu();//Muestra el menu del lado izquierdo
     void ocultarMenu();//Oculta el menu del lado izquierdo
     FormSimulador *getFormSimulador(); //Retorna formSimulador para poder cambiar el fondo
     void resizeEvent(QResizeEvent *);
+    void consultaPrueba();
     ~Simulador();
     
 public slots:
@@ -43,6 +46,7 @@ public slots:
 
 private:
     Ui::Simulador *ui;
+    ManejadorBd *manejadorBd;
     FormHome *formHome;
     FormSimulador *formSimulador;
     PanelAdministrativo *panelAdministrativo;

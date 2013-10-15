@@ -7,6 +7,7 @@ Simulador::Simulador(QWidget *parent) :
     ui(new Ui::Simulador)
 {
     ui->setupUi(this);
+    manejadorBd = new ManejadorBd();
 
     connect(ui->actionSalir,SIGNAL(triggered()),this,SLOT(slotSalir()));
     connect(ui->actionSistema_de_Adquisici_on_de_Datos,SIGNAL(triggered()),this,SLOT(slotSistemaDatos()));
@@ -21,6 +22,8 @@ Simulador::Simulador(QWidget *parent) :
     formHome = new FormHome;
     //sistemaDatos = new SistemaDatos;
 
+    configurarSesionBd();
+    consultaPrueba();
     initGui();
     ocultarMenu();
 
@@ -45,6 +48,15 @@ void Simulador::initGui()
     ui->pushButtonDMod->setText("Drifscan\nModificado");
 
     connect(formSimulador,SIGNAL(mostrarConsola()),this,SLOT(slotMostrarConsola()));
+}
+
+void Simulador::configurarSesionBd()
+{
+    manejadorBd->establecerHost("localhost");
+    manejadorBd->establecerPuerto(5432);
+    manejadorBd->establecerBaseDatos("observeBD");
+    manejadorBd->establecerNombreUsuario("joseluis");
+    manejadorBd->establecerPassword("joseluis");
 }
 
 void Simulador::cambiarPanel(QWidget *widget)
@@ -105,6 +117,29 @@ void Simulador::resizeEvent(QResizeEvent *)
     //formSimulador->resizeFondo();
 }
 
+void Simulador::consultaPrueba()
+{
+        if(manejadorBd->abrirSesion()){
+            qDebug()<<"abrio la sesion";
+
+            QSqlQuery query;
+            query.exec("SELECT nombre,id FROM persona");
+            while (query.next()) {
+                QString cedula = query.value(0).toString();
+
+                qDebug("cedula: %s ",qPrintable(cedula));
+                cedula = query.value(1).toString();
+
+                qDebug("id: %s ",qPrintable(cedula));
+            }
+
+        }
+
+        else
+            qDebug()<<"NO abrio la sesion";
+
+}
+
 Simulador::~Simulador()
 {
     delete ui;
@@ -119,6 +154,10 @@ void Simulador::slotAcceder()
         cambiarPanel(formSimulador);
         mostrarMenu();
         this->setGeometry(0,0,QApplication::desktop()->width(),QApplication::desktop()->height());
+    }
+    else{
+        QMessageBox msg;
+        msg.critical(this, "Error", "Error al iniciar sesion\nUsuario o contraseña incorrecta");
     }
 }
 

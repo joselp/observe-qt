@@ -51,6 +51,7 @@ void SistemaDatos::reinicarSistema()
     connect(ui->pushButtonQnx5Encender,SIGNAL(clicked()),this,SLOT(slotQnx5Encender()));
     connect(ui->pushButtonQnx6Encender,SIGNAL(clicked()),this,SLOT(slotQnx6Encender()));
     connect(ui->pushButtonBabel,SIGNAL(clicked()),this,SLOT(slotBabelEncender()));
+    emit ocultarFondo();
 }
 
 SistemaDatos::~SistemaDatos()
@@ -118,11 +119,48 @@ bool SistemaDatos::getQnx6()
     return Qnx6;
 }
 
+bool SistemaDatos::getBabel()
+{
+    return babel;
+}
+
+bool SistemaDatos::getError1()
+{
+    return error1;
+}
+
+bool SistemaDatos::getError2()
+{
+    return error2;
+}
+
+bool SistemaDatos::getError3()
+{
+    return error3;
+}
+
+bool SistemaDatos::getError4()
+{
+    return error4;
+}
+
+bool SistemaDatos::getError5()
+{
+    return error5;
+}
+
+bool SistemaDatos::getError6()
+{
+    return error6;
+}
+
 void SistemaDatos::slotQnx1Encender()
 {
     qnx1=true;
-
-    ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx1Encendida.png"));
+    if(babel == true)
+        ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx2qnx3qnx4Apagadaqnx5Apagadaqnx6ApagadaBabelEncendida.png"));
+    else
+        ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx1Encendida.png"));
     ui->pushButtonQnx1Encender->setIcon(QIcon(":/images/iconEncender.png"));
     disconnect(ui->pushButtonQnx1Encender,SIGNAL(clicked()),this,SLOT(slotQnx1Encender()));
     connect(ui->pushButtonQnx1Encender,SIGNAL(clicked()),this,SLOT(slotQnx1Apagar()));
@@ -132,7 +170,10 @@ void SistemaDatos::slotQnx2Encender()
 {
     if(qnx1==true){
         qnx2=true;
-        ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx2Encendida.png"));
+        if(babel == true)
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx3qnx4Apagadaqnx5Apagadaqnx6ApagadaBabelEncendida.png"));
+        else
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx2Encendida.png"));
         ui->pushButtonQnx2Encender->setIcon(QIcon(":/images/iconEncender.png"));
         disconnect(ui->pushButtonQnx2Encender,SIGNAL(clicked()),this,SLOT(slotQnx2Encender()));
         connect(ui->pushButtonQnx2Encender,SIGNAL(clicked()),this,SLOT(slotQnx2Apagar()));
@@ -150,7 +191,10 @@ void SistemaDatos::slotQnx3Encender()
 {
     if(qnx2==true){
         qnx3=true;
-        ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx3Encendida.png"));
+        if(babel == true)
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx4Apagadaqnx5Apagadaqnx6ApagadaBabelEncendida.png"));
+        else
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx3Encendida.png"));
         ui->pushButtonQnx3Encender->setIcon(QIcon(":/images/iconEncender.png"));
         disconnect(ui->pushButtonQnx3Encender,SIGNAL(clicked()),this,SLOT(slotQnx3Encender()));
         connect(ui->pushButtonQnx3Encender,SIGNAL(clicked()),this,SLOT(slotQnx3Apagar()));
@@ -168,7 +212,11 @@ void SistemaDatos::slotQnx4Encender()
 {
     if(qnx3==true){
         qnx4=true;
-        ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx4Encendida.png"));
+        if(babel == true)
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx5qnx6ApagadaBabelEncendida.png"));
+        else
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx4Encendida.png"));
+
         ui->pushButtonQnx4Encender->setIcon(QIcon(":/images/iconEncender.png"));
         disconnect(ui->pushButtonQnx4Encender,SIGNAL(clicked()),this,SLOT(slotQnx4Encender()));
         connect(ui->pushButtonQnx4Encender,SIGNAL(clicked()),this,SLOT(slotQnx4Apagar()));
@@ -184,22 +232,10 @@ void SistemaDatos::slotQnx4Encender()
 
 void SistemaDatos::slotQnx5Encender()
 {
-    num=rand()%2;
     QString imagen;
-    error=false;
-
-    if(num == 1){
-        num = rand()%3;
-        if(num == 0)
-            imagen = ":/images/adquisicionDatos/qnx5Encendidaqnx1failqnx2ok.png";
-        if(num == 1)
-            imagen = ":/images/adquisicionDatos/qnx5Encendidoqnx1okqnx2fail.png";
-        if(num == 2)
-            imagen = ":/images/adquisicionDatos/qnx5Encendidoqnx1failqnx2fail.png";
-
-        error=true;
+    if(babel == true){
+        imagen = ":/images/adquisicionDatos/qnx6ApagadaBabelEncendida.png";
     }
-
     else{
         imagen = ":/images/adquisicionDatos/qnx5Encendidaqnx1okqnx2ok.png";
     }
@@ -219,37 +255,25 @@ void SistemaDatos::slotQnx5Encender()
         msg.exec();
     }
 
-    if(error==true){
+    /*if(error==true){
 
         MensajeOpciones *mensaje = new MensajeOpciones();
         connect(mensaje,SIGNAL(opcionCorrecta(int)),this,SLOT(slotOpcion(int)));
         mensaje->show();
 
     }
+    */
 }
 
 void SistemaDatos::slotQnx6Encender()
 {
-    num=rand()%2;
     QString imagen;
-    error=false;
-
-    if(num == 1){
-        num = rand()%3;
-        if(num == 0)
-            imagen = ":/images/adquisicionDatos/qnx6Encendidoqnx3failqnx4ok.png";
-        if(num == 1)
-            imagen = ":/images/adquisicionDatos/qnx6Encendidoqnx3okqnx4fail.png";
-        if(num == 2)
-            imagen = ":/images/adquisicionDatos/qnx6Encendidoqnx3failqnx4fail.png";
-
-        error=true;
-    }
-
+    if(babel == true)
+        imagen = ":/images/adquisicionDatos/babelEncendidoqnx5okqnx6ok.png";
     else{
         imagen = ":/images/adquisicionDatos/qnx6Encendidoqnx3okqnx4ok.png";
-    }
 
+    }
     if(Qnx5==true){
         Qnx6=true;
         ui->labelQnx->setPixmap(QPixmap(imagen));
@@ -266,13 +290,14 @@ void SistemaDatos::slotQnx6Encender()
         msg.exec();
     }
 
-    if(error==true){
+    /*if(error==true){
 
         MensajeOpciones *mensaje = new MensajeOpciones();
         connect(mensaje,SIGNAL(opcionCorrecta(int)),this,SLOT(slotOpcion(int)));
         mensaje->show();
 
     }
+    */
 }
 
 void SistemaDatos::slotBabelEncender()
@@ -280,107 +305,193 @@ void SistemaDatos::slotBabelEncender()
 
     num=rand()%2;
     QString imagen;
-    error=false;
+    error1=false;
+    error2=false;
+    error3=false;
+    error4=false;
+    error5=false;
+    error6=false;
 
     if(num == 1){
-        num = rand()%7;
-        if(num == 0)
-            imagen = ":/images/adquisicionDatos/babelEncendidoqnx1fail.png";
-        if(num == 1)
-            imagen = ":/images/adquisicionDatos/babelEncendidoqnx2fail.png";
-        if(num == 2)
-            imagen = ":/images/adquisicionDatos/babelEncendidoqnx3fail.png";
-        if(num == 3)
-            imagen = ":/images/adquisicionDatos/babelEncendidoqnx4fail.png";
-        if(num == 4)
-            imagen = ":/images/adquisicionDatos/babelEncendidoqnx5failqnx6fail.png";
-        if(num == 5)
-            imagen = ":/images/adquisicionDatos/babelEncendidoqnx5failqnx6ok.png";
-        if(num == 6)
-            imagen = ":/images/adquisicionDatos/babelEncendidoqnx5okqnx6fail.png";
-
-        error=true;
+        error1=true;
     }
 
-    else{
-        imagen = ":/images/adquisicionDatos/babelEncendidoqnx5okqnx6ok.png";
+    num=rand()%2;
+    if(num == 1){
+
+        error2=true;
     }
 
+    num=rand()%2;
+    if(num == 1){
+
+        error3=true;
+    }
+
+    num=rand()%2;
+    if(num == 1){
+
+        error4=true;
+    }
+
+    num=rand()%2;
+    if(num == 1){
+        error5=true;
+    }
+
+    num=rand()%2;
+    if(num == 1){
+
+        error6=true;
+    }
+
+    //else{
+    imagen = ":/images/adquisicionDatos/babelEncendidoqnx5okqnx6ok.png";
+    //}
     if(Qnx6==true){
         babel = true;
         ui->labelQnx->setPixmap(QPixmap(imagen));
         ui->pushButtonBabel->setIcon(QIcon(":/images/iconEncender.png"));
         disconnect(ui->pushButtonBabel,SIGNAL(clicked()),this,SLOT(slotBabelEncender()));
         connect(ui->pushButtonBabel,SIGNAL(clicked()),this,SLOT(slotBabelApagar()));
-        emit mostrarFondo();
+        emit mostrarFondo(error1, error2, error3, error4, error5, error6);
     }
     else{
         QMessageBox msg;
-        msg.setText("El protocolo indica que debe\nencerder primero Qnx5");
+        msg.setText("El protocolo indica que debe\nencerder primero Qnx6");
         msg.setWindowTitle("ADVERTENCIA");
         msg.setIconPixmap(QPixmap(":/images/warning.png"));
         msg.exec();
     }
 
-    if(error==true){
+    /*if(error==true){
 
         MensajeOpciones *mensaje = new MensajeOpciones();
         connect(mensaje,SIGNAL(opcionCorrecta(int)),this,SLOT(slotOpcion(int)));
         mensaje->show();
 
-    }
+    }*/
 
 }
 
 void SistemaDatos::slotQnx1Apagar()
 {
-    setQnx1(false);
-    ui->labelQnx->setPixmap(QPixmap(":/images/qnx1Apagada.png"));
-    ui->pushButtonQnx1Encender->setIcon(QIcon(":/images/iconApagar.png"));
-    disconnect(ui->pushButtonQnx1Encender,SIGNAL(clicked()),this,SLOT(slotQnx1Apagar()));
-    connect(ui->pushButtonQnx1Encender,SIGNAL(clicked()),this,SLOT(slotQnx1Encender()));
+
+    if(qnx2 == false){
+        setQnx1(false);
+        if(babel == true)
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx1ApagadaBabelEncendida.png"));
+        else
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/sistemaDatos.png"));
+        ui->pushButtonQnx1Encender->setIcon(QIcon(":/images/iconApagar.png"));
+        disconnect(ui->pushButtonQnx1Encender,SIGNAL(clicked()),this,SLOT(slotQnx1Apagar()));
+        connect(ui->pushButtonQnx1Encender,SIGNAL(clicked()),this,SLOT(slotQnx1Encender()));
+    }
+    else{
+        QMessageBox msg;
+        msg.setText("El protocolo indica que debe\napagar primero Qnx2");
+        msg.setWindowTitle("ADVERTENCIA");
+        msg.setIconPixmap(QPixmap(":/images/warning.png"));
+        msg.exec();
+    }
 }
 
 void SistemaDatos::slotQnx2Apagar()
 {
-    setQnx2(false);
-    ui->labelQnx->setPixmap(QPixmap(":/images/qnx2Apagada.png"));
-    ui->pushButtonQnx2Encender->setIcon(QIcon(":/images/iconApagar.png"));
-    disconnect(ui->pushButtonQnx2Encender,SIGNAL(clicked()),this,SLOT(slotQnx2Apagar()));
-    connect(ui->pushButtonQnx2Encender,SIGNAL(clicked()),this,SLOT(slotQnx2Encender()));
+
+    if(qnx3 == false){
+        setQnx2(false);
+        if(babel == true)
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx2qnx3qnx4Apagadaqnx5Apagadaqnx6ApagadaBabelEncendida.png"));
+        else
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx1Encendida.png"));
+        ui->pushButtonQnx2Encender->setIcon(QIcon(":/images/iconApagar.png"));
+        disconnect(ui->pushButtonQnx2Encender,SIGNAL(clicked()),this,SLOT(slotQnx2Apagar()));
+        connect(ui->pushButtonQnx2Encender,SIGNAL(clicked()),this,SLOT(slotQnx2Encender()));
+    }
+    else{
+        QMessageBox msg;
+        msg.setText("El protocolo indica que debe\napagar primero Qnx3");
+        msg.setWindowTitle("ADVERTENCIA");
+        msg.setIconPixmap(QPixmap(":/images/warning.png"));
+        msg.exec();
+    }
 }
 
 void SistemaDatos::slotQnx3Apagar()
 {
-    setQnx3(false);
-    ui->labelQnx->setPixmap(QPixmap(":/images/qnx3Apagada.png"));
-    ui->pushButtonQnx3Encender->setIcon(QIcon(":/images/iconApagar.png"));
-    disconnect(ui->pushButtonQnx3Encender,SIGNAL(clicked()),this,SLOT(slotQnx3Apagar()));
-    connect(ui->pushButtonQnx3Encender,SIGNAL(clicked()),this,SLOT(slotQnx3Encender()));
+
+    if(qnx4 == false){
+        setQnx3(false);
+        if(babel == true)
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx3qnx4Apagadaqnx5Apagadaqnx6ApagadaBabelEncendida.png"));
+        else
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx2Encendida.png"));
+        ui->pushButtonQnx3Encender->setIcon(QIcon(":/images/iconApagar.png"));
+        disconnect(ui->pushButtonQnx3Encender,SIGNAL(clicked()),this,SLOT(slotQnx3Apagar()));
+        connect(ui->pushButtonQnx3Encender,SIGNAL(clicked()),this,SLOT(slotQnx3Encender()));
+    }
+    else{
+        QMessageBox msg;
+        msg.setText("El protocolo indica que debe\napagar primero Qnx4");
+        msg.setWindowTitle("ADVERTENCIA");
+        msg.setIconPixmap(QPixmap(":/images/warning.png"));
+        msg.exec();
+    }
 }
 
 void SistemaDatos::slotQnx4Apagar()
 {
-    setQnx4(false);
-    ui->labelQnx->setPixmap(QPixmap(":/images/qnx4Apagada.png"));
-    ui->pushButtonQnx4Encender->setIcon(QIcon(":/images/iconApagar.png"));
-    disconnect(ui->pushButtonQnx4Encender,SIGNAL(clicked()),this,SLOT(slotQnx4Apagar()));
-    connect(ui->pushButtonQnx4Encender,SIGNAL(clicked()),this,SLOT(slotQnx4Encender()));
+
+    if(Qnx5 == false){
+        setQnx4(false);
+        if(babel == true)
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx4Apagadaqnx5Apagadaqnx6ApagadaBabelEncendida.png"));
+        else
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx3Encendida.png"));
+        ui->pushButtonQnx4Encender->setIcon(QIcon(":/images/iconApagar.png"));
+        disconnect(ui->pushButtonQnx4Encender,SIGNAL(clicked()),this,SLOT(slotQnx4Apagar()));
+        connect(ui->pushButtonQnx4Encender,SIGNAL(clicked()),this,SLOT(slotQnx4Encender()));
+    }
+    else{
+        QMessageBox msg;
+        msg.setText("El protocolo indica que debe\napagar primero Qnx5");
+        msg.setWindowTitle("ADVERTENCIA");
+        msg.setIconPixmap(QPixmap(":/images/warning.png"));
+        msg.exec();
+    }
 }
 
 void SistemaDatos::slotQnx5Apagar()
 {
-    setQnx5(false);
-    ui->labelQnx->setPixmap(QPixmap(":/images/qnx5Apagada.png"));
-    ui->pushButtonQnx5Encender->setIcon(QIcon(":/images/iconApagar.png"));
-    disconnect(ui->pushButtonQnx5Encender,SIGNAL(clicked()),this,SLOT(slotQnx5Apagar()));
-    connect(ui->pushButtonQnx5Encender,SIGNAL(clicked()),this,SLOT(slotQnx5Encender()));
+
+    if(Qnx6 == false){
+        setQnx5(false);
+        if(babel == true)
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx5qnx6ApagadaBabelEncendida.png"));
+        else
+            ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx4Encendida.png"));
+
+        ui->pushButtonQnx5Encender->setIcon(QIcon(":/images/iconApagar.png"));
+        disconnect(ui->pushButtonQnx5Encender,SIGNAL(clicked()),this,SLOT(slotQnx5Apagar()));
+        connect(ui->pushButtonQnx5Encender,SIGNAL(clicked()),this,SLOT(slotQnx5Encender()));
+    }
+    else{
+        QMessageBox msg;
+        msg.setText("El protocolo indica que debe\napagar primero Qnx6");
+        msg.setWindowTitle("ADVERTENCIA");
+        msg.setIconPixmap(QPixmap(":/images/warning.png"));
+        msg.exec();
+    }
 }
 
 void SistemaDatos::slotQnx6Apagar()
 {
     setQnx6(false);
-    ui->labelQnx->setPixmap(QPixmap(":/images/qnx6Apagada.png"));
+    if(babel == true)
+        ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx6ApagadaBabelEncendida.png"));
+    else
+        ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx6Apagadaqnx3Encendidaqnx4Encendida.png"));
     ui->pushButtonQnx6Encender->setIcon(QIcon(":/images/iconApagar.png"));
     disconnect(ui->pushButtonQnx6Encender,SIGNAL(clicked()),this,SLOT(slotQnx6Apagar()));
     connect(ui->pushButtonQnx6Encender,SIGNAL(clicked()),this,SLOT(slotQnx6Encender()));
@@ -388,7 +499,11 @@ void SistemaDatos::slotQnx6Apagar()
 
 void SistemaDatos::slotBabelApagar()
 {
-    ui->labelQnx->setPixmap(QPixmap(":/images/qnx6Encendidaqnx1okqnx2ok.png"));
+    if(Qnx5 == true)
+        ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx5Encendidaqnx1okqnx2ok.png"));
+    if(Qnx6 == true)
+        ui->labelQnx->setPixmap(QPixmap(":/images/adquisicionDatos/qnx6Encendidoqnx3okqnx4ok.png"));
+
     ui->pushButtonBabel->setIcon(QIcon(":/images/iconApagar.png"));
     disconnect(ui->pushButtonBabel,SIGNAL(clicked()),this,SLOT(slotBabelApagar()));
     connect(ui->pushButtonBabel,SIGNAL(clicked()),this,SLOT(slotBabelEncender()));

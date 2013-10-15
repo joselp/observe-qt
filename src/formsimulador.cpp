@@ -53,7 +53,7 @@ FormSimulador::FormSimulador(QWidget *parent) :
 
     connect(this, SIGNAL(mousePressed(int, int)), this, SLOT(slotParaManejarRaton(int, int)));
 
-    connect(sistemaDatos,SIGNAL(mostrarFondo()),this, SLOT(slotMostrarFondo()));
+    connect(sistemaDatos,SIGNAL(mostrarFondo(bool,bool,bool,bool,bool,bool)),this, SLOT(slotMostrarFondo(bool, bool, bool, bool , bool, bool)));
 
 }
 
@@ -151,13 +151,26 @@ void FormSimulador::slotControlShmidt()
     qDebug()<<"HOLA MUNDO";
 }
 
-void FormSimulador::slotMostrarFondo()
+void FormSimulador::slotMostrarFondo(bool qnx1, bool qnx2, bool qnx3, bool qnx4, bool qnx5, bool qnx6)
 {
+    error1 = qnx1;
+    error2 = qnx2;
+    error3 = qnx3;
+    error4 = qnx4;
+    error5 = qnx5;
+    error6 = qnx6;
+
+    qDebug()<< qnx1;
+    qDebug()<< qnx2;
+    qDebug()<< qnx3;
+    qDebug()<< qnx4;
+    qDebug()<< qnx5;
+    qDebug()<< qnx6;
     fondo.load(":/images/pantalla1.jpg");
     ui->mdiArea->setBackground(*new QBrush(fondo));
     this->setGeometry(this->geometry().x(),this->geometry().y()+1,this->geometry().width(),this->geometry().height()+1);
 
-    disconnect(sistemaDatos,SIGNAL(mostrarFondo()),this, SLOT(slotMostrarFondo()));
+    disconnect(sistemaDatos,SIGNAL(mostrarFondo(bool,bool,bool,bool,bool,bool)),this, SLOT(slotMostrarFondo(bool,bool,bool,bool,bool,bool)));
     connect(sistemaDatos,SIGNAL(ocultarFondo()),this, SLOT(slotOcultarFondo()));
     emit mostrarConsola();
 }
@@ -169,7 +182,7 @@ void FormSimulador::slotOcultarFondo(){
     this->setGeometry(this->geometry().x(),this->geometry().y()-1,this->geometry().width(),this->geometry().height()-1);
 
     disconnect(sistemaDatos,SIGNAL(ocultarFondo()),this, SLOT(slotOcultarFondo()));
-    connect(sistemaDatos,SIGNAL(mostrarFondo()),this, SLOT(slotMostrarFondo()));
+    connect(sistemaDatos,SIGNAL(mostrarFondo(bool,bool,bool,bool,bool,bool)),this, SLOT(slotMostrarFondo(bool,bool,bool,bool,bool,bool)));
     emit ocultarConsola();
 
 }
@@ -228,13 +241,20 @@ void FormSimulador::asignarFondo(bool encendido)
         ui->mdiArea->setBackground(*new QBrush(fondo));
         this->setGeometry(this->geometry().x(),this->geometry().y()+1,this->geometry().width(),this->geometry().height()+1);
     }
-    emit mostrarConsola();
+
+    //emit mostrarConsola();
 
 }
 
 void FormSimulador::abrirTerminal()
 {
     terminal = new Terminal();
+    terminal->obtenerConsolaComandos()->asignarError1(error1);
+    terminal->obtenerConsolaComandos()->asignarError2(error2);
+    terminal->obtenerConsolaComandos()->asignarError3(error3);
+    terminal->obtenerConsolaComandos()->asignarError4(error4);
+    terminal->obtenerConsolaComandos()->asignarError5(error5);
+    terminal->obtenerConsolaComandos()->asignarError6(error6);
     ui->mdiArea->addSubWindow(terminal);
     terminal->show();
 }
