@@ -16,6 +16,11 @@ void Terminal::initGui()
     consolaComandos->setGeometry(0,0,this->width(),this->height());
 }
 
+miTextArea *Terminal::obtenerConsolaComandos()
+{
+    return consolaComandos;
+}
+
 
 Terminal::~Terminal()
 {

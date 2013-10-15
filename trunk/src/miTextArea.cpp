@@ -6,7 +6,12 @@ using namespace std;
 miTextArea::miTextArea(QWidget *parent):
     QTextEdit(parent)
 {
-    qnx=false;
+    qnx1=false;
+    qnx2=false;
+    qnx3=false;
+    qnx4=false;
+    qnx5=false;
+    qnx6=false;
     this->setText("usuario>");
     //Posiciono el cursor al final de la cadena de caracteres
     QTextCursor cursor(this->textCursor());
@@ -24,8 +29,8 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
 
         string aux2 = this->toPlainText().toStdString();
 
-        if(qnx==false){
-            if( (aux2.size()!=8 && aux2.substr(aux2.size()-8,aux2.size())!="usuario>"))
+        if(qnx1==false && qnx2==false && qnx3==false && qnx4==false && qnx5==false && qnx6==false){
+            if( (aux2.size()!=8 && aux2.compare(aux2.size()-8,aux2.size(),"usuario>")!=0))
             {
                 QString aux = this->toPlainText();
                 aux.truncate(this->toPlainText().count()-1);
@@ -34,19 +39,95 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
             }
         }
         else{
-           qDebug()<< aux2.compare(aux2.size()-5,aux2.size(),"qnx1>");
-           if(aux2.size()!=5 && ( aux2.compare(aux2.size()-5,aux2.size(),"qnx1>")!=0))
+        qDebug()<<aux2.compare(aux2.size()-5,aux2.size(),"qnx1>");
+        qDebug()<<aux2.compare(aux2.size()-5,aux2.size(),"qnx2>");
+           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"qnx1>")!=0) && qnx1==true)
             {
                 QString aux = this->toPlainText();
                 aux.truncate(this->toPlainText().count()-1);
                 this->setText(aux);
+
+                //Posiciono el cursor al final de la cadena de caracteres
+                QTextCursor cursor(this->textCursor());
+                cursor.movePosition(QTextCursor::End);
+                //cursor.setPosition(3);
+                this->setTextCursor(cursor);
+                return;
             }
+           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"qnx2>")!=0) && qnx2==true)
+            {
+                QString aux = this->toPlainText();
+                aux.truncate(this->toPlainText().count()-1);
+                this->setText(aux);
+
+                //Posiciono el cursor al final de la cadena de caracteres
+                QTextCursor cursor(this->textCursor());
+                cursor.movePosition(QTextCursor::End);
+                //cursor.setPosition(3);
+                this->setTextCursor(cursor);
+                return;
+            }
+           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"qnx3>")!=0) && qnx3==true)
+            {
+                QString aux = this->toPlainText();
+                aux.truncate(this->toPlainText().count()-1);
+                this->setText(aux);
+
+                //Posiciono el cursor al final de la cadena de caracteres
+                QTextCursor cursor(this->textCursor());
+                cursor.movePosition(QTextCursor::End);
+                //cursor.setPosition(3);
+                this->setTextCursor(cursor);
+                return;
+            }
+           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"qnx4>")!=0) && qnx4==true)
+            {
+                QString aux = this->toPlainText();
+                aux.truncate(this->toPlainText().count()-1);
+                this->setText(aux);
+
+                //Posiciono el cursor al final de la cadena de caracteres
+                QTextCursor cursor(this->textCursor());
+                cursor.movePosition(QTextCursor::End);
+                //cursor.setPosition(3);
+                this->setTextCursor(cursor);
+                return;
+            }
+           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"qnx5>")!=0) && qnx5==true)
+            {
+                QString aux = this->toPlainText();
+                aux.truncate(this->toPlainText().count()-1);
+                this->setText(aux);
+
+                //Posiciono el cursor al final de la cadena de caracteres
+                QTextCursor cursor(this->textCursor());
+                cursor.movePosition(QTextCursor::End);
+                //cursor.setPosition(3);
+                this->setTextCursor(cursor);
+                return;
+            }
+           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"qnx6>")!=0) && qnx6==true)
+            {
+                QString aux = this->toPlainText();
+                aux.truncate(this->toPlainText().count()-1);
+                this->setText(aux);
+
+                //Posiciono el cursor al final de la cadena de caracteres
+                QTextCursor cursor(this->textCursor());
+                cursor.movePosition(QTextCursor::End);
+                //cursor.setPosition(3);
+                this->setTextCursor(cursor);
+                return;
+            }
+
         }
     }
 
     //Tecla Enter: 16777220
     else if(e->key()==16777220){
+
         QStringList listaComandos; //Variable que almacerá el comando a realizar el Qprocess
+        listaComandos.clear();
         listaComandos<<this->toPlainText().split(">");
         qDebug()<<listaComandos.value(1);
 
@@ -68,6 +149,8 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
 void miTextArea::ejecutar(QString comando)
 {
     bool comandoValido=false; //Me permite saber si es un comando por los reconocidos en el simulador
+
+    qDebug()<< "Este es el comando"<<comando;
 
     QProcess bash;
     bash.setWorkingDirectory("../observe-qt/analisisImagenes/");
@@ -119,38 +202,73 @@ void miTextArea::ejecutar(QString comando)
     }
 
     if(comando=="rlogin qnx1"){
+        if(error1 == false){
         this->setText(this->toPlainText()+"\n"+"qnx1>");
-        qnx=true;
+        qnx1=true;
+        }
+        else
+            this->setText(this->toPlainText()+"\n"+"usuario> Error de conexion con qnx1"+"\n"+"usuario>");
+        return;
     }
 
     if(comando=="rlogin qnx2"){
+        if(error2 == false){
         this->setText(this->toPlainText()+"\n"+"qnx2>");
-        qnx=true;
+        qnx2=true;
+        }
+        else
+            this->setText(this->toPlainText()+"\n"+"usuario> Error de conexion con qnx2"+"\n"+"usuario>");
+        return;
     }
 
     if(comando=="rlogin qnx3"){
+        if(error3 == false){
         this->setText(this->toPlainText()+"\n"+"qnx3>");
-        qnx=true;
+        qnx3=true;
+        }
+        else
+            this->setText(this->toPlainText()+"\n"+"usuario> Error de conexion con qnx3"+"\n"+"usuario>");
+        return;
     }
 
     if(comando=="rlogin qnx4"){
+        if(error4 == false){
         this->setText(this->toPlainText()+"\n"+"qnx4>");
-        qnx=true;
+        qnx4=true;
+        }
+        else
+            this->setText(this->toPlainText()+"\n"+"usuario> Error de conexion con qnx4"+"\n"+"usuario>");
+        return;
     }
 
     if(comando=="rlogin qnx5"){
+        if(error5 == false){
         this->setText(this->toPlainText()+"\n"+"qnx5>");
-        qnx=true;
+        qnx5=true;
+        }
+        else
+            this->setText(this->toPlainText()+"\n"+"usuario> Error de conexion con qnx5"+"\n"+"usuario>");
+        return;
     }
 
     if(comando=="rlogin qnx6"){
+        if(error6 == false){
         this->setText(this->toPlainText()+"\n"+"qnx6>");
-        qnx=true;
+        qnx6=true;
+        }
+        else
+            this->setText(this->toPlainText()+"\n"+"usuario> Error de conexion con qnx6"+"\n"+"usuario>");
+        return;
     }
 
-    if(comando=="exit" && qnx==true){
+    if(comando=="exit" && (qnx1==true || qnx2==true || qnx3==true || qnx4==true || qnx5==true || qnx6==true)){
         this->setText(this->toPlainText()+"\n"+"usuario>");
-        qnx=false;
+        qnx1=false;
+        qnx2=false;
+        qnx3=false;
+        qnx4=false;
+        qnx5=false;
+        qnx6=false;
     }
 
     if(comandoValido==true){
@@ -180,7 +298,7 @@ void miTextArea::ejecutar(QString comando)
 
     }
 
-    else if(qnx==true){
+    else if(qnx1==true || qnx2==true || qnx3==true || qnx4==true || qnx5==true || qnx6==true){
 
     }
     else
@@ -188,4 +306,34 @@ void miTextArea::ejecutar(QString comando)
 
 
     bash.close();
+}
+
+void miTextArea::asignarError1(bool e)
+{
+    error1 = e;
+}
+
+void miTextArea::asignarError2(bool e)
+{
+    error2 = e;
+}
+
+void miTextArea::asignarError3(bool e)
+{
+    error3 = e;
+}
+
+void miTextArea::asignarError4(bool e)
+{
+    error4 = e;
+}
+
+void miTextArea::asignarError5(bool e)
+{
+    error5 = e;
+}
+
+void miTextArea::asignarError6(bool e)
+{
+    error6 = e;
 }

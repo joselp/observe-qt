@@ -38,6 +38,13 @@ public:
     bool getQnx4();
     bool getQnx5();
     bool getQnx6();
+    bool getBabel();
+    bool getError1();
+    bool getError2();
+    bool getError3();
+    bool getError4();
+    bool getError5();
+    bool getError6();
     
 public slots:
     void slotQnx1Encender();
@@ -57,7 +64,7 @@ public slots:
     void slotOpcion(int );
 
 signals:
-    void mostrarFondo();
+    void mostrarFondo(bool, bool, bool, bool, bool, bool);
     void ocultarFondo();
 
 private:
@@ -69,7 +76,12 @@ private:
     bool Qnx5; //Indica si Qnx5 esta encendida o apagada
     bool Qnx6; //Indica si Qnx6 esta encendida o apagada
     bool babel; //Indica si babel esta encendida o apagada
-    bool error; //Variable que indica error en la conexion de algun qnx
+    bool error1; //Variable que indica error en la conexion de qnx1
+    bool error2; //Variable que indica error en la conexion de qnx1
+    bool error3; //Variable que indica error en la conexion de qnx1
+    bool error4; //Variable que indica error en la conexion de qnx1
+    bool error5; //Variable que indica error en la conexion de qnx1
+    bool error6; //Variable que indica error en la conexion de qnx1
     int num; //Varible generada aleatoriamente para saber si hay o no conexion
 
 };

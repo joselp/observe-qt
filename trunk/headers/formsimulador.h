@@ -38,7 +38,7 @@ public slots:
     void slotEncambezados();
     void slotCerrarCabeceras();
     void slotControlShmidt();
-    void slotMostrarFondo();
+    void slotMostrarFondo(bool, bool, bool, bool, bool, bool);
     void slotOcultarFondo();
     void slotParaManejarRaton(int, int);
 
@@ -59,6 +59,7 @@ private:
     MySubWindow *subWindowCabeceraFits;
     MySubWindow *subWindowSistemaDatos;
     SistemaDatos *sistemaDatos;
+    bool error1, error2, error3, error4, error5, error6; //Variables para manejar errores de conexion en qxns
 
 };
 
