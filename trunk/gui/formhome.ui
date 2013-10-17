@@ -32,14 +32,14 @@
   <widget class="QLabel" name="labelUser">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>280</y>
-     <width>55</width>
-     <height>17</height>
+     <x>234</x>
+     <y>270</y>
+     <width>51</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Usuario:</string>
+    <string>E-mail:</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="userLineEdit">
@@ -83,8 +83,8 @@
     <rect>
      <x>200</x>
      <y>310</y>
-     <width>80</width>
-     <height>17</height>
+     <width>81</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="text">
