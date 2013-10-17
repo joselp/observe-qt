@@ -38,9 +38,10 @@ public slots:
     void slotEncambezados();
     void slotCerrarCabeceras();
     void slotControlShmidt();
-    void slotMostrarFondo(bool, bool, bool, bool, bool, bool);
-    void slotOcultarFondo();
+    void slotMostrarFondo(bool, bool, bool, bool, bool, bool); //Al encender babel muestra el fondo
+    void slotOcultarFondo(); //Oculta el fondo al apagar babel.
     void slotParaManejarRaton(int, int);
+    void slotVerificarSesion(); //Verifica la sesion ingresada en babel.
 
 signals:
     void mousePressed(int x, int y);
@@ -60,6 +61,9 @@ private:
     MySubWindow *subWindowSistemaDatos;
     SistemaDatos *sistemaDatos;
     bool error1, error2, error3, error4, error5, error6; //Variables para manejar errores de conexion en qxns
+    //Login de babel.
+    QLineEdit *pass; //lineEdit para colocar la contraseña
+    QPushButton *login; //Boton para iniciar sesion en babel
 
 };
 

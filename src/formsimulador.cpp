@@ -7,6 +7,13 @@ FormSimulador::FormSimulador(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //Login de babel.
+    pass = new QLineEdit(ui->mdiArea);
+    pass->setGeometry(QRect(440,350,340,25));
+    pass->setVisible(false);
+    login = new QPushButton("Login", ui->mdiArea);
+    login->setGeometry(QRect(720,380,70,30));
+    login->setVisible(false);
 
     //Agrego y muestro el sistema de datos al formSimulador
     sistemaDatos = new SistemaDatos;
@@ -54,7 +61,7 @@ FormSimulador::FormSimulador(QWidget *parent) :
     connect(this, SIGNAL(mousePressed(int, int)), this, SLOT(slotParaManejarRaton(int, int)));
 
     connect(sistemaDatos,SIGNAL(mostrarFondo(bool,bool,bool,bool,bool,bool)),this, SLOT(slotMostrarFondo(bool, bool, bool, bool , bool, bool)));
-
+    connect(login, SIGNAL(clicked()), this, SLOT(slotVerificarSesion()));
 }
 
 void FormSimulador::asignarVentanas()
@@ -166,7 +173,10 @@ void FormSimulador::slotMostrarFondo(bool qnx1, bool qnx2, bool qnx3, bool qnx4,
     qDebug()<< qnx4;
     qDebug()<< qnx5;
     qDebug()<< qnx6;
-    fondo.load(":/images/pantalla1.jpg");
+    sistemaDatos->showMinimized();
+    pass->setVisible(true);
+    login->setVisible(true);
+    fondo.load(":/images/sesion.jpg");
     ui->mdiArea->setBackground(*new QBrush(fondo));
     this->setGeometry(this->geometry().x(),this->geometry().y()+1,this->geometry().width(),this->geometry().height()+1);
 
@@ -180,6 +190,8 @@ void FormSimulador::slotOcultarFondo(){
     fondo.load(":/images/pantallaApagada.jpeg");
     ui->mdiArea->setBackground(*new QBrush(fondo));
     this->setGeometry(this->geometry().x(),this->geometry().y()-1,this->geometry().width(),this->geometry().height()-1);
+    pass->setVisible(false);
+    login->setVisible(false);
 
     disconnect(sistemaDatos,SIGNAL(ocultarFondo()),this, SLOT(slotOcultarFondo()));
     connect(sistemaDatos,SIGNAL(mostrarFondo(bool,bool,bool,bool,bool,bool)),this, SLOT(slotMostrarFondo(bool,bool,bool,bool,bool,bool)));
@@ -241,9 +253,18 @@ void FormSimulador::asignarFondo(bool encendido)
         ui->mdiArea->setBackground(*new QBrush(fondo));
         this->setGeometry(this->geometry().x(),this->geometry().y()+1,this->geometry().width(),this->geometry().height()+1);
     }
-
     //emit mostrarConsola();
+}
 
+void FormSimulador::slotVerificarSesion()
+{
+    if(pass->text() == "Miydas"){
+        fondo.load(":/images/pantalla1.jpg");
+        ui->mdiArea->setBackground(*new QBrush(fondo));
+        this->setGeometry(this->geometry().x(),this->geometry().y()+1,this->geometry().width(),this->geometry().height()+1);
+        pass->setVisible(false);
+        login->setVisible(false);
+    }
 }
 
 void FormSimulador::abrirTerminal()
