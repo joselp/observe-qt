@@ -31,7 +31,8 @@ SOURCES += bd/manejadorbd.cpp \
     src/sistemadatos.cpp \
     src/mysubwindow.cpp \
     src/controlschmitd/controlschmitd.cpp \
-    src/mensajeopciones.cpp
+    src/mensajeopciones.cpp \
+    src/usuarios/registrousuario.cpp
 
 HEADERS  += bd/manejadorbd.h \
     headers/visualizador.h \
@@ -53,7 +54,8 @@ HEADERS  += bd/manejadorbd.h \
     headers/sistemadatos.h \
     headers/mysubwindow.h \
     headers/controlschmitd/controlschmitd.h \
-    headers/mensajeopciones.h
+    headers/mensajeopciones.h \
+    headers/usuarios/registrousuario.h
 
 FORMS    += gui/visualizador.ui \
     gui/simulador.ui \
@@ -67,7 +69,8 @@ FORMS    += gui/visualizador.ui \
     gui/terminal.ui \
     gui/sistemadatos.ui \
     gui/controlschmitd/controlschmitd.ui \
-    gui/mensajeopciones.ui
+    gui/mensajeopciones.ui \
+    gui/usuarios/registrousuario.ui
 
 LIBS += -L. \
         -lm \
