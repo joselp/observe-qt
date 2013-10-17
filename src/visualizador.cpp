@@ -19,8 +19,6 @@ void Visualizador::initGui()
     procesoFits = new ProcesoFits;
     //procesoFits = new Utils;
 
-
-
     //Creo el GraphWidget donde se mostrara la imagen fits
     //visor = new GraphWidget(this);
     //visor->setGeometry(10,170,1000,532);
