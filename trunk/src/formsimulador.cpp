@@ -181,8 +181,7 @@ void FormSimulador::slotMostrarFondo(bool qnx1, bool qnx2, bool qnx3, bool qnx4,
     this->setGeometry(this->geometry().x(),this->geometry().y()+1,this->geometry().width(),this->geometry().height()+1);
 
     disconnect(sistemaDatos,SIGNAL(mostrarFondo(bool,bool,bool,bool,bool,bool)),this, SLOT(slotMostrarFondo(bool,bool,bool,bool,bool,bool)));
-    connect(sistemaDatos,SIGNAL(ocultarFondo()),this, SLOT(slotOcultarFondo()));
-    emit mostrarConsola();
+    connect(sistemaDatos,SIGNAL(ocultarFondo()),this, SLOT(slotOcultarFondo()));   
 }
 
 void FormSimulador::slotOcultarFondo(){
@@ -264,6 +263,7 @@ void FormSimulador::slotVerificarSesion()
         this->setGeometry(this->geometry().x(),this->geometry().y()+1,this->geometry().width(),this->geometry().height()+1);
         pass->setVisible(false);
         login->setVisible(false);
+        emit mostrarConsola();
     }
 }
 
