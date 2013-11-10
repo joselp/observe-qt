@@ -8,6 +8,8 @@ Simulador::Simulador(QWidget *parent) :
 {
     ui->setupUi(this);
     manejadorBd = new ManejadorBd();
+    configurarSesionBd();
+    manejadorBd->abrirSesion();
 
     connect(ui->actionSalir,SIGNAL(triggered()),this,SLOT(slotSalir()));
     connect(ui->actionSistema_de_Adquisici_on_de_Datos,SIGNAL(triggered()),this,SLOT(slotSistemaDatos()));
@@ -22,8 +24,6 @@ Simulador::Simulador(QWidget *parent) :
     formHome = new FormHome;
     //sistemaDatos = new SistemaDatos;
 
-    configurarSesionBd();
-    consultaPrueba();
     initGui();
     ocultarMenu();
 
@@ -117,29 +117,6 @@ void Simulador::resizeEvent(QResizeEvent *)
     //formSimulador->resizeFondo();
 }
 
-void Simulador::consultaPrueba()
-{
-        if(manejadorBd->abrirSesion()){
-            qDebug()<<"abrio la sesion";
-
-            QSqlQuery query;
-            query.exec("SELECT nombre,id FROM persona");
-            while (query.next()) {
-                QString cedula = query.value(0).toString();
-
-                qDebug("cedula: %s ",qPrintable(cedula));
-                cedula = query.value(1).toString();
-
-                qDebug("id: %s ",qPrintable(cedula));
-            }
-
-        }
-
-        else
-            qDebug()<<"NO abrio la sesion";
-
-}
-
 Simulador::~Simulador()
 {
     delete ui;
@@ -154,6 +131,7 @@ void Simulador::slotAcceder()
         cambiarPanel(formSimulador);
         mostrarMenu();
         this->setGeometry(0,0,QApplication::desktop()->width(),QApplication::desktop()->height());
+        idUsuario = formHome->obtenerIdUsuario();
     }
     else{
         QMessageBox msg;

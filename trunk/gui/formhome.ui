@@ -91,7 +91,7 @@
     <string>Contraseña:</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="olvidoPasswordpushButton_2">
+  <widget class="QPushButton" name="crearCuentaPushButton">
    <property name="geometry">
     <rect>
      <x>421</x>

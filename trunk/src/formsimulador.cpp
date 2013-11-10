@@ -9,10 +9,11 @@ FormSimulador::FormSimulador(QWidget *parent) :
 
     //Login de babel.
     pass = new QLineEdit(ui->mdiArea);
-    pass->setGeometry(QRect(440,350,340,25));
+    pass->setEchoMode(QLineEdit::Password);
+    pass->setGeometry(QRect(55,332,225,25));
     pass->setVisible(false);
     login = new QPushButton("Login", ui->mdiArea);
-    login->setGeometry(QRect(720,380,70,30));
+    login->setGeometry(QRect(200,370,70,30));
     login->setVisible(false);
 
     //Agrego y muestro el sistema de datos al formSimulador
@@ -24,7 +25,7 @@ FormSimulador::FormSimulador(QWidget *parent) :
 
     fondo.load(":/images/pantallaApagada.jpeg");
 
-    //fondo.load(":/images/pantalla1.jpg");
+    //fondo.load(":/images/pantalla.jpg");
 
     subWindowCabeceraFits = new MySubWindow();
 
@@ -176,7 +177,7 @@ void FormSimulador::slotMostrarFondo(bool qnx1, bool qnx2, bool qnx3, bool qnx4,
     sistemaDatos->showMinimized();
     pass->setVisible(true);
     login->setVisible(true);
-    fondo.load(":/images/sesion.jpg");
+    fondo.load(":/images/pantallaLogin.png");
     ui->mdiArea->setBackground(*new QBrush(fondo));
     this->setGeometry(this->geometry().x(),this->geometry().y()+1,this->geometry().width(),this->geometry().height()+1);
 
@@ -248,7 +249,7 @@ void FormSimulador::abrirSitemaDatos()
 void FormSimulador::asignarFondo(bool encendido)
 {
     if(encendido==true){
-        fondo.load(":/images/pantalla1.jpg");
+        fondo.load(":/images/pantalla.jpg");
         ui->mdiArea->setBackground(*new QBrush(fondo));
         this->setGeometry(this->geometry().x(),this->geometry().y()+1,this->geometry().width(),this->geometry().height()+1);
     }
@@ -258,7 +259,7 @@ void FormSimulador::asignarFondo(bool encendido)
 void FormSimulador::slotVerificarSesion()
 {
     if(pass->text() == "Miydas"){
-        fondo.load(":/images/pantalla1.jpg");
+        fondo.load(":/images/pantalla.jpg");
         ui->mdiArea->setBackground(*new QBrush(fondo));
         this->setGeometry(this->geometry().x(),this->geometry().y()+1,this->geometry().width(),this->geometry().height()+1);
         pass->setVisible(false);

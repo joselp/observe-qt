@@ -91,5 +91,7 @@
         <file>images/adquisicionDatos/qnx5qnx6ApagadaBabelEncendida.png</file>
         <file>images/adquisicionDatos/qnx1ApagadaBabelEncendida.png</file>
         <file>images/sesion.jpg</file>
+        <file>images/pantallaLogin.png</file>
+        <file>images/pantalla.jpg</file>
     </qresource>
 </RCC>
