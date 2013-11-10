@@ -27,7 +27,6 @@ public:
     void ocultarMenu();//Oculta el menu del lado izquierdo
     FormSimulador *getFormSimulador(); //Retorna formSimulador para poder cambiar el fondo
     void resizeEvent(QResizeEvent *);
-    void consultaPrueba();
     ~Simulador();
     
 public slots:
@@ -51,6 +50,8 @@ private:
     FormSimulador *formSimulador;
     PanelAdministrativo *panelAdministrativo;
     Controlschmitd *controlSchmitd;
+    RegistroUsuario *registroUsuario;
+    int idUsuario;
 
 };
 
