@@ -518,7 +518,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Acepptar</string>
+    <string>Aceptar</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonLimpiar">
