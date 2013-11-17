@@ -12,10 +12,9 @@ Controlschmitd::Controlschmitd(QWidget *parent) :
 void Controlschmitd::initAction()
 {
     connect(ui->actionFoco, SIGNAL(triggered()), this, SLOT(slotFoco()));
-
+    connect(ui->actionObserve,SIGNAL(triggered()),this,SLOT(slotObserve()));
     connect(ui->actionSalir, SIGNAL(triggered()), this, SLOT(slotSalir()));
 }
-
 
 void Controlschmitd::slotFoco()
 {
@@ -23,6 +22,7 @@ void Controlschmitd::slotFoco()
 
 void Controlschmitd::slotObserve()
 {
+    emit abrirObserve();
 }
 
 void Controlschmitd::slotSummary()

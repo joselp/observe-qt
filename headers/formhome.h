@@ -17,7 +17,7 @@ public:
     explicit FormHome(QWidget *parent = 0);
     void asignarForm(QWidget *);
     QPushButton* getButtonAcceder();
-    int obtenerIdUsuario();
+    QString obtenerIdUsuario();
 
     bool autenticar();
     ~FormHome();
@@ -28,7 +28,7 @@ public slots:
 private:
     Ui::FormHome *ui;
     RegistroUsuario *registroUsuario;
-    int idUsuario;
+    QString idUsuario;
 };
 
 #endif // FORMHOME_H

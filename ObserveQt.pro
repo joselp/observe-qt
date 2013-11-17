@@ -33,7 +33,9 @@ SOURCES += bd/manejadorbd.cpp \
     src/controlschmitd/controlschmitd.cpp \
     src/mensajeopciones.cpp \
     src/usuarios/registrousuario.cpp \
-    src/cargas/cargarprueba.cpp
+    src/cargas/cargarprueba.cpp \
+    src/cargas/mispruebas.cpp \
+    src/cargas/formprotocolo.cpp
 
 HEADERS  += bd/manejadorbd.h \
     headers/visualizador.h \
@@ -57,7 +59,9 @@ HEADERS  += bd/manejadorbd.h \
     headers/controlschmitd/controlschmitd.h \
     headers/mensajeopciones.h \
     headers/usuarios/registrousuario.h \
-    headers/cargas/cargarprueba.h
+    headers/cargas/cargarprueba.h \
+    headers/cargas/mispruebas.h \
+    headers/cargas/formprotocolo.h
 
 FORMS    += gui/visualizador.ui \
     gui/simulador.ui \
@@ -73,7 +77,9 @@ FORMS    += gui/visualizador.ui \
     gui/controlschmitd/controlschmitd.ui \
     gui/mensajeopciones.ui \
     gui/usuarios/registrousuario.ui \
-    gui/cargas/cargarprueba.ui
+    gui/cargas/cargarprueba.ui \
+    gui/cargas/mispruebas.ui \
+    gui/cargas/formprotocolo.ui
 
 LIBS += -L. \
         -lm \

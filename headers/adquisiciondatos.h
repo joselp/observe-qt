@@ -42,6 +42,9 @@ public:
     QLineEdit* getNumeroLineasLeer(); //Retorna la variable NumeroLineasLeerlineEdit.
     bool getRealizarObservacion(); //Retorna el valor de la variable realizarObservacion.
 
+    //Setters
+    void asignarComandoObservacion(int i);
+
 
 private slots:
     void slotComandoDeObservacion(int); //Cambiar GUI segun asignacion
