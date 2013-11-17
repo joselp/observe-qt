@@ -29,6 +29,9 @@ private slots:
     void slotAyuda();
     void slotSalir();
 
+signals:
+    void abrirObserve();
+
 private:
     Ui::Controlschmitd *ui;
 };

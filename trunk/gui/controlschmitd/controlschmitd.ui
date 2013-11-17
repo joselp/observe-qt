@@ -39,7 +39,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="../resource.qrc">:/images/interface2.png</pixmap>
+       <pixmap resource="../../resource.qrc">:/images/interface2.png</pixmap>
       </property>
      </widget>
     </item>
@@ -82,7 +82,7 @@
   </widget>
   <action name="actionFoco">
    <property name="icon">
-    <iconset resource="../resource.qrc">
+    <iconset resource="../../resource.qrc">
      <normaloff>:/images/foco.ico</normaloff>:/images/foco.ico</iconset>
    </property>
    <property name="text">
@@ -94,7 +94,7 @@
   </action>
   <action name="actionObserve">
    <property name="icon">
-    <iconset resource="../resource.qrc">
+    <iconset resource="../../resource.qrc">
      <normaloff>:/images/observe.png</normaloff>:/images/observe.png</iconset>
    </property>
    <property name="text">
@@ -106,7 +106,7 @@
   </action>
   <action name="actionSummary">
    <property name="icon">
-    <iconset theme="Summary" resource="../resource.qrc">
+    <iconset theme="Summary" resource="../../resource.qrc">
      <normaloff>:/images/summary.ico</normaloff>:/images/summary.ico</iconset>
    </property>
    <property name="text">
@@ -115,7 +115,7 @@
   </action>
   <action name="actionLimpiar">
    <property name="icon">
-    <iconset resource="../resource.qrc">
+    <iconset resource="../../resource.qrc">
      <normaloff>:/images/limpiar.gif</normaloff>:/images/limpiar.gif</iconset>
    </property>
    <property name="text">
@@ -127,7 +127,7 @@
   </action>
   <action name="actionTransferir">
    <property name="icon">
-    <iconset resource="../resource.qrc">
+    <iconset resource="../../resource.qrc">
      <normaloff>:/images/transferir.png</normaloff>:/images/transferir.png</iconset>
    </property>
    <property name="text">
@@ -139,7 +139,7 @@
   </action>
   <action name="actionAnalizar">
    <property name="icon">
-    <iconset resource="../resource.qrc">
+    <iconset resource="../../resource.qrc">
      <normaloff>:/images/star.png</normaloff>:/images/star.png</iconset>
    </property>
    <property name="text">
@@ -151,7 +151,7 @@
   </action>
   <action name="actionSlayall">
    <property name="icon">
-    <iconset resource="../resource.qrc">
+    <iconset resource="../../resource.qrc">
      <normaloff>:/images/slayall.png</normaloff>:/images/slayall.png</iconset>
    </property>
    <property name="text">
@@ -163,7 +163,7 @@
   </action>
   <action name="actionShutdAll">
    <property name="icon">
-    <iconset resource="../resource.qrc">
+    <iconset resource="../../resource.qrc">
      <normaloff>:/images/shutdall.gif</normaloff>:/images/shutdall.gif</iconset>
    </property>
    <property name="text">
@@ -175,7 +175,7 @@
   </action>
   <action name="actionAyuda">
    <property name="icon">
-    <iconset resource="../resource.qrc">
+    <iconset resource="../../resource.qrc">
      <normaloff>:/images/help.png</normaloff>:/images/help.png</iconset>
    </property>
    <property name="text">
@@ -187,7 +187,7 @@
   </action>
   <action name="actionSalir">
    <property name="icon">
-    <iconset resource="../resource.qrc">
+    <iconset resource="../../resource.qrc">
      <normaloff>:/images/exit.png</normaloff>:/images/exit.png</iconset>
    </property>
    <property name="text">
@@ -199,7 +199,7 @@
   </action>
  </widget>
  <resources>
-  <include location="../resource.qrc"/>
+  <include location="../../resource.qrc"/>
  </resources>
  <connections/>
 </ui>

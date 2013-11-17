@@ -19,9 +19,6 @@ Simulador::Simulador(QWidget *parent) :
 
     ui->actionConsola->setVisible(false);
 
-    panelAdministrativo = new PanelAdministrativo;
-    formSimulador = new FormSimulador;
-    formHome = new FormHome;
     //sistemaDatos = new SistemaDatos;
 
     initGui();
@@ -33,6 +30,9 @@ void Simulador::initGui()
 {
     this->setWindowTitle("Simulador de Observaciones Astronomicas");
 
+    formSimulador = new FormSimulador;
+    formHome = new FormHome;
+
     formHome->setGeometry(ui->verticalLayoutContenido->geometry());
     //this->setWindowFlags(Qt::FramelessWindowHint);
     //formHome->showMaximized();
@@ -40,6 +40,9 @@ void Simulador::initGui()
 
     connect(formHome->getButtonAcceder(),SIGNAL(clicked()),this,SLOT(slotAcceder()));
     //connect(ui->actionAbrir,SIGNAL(triggered()),this,SLOT(slotAcceder()));
+    ui->actionPanel_Administrativo->setVisible(false);
+    ui->actionCargar_Prueba->setVisible(false);
+    connect(ui->actionCargar_Prueba,SIGNAL(triggered()),this,SLOT(slotMisPruebas()));
     connect(ui->actionPanel_Administrativo,SIGNAL(triggered()),this,SLOT(slotPanelAdministrativo()));
 
     connect(ui->pushButtonDrifscan,SIGNAL(clicked()),this,SLOT(slotDrifscan()));
@@ -132,6 +135,23 @@ void Simulador::slotAcceder()
         mostrarMenu();
         this->setGeometry(0,0,QApplication::desktop()->width(),QApplication::desktop()->height());
         idUsuario = formHome->obtenerIdUsuario();
+
+        QString strQuery = "SELECT tipo FROM persona WHERE id = " + idUsuario;
+
+        QSqlQuery query;
+        if(query.exec(strQuery)){
+            query.next();
+            if(query.value(0) == "Estudiante"){
+                ui->actionCargar_Prueba->setVisible(true);
+                misPruebas = new MisPruebas;
+                connect(misPruebas, SIGNAL(enviarDatos(QSqlQuery)), this, SLOT(slotCargarPrueba(QSqlQuery)));
+            }
+
+            if(query.value(0) == "Administrador"){
+                ui->actionPanel_Administrativo->setVisible(true);
+                panelAdministrativo = new PanelAdministrativo;
+            }
+        }
     }
     else{
         QMessageBox msg;
@@ -141,14 +161,18 @@ void Simulador::slotAcceder()
 
 void Simulador::slotPanelAdministrativo()
 {
-    //Debo verificar antes si en realidad el usuario conectado es un administrador
     panelAdministrativo->show();
+}
+
+void Simulador::slotMisPruebas()
+{
+    misPruebas->cargarPruebas(idUsuario);
+    misPruebas->show();
 }
 
 void Simulador::slotDrifscan()
 {
     formSimulador->asignarVentanas();
-
     //ui->actionCargar_Prueba->setDisabled(true);
     formSimulador->getAdquisicionDatos()->seleccionarComandoDeObservacionComboBox(1);
 
@@ -239,6 +263,7 @@ void Simulador::slotConsola()
 void Simulador::slotControlShmitd()
 {
     controlSchmitd = new Controlschmitd();
+    connect(controlSchmitd,SIGNAL(abrirObserve()),this,SLOT(slotAbrirObserve()));
     controlSchmitd->show();
 }
 
@@ -254,4 +279,15 @@ void Simulador::slotOcultarConsola()
     ui->actionConsola->setVisible(false);
     disconnect(formSimulador,SIGNAL(ocultarConsola()),this,SLOT(slotOcultarConsola()));
     connect(formSimulador,SIGNAL(mostrarConsola()),this,SLOT(slotMostrarConsola()));
+}
+
+void Simulador::slotAbrirObserve()
+{
+    formSimulador->asignarVentanas();
+}
+
+void Simulador::slotCargarPrueba(QSqlQuery p)
+{
+    prueba = p;
+    formSimulador->asignarPrueba(prueba, true);
 }

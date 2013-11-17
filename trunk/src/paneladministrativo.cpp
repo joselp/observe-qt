@@ -13,7 +13,6 @@ PanelAdministrativo::PanelAdministrativo(QWidget *parent) :
 void PanelAdministrativo::initGui()
 {
     this->setWindowTitle("Crear Prueba");
-    cargarPrueba = new CargarPrueba;
     ui->tabWidget->setCurrentIndex(0);
 
     QStringList filtros;
@@ -26,6 +25,11 @@ void PanelAdministrativo::initGui()
     ui->comboBoxFiltro2->addItems(filtros);
     ui->comboBoxFiltro3->addItems(filtros);
     ui->comboBoxFiltro4->addItems(filtros);
+
+    QStringList itemsComandoDeObservacion;
+    itemsComandoDeObservacion << "Observacion Drifscan" << "Drifscan Modificado" << "Observacion Guiada" << "Darks Guiado"
+                              << "Darks Drifscan" << "Flats Guiado" << "Flats Drifscan" << "Bias" << "Foco";
+    ui->comboBoxTipo->addItems(itemsComandoDeObservacion);
 
     ui->comboBoxInstrumento->addItem("YIC");
     ui->comboBoxInstrumento->addItem("YIC+Prims");
@@ -50,6 +54,7 @@ PanelAdministrativo::~PanelAdministrativo()
 
 void PanelAdministrativo::slotCargarPrueba()
 {
+    cargarPrueba = new CargarPrueba;
     connect(cargarPrueba,SIGNAL(enviarDatos(QSqlQuery,QSqlQuery)),this,SLOT(slotAsignarDatos(QSqlQuery,QSqlQuery)));
     cargarPrueba->show();
 
@@ -57,6 +62,12 @@ void PanelAdministrativo::slotCargarPrueba()
 
 void PanelAdministrativo::slotAsignarDatos(QSqlQuery query, QSqlQuery query2)
 {
+    ui->checkBoxDedos->setChecked(false);
+    ui->checkBoxFoco->setChecked(false);
+    ui->checkBoxObturador->setChecked(false);
+    ui->checkBoxPrisma->setChecked(false);
+    ui->checkBoxConexion->setChecked(false);
+
     idPrueba=query.value(0).toString();
     desactivarCampos();
     if(query.value(1).toString()=="normales")
@@ -261,7 +272,27 @@ void PanelAdministrativo::slotAsignarDatos(QSqlQuery query, QSqlQuery query2)
 
     ui->lineEditDeclinacion->setText(query2.value(5).toString());
     ui->lineEditAnguloHorario->setText(query2.value(6).toString());
-    ui->lineEditTipoObservacion->setText(query2.value(7).toString());
+
+    //Combo Tipo de observacion
+    if(query2.value(7)=="Observacion Drifscan")
+        ui->comboBoxTipo->setCurrentIndex(0);
+    if(query2.value(7)=="Drifscan Modificado")
+        ui->comboBoxTipo->setCurrentIndex(1);
+    if(query2.value(7)=="Observacion Guiada")
+        ui->comboBoxTipo->setCurrentIndex(2);
+    if(query2.value(7)=="Darks Guiado")
+        ui->comboBoxTipo->setCurrentIndex(3);
+    if(query2.value(7)=="Darks Drifscan")
+        ui->comboBoxTipo->setCurrentIndex(4);
+    if(query2.value(7)=="Flats Guiado")
+        ui->comboBoxTipo->setCurrentIndex(5);
+    if(query2.value(7)=="Flats Drifscan")
+        ui->comboBoxTipo->setCurrentIndex(6);
+    if(query2.value(7)=="Bias")
+        ui->comboBoxTipo->setCurrentIndex(7);
+    if(query2.value(7)=="Foco")
+        ui->comboBoxTipo->setCurrentIndex(8);
+
     ui->lineEditDuracion->setText(query2.value(8).toString());
 
     if(query2.value(10)=="YIC")
@@ -288,8 +319,7 @@ void PanelAdministrativo::slotAceptar()
         insertar=false;
     }
 
-    if(ui->lineEditDeclinacion->text()=="" && ui->lineEditAnguloHorario->text()=="" && ui->lineEditDuracion->text()==""
-            && ui->lineEditTipoObservacion->text()==""){
+    if(ui->lineEditDeclinacion->text()=="" && ui->lineEditAnguloHorario->text()=="" && ui->lineEditDuracion->text()==""){
         QMessageBox msg;
         msg.warning(this,"Ingrese los datos","Asegurese de haber insertado los siguientes datos:\nDeclinacion.\nAngulo Horario.\nDuracion.\nTipo de Observacion.");
         insertar=false;
@@ -298,7 +328,7 @@ void PanelAdministrativo::slotAceptar()
     if(pruebaNueva==true){
         if(insertar==true){
             QSqlQuery query;
-            if(query.exec("INSERT INTO protocolo (filtro_1, filtro_2, filtro_3, filtro_4, declinacion, angulo_horario, tipo_observacion, duracion, nombre_proyecto, instrumento) VALUES ('"+ui->comboBoxFiltro1->currentText()+"','"+ui->comboBoxFiltro2->currentText()+"','"+ui->comboBoxFiltro3->currentText()+"','"+ui->comboBoxFiltro4->currentText()+"','"+ui->lineEditDeclinacion->text()+"','"+ui->lineEditAnguloHorario->text()+"','"+ui->lineEditTipoObservacion->text()+"','"+ui->lineEditDuracion->text()+"','"+ui->textEditProyecto->toPlainText()+"','"+ui->comboBoxInstrumento->currentText()+"')")){
+            if(query.exec("INSERT INTO protocolo (filtro_1, filtro_2, filtro_3, filtro_4, declinacion, angulo_horario, tipo_observacion, duracion, nombre_proyecto, instrumento) VALUES ('"+ui->comboBoxFiltro1->currentText()+"','"+ui->comboBoxFiltro2->currentText()+"','"+ui->comboBoxFiltro3->currentText()+"','"+ui->comboBoxFiltro4->currentText()+"','"+ui->lineEditDeclinacion->text()+"','"+ui->lineEditAnguloHorario->text()+"','"+ui->comboBoxTipo->currentText()+"','"+ui->lineEditDuracion->text()+"','"+ui->textEditProyecto->toPlainText()+"','"+ui->comboBoxInstrumento->currentText()+"')")){
                 QString dedos="false",foco="false", prisma="false",conexion="false";
                 QString cielo, obturador="cerrado";
 
@@ -380,7 +410,7 @@ void PanelAdministrativo::slotLimpiar()
     ui->lineEditDeclinacion->setEnabled(true);
     ui->lineEditAnguloHorario->setEnabled(true);
     ui->lineEditDuracion->setEnabled(true);
-    ui->lineEditTipoObservacion->setEnabled(true);
+    ui->comboBoxTipo->setEnabled(true);
     ui->comboBoxInstrumento->setEnabled(true);
     ui->textEditProyecto->setEnabled(true);
 
@@ -403,7 +433,7 @@ void PanelAdministrativo::slotLimpiar()
     ui->lineEditDeclinacion->setText("");
     ui->lineEditAnguloHorario->setText("");
     ui->lineEditDuracion->setText("");
-    ui->lineEditTipoObservacion->setText("");
+    ui->comboBoxTipo->setCurrentIndex(0);
     ui->comboBoxInstrumento->setCurrentIndex(0);
     ui->textEditProyecto->setText("");
 }
@@ -427,7 +457,7 @@ void PanelAdministrativo::desactivarCampos()
     ui->lineEditDeclinacion->setEnabled(false);
     ui->lineEditAnguloHorario->setEnabled(false);
     ui->lineEditDuracion->setEnabled(false);
-    ui->lineEditTipoObservacion->setEnabled(false);
+    ui->comboBoxTipo->setEnabled(false);
     ui->comboBoxInstrumento->setEnabled(false);
     ui->textEditProyecto->setEnabled(false);
 

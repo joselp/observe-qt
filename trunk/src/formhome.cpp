@@ -17,7 +17,7 @@ bool FormHome::autenticar()
         query.exec("SELECT id,email,pass FROM persona");
         while (query.next()) {
             if(query.value(1).toString() == ui->userLineEdit->text() && query.value(2).toString() == ui->passLineEdi->text()){
-                idUsuario = query.value(0).toInt(0);
+                idUsuario = query.value(0).toString();
                 return true;
             }
         }
@@ -41,7 +41,7 @@ QPushButton *FormHome::getButtonAcceder()
     return ui->acccederPushButton;
 }
 
-int FormHome::obtenerIdUsuario()
+QString FormHome::obtenerIdUsuario()
 {
     return idUsuario;
 }

@@ -7,7 +7,9 @@
 #include "headers/paneladministrativo.h"
 #include "headers/controlschmitd/controlschmitd.h"
 #include "bd/manejadorbd.h"
+#include "headers/cargas/mispruebas.h"
 #include <QDesktopWidget>
+#include <QSqlQuery>
 
 namespace Ui {
 class Simulador;
@@ -32,6 +34,7 @@ public:
 public slots:
     void slotAcceder(); //Verifico si puedo acceder al simulador
     void slotPanelAdministrativo(); //Inicia la ventana de panel administrativo
+    void slotMisPruebas(); //Inicia la ventana Mis pruebas
     void slotDrifscan();
     void slotDrifscanMod();
     void slotBias();
@@ -42,6 +45,8 @@ public slots:
     void slotControlShmitd();
     void slotMostrarConsola();
     void slotOcultarConsola();
+    void slotAbrirObserve(); //Inicia Observe para una prueba libre
+    void slotCargarPrueba(QSqlQuery); //Carga la prueba del usuario
 
 private:
     Ui::Simulador *ui;
@@ -49,9 +54,11 @@ private:
     FormHome *formHome;
     FormSimulador *formSimulador;
     PanelAdministrativo *panelAdministrativo;
+    MisPruebas *misPruebas;
     Controlschmitd *controlSchmitd;
     RegistroUsuario *registroUsuario;
-    int idUsuario;
+    QString idUsuario;
+    QSqlQuery prueba; //Variable para guardar la prueba que selecciono el usuario
 
 };
 

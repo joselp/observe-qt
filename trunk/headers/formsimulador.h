@@ -29,6 +29,7 @@ public:
     void abrirSitemaDatos();
     void asignarFondo(bool encendido);
     void abrirTerminal();
+    void asignarPrueba(QSqlQuery, bool); //Asigna si el usuario carga una prueba y la prueba a cargar.
     ~FormSimulador();
 
 
@@ -64,6 +65,8 @@ private:
     //Login de babel.
     QLineEdit *pass; //lineEdit para colocar la contraseña
     QPushButton *login; //Boton para iniciar sesion en babel
+    bool cargarPrueba; //Variable que indica si el usuario va a realizar una prueba
+    QSqlQuery prueba; //Variable que contiene los parametros para la prueba
 
 };
 

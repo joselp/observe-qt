@@ -841,6 +841,12 @@ bool AdquisicionDatos::getRealizarObservacion()
     return realizarObservacion;
 }
 
+void AdquisicionDatos::asignarComandoObservacion(int i)
+{
+    ui->comandoDeObservacionComboBox->setCurrentIndex(i);
+    ui->comandoDeObservacionComboBox->setDisabled(true);
+}
+
 void AdquisicionDatos::slotEmcabezados()
 {
     ventanaCabeceraFits->show();
