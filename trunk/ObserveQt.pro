@@ -35,7 +35,9 @@ SOURCES += bd/manejadorbd.cpp \
     src/usuarios/registrousuario.cpp \
     src/cargas/cargarprueba.cpp \
     src/cargas/mispruebas.cpp \
-    src/cargas/formprotocolo.cpp
+    src/cargas/formprotocolo.cpp \
+    src/formhome2.cpp \
+    src/formpruebadata.cpp
 
 HEADERS  += bd/manejadorbd.h \
     headers/visualizador.h \
@@ -61,7 +63,9 @@ HEADERS  += bd/manejadorbd.h \
     headers/usuarios/registrousuario.h \
     headers/cargas/cargarprueba.h \
     headers/cargas/mispruebas.h \
-    headers/cargas/formprotocolo.h
+    headers/cargas/formprotocolo.h \
+    headers/formhome2.h \
+    headers/formpruebadata.h
 
 FORMS    += gui/visualizador.ui \
     gui/simulador.ui \
@@ -79,7 +83,9 @@ FORMS    += gui/visualizador.ui \
     gui/usuarios/registrousuario.ui \
     gui/cargas/cargarprueba.ui \
     gui/cargas/mispruebas.ui \
-    gui/cargas/formprotocolo.ui
+    gui/cargas/formprotocolo.ui \
+    gui/formhome2.ui \
+    gui/formpruebadata.ui
 
 LIBS += -L. \
         -lm \

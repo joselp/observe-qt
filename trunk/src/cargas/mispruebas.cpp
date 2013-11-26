@@ -109,7 +109,7 @@ void MisPruebas::slotRowSelected(int row)
     item = new QTableWidgetItem;
     item = tablePrestamo->item(row,2);
 
-    QString strQuery = "SELECT * FROM protocolo WHERE id = " + item->text();
+    QString strQuery = "SELECT * FROM protocolo JOIN prueba ON prueba.protocolo_id=protocolo.id WHERE protocolo.id = " + item->text();
 
     QSqlQuery query;
     query.exec(strQuery);
@@ -125,7 +125,8 @@ void MisPruebas::slotRowSelected(int row)
         formProtocolo->asignarDuracion(query.value(8).toString());
         formProtocolo->asignarProyecto(query.value(9).toString());
         formProtocolo->asignarInstrumento(query.value(10).toString());
-        formProtocolo->show();
+
+        //formProtocolo->show();
         emit enviarDatos(query);
     }
 }

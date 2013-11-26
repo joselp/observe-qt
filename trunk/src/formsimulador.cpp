@@ -10,7 +10,7 @@ FormSimulador::FormSimulador(QWidget *parent) :
     //Login de babel.
     pass = new QLineEdit(ui->mdiArea);
     pass->setEchoMode(QLineEdit::Password);
-    pass->setGeometry(QRect(55,332,225,25));
+    pass->setGeometry(QRect(50,332,200,25));
     pass->setVisible(false);
     login = new QPushButton("Login", ui->mdiArea);
     login->setGeometry(QRect(200,370,70,30));

@@ -23,89 +23,9 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <layout class="QVBoxLayout" name="verticalLayoutMenu">
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Prueba &lt;br/&gt;Predefinidas&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonDrifscan">
-        <property name="text">
-         <string>Drifscan</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonDMod">
-        <property name="text">
-         <string>Drifscan/</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonGuiada">
-        <property name="text">
-         <string>Guiada</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonDarksGuiada">
-        <property name="text">
-         <string>Darks Guiada</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonDarksDrif">
-        <property name="text">
-         <string>Darks Drisfcan</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonFlatsGuiada">
-        <property name="text">
-         <string>Flats Guiada</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonFlatsDrif">
-        <property name="text">
-         <string>Flats Drifscan</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonBias">
-        <property name="text">
-         <string>Bias</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonFoco">
-        <property name="text">
-         <string>Foco</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>500</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
@@ -116,7 +36,7 @@
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>100</width>
+          <width>230</width>
           <height>20</height>
          </size>
         </property>
