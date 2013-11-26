@@ -6,150 +6,171 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1160</width>
-    <height>530</height>
+    <width>1031</width>
+    <height>536</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>100</width>
+    <width>1031</width>
     <height>530</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>99999</width>
-    <height>700</height>
+    <width>1031</width>
+    <height>536</height>
    </size>
   </property>
   <property name="windowTitle">
    <string comment="Sistema de Aquisicion de Datos" extracomment="Sistema de Aquisicion de Datos">Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="4" column="1">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="5" column="0" colspan="2">
-        <widget class="QLabel" name="label_2">
-         <property name="styleSheet">
-          <string notr="true">color: rgb(5, 9, 255);</string>
-         </property>
-         <property name="text">
-          <string>Encendido del Sistema</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QPushButton" name="pushButtonQnx1Encender">
-         <property name="text">
-          <string>QNX1</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0">
-        <widget class="QPushButton" name="pushButtonQnx5Encender">
-         <property name="text">
-          <string>QNX5</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <widget class="QPushButton" name="pushButtonQnx6Encender">
-         <property name="text">
-          <string>QNX6</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <widget class="QPushButton" name="pushButtonQnx3Encender">
-         <property name="text">
-          <string>QNX3</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QPushButton" name="pushButtonQnx4Encender">
-         <property name="text">
-          <string>QNX4</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QPushButton" name="pushButtonQnx2Encender">
-         <property name="text">
-          <string>QNX2</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButtonBabel">
-       <property name="text">
-        <string>BABEL</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item row="1" column="1">
-    <widget class="Line" name="line">
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="lineWidth">
-      <number>4</number>
-     </property>
-     <property name="midLineWidth">
-      <number>4</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2">
-    <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <widget class="QLabel" name="labelQnx">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../resource.qrc">:/images/adquisicionDatos/sistemaDatos.png</pixmap>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-  </layout>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>-1</y>
+     <width>16</width>
+     <height>541</height>
+    </rect>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <property name="lineWidth">
+    <number>4</number>
+   </property>
+   <property name="midLineWidth">
+    <number>8</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>9</y>
+     <width>131</width>
+     <height>511</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="4" column="1">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="6" column="0">
+       <widget class="QPushButton" name="pushButtonQnx1Encender">
+        <property name="text">
+         <string>QNX1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QPushButton" name="pushButtonQnx5Encender">
+        <property name="text">
+         <string>QNX5</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QPushButton" name="pushButtonQnx6Encender">
+        <property name="text">
+         <string>QNX6</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QPushButton" name="pushButtonQnx3Encender">
+        <property name="text">
+         <string>QNX3</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QPushButton" name="pushButtonQnx4Encender">
+        <property name="text">
+         <string>QNX4</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QPushButton" name="pushButtonQnx2Encender">
+        <property name="text">
+         <string>QNX2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" colspan="2">
+       <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(5, 9, 255);</string>
+        </property>
+        <property name="text">
+         <string>     Encendido del 
+           Sistema</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="pushButtonBabel">
+      <property name="text">
+       <string>BABEL</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>154</x>
+     <y>9</y>
+     <width>890</width>
+     <height>521</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <widget class="QLabel" name="labelQnx">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="../resource.qrc">:/images/adquisicionDatos/sistemaDatos.png</pixmap>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <resources>
   <include location="../resource.qrc"/>

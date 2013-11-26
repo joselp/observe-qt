@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #include "headers/formhome.h"
+#include "headers/formhome2.h"
 #include "headers/formsimulador.h"
+#include "headers/formpruebadata.h"
 #include "headers/paneladministrativo.h"
 #include "headers/controlschmitd/controlschmitd.h"
 #include "bd/manejadorbd.h"
@@ -23,7 +25,7 @@ public:
     explicit Simulador(QWidget *parent = 0);
     void initGui();
     void configurarSesionBd(); //Configura las variables para establecer la conexion con la base de datos
-    void cambiarPanel(QWidget*); //Me permite cambiar los paneles de la ventana principal del simulador
+    void cambiarPanel(QWidget*, QWidget*); //Me permite cambiar los paneles de la ventana principal del simulador
     void removerContenidoWidget(); //Remueve el widget que se encuentre en el layout de contenido
     void mostrarMenu();//Muestra el menu del lado izquierdo
     void ocultarMenu();//Oculta el menu del lado izquierdo
@@ -52,7 +54,9 @@ private:
     Ui::Simulador *ui;
     ManejadorBd *manejadorBd;
     FormHome *formHome;
+    FormHome2 *formHome2;
     FormSimulador *formSimulador;
+    FormPruebaData *formPruebaData;
     PanelAdministrativo *panelAdministrativo;
     MisPruebas *misPruebas;
     Controlschmitd *controlSchmitd;
