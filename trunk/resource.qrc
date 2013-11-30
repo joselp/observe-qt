@@ -94,5 +94,10 @@
         <file>images/pantallaLogin.png</file>
         <file>images/pantalla.jpg</file>
         <file>images/schmidt03.jpg</file>
+        <file>images/iconsubir.jpg</file>
+        <file>images/iconSalir.jpg</file>
+        <file>images/iconAcerca.jpg</file>
+        <file>images/asistente.png</file>
+        <file>images/ico_soporte.png</file>
     </qresource>
 </RCC>

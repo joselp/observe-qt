@@ -7,7 +7,7 @@
 #include "headers/formsimulador.h"
 #include "headers/formpruebadata.h"
 #include "headers/paneladministrativo.h"
-#include "headers/controlschmitd/controlschmitd.h"
+#include "headers/asistente.h"
 #include "bd/manejadorbd.h"
 #include "headers/cargas/mispruebas.h"
 #include <QDesktopWidget>
@@ -47,6 +47,7 @@ public slots:
     void slotControlShmitd();
     void slotMostrarConsola();
     void slotOcultarConsola();
+    void slotAsistente(); //Inicia la ventana del asistente
     void slotAbrirObserve(); //Inicia Observe para una prueba libre
     void slotCargarPrueba(QSqlQuery); //Carga la prueba del usuario
 
@@ -59,8 +60,8 @@ private:
     FormPruebaData *formPruebaData;
     PanelAdministrativo *panelAdministrativo;
     MisPruebas *misPruebas;
-    Controlschmitd *controlSchmitd;
     RegistroUsuario *registroUsuario;
+    Asistente *asistente;
     QString idUsuario;
     QSqlQuery prueba; //Variable para guardar la prueba que selecciono el usuario
 

@@ -202,7 +202,7 @@ void CabecerasFits::slotMostrarFiltro1Widget()
         activarFiltroWidget[0] = 'n';
 
         filtro = new Filtro1Widget(this);
-        filtro->setGeometry(700, 28, 155, 423);
+        filtro->setGeometry(680, 28, 155, 423);
         filtro->setVisible(true);
 
         filtro->iniciarConnects(ui->filtro1PushButton,ui->filtro2PushButton,ui->filtro3PushButton,ui->filtro4PushButton,activarFiltroWidget);
@@ -218,7 +218,7 @@ void CabecerasFits::slotMostrarFiltro2Widget()
         activarFiltroWidget[0] = 'n';
 
         filtro = new Filtro1Widget(this);
-        filtro->setGeometry(700, 58, 155, 423);
+        filtro->setGeometry(680, 58, 155, 423);
         filtro->setVisible(true);
 
         filtro->iniciarConnects(ui->filtro2PushButton,ui->filtro1PushButton,ui->filtro3PushButton,ui->filtro4PushButton,activarFiltroWidget);
@@ -233,7 +233,7 @@ void CabecerasFits::slotMostrarFiltro3Widget()
         activarFiltroWidget[0] = 'n';
 
         filtro = new Filtro1Widget(this);
-        filtro->setGeometry(700, 88, 155, 423);
+        filtro->setGeometry(680, 88, 155, 423);
         filtro->setVisible(true);
 
         filtro->iniciarConnects(ui->filtro3PushButton,ui->filtro1PushButton,ui->filtro2PushButton,ui->filtro4PushButton,activarFiltroWidget);
@@ -248,7 +248,7 @@ void CabecerasFits::slotMostrarFiltro4Widget()
         activarFiltroWidget[0] = 'n';
 
         filtro = new Filtro1Widget(this);
-        filtro->setGeometry(700, 118, 155, 423);
+        filtro->setGeometry(680, 118, 155, 423);
         filtro->setVisible(true);
 
         filtro->iniciarConnects(ui->filtro4PushButton,ui->filtro1PushButton,ui->filtro2PushButton,ui->filtro3PushButton,activarFiltroWidget);

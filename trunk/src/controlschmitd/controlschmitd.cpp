@@ -58,8 +58,6 @@ void Controlschmitd::slotSalir()
     this->close();
 }
 
-
-
 Controlschmitd::~Controlschmitd()
 {
     delete ui;

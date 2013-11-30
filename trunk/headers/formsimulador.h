@@ -10,6 +10,7 @@
 #include "headers/mybuttonicon.h"
 #include "headers/terminal.h"
 #include "headers/sistemadatos.h"
+#include "headers/controlschmitd/controlschmitd.h"
 
 namespace Ui {
 class FormSimulador;
@@ -29,6 +30,7 @@ public:
     void abrirSitemaDatos();
     void asignarFondo(bool encendido);
     void abrirTerminal();
+    void abrirControlSchmitd();
     void asignarPrueba(QSqlQuery, bool); //Asigna si el usuario carga una prueba y la prueba a cargar.
     ~FormSimulador();
 
@@ -43,6 +45,7 @@ public slots:
     void slotOcultarFondo(); //Oculta el fondo al apagar babel.
     void slotParaManejarRaton(int, int);
     void slotVerificarSesion(); //Verifica la sesion ingresada en babel.
+    void slotAbrirObserve(); //Inicia Observe para una prueba libre
 
 signals:
     void mousePressed(int x, int y);
@@ -60,7 +63,9 @@ private:
     QPixmap scaledPixmap;
     MySubWindow *subWindowCabeceraFits;
     MySubWindow *subWindowSistemaDatos;
+    MySubWindow *subWindowControl;
     SistemaDatos *sistemaDatos;
+    Controlschmitd *controlSchmitd;
     bool error1, error2, error3, error4, error5, error6; //Variables para manejar errores de conexion en qxns
     //Login de babel.
     QLineEdit *pass; //lineEdit para colocar la contraseña
