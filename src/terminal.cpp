@@ -21,7 +21,6 @@ miTextArea *Terminal::obtenerConsolaComandos()
     return consolaComandos;
 }
 
-
 Terminal::~Terminal()
 {
     delete ui;

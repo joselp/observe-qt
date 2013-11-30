@@ -65,9 +65,9 @@ void ProcesoFits::leerFits()
 
         //Se cargan la secuencia de imagenes para la prueba DriftScanBuena
 
-        if(prueba=="DriftScan" && condicionesCielo=="Despejado")
+        if(prueba=="DriftScan" && condicionesCielo=="Despejado"){
             pruebaDriftScan();
-
+        }
         if(prueba=="DarkDriftScan" && condicionesCielo=="Nublado")
             pruebaDarkDriftScanNublado();
 

@@ -70,27 +70,27 @@ void FormSimulador::asignarVentanas()
 
     adquisicionDatos= new AdquisicionDatos;
 
-    if(cargarPrueba==true){
+//    if(cargarPrueba==true){
 
-        if(prueba.value(7).toString() == "Observacion Drifscan")
-            adquisicionDatos->asignarComandoObservacion(1);
-        else if(prueba.value(7).toString() == "Drifscan Modificado")
-            adquisicionDatos->asignarComandoObservacion(2);
-        else if(prueba.value(7).toString() == "Observacion Guiada")
-            adquisicionDatos->asignarComandoObservacion(3);
-        else if(prueba.value(7).toString() == "Darks Guiado")
-            adquisicionDatos->asignarComandoObservacion(4);
-        else if(prueba.value(7).toString() == "Darks Drifscan")
-            adquisicionDatos->asignarComandoObservacion(5);
-        else if(prueba.value(7).toString() == "Flats Guiado")
-            adquisicionDatos->asignarComandoObservacion(6);
-        else if(prueba.value(7).toString() == "Flats Drifscan")
-            adquisicionDatos->asignarComandoObservacion(7);
-        else if(prueba.value(7).toString() == "Bias")
-            adquisicionDatos->asignarComandoObservacion(8);
-        else if(prueba.value(7).toString() == "Foco")
-            adquisicionDatos->asignarComandoObservacion(9);
-    }
+//        if(prueba.value(7).toString() == "Observacion Drifscan")
+//            adquisicionDatos->asignarComandoObservacion(1);
+//        else if(prueba.value(7).toString() == "Drifscan Modificado")
+//            adquisicionDatos->asignarComandoObservacion(2);
+//        else if(prueba.value(7).toString() == "Observacion Guiada")
+//            adquisicionDatos->asignarComandoObservacion(3);
+//        else if(prueba.value(7).toString() == "Darks Guiado")
+//            adquisicionDatos->asignarComandoObservacion(4);
+//        else if(prueba.value(7).toString() == "Darks Drifscan")
+//            adquisicionDatos->asignarComandoObservacion(5);
+//        else if(prueba.value(7).toString() == "Flats Guiado")
+//            adquisicionDatos->asignarComandoObservacion(6);
+//        else if(prueba.value(7).toString() == "Flats Drifscan")
+//            adquisicionDatos->asignarComandoObservacion(7);
+//        else if(prueba.value(7).toString() == "Bias")
+//            adquisicionDatos->asignarComandoObservacion(8);
+//        else if(prueba.value(7).toString() == "Foco")
+//            adquisicionDatos->asignarComandoObservacion(9);
+//    }
 
     connect(adquisicionDatos->getButtonObservar(),SIGNAL(clicked()),this,SLOT(slotIniciarObservacion()));
     connect(adquisicionDatos->getButtonModia(),SIGNAL(clicked()),this,SLOT(slotModia()));
@@ -110,7 +110,8 @@ void FormSimulador::asignarVentanas()
 void FormSimulador::slotIniciarObservacion()
 {
 
-    //    verificarDatos();
+    adquisicionDatos->verificarDatos();
+    if(adquisicionDatos->getRealizarObservacion()==true){
     //    if(realizarObservacion==true){
     //        disconnect(ui->observarPushButton,SIGNAL(clicked()),0,0);
     //        ui->observarPushButton->setStyleSheet("background-color:GRAY;"
@@ -124,16 +125,14 @@ void FormSimulador::slotIniciarObservacion()
     //        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Iniciada");
     //        crearRetardoFit();
 
-
     //Verifico el tipo de observacion para asi determinar el total de lineas a mostrar en el visualizador
 
     if(adquisicionDatos->getComandoDeObservacionComboBox()->currentText()=="Observacion Guiada" || adquisicionDatos->getComandoDeObservacionComboBox()->currentText()=="Darks Guiado" ||
             adquisicionDatos->getComandoDeObservacionComboBox()->currentText()=="Flats Guiado" || adquisicionDatos->getComandoDeObservacionComboBox()->currentText()=="Bias"){
 
         adquisicionDatos->getVisualizador()->setTotalLineas(2048);
-
     }
-    else
+    else{
         //        //if(visualizador->isVisible()){
         adquisicionDatos->getVisualizador()->setTotalLineas(adquisicionDatos->getNumeroLineasLeer()->text().toInt());
     //            visualizador->initLectura();
@@ -142,7 +141,7 @@ void FormSimulador::slotIniciarObservacion()
 
     //    if(realizarObservacion==false)
     //        qDebug()<<"Observacion no realizada";
-
+    }
     adquisicionDatos->getVisualizador()->setCondicionesCielo(adquisicionDatos->getCabeceraFits()->getCondicionesCielo());
 
     //    adquisicionDatos->getVisualizador()->initLectura();
@@ -150,6 +149,7 @@ void FormSimulador::slotIniciarObservacion()
 
     //    ui->mdiArea->addSubWindow(adquisicionDatos->getVisualizador());
     //adquisicionDatos->getVisualizador();
+    }
 }
 
 void FormSimulador::slotModia()
@@ -288,6 +288,12 @@ void FormSimulador::slotVerificarSesion()
     }
 }
 
+void FormSimulador::slotAbrirObserve()
+{
+    this->asignarVentanas();
+    this->getAdquisicionDatos()->getVisualizador()->setPrueba("DriftScan");
+}
+
 void FormSimulador::abrirTerminal()
 {
     terminal = new Terminal();
@@ -299,6 +305,16 @@ void FormSimulador::abrirTerminal()
     terminal->obtenerConsolaComandos()->asignarError6(error6);
     ui->mdiArea->addSubWindow(terminal);
     terminal->show();
+}
+
+void FormSimulador::abrirControlSchmitd()
+{
+    controlSchmitd = new Controlschmitd;
+    subWindowControl = new MySubWindow();
+    subWindowControl->setWidget(controlSchmitd);
+    connect(controlSchmitd,SIGNAL(abrirObserve()),this,SLOT(slotAbrirObserve()));
+    ui->mdiArea->addSubWindow(subWindowControl);
+    subWindowControl->show();
 }
 
 void FormSimulador::asignarPrueba(QSqlQuery p, bool cp)

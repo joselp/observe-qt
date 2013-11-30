@@ -1184,22 +1184,19 @@ void AdquisicionDatos::crearRetardoFit()
         logTimer->setInterval(1000);
 
     }
-    else
+    else{
         logTimer->setInterval(30);
-
+    }
 }
 
 void AdquisicionDatos::slotLogTimer()
 {
 
-
     //Verifico si el tipo de observacion implica tiempo de exposicion y se hace su simulacion
     if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Guiada" || ui->comandoDeObservacionComboBox->currentText()=="Darks Guiado" ||
             ui->comandoDeObservacionComboBox->currentText()=="Flats Guiado" || ui->comandoDeObservacionComboBox->currentText()=="Bias"){
 
-
         ui->tiempoExposicionlineEdit->setText(QString::number(contadorTiempoExposicion)+"/"+QString::number(tiempoExposicion));
-
 
         if(contadorTiempoExposicion%4==0)
                 ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"1024 lineas leidas");
@@ -1209,11 +1206,11 @@ void AdquisicionDatos::slotLogTimer()
             ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Terminada");
         }
         contadorTiempoExposicion++;
+
     }
 
     //Verifico si el tipo de observacion no implica tiempo de exposicion y se hace su simulacion
     else{
-
         //if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Drifscan"){
         lineasLeidas++;
         //visualizador->setNumeroLineaActual(lineasLeidas);
@@ -1232,7 +1229,6 @@ void AdquisicionDatos::slotLogTimer()
         }
 
     }
-
 }
 
 void AdquisicionDatos::slotTiempoExposicion()

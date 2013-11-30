@@ -86,8 +86,9 @@
     <property name="title">
      <string>Sistema</string>
     </property>
-    <addaction name="actionPanel_Administrativo"/>
     <addaction name="actionSistema_de_Adquisici_on_de_Datos"/>
+    <addaction name="actionAsignar_Prueba"/>
+    <addaction name="actionAsistente"/>
    </widget>
    <widget class="QMenu" name="menuAyuda">
     <property name="title">
@@ -114,13 +115,22 @@
    <addaction name="actionSistema_de_Adquisici_on_de_Datos"/>
    <addaction name="separator"/>
    <addaction name="actionCargar_Prueba"/>
+   <addaction name="actionAsignar_Prueba"/>
+   <addaction name="actionAsistente"/>
    <addaction name="separator"/>
    <addaction name="actionConsola"/>
    <addaction name="actionControlShmidt"/>
   </widget>
-  <action name="actionPanel_Administrativo">
+  <action name="actionAsignar_Prueba">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/iconsubir.jpg</normaloff>:/images/iconsubir.jpg</iconset>
+   </property>
    <property name="text">
-    <string>Panel Administrativo</string>
+    <string>Asignar Prueba</string>
+   </property>
+   <property name="toolTip">
+    <string>Asignar Prueba</string>
    </property>
   </action>
   <action name="actionCargar_Prueba">
@@ -136,6 +146,10 @@
    </property>
   </action>
   <action name="actionSalir">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/iconSalir.jpg</normaloff>:/images/iconSalir.jpg</iconset>
+   </property>
    <property name="text">
     <string>Salir</string>
    </property>
@@ -146,6 +160,10 @@
    </property>
   </action>
   <action name="actionSoporte">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/iconAcerca.jpg</normaloff>:/images/iconAcerca.jpg</iconset>
+   </property>
    <property name="text">
     <string>Acerca</string>
    </property>
@@ -157,6 +175,9 @@
    </property>
    <property name="text">
     <string>Sistema de Adquisición de Datos</string>
+   </property>
+   <property name="shortcut">
+    <string>CapsLock, CapsLock, CapsLock, CapsLock</string>
    </property>
   </action>
   <action name="actionConsola">
@@ -178,6 +199,15 @@
    </property>
    <property name="toolTip">
     <string>ControlShmidt</string>
+   </property>
+  </action>
+  <action name="actionAsistente">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/ico_soporte.png</normaloff>:/images/ico_soporte.png</iconset>
+   </property>
+   <property name="text">
+    <string>Asistente</string>
    </property>
   </action>
  </widget>

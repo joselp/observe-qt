@@ -35,6 +35,7 @@ void Simulador::initGui()
     formPruebaData = new FormPruebaData;
     formHome = new FormHome;
     formHome2 = new FormHome2;
+    asistente = new Asistente;
 
     formHome->setGeometry(ui->verticalLayoutContenido->geometry());
     formHome2->setGeometry(ui->verticalLayoutMenu->geometry());
@@ -45,10 +46,10 @@ void Simulador::initGui()
 
     connect(formHome->getButtonAcceder(),SIGNAL(clicked()),this,SLOT(slotAcceder()));
     //connect(ui->actionAbrir,SIGNAL(triggered()),this,SLOT(slotAcceder()));
-    ui->actionPanel_Administrativo->setVisible(false);
+    ui->actionAsignar_Prueba->setVisible(false);
     ui->actionCargar_Prueba->setVisible(false);
     connect(ui->actionCargar_Prueba,SIGNAL(triggered()),this,SLOT(slotMisPruebas()));
-    connect(ui->actionPanel_Administrativo,SIGNAL(triggered()),this,SLOT(slotPanelAdministrativo()));
+    connect(ui->actionAsignar_Prueba,SIGNAL(triggered()),this,SLOT(slotPanelAdministrativo()));
 
     //connect(ui->pushButtonDrifscan,SIGNAL(clicked()),this,SLOT(slotDrifscan()));
     //connect(ui->pushButtonDMod,SIGNAL(clicked()),this,SLOT(slotDrifscanMod()));
@@ -56,6 +57,7 @@ void Simulador::initGui()
     //ui->pushButtonDMod->setText("Drifscan\nModificado");
 
     connect(formSimulador,SIGNAL(mostrarConsola()),this,SLOT(slotMostrarConsola()));
+    connect(ui->actionAsistente,SIGNAL(triggered()),this,SLOT(slotAsistente()));
 }
 
 void Simulador::configurarSesionBd()
@@ -158,7 +160,7 @@ void Simulador::slotAcceder()
             }
 
             if(query.value(0) == "Administrador"){
-                ui->actionPanel_Administrativo->setVisible(true);
+                ui->actionAsignar_Prueba->setVisible(true);
                 panelAdministrativo = new PanelAdministrativo;
             }
         }
@@ -272,9 +274,7 @@ void Simulador::slotConsola()
 
 void Simulador::slotControlShmitd()
 {
-    controlSchmitd = new Controlschmitd();
-    connect(controlSchmitd,SIGNAL(abrirObserve()),this,SLOT(slotAbrirObserve()));
-    controlSchmitd->show();
+    formSimulador->abrirControlSchmitd();
 }
 
 void Simulador::slotMostrarConsola()
@@ -291,6 +291,11 @@ void Simulador::slotOcultarConsola()
     ui->actionControlShmidt->setVisible(false);
     disconnect(formSimulador,SIGNAL(ocultarConsola()),this,SLOT(slotOcultarConsola()));
     connect(formSimulador,SIGNAL(mostrarConsola()),this,SLOT(slotMostrarConsola()));
+}
+
+void Simulador::slotAsistente()
+{
+    asistente->show();
 }
 
 void Simulador::slotAbrirObserve()
