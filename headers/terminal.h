@@ -17,7 +17,7 @@ public:
     void initGui();
     miTextArea * obtenerConsolaComandos(); //Funcion que retorna el textArea que simula la consola de comandos
     ~Terminal();
-    
+
 private:
     Ui::Terminal *ui;
     miTextArea *consolaComandos; //Variable que me permitira simular un terminal

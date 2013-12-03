@@ -64,6 +64,16 @@ void FormPruebaData::setProyecto(QString s)
     ui->textEditProyecto->setText(s);
 }
 
+void FormPruebaData::setObturador(QString s)
+{
+    ui->labelObturador->setPixmap(QPixmap(s));
+}
+
+QLabel *FormPruebaData::getObturador()
+{
+    return ui->labelObturador;
+}
+
 FormPruebaData::~FormPruebaData()
 {
     delete ui;
