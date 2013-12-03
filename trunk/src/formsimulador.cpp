@@ -15,6 +15,7 @@ FormSimulador::FormSimulador(QWidget *parent) :
     login = new QPushButton("Login", ui->mdiArea);
     login->setGeometry(QRect(200,370,70,30));
     login->setVisible(false);
+    obturador = new QLabel;
 
     //Agrego y muestro el sistema de datos al formSimulador
     sistemaDatos = new SistemaDatos;
@@ -63,6 +64,8 @@ FormSimulador::FormSimulador(QWidget *parent) :
 
     connect(sistemaDatos,SIGNAL(mostrarFondo(bool,bool,bool,bool,bool,bool)),this, SLOT(slotMostrarFondo(bool, bool, bool, bool , bool, bool)));
     connect(login, SIGNAL(clicked()), this, SLOT(slotVerificarSesion()));
+
+
 }
 
 void FormSimulador::asignarVentanas()
@@ -110,8 +113,12 @@ void FormSimulador::asignarVentanas()
 void FormSimulador::slotIniciarObservacion()
 {
 
-    adquisicionDatos->verificarDatos();
-    if(adquisicionDatos->getRealizarObservacion()==true){
+    if(adquisicionDatos->getComandoDeObservacionComboBox()->currentText()=="Observacion Drifscan")
+        this->getAdquisicionDatos()->getVisualizador()->setPrueba("DriftScan");
+    if(adquisicionDatos->getComandoDeObservacionComboBox()->currentText()=="Darks Drifscan")
+        this->getAdquisicionDatos()->getVisualizador()->setPrueba("DarkDriftScan");
+    //adquisicionDatos->verificarDatos();
+    //if(adquisicionDatos->getRealizarObservacion()==true){
     //    if(realizarObservacion==true){
     //        disconnect(ui->observarPushButton,SIGNAL(clicked()),0,0);
     //        ui->observarPushButton->setStyleSheet("background-color:GRAY;"
@@ -149,7 +156,7 @@ void FormSimulador::slotIniciarObservacion()
 
     //    ui->mdiArea->addSubWindow(adquisicionDatos->getVisualizador());
     //adquisicionDatos->getVisualizador();
-    }
+    //}
 }
 
 void FormSimulador::slotModia()
@@ -215,6 +222,7 @@ void FormSimulador::slotOcultarFondo(){
 
     disconnect(sistemaDatos,SIGNAL(ocultarFondo()),this, SLOT(slotOcultarFondo()));
     connect(sistemaDatos,SIGNAL(mostrarFondo(bool,bool,bool,bool,bool,bool)),this, SLOT(slotMostrarFondo(bool,bool,bool,bool,bool,bool)));
+    ui->mdiArea->closeAllSubWindows();
     emit ocultarConsola();
 
 }
@@ -291,7 +299,14 @@ void FormSimulador::slotVerificarSesion()
 void FormSimulador::slotAbrirObserve()
 {
     this->asignarVentanas();
-    this->getAdquisicionDatos()->getVisualizador()->setPrueba("DriftScan");
+}
+
+void FormSimulador::slotObturador(QString c)
+{
+    if(c=="abrir")
+        obturador->setPixmap(QPixmap(":/images/obt_abierto.jpg"));
+    if(c=="cerrar")
+        obturador->setPixmap(QPixmap(":/images/obt_cerrado.gif"));
 }
 
 void FormSimulador::abrirTerminal()
@@ -303,6 +318,7 @@ void FormSimulador::abrirTerminal()
     terminal->obtenerConsolaComandos()->asignarError4(error4);
     terminal->obtenerConsolaComandos()->asignarError5(error5);
     terminal->obtenerConsolaComandos()->asignarError6(error6);
+    connect(terminal->obtenerConsolaComandos(),SIGNAL(ejecutarComando(QString)),this,SLOT(slotObturador(QString)));
     ui->mdiArea->addSubWindow(terminal);
     terminal->show();
 }
@@ -321,4 +337,9 @@ void FormSimulador::asignarPrueba(QSqlQuery p, bool cp)
 {
     prueba = p;
     cargarPrueba = cp;
+}
+
+void FormSimulador::asignarObturador(QLabel *obt)
+{
+    obturador = obt;
 }

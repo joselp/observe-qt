@@ -37,6 +37,9 @@ void Simulador::initGui()
     formHome2 = new FormHome2;
     asistente = new Asistente;
 
+    formSimulador->asignarObturador(formPruebaData->getObturador());
+    formPruebaData->setObturador(":/images/obt_cerrado.gif");
+
     formHome->setGeometry(ui->verticalLayoutContenido->geometry());
     formHome2->setGeometry(ui->verticalLayoutMenu->geometry());
     //this->setWindowFlags(Qt::FramelessWindowHint);
@@ -118,6 +121,11 @@ void Simulador::ocultarMenu()
     //    ui->pushButtonFoco->setVisible(false);
     //    ui->pushButtonFlatsGuiada->setVisible(false);
     ui->menubar->setVisible(false);
+}
+
+void Simulador::asignarObturador()
+{
+    formSimulador->asignarObturador(formPruebaData->getObturador());
 }
 
 FormSimulador *Simulador::getFormSimulador()

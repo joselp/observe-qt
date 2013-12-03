@@ -29,6 +29,7 @@ public:
     void removerContenidoWidget(); //Remueve el widget que se encuentre en el layout de contenido
     void mostrarMenu();//Muestra el menu del lado izquierdo
     void ocultarMenu();//Oculta el menu del lado izquierdo
+    void asignarObturador(); //Asigna el Label obturador al formsimulador
     FormSimulador *getFormSimulador(); //Retorna formSimulador para poder cambiar el fondo
     void resizeEvent(QResizeEvent *);
     ~Simulador();

@@ -68,7 +68,7 @@ void ProcesoFits::leerFits()
         if(prueba=="DriftScan" && condicionesCielo=="Despejado"){
             pruebaDriftScan();
         }
-        if(prueba=="DarkDriftScan" && condicionesCielo=="Nublado")
+        if(prueba=="DarkDriftScan")
             pruebaDarkDriftScanNublado();
 
         qDebug()<<imagenesObservacion.value(0);
@@ -82,7 +82,13 @@ void ProcesoFits::leerFits()
             if(initTimer==0)
                 line = lineaActual;
 
-            fileLine = "../observe-qt/pruebas/"+prueba+"/"+condicionesCielo+"/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1);
+            if(prueba=="DriftScan")
+                fileLine = "../observe-qt/pruebas/"+prueba+"/"+condicionesCielo+"/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1);
+            if(prueba=="DarkDriftScan")
+                fileLine = "../observe-qt/pruebas/"+prueba+"/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1);
+
+
+
             image = new QImage(2048, totalLineas, QImage::Format_ARGB32_Premultiplied);
 
             qDebug()<<fileLine;

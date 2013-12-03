@@ -12,6 +12,8 @@ miTextArea::miTextArea(QWidget *parent):
     qnx4=false;
     qnx5=false;
     qnx6=false;
+    obtupas=false;
+    obturador1=false;
     this->setText("usuario>");
     //Posiciono el cursor al final de la cadena de caracteres
     QTextCursor cursor(this->textCursor());
@@ -39,9 +41,9 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
             }
         }
         else{
-        qDebug()<<aux2.compare(aux2.size()-5,aux2.size(),"qnx1>");
-        qDebug()<<aux2.compare(aux2.size()-5,aux2.size(),"qnx2>");
-           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"qnx1>")!=0) && qnx1==true)
+        qDebug()<<aux2.compare(aux2.size()-5,aux2.size(),"QNX1>");
+        qDebug()<<aux2.compare(aux2.size()-5,aux2.size(),"QNX2>");
+           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"QNX1>")!=0) && qnx1==true)
             {
                 QString aux = this->toPlainText();
                 aux.truncate(this->toPlainText().count()-1);
@@ -54,7 +56,7 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
                 this->setTextCursor(cursor);
                 return;
             }
-           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"qnx2>")!=0) && qnx2==true)
+           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"QNX2>")!=0) && qnx2==true)
             {
                 QString aux = this->toPlainText();
                 aux.truncate(this->toPlainText().count()-1);
@@ -67,7 +69,7 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
                 this->setTextCursor(cursor);
                 return;
             }
-           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"qnx3>")!=0) && qnx3==true)
+           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"QNX3>")!=0) && qnx3==true)
             {
                 QString aux = this->toPlainText();
                 aux.truncate(this->toPlainText().count()-1);
@@ -80,7 +82,7 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
                 this->setTextCursor(cursor);
                 return;
             }
-           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"qnx4>")!=0) && qnx4==true)
+           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"QNX4>")!=0) && qnx4==true)
             {
                 QString aux = this->toPlainText();
                 aux.truncate(this->toPlainText().count()-1);
@@ -93,7 +95,7 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
                 this->setTextCursor(cursor);
                 return;
             }
-           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"qnx5>")!=0) && qnx5==true)
+           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"QNX5>")!=0) && qnx5==true)
             {
                 QString aux = this->toPlainText();
                 aux.truncate(this->toPlainText().count()-1);
@@ -106,7 +108,7 @@ void miTextArea::keyPressEvent(QKeyEvent *e)
                 this->setTextCursor(cursor);
                 return;
             }
-           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"qnx6>")!=0) && qnx6==true)
+           if(aux2.size()!=5 && (aux2.compare(aux2.size()-5,aux2.size(),"QNX6>")!=0) && qnx6==true)
             {
                 QString aux = this->toPlainText();
                 aux.truncate(this->toPlainText().count()-1);
@@ -203,61 +205,61 @@ void miTextArea::ejecutar(QString comando)
 
     if(comando=="rlogin qnx1"){
         if(error1 == false){
-        this->setText(this->toPlainText()+"\n"+"qnx1>");
+        this->setText(this->toPlainText()+"\n"+"QNX1>");
         qnx1=true;
         }
         else
-            this->setText(this->toPlainText()+"\n"+"usuario> Error de conexion con qnx1"+"\n"+"usuario>");
+            this->setText(this->toPlainText()+"\nqnx1: No route to host\n"+"usuario>");
         return;
     }
 
     if(comando=="rlogin qnx2"){
         if(error2 == false){
-        this->setText(this->toPlainText()+"\n"+"qnx2>");
+        this->setText(this->toPlainText()+"\n"+"QNX2>");
         qnx2=true;
         }
         else
-            this->setText(this->toPlainText()+"\n"+"usuario> Error de conexion con qnx2"+"\n"+"usuario>");
+            this->setText(this->toPlainText()+"\nqnx2: No route to host\n"+"usuario>");
         return;
     }
 
     if(comando=="rlogin qnx3"){
         if(error3 == false){
-        this->setText(this->toPlainText()+"\n"+"qnx3>");
+        this->setText(this->toPlainText()+"\n"+"QNX3>");
         qnx3=true;
         }
         else
-            this->setText(this->toPlainText()+"\n"+"usuario> Error de conexion con qnx3"+"\n"+"usuario>");
+            this->setText(this->toPlainText()+"\nqnx3: No route to host\n"+"usuario>");
         return;
     }
 
     if(comando=="rlogin qnx4"){
         if(error4 == false){
-        this->setText(this->toPlainText()+"\n"+"qnx4>");
+        this->setText(this->toPlainText()+"\n"+"QNX4>");
         qnx4=true;
         }
         else
-            this->setText(this->toPlainText()+"\n"+"usuario> Error de conexion con qnx4"+"\n"+"usuario>");
+            this->setText(this->toPlainText()+"\nqnx4: No route to host\n"+"usuario>");
         return;
     }
 
     if(comando=="rlogin qnx5"){
         if(error5 == false){
-        this->setText(this->toPlainText()+"\n"+"qnx5>");
+        this->setText(this->toPlainText()+"\n"+"QNX5>");
         qnx5=true;
         }
         else
-            this->setText(this->toPlainText()+"\n"+"usuario> Error de conexion con qnx5"+"\n"+"usuario>");
+            this->setText(this->toPlainText()+"\nqnx5: No route to host\n"+"usuario>");
         return;
     }
 
     if(comando=="rlogin qnx6"){
         if(error6 == false){
-        this->setText(this->toPlainText()+"\n"+"qnx6>");
+        this->setText(this->toPlainText()+"\n"+"QNX6>");
         qnx6=true;
         }
         else
-            this->setText(this->toPlainText()+"\n"+"usuario> Error de conexion con qnx6"+"\n"+"usuario>");
+            this->setText(this->toPlainText()+"\nqnx6: No route to host\n"+"usuario>");
         return;
     }
 
@@ -269,6 +271,80 @@ void miTextArea::ejecutar(QString comando)
         qnx4=false;
         qnx5=false;
         qnx6=false;
+
+    }
+
+    if(comando=="obtupas" && qnx5==true){
+        obtupas=true;
+        this->setText(this->toPlainText()+"\n"+"Programa para control del Obturador"
+                      +"\nInitial board status: 41"
+                      +"\nEmptying buffer..."
+                      +"\nBoard status: 41"
+                      +"\nTrying to flush out/end bad command"
+                      +"\nStatus: 1"
+                      +"\nStatus: 41"
+                      +"\nStatus: 41"
+                      +"\nSearching for board"
+                      +"\nPC34 ver 2.16-4"
+                      +"\nBoard responding."
+                      +"\nStatus after reset board: 61"
+                      +"\nEmptying buffer again..."
+                      +"\nEmptying buffer..."
+                      +"\nPower is on"
+                      +"\n******MENU******"
+                      +"\n[a] mueve 500"
+                      +"\n[b] mueve 100"
+                      +"\n[c] mueve 50"
+                      +"\n[q] salir programa"
+                      +"\n>");
+
+        return;
+    }
+
+    if(comando=="obturador1" && qnx5==true){
+        obturador1=true;
+        this->setText(this->toPlainText()+"\n"+"Programa para control del Obturador"
+                      +"\nEmptying buffer..."
+                      +"\nPower is on"
+                      +"\n******MENU******"
+                      +"\n[a] Abrir"
+                      +"\n[c] Cerrar"
+                      +"\n[q] salir programa"
+                      +"\n>");
+
+        return;
+    }
+
+    if(obtupas==true && comando=="q"){
+        this->setText("QNX5>");
+    }
+
+    if(obturador1==true && comando=="q"){
+        this->setText("QNX5>");
+    }
+
+    if(obturador1==true && comando=="a"){
+        this->setText(this->toPlainText()+"\n"+"Programa para control del Obturador"
+                      +"\nEmptying buffer..."
+                      +"\nPower is on"
+                      +"\n******MENU******"
+                      +"\n[a] Abrir"
+                      +"\n[c] Cerrar"
+                      +"\n[q] salir programa"
+                      +"\n>");
+        emit ejecutarComando("abrir");
+    }
+
+    if(obturador1==true && comando=="c"){
+        this->setText(this->toPlainText()+"\n"+"Programa para control del Obturador"
+                      +"\nEmptying buffer..."
+                      +"\nPower is on"
+                      +"\n******MENU******"
+                      +"\n[a] Abrir"
+                      +"\n[c] Cerrar"
+                      +"\n[q] salir programa"
+                      +"\n>");
+        emit ejecutarComando("cerrar");
     }
 
     if(comandoValido==true){

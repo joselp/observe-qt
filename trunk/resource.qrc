@@ -99,5 +99,7 @@
         <file>images/iconAcerca.jpg</file>
         <file>images/asistente.png</file>
         <file>images/ico_soporte.png</file>
+        <file>images/obt_abierto.jpg</file>
+        <file>images/obt_cerrado.gif</file>
     </qresource>
 </RCC>

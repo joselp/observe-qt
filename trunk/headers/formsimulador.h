@@ -32,6 +32,7 @@ public:
     void abrirTerminal();
     void abrirControlSchmitd();
     void asignarPrueba(QSqlQuery, bool); //Asigna si el usuario carga una prueba y la prueba a cargar.
+    void asignarObturador(QLabel *obt);
     ~FormSimulador();
 
 
@@ -46,6 +47,7 @@ public slots:
     void slotParaManejarRaton(int, int);
     void slotVerificarSesion(); //Verifica la sesion ingresada en babel.
     void slotAbrirObserve(); //Inicia Observe para una prueba libre
+    void slotObturador(QString); //Enciende o apaga el obturador
 
 signals:
     void mousePressed(int x, int y);
@@ -72,6 +74,7 @@ private:
     QPushButton *login; //Boton para iniciar sesion en babel
     bool cargarPrueba; //Variable que indica si el usuario va a realizar una prueba
     QSqlQuery prueba; //Variable que contiene los parametros para la prueba
+    QLabel *obturador; //Label que muestra el obutarodos
 
 };
 

@@ -28,6 +28,9 @@ public:
 
 public slots:
 
+signals:
+    void ejecutarComando(QString);
+
 private:
     QTextCursor cursor;
     bool qnx1; //variable que me indica si estoy dentro de alguna qnx desde la consola
@@ -36,6 +39,8 @@ private:
     bool qnx4; //variable que me indica si estoy dentro de alguna qnx desde la consola
     bool qnx5; //variable que me indica si estoy dentro de alguna qnx desde la consola
     bool qnx6; //variable que me indica si estoy dentro de alguna qnx desde la consola
+    bool obtupas; //Variable que me indica si estoy ejecutando obtupas
+    bool obturador1; //Variable que me indica si estoy ejecutando obtupas
     bool error1, error2, error3, error4, error5, error6;
 
 };

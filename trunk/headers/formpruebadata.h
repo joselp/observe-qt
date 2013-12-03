@@ -2,6 +2,8 @@
 #define FORMPRUEBADATA_H
 
 #include <QWidget>
+#include <QPixmap>
+#include <QLabel>
 
 namespace Ui {
 class FormPruebaData;
@@ -26,6 +28,11 @@ public:
     void setDuracion(QString s);
     void setInstrumento(QString s);
     void setProyecto(QString s);
+    void setObturador(QString s);
+
+    //Getters
+    QLabel *getObturador();
+
     ~FormPruebaData();
     
 private:
