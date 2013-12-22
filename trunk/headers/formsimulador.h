@@ -74,7 +74,8 @@ private:
     QPushButton *login; //Boton para iniciar sesion en babel
     bool cargarPrueba; //Variable que indica si el usuario va a realizar una prueba
     QSqlQuery prueba; //Variable que contiene los parametros para la prueba
-    QLabel *obturador; //Label que muestra el obutarodos
+    QLabel *obturador; //Label que muestra el obutarodor
+    bool obturadorAux; //Me indica si el obturador esta abierto o cerrado
 
 };
 

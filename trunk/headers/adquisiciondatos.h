@@ -44,6 +44,8 @@ public:
 
     //Setters
     void asignarComandoObservacion(int i);
+    void asignarTipoObs(QString s);
+    void asignarPrueba(bool p);
 
 
 private slots:
@@ -66,6 +68,8 @@ private:
     int lineasLeidas; //Cantidad  de lineas leidas desde los ccds
     int tiempoExposicion; //Tiempo de exposicion para algunos tipos de imagenes.
     int contadorTiempoExposicion; //LLeva la cantidad de tiempo que ha transcurrido.
+    bool prueba; //Variable que determina si se esta realizando una prueba
+    QString tipoObs; //Variable que guarda el tipo de observacion de la prueba
 
     QTimer *logTimer; //Variable para crear el tiempo de creacion de un archivo fits
     QTimer *tiempoExposicionTimer;//Variable para crear el contador del tiempo de exposcion.

@@ -13,6 +13,7 @@ AdquisicionDatos::AdquisicionDatos(QWidget *parent) :
     eliminar=true;
     lineasLeidas=0;
     tiempoExposicion=0;
+    prueba = false;
     contadorTiempoExposicion=0;
 }
 
@@ -114,6 +115,12 @@ AdquisicionDatos::~AdquisicionDatos()
 //Slots
 void AdquisicionDatos::slotComandoDeObservacion(int item)
 {
+    if(prueba==true){
+        if(tipoObs != ui->comandoDeObservacionComboBox->currentText()){
+            QMessageBox msg;
+            msg.warning(this,"Advertencia","Este no es el tipo de Obsevacion\nque debe realizar verifique.");
+        }
+    }
 
     if(primero==true){
 
@@ -845,6 +852,16 @@ void AdquisicionDatos::asignarComandoObservacion(int i)
 {
     ui->comandoDeObservacionComboBox->setCurrentIndex(i);
     ui->comandoDeObservacionComboBox->setDisabled(true);
+}
+
+void AdquisicionDatos::asignarTipoObs(QString s)
+{
+    tipoObs = s;
+}
+
+void AdquisicionDatos::asignarPrueba(bool p)
+{
+    prueba = p;
 }
 
 void AdquisicionDatos::slotEmcabezados()

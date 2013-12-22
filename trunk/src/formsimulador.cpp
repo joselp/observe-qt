@@ -16,6 +16,7 @@ FormSimulador::FormSimulador(QWidget *parent) :
     login->setGeometry(QRect(200,370,70,30));
     login->setVisible(false);
     obturador = new QLabel;
+    obturadorAux = false;
 
     //Agrego y muestro el sistema de datos al formSimulador
     sistemaDatos = new SistemaDatos;
@@ -65,13 +66,17 @@ FormSimulador::FormSimulador(QWidget *parent) :
     connect(sistemaDatos,SIGNAL(mostrarFondo(bool,bool,bool,bool,bool,bool)),this, SLOT(slotMostrarFondo(bool, bool, bool, bool , bool, bool)));
     connect(login, SIGNAL(clicked()), this, SLOT(slotVerificarSesion()));
 
-
 }
 
 void FormSimulador::asignarVentanas()
 {
 
     adquisicionDatos= new AdquisicionDatos;
+
+    if(cargarPrueba == true){
+        adquisicionDatos->asignarPrueba(true);
+        adquisicionDatos->asignarTipoObs(prueba.value(7).toString());
+    }
 
 //    if(cargarPrueba==true){
 
@@ -117,8 +122,11 @@ void FormSimulador::slotIniciarObservacion()
         this->getAdquisicionDatos()->getVisualizador()->setPrueba("DriftScan");
     if(adquisicionDatos->getComandoDeObservacionComboBox()->currentText()=="Darks Drifscan")
         this->getAdquisicionDatos()->getVisualizador()->setPrueba("DarkDriftScan");
-    //adquisicionDatos->verificarDatos();
-    //if(adquisicionDatos->getRealizarObservacion()==true){
+
+    this->getAdquisicionDatos()->getVisualizador()->getProcesoFits()->setObturador(obturadorAux);
+
+    //    adquisicionDatos->verificarDatos();
+//    if(adquisicionDatos->getRealizarObservacion()==true){
     //    if(realizarObservacion==true){
     //        disconnect(ui->observarPushButton,SIGNAL(clicked()),0,0);
     //        ui->observarPushButton->setStyleSheet("background-color:GRAY;"
@@ -303,10 +311,14 @@ void FormSimulador::slotAbrirObserve()
 
 void FormSimulador::slotObturador(QString c)
 {
-    if(c=="abrir")
+    if(c=="abrir"){
         obturador->setPixmap(QPixmap(":/images/obt_abierto.jpg"));
-    if(c=="cerrar")
+        obturadorAux = true;
+    }
+    if(c=="cerrar"){
         obturador->setPixmap(QPixmap(":/images/obt_cerrado.gif"));
+        obturadorAux = false;
+    }
 }
 
 void FormSimulador::abrirTerminal()

@@ -108,6 +108,11 @@ Visualizador::~Visualizador()
     delete ui;
 }
 
+ProcesoFits *Visualizador::getProcesoFits()
+{
+    return procesoFits;
+}
+
 void Visualizador::slotParaManejarRaton(int x, int y)
 {
     ui->labelValorXEdit->setText(QString::number(x));
