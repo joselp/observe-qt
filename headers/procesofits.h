@@ -40,6 +40,7 @@ public:
     void pruebaFlatsGuiada();
     void pruebaFlatsDriftScan();
     void pruebaBias();
+    void pruebaObturador();
 
     void guardarImagenes();
 
@@ -53,6 +54,7 @@ public:
     void setCcd(QString);
     void setLineaActual(int);
     void setCondicionesCielo(QString condiciones);
+    void setObturador(bool o);
 
 protected:
     /*!
@@ -112,6 +114,7 @@ private:
     bool finalizado; //Permite saber si se finalizo la observacion
     int initTimer; //Permite saber si se debe iniciar el timer
     QString prueba;
+    bool obturador; //Para saber si el obturador esta abierto o cerrado
 
     QVector<QString> imagenesObservacion;
 

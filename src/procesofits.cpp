@@ -13,14 +13,15 @@ ProcesoFits::ProcesoFits(QWidget *parent) :
     lineas = 0;
     line = 0;
     primera = true;
-    cambio=false;
-    finalizado=false;
-    initTimer=0;
+    cambio = false;
+    finalizado = false;
+    initTimer = 0;
+    obturador = false;
 
     ccd = "ccd1";
     qnx = "qnx1";
     Numeroimagen = 1;
-    tam=1;
+    tam = 1;
 
     //Inicio una consola
     bash = new QProcess(this);
@@ -65,11 +66,13 @@ void ProcesoFits::leerFits()
 
         //Se cargan la secuencia de imagenes para la prueba DriftScanBuena
 
-        if(prueba=="DriftScan" && condicionesCielo=="Despejado"){
+
+        if(prueba=="DriftScan" && condicionesCielo=="Despejado" && obturador==true){
             pruebaDriftScan();
         }
-        if(prueba=="DarkDriftScan")
+        if(prueba=="DarkDriftScan" || obturador==false){
             pruebaDarkDriftScanNublado();
+        }
 
         qDebug()<<imagenesObservacion.value(0);
 
@@ -82,14 +85,12 @@ void ProcesoFits::leerFits()
             if(initTimer==0)
                 line = lineaActual;
 
-            if(prueba=="DriftScan")
+            if(prueba=="DriftScan" && obturador==true)
                 fileLine = "../observe-qt/pruebas/"+prueba+"/"+condicionesCielo+"/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1);
-            if(prueba=="DarkDriftScan")
-                fileLine = "../observe-qt/pruebas/"+prueba+"/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1);
+            if(prueba=="DarkDriftScan" || obturador==false)
+                fileLine = "../observe-qt/pruebas/DarkDriftScan/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1);
 
-
-
-            image = new QImage(2048, totalLineas, QImage::Format_ARGB32_Premultiplied);
+          image = new QImage(2048, totalLineas, QImage::Format_ARGB32_Premultiplied);
 
             qDebug()<<fileLine;
 
@@ -111,22 +112,24 @@ void ProcesoFits::leerFits()
         }
 
         else{
+            if(prueba=="DriftScan" && obturador==true)
+                fileLine = "../observe-qt/pruebas/"+prueba+"/"+condicionesCielo+"/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1);
+            if(prueba=="DarkDriftScan" || obturador==false)
+                fileLine = "../observe-qt/pruebas/DarkDriftScan/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1);
 
-            fileLine = "../observe-qt/pruebas/"+prueba+"/"+condicionesCielo+"/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1);
             qDebug()<<(char *)fileLine.toStdString().c_str();
             lineaActual=0;
-
         }
 
         //char card[FLEN_CARD];   /* standard string lengths defined in fitsioc.h */
 
-        if(prueba=="DriftScan"){
+        if(prueba=="DriftScan" && obturador==true){
             if (fits_open_file(&fptr, (char *)fileLine.toStdString().c_str(), READWRITE, &status)){
                 printerror(status);
 
             }
         }
-        if(prueba=="DarkDriftScan"){
+        if(prueba=="DarkDriftScan" || obturador==false){
             if (fits_open_file(&fptr, (char *)fileLine.toStdString().c_str(), READONLY, &status)){
                 printerror(status);
 
@@ -355,9 +358,216 @@ void ProcesoFits::resetProceso()
 
 void ProcesoFits::pruebaDriftScan()
 {
-    imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
-    imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
-    imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    imagenesObservacion.clear();
+
+    if(qnx=="qnx1" && ccd=="ccd1"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx1" && ccd=="ccd2"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx1" && ccd=="ccd3"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx1" && ccd=="ccd4"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx2" && ccd=="ccd1"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx2" && ccd=="ccd2"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx2" && ccd=="ccd3"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx2" && ccd=="ccd4"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx3" && ccd=="ccd1"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx3" && ccd=="ccd1"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx3" && ccd=="ccd1"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx3" && ccd=="ccd1"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx4" && ccd=="ccd1"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx4" && ccd=="ccd2"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx4" && ccd=="ccd3"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx4" && ccd=="ccd4"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
 }
 
 void ProcesoFits::setPrueba(QString p)
@@ -448,6 +658,11 @@ void ProcesoFits::setCondicionesCielo(QString condiciones)
     condicionesCielo=condiciones;
 }
 
+void ProcesoFits::setObturador(bool o)
+{
+    obturador = o;
+}
+
 QString ProcesoFits::getQnx()
 {
     return qnx;
@@ -492,5 +707,21 @@ void ProcesoFits::guardarImagenes()
         QMessageBox::critical(this,"ERROR","ERROR: comandos consumiendo recursos en sistemas ");
 
     }
+}
+
+void ProcesoFits::pruebaObturador()
+{
+    imagenesObservacion.clear();
+
+    imagenesObservacion.append("obs205.qnx1.ccd1.n1.fits");
+    imagenesObservacion.append("obs205.qnx1.ccd1.n2.fits");
+    imagenesObservacion.append("obs205.qnx1.ccd1.n3.fits");
+    imagenesObservacion.append("obs205.qnx1.ccd1.n4.fits");
+    imagenesObservacion.append("obs205.qnx1.ccd1.n5.fits");
+    imagenesObservacion.append("obs205.qnx1.ccd1.n6.fits");
+    imagenesObservacion.append("obs205.qnx1.ccd1.n7.fits");
+    imagenesObservacion.append("obs205.qnx1.ccd1.n8.fits");
+    imagenesObservacion.append("obs205.qnx1.ccd1.n9.fits");
+    imagenesObservacion.append("obs205.qnx1.ccd1.n10.fits");
 }
 

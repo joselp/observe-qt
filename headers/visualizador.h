@@ -23,6 +23,9 @@ public:
     void initLectura(); //Comienza la lectura de linea de datos del archivo fits.
     ~Visualizador();
 
+    //Getters
+    ProcesoFits * getProcesoFits();
+
     //Setters
     void setTotalLineas(int total); //Asigna el total de lineas para al proceso fits
     void setPrueba(QString); //Asigna la variable prueba que se realizara en proceso fits
