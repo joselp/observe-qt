@@ -3,6 +3,12 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include <QMdiArea>
+#include "headers/controlschmitd/summary.h"
+#include "headers/controlschmitd/limpiar.h"
+#include "headers/controlschmitd/shutdall.h"
+#include "headers/controlschmitd/slayall.h"
+#include "headers/mysubwindow.h"
 
 namespace Ui {
 class Controlschmitd;
@@ -15,6 +21,7 @@ class Controlschmitd : public QMainWindow
 public:
     explicit Controlschmitd(QWidget *parent = 0);
     void initAction();
+    void setControlSchmitd(QMdiArea *m);
     ~Controlschmitd();
 
 private slots:
@@ -34,6 +41,11 @@ signals:
 
 private:
     Ui::Controlschmitd *ui;
+    QMdiArea *mdiArea;
+    Summary *summary;
+    Limpiar *limpiar;
+    ShutdAll *shutdAll;
+    SlayAll *slayAll;
 };
 
 #endif // CONTROLSCHMITD_H

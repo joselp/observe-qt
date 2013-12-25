@@ -338,6 +338,7 @@ void FormSimulador::abrirTerminal()
 void FormSimulador::abrirControlSchmitd()
 {
     controlSchmitd = new Controlschmitd;
+    controlSchmitd->setControlSchmitd(ui->mdiArea);
     subWindowControl = new MySubWindow();
     subWindowControl->setWidget(controlSchmitd);
     connect(controlSchmitd,SIGNAL(abrirObserve()),this,SLOT(slotAbrirObserve()));
