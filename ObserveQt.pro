@@ -38,7 +38,11 @@ SOURCES += bd/manejadorbd.cpp \
     src/cargas/formprotocolo.cpp \
     src/formhome2.cpp \
     src/formpruebadata.cpp \
-    src/asistente.cpp
+    src/asistente.cpp \
+    src/controlschmitd/summary.cpp \
+    src/controlschmitd/limpiar.cpp \
+    src/controlschmitd/slayall.cpp \
+    src/controlschmitd/shutdall.cpp \
 
 HEADERS  += bd/manejadorbd.h \
     headers/visualizador.h \
@@ -67,7 +71,11 @@ HEADERS  += bd/manejadorbd.h \
     headers/cargas/formprotocolo.h \
     headers/formhome2.h \
     headers/formpruebadata.h \
-    headers/asistente.h
+    headers/asistente.h \
+    headers/controlschmitd/summary.h \
+    headers/controlschmitd/limpiar.h \
+    headers/controlschmitd/slayall.h \
+    headers/controlschmitd/shutdall.h \
 
 FORMS    += gui/visualizador.ui \
     gui/simulador.ui \
@@ -88,7 +96,11 @@ FORMS    += gui/visualizador.ui \
     gui/cargas/formprotocolo.ui \
     gui/formhome2.ui \
     gui/formpruebadata.ui \
-    gui/asistente.ui
+    gui/asistente.ui \
+    gui/controlschmitd/summary.ui \
+    gui/controlschmitd/limpiar.ui \
+    gui/controlschmitd/slayall.ui \
+    gui/controlschmitd/shutdall.ui \
 
 LIBS += -L. \
         -lm \

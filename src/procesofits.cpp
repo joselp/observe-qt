@@ -261,11 +261,10 @@ void ProcesoFits::timerEvent(QTimerEvent *e)
                 primera=false;
                 qDebug()<<"Segunda Imagen ";
                 //source.moveTop(1);
-                Numeroimagen++;
                 lineas=0;
 
                 guardarImagenes();
-
+                Numeroimagen++;
                 leerFits();
             }
         }
@@ -277,6 +276,8 @@ void ProcesoFits::timerEvent(QTimerEvent *e)
                 qDebug()<<"Siguiente Imagen ";
                 //source.moveTop(1);
                 lineas=0;
+                guardarImagenes();
+                Numeroimagen++;
                 leerFits();
             }
         }
@@ -582,7 +583,7 @@ void ProcesoFits::pruebaDarkDriftScanNublado()
 
     if(qnx=="qnx1" && ccd=="ccd1"){
 
-        imagenesObservacion.append("obs205.qnx1.ccd1.n2.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n1.fits");
         imagenesObservacion.append("obs205.qnx1.ccd1.n2.fits");
         imagenesObservacion.append("obs205.qnx1.ccd1.n3.fits");
         imagenesObservacion.append("obs205.qnx1.ccd1.n4.fits");
@@ -596,7 +597,7 @@ void ProcesoFits::pruebaDarkDriftScanNublado()
     }
 
     if(qnx=="qnx1" && ccd=="ccd2"){
-        imagenesObservacion.append("obs205.qnx1.ccd2.n2.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd2.n1.fits");
         imagenesObservacion.append("obs205.qnx1.ccd2.n2.fits");
         imagenesObservacion.append("obs205.qnx1.ccd2.n3.fits");
         imagenesObservacion.append("obs205.qnx1.ccd2.n4.fits");
@@ -610,7 +611,7 @@ void ProcesoFits::pruebaDarkDriftScanNublado()
     }
 
     if(qnx=="qnx1" && ccd=="ccd3"){
-        imagenesObservacion.append("obs205.qnx1.ccd3.n2.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd3.n1.fits");
         imagenesObservacion.append("obs205.qnx1.ccd3.n2.fits");
         imagenesObservacion.append("obs205.qnx1.ccd3.n3.fits");
         imagenesObservacion.append("obs205.qnx1.ccd3.n4.fits");
@@ -624,7 +625,7 @@ void ProcesoFits::pruebaDarkDriftScanNublado()
     }
 
     if(qnx=="qnx1" && ccd=="ccd4"){
-        imagenesObservacion.append("obs205.qnx1.ccd4.n2.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd4.n1.fits");
         imagenesObservacion.append("obs205.qnx1.ccd4.n2.fits");
         imagenesObservacion.append("obs205.qnx1.ccd4.n3.fits");
         imagenesObservacion.append("obs205.qnx1.ccd4.n4.fits");
@@ -670,7 +671,18 @@ QString ProcesoFits::getQnx()
 
 void ProcesoFits::guardarImagenes()
 {
+    auxComando.clear();
+
+    if(prueba=="DarkDriftScan" || obturador==false){
+        //pruebas/DarkDriftScan/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1)
+        auxComando.append("cp pruebas/DarkDriftScan/qnx1/ccd1/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images1/"+imagenesObservacion.value(Numeroimagen-1));
+        qDebug()<<auxComando;
+    }
+    else{
     auxComando.append("cp pruebas/"+prueba+"/"+condicionesCielo+"/qnx1/"+"ccd1/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images1/"+imagenesObservacion.value(Numeroimagen-1));
+    qDebug()<<"AQUI222";
+    }
+
     bash->write((const char *)auxComando.toStdString().c_str());
     auxComando.clear();
     bash->closeWriteChannel();
@@ -680,7 +692,13 @@ void ProcesoFits::guardarImagenes()
     }
 
     bash->start("bash");
-    auxComando.append("cp pruebas/"+prueba+"/"+condicionesCielo+"/qnx1/"+"ccd2/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images2/"+imagenesObservacion.value(Numeroimagen-1));
+    if(prueba=="DarkDriftScan" || obturador==false){
+        //pruebas/DarkDriftScan/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1)
+        auxComando.append("cp pruebas/DarkDriftScan/qnx1/ccd1/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images1/"+imagenesObservacion.value(Numeroimagen-1));
+    }
+    else{
+    auxComando.append("cp pruebas/"+prueba+"/"+condicionesCielo+"/qnx1/"+"ccd2/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images1/"+imagenesObservacion.value(Numeroimagen-1));
+    }
     bash->write((const char *)auxComando.toStdString().c_str());
     auxComando.clear();
     bash->closeWriteChannel();
@@ -690,7 +708,13 @@ void ProcesoFits::guardarImagenes()
     }
 
     bash->start("bash");
-    auxComando.append("cp pruebas/"+prueba+"/"+condicionesCielo+"/qnx1/"+"ccd3/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images3/"+imagenesObservacion.value(Numeroimagen-1));
+    if(prueba=="DarkDriftScan" || obturador==false){
+        //pruebas/DarkDriftScan/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1)
+        auxComando.append("cp pruebas/DarkDriftScan/qnx1/ccd1/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images1/"+imagenesObservacion.value(Numeroimagen-1));
+    }
+    else{
+    auxComando.append("cp pruebas/"+prueba+"/"+condicionesCielo+"/qnx1/"+"ccd3/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images1/"+imagenesObservacion.value(Numeroimagen-1));
+    }
     bash->write((const char *)auxComando.toStdString().c_str());
     auxComando.clear();
     bash->closeWriteChannel();
@@ -700,7 +724,13 @@ void ProcesoFits::guardarImagenes()
     }
 
     bash->start("bash");
-    auxComando.append("cp pruebas/"+prueba+"/"+condicionesCielo+"/qnx1/"+"ccd4/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images4/"+imagenesObservacion.value(Numeroimagen-1));
+    if(prueba=="DarkDriftScan" || obturador==false){
+        //pruebas/DarkDriftScan/"+qnx+"/"+ccd+"/"+imagenesObservacion.value(Numeroimagen-1)
+        auxComando.append("cp pruebas/DarkDriftScan/qnx1/ccd1/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images1/"+imagenesObservacion.value(Numeroimagen-1));
+    }
+    else{
+    auxComando.append("cp pruebas/"+prueba+"/"+condicionesCielo+"/qnx1/"+"ccd4/"+imagenesObservacion.value(Numeroimagen-1)+" "+"observaciones/images1/"+imagenesObservacion.value(Numeroimagen-1));
+    }
     bash->write((const char *)auxComando.toStdString().c_str());
     bash->closeWriteChannel();
     if(!bash->waitForFinished()){
