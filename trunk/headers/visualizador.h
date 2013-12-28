@@ -21,6 +21,7 @@ public:
     explicit Visualizador(QWidget *parent = 0);
     void initGui();
     void initLectura(); //Comienza la lectura de linea de datos del archivo fits.
+    void anadirProcesoFits();
     ~Visualizador();
 
     //Getters

@@ -43,13 +43,10 @@ ProcesoFits::ProcesoFits(QWidget *parent) :
 
 void ProcesoFits::leerFits()
 {
-
     qDebug()<<"entro";
 
     if(finalizado==false){
-
-        qApp->processEvents();
-
+        //qApp->processEvents();
         fitsfile *fptr;
         ushort nullval, pline[2049];
         int status = 0, anynull=0;
@@ -66,7 +63,6 @@ void ProcesoFits::leerFits()
 
         //Se cargan la secuencia de imagenes para la prueba DriftScanBuena
 
-
         if(prueba=="DriftScan" && condicionesCielo=="Despejado" && obturador==true){
             pruebaDriftScan();
         }
@@ -79,7 +75,6 @@ void ProcesoFits::leerFits()
         //imagenesObservacion[0]="obs401.qnx3.ccd2.n110.fits";
 
         if(primera==true){
-
             multiplo=2047-lineaActual;
 
             if(initTimer==0)
@@ -687,8 +682,8 @@ void ProcesoFits::guardarImagenes()
     auxComando.clear();
     bash->closeWriteChannel();
     if(!bash->waitForFinished()){
-        QMessageBox::critical(this,"ERROR","ERROR: comandos consumiendo recursos en sistemas ");
-
+        //QMessageBox::critical(this,"ERROR","ERROR: comandos consumiendo recursos en sistemas ");
+        qDebug()<<"ERROR: comandos consumiendo recursos en sistemas ";
     }
 
     bash->start("bash");
@@ -703,8 +698,8 @@ void ProcesoFits::guardarImagenes()
     auxComando.clear();
     bash->closeWriteChannel();
     if(!bash->waitForFinished()){
-        QMessageBox::critical(this,"ERROR","ERROR: comandos consumiendo recursos en sistemas ");
-
+        //QMessageBox::critical(this,"ERROR","ERROR: comandos consumiendo recursos en sistemas ");
+        qDebug()<<"ERROR: comandos consumiendo recursos en sistemas ";
     }
 
     bash->start("bash");
@@ -719,8 +714,8 @@ void ProcesoFits::guardarImagenes()
     auxComando.clear();
     bash->closeWriteChannel();
     if(!bash->waitForFinished()){
-        QMessageBox::critical(this,"ERROR","ERROR: comandos consumiendo recursos en sistemas ");
-
+        //QMessageBox::critical(this,"ERROR","ERROR: comandos consumiendo recursos en sistemas ");
+        qDebug()<<"ERROR: comandos consumiendo recursos en sistemas ";
     }
 
     bash->start("bash");
@@ -734,7 +729,8 @@ void ProcesoFits::guardarImagenes()
     bash->write((const char *)auxComando.toStdString().c_str());
     bash->closeWriteChannel();
     if(!bash->waitForFinished()){
-        QMessageBox::critical(this,"ERROR","ERROR: comandos consumiendo recursos en sistemas ");
+        //QMessageBox::critical(this,"ERROR","ERROR: comandos consumiendo recursos en sistemas ");
+        qDebug()<<"ERROR: comandos consumiendo recursos en sistemas ";
 
     }
 }

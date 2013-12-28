@@ -7,7 +7,6 @@ Visualizador::Visualizador(QWidget *parent) :
 {
     ui->setupUi(this);
     initGui();
-
 }
 
 void Visualizador::initGui()
@@ -18,7 +17,8 @@ void Visualizador::initGui()
     //Creo el proceso de la lectura de la imagen y lo enserto en la scena para poder hacer los zoom
     procesoFits = new ProcesoFits;
     //procesoFits = new Utils;
-
+    totalLineas = 1;
+    setNumeroLineaActual(0);
     //Creo el GraphWidget donde se mostrara la imagen fits
     //visor = new GraphWidget(this);
     //visor->setGeometry(10,170,1000,532);
@@ -43,7 +43,7 @@ void Visualizador::initGui()
     myScroll = new MyScrollArea;
     myScroll->verticalScrollBar()->setHidden(true);
     //myScroll->verticalScrollBar()->setDisabled(true);
-    myScroll->setWidget(procesoFits);
+    //myScroll->setWidget(procesoFits);
     ui->verticalLayout->addWidget(myScroll);
     procesoFits->barraVisualizador(myScroll);
 
@@ -77,7 +77,6 @@ void Visualizador::initGui()
     //Por defecto se reciben datos de QNX1 y CCD1
     ui->pushButtonQnx1->setEnabled(false);
     ui->pushButtonCcd1->setEnabled(false);
-
 }
 
 //Inicio el proceso para leer el archivo fits asi como mostrarlo
@@ -86,6 +85,11 @@ void Visualizador::initLectura()
 {
     procesoFits->setTotalLineas(totalLineas);
     procesoFits->leerFits();
+}
+
+void Visualizador::anadirProcesoFits()
+{
+    myScroll->setWidget(procesoFits);
 }
 
 //void Visualizador::zoomIn()

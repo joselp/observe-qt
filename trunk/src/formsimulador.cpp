@@ -158,8 +158,8 @@ void FormSimulador::slotIniciarObservacion()
     //        qDebug()<<"Observacion no realizada";
     }
     adquisicionDatos->getVisualizador()->setCondicionesCielo(adquisicionDatos->getCabeceraFits()->getCondicionesCielo());
-
-    //    adquisicionDatos->getVisualizador()->initLectura();
+    adquisicionDatos->getVisualizador()->anadirProcesoFits();
+    adquisicionDatos->getVisualizador()->initLectura();
     adquisicionDatos->crearRetardoFit();
 
     //    ui->mdiArea->addSubWindow(adquisicionDatos->getVisualizador());
@@ -169,14 +169,11 @@ void FormSimulador::slotIniciarObservacion()
 
 void FormSimulador::slotModia()
 {
+    adquisicionDatos->getVisualizador()->setNumeroLineaActual(0);
 
-    adquisicionDatos->getVisualizador()->setNumeroLineaActual(adquisicionDatos->getLineasLeidas());
-
-    adquisicionDatos->getVisualizador()->initLectura();
-
+    //adquisicionDatos->getVisualizador()->initLectura();
     ui->mdiArea->addSubWindow(adquisicionDatos->getVisualizador());
     adquisicionDatos->getVisualizador()->show();
-
 }
 
 void FormSimulador::slotEncambezados()
