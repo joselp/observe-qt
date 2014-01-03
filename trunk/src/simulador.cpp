@@ -15,12 +15,14 @@ Simulador::Simulador(QWidget *parent) :
     connect(ui->actionSistema_de_Adquisici_on_de_Datos,SIGNAL(triggered()),this,SLOT(slotSistemaDatos()));
     connect(ui->actionConsola,SIGNAL(triggered()),this,SLOT(slotConsola()));
     connect(ui->actionControlShmidt,SIGNAL(triggered()),this,SLOT(slotControlShmitd()));
+    connect(ui->actionCerrar_Sesion,SIGNAL(triggered()),this,SLOT(slotCerrarSesion()));
     //this->showMaximized();
 
     ui->actionConsola->setVisible(false);
     ui->actionControlShmidt->setVisible(false);
 
     //sistemaDatos = new SistemaDatos;
+    babelApagadaRec = false;
 
     initGui();
     ocultarMenu();
@@ -77,15 +79,18 @@ void Simulador::cambiarPanel(QWidget *widget,QWidget *widget2)
     removerContenidoWidget();
     ui->verticalLayoutContenido->addWidget(widget);
     ui->verticalLayoutMenu->addWidget(widget2);
+    widget->show();
+    widget2->show();
     //qDebug()<<ui->verticalLayoutContenido->geometry();
 }
 
 void Simulador::removerContenidoWidget()
 {
     if(!ui->verticalLayoutContenido->isEmpty()){
-
         delete(ui->verticalLayoutMenu->widget());
         formHome2->hide();
+        //ui->verticalLayoutContenido->removeWidget(formHome);
+        //ui->verticalLayoutMenu->removeWidget(formHome2);
         delete(ui->verticalLayoutContenido->widget());
     }
 }
@@ -148,7 +153,6 @@ Simulador::~Simulador()
 void Simulador::slotAcceder()
 {
     if(formHome->autenticar()==true){
-
         removerContenidoWidget();
 
         cambiarPanel(formSimulador, formPruebaData);
@@ -299,6 +303,7 @@ void Simulador::slotOcultarConsola()
     ui->actionControlShmidt->setVisible(false);
     disconnect(formSimulador,SIGNAL(ocultarConsola()),this,SLOT(slotOcultarConsola()));
     connect(formSimulador,SIGNAL(mostrarConsola()),this,SLOT(slotMostrarConsola()));
+    babelApagadaRec = true;
 }
 
 void Simulador::slotAsistente()
@@ -328,4 +333,27 @@ void Simulador::slotCargarPrueba(QSqlQuery p)
     formPruebaData->setCondiciones(prueba.value(12).toString());
 
     formSimulador->asignarPrueba(prueba, true);
+
+    if(prueba.value(17) == true && babelApagadaRec == false){
+        formSimulador->asignarSemilla(6);
+    }
+    else
+        formSimulador->asignarSemilla(50);
+}
+
+void Simulador::slotCerrarSesion()
+{
+    formSimulador->hide();
+    formPruebaData->hide();
+    ui->verticalLayoutContenido->addWidget(formHome);
+    ui->verticalLayoutMenu->addWidget(formHome2);
+    formHome2->show();
+
+    babelApagadaRec = false;
+    prueba.clear();
+    formSimulador->apagarTodo();
+    formSimulador->cancelarPrueba();
+    ui->toolBar->setVisible(false);
+    formHome->limpiarCampos();
+    formPruebaData->limpiarCampos();
 }

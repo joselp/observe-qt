@@ -55,6 +55,10 @@ public:
     void setLineaActual(int);
     void setCondicionesCielo(QString condiciones);
     void setObturador(bool o);
+    void setQnx1(bool q);
+    void setQnx2(bool q);
+    void setQnx3(bool q);
+    void setQnx4(bool q);
 
 protected:
     /*!
@@ -120,6 +124,11 @@ private:
 
     QProcess *bash; //Variable para ejecutar comando en un terminal.
     QString auxComando; //Variable que contendra el comando a ser  ejecutado en un terminal.
+
+    bool qnx1; //Indica si qnx1 se encuentra apagada en adquisicion de datos
+    bool qnx2; //Indica si qnx2 se encuentra apagada en adquisicion de datos
+    bool qnx3; //Indica si qnx3 se encuentra apagada en adquisicion de datos
+    bool qnx4; //Indica si qnx4 se encuentra apagada en adquisicion de datos
 
 signals:
 

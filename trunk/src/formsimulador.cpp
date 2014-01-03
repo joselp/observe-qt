@@ -17,6 +17,7 @@ FormSimulador::FormSimulador(QWidget *parent) :
     login->setVisible(false);
     obturador = new QLabel;
     obturadorAux = false;
+    anadirProceso = true;
 
     //Agrego y muestro el sistema de datos al formSimulador
     sistemaDatos = new SistemaDatos;
@@ -125,6 +126,15 @@ void FormSimulador::slotIniciarObservacion()
 
     this->getAdquisicionDatos()->getVisualizador()->getProcesoFits()->setObturador(obturadorAux);
 
+    if(this->adquisicionDatos->getQnx1() == false)
+        this->adquisicionDatos->getVisualizador()->getProcesoFits()->setQnx1(false);
+    if(this->adquisicionDatos->getQnx2() == false)
+        this->adquisicionDatos->getVisualizador()->getProcesoFits()->setQnx2(false);
+    if(this->adquisicionDatos->getQnx3() == false)
+        this->adquisicionDatos->getVisualizador()->getProcesoFits()->setQnx3(false);
+    if(this->adquisicionDatos->getQnx4() == false)
+        this->adquisicionDatos->getVisualizador()->getProcesoFits()->setQnx4(false);
+
     //    adquisicionDatos->verificarDatos();
 //    if(adquisicionDatos->getRealizarObservacion()==true){
     //    if(realizarObservacion==true){
@@ -158,8 +168,11 @@ void FormSimulador::slotIniciarObservacion()
     //        qDebug()<<"Observacion no realizada";
     }
     adquisicionDatos->getVisualizador()->setCondicionesCielo(adquisicionDatos->getCabeceraFits()->getCondicionesCielo());
-    adquisicionDatos->getVisualizador()->anadirProcesoFits();
     adquisicionDatos->getVisualizador()->initLectura();
+    if(anadirProceso==true){
+        adquisicionDatos->getVisualizador()->anadirProcesoFits();
+        anadirProceso=false;
+    }
     adquisicionDatos->crearRetardoFit();
 
     //    ui->mdiArea->addSubWindow(adquisicionDatos->getVisualizador());
@@ -228,6 +241,7 @@ void FormSimulador::slotOcultarFondo(){
     disconnect(sistemaDatos,SIGNAL(ocultarFondo()),this, SLOT(slotOcultarFondo()));
     connect(sistemaDatos,SIGNAL(mostrarFondo(bool,bool,bool,bool,bool,bool)),this, SLOT(slotMostrarFondo(bool,bool,bool,bool,bool,bool)));
     ui->mdiArea->closeAllSubWindows();
+    sistemaDatos->setSemilla(50);
     emit ocultarConsola();
 
 }
@@ -268,6 +282,7 @@ AdquisicionDatos *FormSimulador::getAdquisicionDatos()
 void FormSimulador::abrirSitemaDatos()
 {
     subWindowSistemaDatos->show();
+    subWindowSistemaDatos->setGeometry(0,0,1031,560);
 
     if(subWindowSistemaDatos->isHidden())
         subWindowSistemaDatos->show();
@@ -352,4 +367,33 @@ void FormSimulador::asignarPrueba(QSqlQuery p, bool cp)
 void FormSimulador::asignarObturador(QLabel *obt)
 {
     obturador = obt;
+}
+
+void FormSimulador::apagarTodo()
+{
+
+    fondo.load(":/images/pantallaApagada.jpeg");
+    ui->mdiArea->setBackground(*new QBrush(fondo));
+    this->setGeometry(this->geometry().x(),this->geometry().y()-1,this->geometry().width(),this->geometry().height()-1);
+    pass->setVisible(false);
+    login->setVisible(false);
+
+    disconnect(sistemaDatos,SIGNAL(ocultarFondo()),this, SLOT(slotOcultarFondo()));
+    connect(sistemaDatos,SIGNAL(mostrarFondo(bool,bool,bool,bool,bool,bool)),this, SLOT(slotMostrarFondo(bool,bool,bool,bool,bool,bool)));
+    ui->mdiArea->closeAllSubWindows();
+    sistemaDatos->reinicarSistema();
+    sistemaDatos->setSemilla(50);
+    emit ocultarConsola();
+}
+
+void FormSimulador::asignarSemilla(int s)
+{
+    sistemaDatos->setSemilla(s);
+    qDebug()<<s;
+}
+
+void FormSimulador::cancelarPrueba()
+{
+    prueba.clear();
+    cargarPrueba = false;
 }

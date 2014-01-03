@@ -13,8 +13,9 @@ SistemaDatos::SistemaDatos(QWidget *parent) :
 void SistemaDatos::initGui()
 {
     this->setWindowTitle("Sistema de datos");
-
+    semilla = 50;
     reinicarSistema();
+
 }
 
 void SistemaDatos::closeEvent(QCloseEvent *)
@@ -89,6 +90,11 @@ void SistemaDatos::setQnx6(bool a)
     Qnx6=a;
 }
 
+void SistemaDatos::setSemilla(int i)
+{
+    semilla = i;
+}
+
 bool SistemaDatos::getQnx1()
 {
     return qnx1;
@@ -152,6 +158,11 @@ bool SistemaDatos::getError5()
 bool SistemaDatos::getError6()
 {
     return error6;
+}
+
+int SistemaDatos::getSemilla()
+{
+    return semilla;
 }
 
 void SistemaDatos::slotQnx1Encender()
@@ -302,8 +313,7 @@ void SistemaDatos::slotQnx6Encender()
 
 void SistemaDatos::slotBabelEncender()
 {
-
-    num=rand()%2;
+    num=rand()%semilla;
     QString imagen;
     error1=false;
     error2=false;
@@ -316,30 +326,30 @@ void SistemaDatos::slotBabelEncender()
         error1=true;
     }
 
-    num=rand()%2;
+    num=rand()%semilla;
     if(num == 1){
 
         error2=true;
     }
 
-    num=rand()%2;
+    num=rand()%semilla;
     if(num == 1){
 
         error3=true;
     }
 
-    num=rand()%2;
+    num=rand()%semilla;
     if(num == 1){
 
         error4=true;
     }
 
-    num=rand()%2;
+    num=rand()%semilla;
     if(num == 1){
         error5=true;
     }
 
-    num=rand()%2;
+    num=rand()%semilla;
     if(num == 1){
 
         error6=true;

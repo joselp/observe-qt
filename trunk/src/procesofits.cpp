@@ -17,6 +17,10 @@ ProcesoFits::ProcesoFits(QWidget *parent) :
     finalizado = false;
     initTimer = 0;
     obturador = false;
+    qnx1 = true;
+    qnx2 = true;
+    qnx3 = true;
+    qnx4 = true;
 
     ccd = "ccd1";
     qnx = "qnx1";
@@ -357,6 +361,7 @@ void ProcesoFits::pruebaDriftScan()
     imagenesObservacion.clear();
 
     if(qnx=="qnx1" && ccd=="ccd1"){
+
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
@@ -406,6 +411,20 @@ void ProcesoFits::pruebaDriftScan()
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx1" && qnx1==false){
+        imagenesObservacion.clear();
+        imagenesObservacion.append("obs205.qnx1.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx1.ccd1.n1.fits");
     }
 
     if(qnx=="qnx2" && ccd=="ccd1"){
@@ -460,17 +479,18 @@ void ProcesoFits::pruebaDriftScan()
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
     }
 
-    if(qnx=="qnx3" && ccd=="ccd1"){
-        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
-        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
-        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
-        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
-        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
-        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
-        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
-        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
-        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
-        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    if(qnx=="qnx2" && qnx2==false){
+        imagenesObservacion.clear();
+        imagenesObservacion.append("obs205.qnx2.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx2.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx2.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx2.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx2.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx2.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx2.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx2.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx2.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx2.ccd1.n1.fits");
     }
 
     if(qnx=="qnx3" && ccd=="ccd1"){
@@ -486,7 +506,7 @@ void ProcesoFits::pruebaDriftScan()
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
     }
 
-    if(qnx=="qnx3" && ccd=="ccd1"){
+    if(qnx=="qnx3" && ccd=="ccd2"){
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
@@ -499,7 +519,7 @@ void ProcesoFits::pruebaDriftScan()
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
     }
 
-    if(qnx=="qnx3" && ccd=="ccd1"){
+    if(qnx=="qnx3" && ccd=="ccd3"){
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
@@ -510,6 +530,33 @@ void ProcesoFits::pruebaDriftScan()
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx3" && ccd=="ccd4"){
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+        imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx3" && qnx3==false){
+        imagenesObservacion.clear();
+        imagenesObservacion.append("obs205.qnx3.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx3.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx3.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx3.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx3.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx3.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx3.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx3.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx3.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx3.ccd1.n1.fits");
     }
 
     if(qnx=="qnx4" && ccd=="ccd1"){
@@ -562,6 +609,20 @@ void ProcesoFits::pruebaDriftScan()
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
         imagenesObservacion.append("obs401.qnx3.ccd2.n110.fits");
+    }
+
+    if(qnx=="qnx4" && qnx4==false){
+        imagenesObservacion.clear();
+        imagenesObservacion.append("obs205.qnx4.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx4.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx4.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx4.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx4.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx4.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx4.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx4.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx4.ccd1.n1.fits");
+        imagenesObservacion.append("obs205.qnx4.ccd1.n1.fits");
     }
 
 }
@@ -657,6 +718,26 @@ void ProcesoFits::setCondicionesCielo(QString condiciones)
 void ProcesoFits::setObturador(bool o)
 {
     obturador = o;
+}
+
+void ProcesoFits::setQnx1(bool q)
+{
+    qnx1 = q;
+}
+
+void ProcesoFits::setQnx2(bool q)
+{
+    qnx2 = q;
+}
+
+void ProcesoFits::setQnx3(bool q)
+{
+    qnx3 = q;
+}
+
+void ProcesoFits::setQnx4(bool q)
+{
+    qnx4 = q;
 }
 
 QString ProcesoFits::getQnx()

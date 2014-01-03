@@ -241,7 +241,7 @@
     <rect>
      <x>440</x>
      <y>60</y>
-     <width>191</width>
+     <width>151</width>
      <height>27</height>
     </rect>
    </property>
@@ -309,6 +309,19 @@
      <width>191</width>
      <height>27</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>65</y>
+     <width>31</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Seg</string>
    </property>
   </widget>
  </widget>

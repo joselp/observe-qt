@@ -30,6 +30,7 @@ public:
     void setQnx4(bool a);
     void setQnx5(bool a);
     void setQnx6(bool a);
+    void setSemilla(int i);
 
     //getters
     bool getQnx1();
@@ -45,6 +46,7 @@ public:
     bool getError4();
     bool getError5();
     bool getError6();
+    int getSemilla();
     
 public slots:
     void slotQnx1Encender();
@@ -83,6 +85,7 @@ private:
     bool error5; //Variable que indica error en la conexion de qnx1
     bool error6; //Variable que indica error en la conexion de qnx1
     int num; //Varible generada aleatoriamente para saber si hay o no conexion
+    int semilla; //Variable que aumenta o dismuniye estadistica para errores de conexion
 
 };
 

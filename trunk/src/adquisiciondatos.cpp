@@ -848,6 +848,38 @@ bool AdquisicionDatos::getRealizarObservacion()
     return realizarObservacion;
 }
 
+bool AdquisicionDatos::getQnx1()
+{
+    if(ui->checkBoxQnx1->isChecked())
+        return true;
+    else
+        return false;
+}
+
+bool AdquisicionDatos::getQnx2()
+{
+    if(ui->checkBoxQnx2->isChecked())
+        return true;
+    else
+        return false;
+}
+
+bool AdquisicionDatos::getQnx3()
+{
+    if(ui->checkBoxQnx3->isChecked())
+        return true;
+    else
+        return false;
+}
+
+bool AdquisicionDatos::getQnx4()
+{
+    if(ui->checkBoxQnx4->isChecked())
+        return true;
+    else
+        return false;
+}
+
 void AdquisicionDatos::asignarComandoObservacion(int i)
 {
     ui->comandoDeObservacionComboBox->setCurrentIndex(i);
@@ -1215,6 +1247,22 @@ void AdquisicionDatos::slotLogTimer()
 
         ui->tiempoExposicionlineEdit->setText(QString::number(contadorTiempoExposicion)+"/"+QString::number(tiempoExposicion));
 
+        if(tiempoExposicion==0){
+            ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Iniciando Observe:\n"
+
+                                     +"Running /home/survey/jas/tio_ctrl with command:<br>"
+                                     +"3<br>"
+                                     +"17.0<br>"
+                                     +"9999<br>"
+                                     +"9999<br>"
+                                     +"9999<br>"
+                                     +"9999<br>"
+                                     +"Done: /home/survey/jas/tio_ctrl<br>"
+                                     +"Running /home/survey/jas/tio_ctrl with command:<br>"
+                                     +"1<br>"
+                                     +"Done: /home/survey/jas/tio_ctrl<br>");
+        }
+
         if(contadorTiempoExposicion%4==0)
                 ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"1024 lineas leidas");
 
@@ -1228,24 +1276,63 @@ void AdquisicionDatos::slotLogTimer()
 
     //Verifico si el tipo de observacion no implica tiempo de exposicion y se hace su simulacion
     else{
+        if(lineasLeidas==0){
+            ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Iniciando Observe:\n"
+
+                                     +"Running /home/survey/jas/tio_ctrl with command:<br>"
+                                     +"3<br>"
+                                     +"17.0<br>"
+                                     +"9999<br>"
+                                     +"9999<br>"
+                                     +"9999<br>"
+                                     +"9999<br>"
+                                     +"Done: /home/survey/jas/tio_ctrl<br>"
+                                     +"Running /home/survey/jas/tio_ctrl with command:<br>"
+                                     +"1<br>"
+                                     +"Done: /home/survey/jas/tio_ctrl<br>");
+        }
         //if(ui->comandoDeObservacionComboBox->currentText()=="Observacion Drifscan"){
         lineasLeidas++;
         //visualizador->setNumeroLineaActual(lineasLeidas);
-        if(lineasLeidas%1024==0){
+        if(lineasLeidas%512==0){
             //qDebug()<<"Lineas Leidas "<<lineasLeidas<<" Hola";
             if(lineasLeidas < ui->NumeroLineasLeerlineEdit->text().toInt(0))
-                ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"1024 lineas leidas");
+                ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"
+                                         +"Issuing command: rsh qnx1 /home/survey/cnsFits/ccd/ccd -scan -nlfile 2048<br>"
+                                         +"-nread 78323 -out //5/home/survey/images1/obs410.qnx1 -port 2241 -chips 4321<br>"
+                                         +"-write /home/survey/cnsFits/ccd/../writer/writer -stats<br>"
+                                         +"/home/survey/cnsFits/ccd/../survey/survey -obj -1 -obs 410  -project CM-RRLYRAE -freq 14.264843<br>"
+                                         +"-ra1 5 -ra2 42 -ra3 0.00 -telfocus 873 -focuschk 1  -ha1 00 -ha2 30 -ha3 0.00<br>"
+                                         +"-direcha Oeste -dec1 12 -dec2 0 -dec3 0.0 -nameobj discoG  -osimode DS<br>"
+                                         +"-dateobs 2013-10-31T08:17:50 -ut1 08:17:50 -fingposx 661 -fingposy  640 -fingposz 477<br>"
+                                         +"-fingpost 200 -fingerstempx -57.1 -fingerstempy -60.4<br>"
+                                         +"-fingerstempz -61.5  -fingerstempt -61.2 -exptime 0.0 -cameravac 30 -uplinevac 30<br>"
+                                         +"-lowlinevac 40 -chilltemp -67.5 -filter1 V1 -filter2 V2 -filter3 I1  -filter4 I2 -instrume<br>"
+                                         +"YIC -prismang -1 -nameobs -weather Despejado_Bruma_Alta  -dometemp 10<br>"
+                                         +"-domehum 75 -frecyic 0.0 -frecra 0.0 -frecdec 0.0   -imgtype DriftscanObservation<br>"
+                                         +"Date: jue oct 31 03:48:02 VET 2013<br>"
+                                         +"Clock rate: 14.264843<br>"
+                                         +"Finger x position: -1<br>"
+                                         +"Finger y position: -1<br>"
+                                         +"Finger z position: -1<br>"
+                                         +"Finger t position: -1<br>"
+                                         +"qnx4: line is "+ QString::number(lineasLeidas)+"<br>"
+                                         +"qnx1: line is "+ QString::number(lineasLeidas)+"<br>"
+                                         +"qnx2: line is "+ QString::number(lineasLeidas)+"<br>"
+                                         +"qnx3: line is "+ QString::number(lineasLeidas)+"<br>");
             //lineasLeidas++;
             if(lineasLeidas >= ui->NumeroLineasLeerlineEdit->text().toInt(0)){
                 ui->observarPushButton->setStyleSheet("");
+                ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"Observacion Terminada");
                 logTimer->stop();
                 delete logTimer;
                 lineasLeidas=0;
-                ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Terminada");
             }
         }
 
     }
+
+    ui->LogTextEdit->moveCursor(QTextCursor::End);
 }
 
 void AdquisicionDatos::slotTiempoExposicion()
