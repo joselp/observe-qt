@@ -9,6 +9,7 @@ FormHome::FormHome(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->crearCuentaPushButton,SIGNAL(clicked()), this, SLOT(slotCrearUsuario()));
+    connect(ui->olvidoPasswordpushButton,SIGNAL(clicked()),this,SLOT(slotRecuperarPass()));
 }
 
 bool FormHome::autenticar()
@@ -36,6 +37,12 @@ void FormHome::slotCrearUsuario()
         registroUsuario->show();
 }
 
+void FormHome::slotRecuperarPass()
+{
+    recuperarPassWord = new RecuperarPassWord;
+    recuperarPassWord->show();
+}
+
 QPushButton *FormHome::getButtonAcceder()
 {
     return ui->acccederPushButton;
@@ -44,4 +51,10 @@ QPushButton *FormHome::getButtonAcceder()
 QString FormHome::obtenerIdUsuario()
 {
     return idUsuario;
+}
+
+void FormHome::limpiarCampos()
+{
+    ui->userLineEdit->setText("");
+    ui->passLineEdi->setText("");
 }

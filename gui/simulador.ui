@@ -80,6 +80,7 @@
      <string>Archivo</string>
     </property>
     <addaction name="separator"/>
+    <addaction name="actionCerrar_Sesion"/>
     <addaction name="actionSalir"/>
    </widget>
    <widget class="QMenu" name="menuSistema">
@@ -208,6 +209,11 @@
    </property>
    <property name="text">
     <string>Asistente</string>
+   </property>
+  </action>
+  <action name="actionCerrar_Sesion">
+   <property name="text">
+    <string>Cerrar Sesion</string>
    </property>
   </action>
  </widget>

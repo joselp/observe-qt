@@ -32,7 +32,7 @@
       <x>90</x>
       <y>10</y>
       <width>301</width>
-      <height>21</height>
+      <height>23</height>
      </rect>
     </property>
     <property name="font">
@@ -48,7 +48,7 @@
       <number>1</number>
      </property>
      <item>
-      <widget class="QCheckBox" name="checkBox_4">
+      <widget class="QCheckBox" name="checkBoxQnx1">
        <property name="font">
         <font>
          <family>Ubuntu</family>
@@ -72,7 +72,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_3">
+      <widget class="QCheckBox" name="checkBoxQnx2">
        <property name="font">
         <font>
          <family>Ubuntu</family>
@@ -93,7 +93,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_2">
+      <widget class="QCheckBox" name="checkBoxQnx3">
        <property name="font">
         <font>
          <family>Ubuntu</family>
@@ -114,7 +114,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox">
+      <widget class="QCheckBox" name="checkBoxQnx4">
        <property name="font">
         <font>
          <family>Ubuntu</family>
@@ -311,7 +311,7 @@
       <x>10</x>
       <y>290</y>
       <width>501</width>
-      <height>91</height>
+      <height>95</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -371,7 +371,7 @@
       <x>10</x>
       <y>380</y>
       <width>501</width>
-      <height>51</height>
+      <height>70</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">

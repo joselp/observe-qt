@@ -51,6 +51,7 @@ public slots:
     void slotAsistente(); //Inicia la ventana del asistente
     void slotAbrirObserve(); //Inicia Observe para una prueba libre
     void slotCargarPrueba(QSqlQuery); //Carga la prueba del usuario
+    void slotCerrarSesion();
 
 private:
     Ui::Simulador *ui;
@@ -65,6 +66,7 @@ private:
     Asistente *asistente;
     QString idUsuario;
     QSqlQuery prueba; //Variable para guardar la prueba que selecciono el usuario
+    bool babelApagadaRec; //Me indica si apagaron babel luego de verificar problema de conexion
 
 };
 

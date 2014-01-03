@@ -69,6 +69,22 @@ void FormPruebaData::setObturador(QString s)
     ui->labelObturador->setPixmap(QPixmap(s));
 }
 
+void FormPruebaData::limpiarCampos()
+{
+    setCondiciones("");
+    setFiltro1("");
+    setFiltro2("");
+    setFiltro3("");
+    setFiltro4("");
+    setDeclinacion("");
+    setAHorario("");
+    setObservacion("");
+    setDuracion("");
+    setInstrumento("");
+    setProyecto("");
+    setObturador("");
+}
+
 QLabel *FormPruebaData::getObturador()
 {
     return ui->labelObturador;

@@ -43,6 +43,7 @@ SOURCES += bd/manejadorbd.cpp \
     src/controlschmitd/limpiar.cpp \
     src/controlschmitd/slayall.cpp \
     src/controlschmitd/shutdall.cpp \
+    src/usuarios/recuperarpassword.cpp \
 
 HEADERS  += bd/manejadorbd.h \
     headers/visualizador.h \
@@ -76,6 +77,7 @@ HEADERS  += bd/manejadorbd.h \
     headers/controlschmitd/limpiar.h \
     headers/controlschmitd/slayall.h \
     headers/controlschmitd/shutdall.h \
+    headers/usuarios/recuperarpassword.h \
 
 FORMS    += gui/visualizador.ui \
     gui/simulador.ui \
@@ -101,6 +103,7 @@ FORMS    += gui/visualizador.ui \
     gui/controlschmitd/limpiar.ui \
     gui/controlschmitd/slayall.ui \
     gui/controlschmitd/shutdall.ui \
+    gui/usuarios/recuperarpassword.ui \
 
 LIBS += -L. \
         -lm \

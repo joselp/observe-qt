@@ -41,6 +41,10 @@ public:
     QComboBox* getComandoDeObservacionComboBox(); //Retorna la variable comandoDeObservacionComboBox.
     QLineEdit* getNumeroLineasLeer(); //Retorna la variable NumeroLineasLeerlineEdit.
     bool getRealizarObservacion(); //Retorna el valor de la variable realizarObservacion.
+    bool getQnx1();
+    bool getQnx2();
+    bool getQnx3();
+    bool getQnx4();
 
     //Setters
     void asignarComandoObservacion(int i);

@@ -33,6 +33,9 @@ public:
     void abrirControlSchmitd();
     void asignarPrueba(QSqlQuery, bool); //Asigna si el usuario carga una prueba y la prueba a cargar.
     void asignarObturador(QLabel *obt);
+    void apagarTodo(); //Apaga todo cuando cierran sesion del usuario
+    void asignarSemilla(int s);
+    void cancelarPrueba(); //Si se cierra sesion.
     ~FormSimulador();
 
 
@@ -76,6 +79,7 @@ private:
     QSqlQuery prueba; //Variable que contiene los parametros para la prueba
     QLabel *obturador; //Label que muestra el obutarodor
     bool obturadorAux; //Me indica si el obturador esta abierto o cerrado
+    bool anadirProceso;
 
 };
 

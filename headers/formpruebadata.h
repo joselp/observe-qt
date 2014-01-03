@@ -29,6 +29,7 @@ public:
     void setInstrumento(QString s);
     void setProyecto(QString s);
     void setObturador(QString s);
+    void limpiarCampos();
 
     //Getters
     QLabel *getObturador();
