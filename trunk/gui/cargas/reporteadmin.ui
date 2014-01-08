@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ReporteAdmin</class>
+ <widget class="QWidget" name="ReporteAdmin">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>912</width>
+    <height>719</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLineEdit" name="lineEditTipoObservacion">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>210</y>
+     <width>191</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>190</y>
+     <width>101</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Instrumento:</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEditProyecto">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>270</y>
+     <width>191</width>
+     <height>61</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>190</y>
+     <width>151</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tipo de Observacion:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>10</y>
+     <width>81</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 12pt &quot;Arial&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Protocolo</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_4">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>30</y>
+     <width>211</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Coordenadas</string>
+   </property>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>91</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Declinacion:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>60</y>
+      <width>81</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>A. Horario:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditDeclinacion">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>20</y>
+      <width>111</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditAnguloHorario">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>50</y>
+      <width>111</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLineEdit" name="lineEditDuracion">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>150</y>
+     <width>191</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditInstrumento">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>210</y>
+     <width>191</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_3">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>30</y>
+     <width>211</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Filtros</string>
+   </property>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>61</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Filtro 1:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>60</y>
+      <width>61</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Filtro 2:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>90</y>
+      <width>61</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Filtro 3:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>120</y>
+      <width>61</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Filtro 4:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditFiltro1">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>30</y>
+      <width>141</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditFiltro2">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>60</y>
+      <width>141</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditFiltro3">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>90</y>
+      <width>141</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditFiltro4">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>120</y>
+      <width>141</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>130</y>
+     <width>71</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Duracion:</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>30</y>
+     <width>211</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Condiciones Del Cielo</string>
+   </property>
+   <widget class="QLineEdit" name="lineEditCondiciones">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>171</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>250</y>
+     <width>91</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Proyecto:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>61</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 12pt &quot;Arial&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Prueba</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>383</x>
+     <y>0</y>
+     <width>20</width>
+     <height>341</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 127);</string>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <property name="lineWidth">
+    <number>7</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>250</y>
+     <width>121</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Nombre Prueba:</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>100</y>
+     <width>281</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Telescopio</string>
+   </property>
+   <widget class="QCheckBox" name="checkBoxDedos">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>211</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Mala posicion de los dedos</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxFoco">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>97</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Mal Foco</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxObturador">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>171</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Obturador sin abrir</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxPrisma">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>281</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Imagenes defectuosas con el prisma</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxConexion">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>281</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Fallas de conexion</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QTextEdit" name="textEditNombrePrueba">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>250</y>
+     <width>201</width>
+     <height>81</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>-3</x>
+     <y>330</y>
+     <width>921</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 127);</string>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <property name="lineWidth">
+    <number>7</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>350</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Desarrollo de la Prueba</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEditDesarrollo">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>380</y>
+     <width>891</width>
+     <height>281</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonEliminar">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>680</y>
+     <width>121</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Eliminar Reporte</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonCerrar">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>680</y>
+     <width>98</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cerrar</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

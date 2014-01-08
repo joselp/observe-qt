@@ -10,6 +10,7 @@
 #include "headers/asistente.h"
 #include "bd/manejadorbd.h"
 #include "headers/cargas/mispruebas.h"
+#include "headers/cargas/reportes.h"
 #include <QDesktopWidget>
 #include <QSqlQuery>
 
@@ -38,6 +39,8 @@ public slots:
     void slotAcceder(); //Verifico si puedo acceder al simulador
     void slotPanelAdministrativo(); //Inicia la ventana de panel administrativo
     void slotMisPruebas(); //Inicia la ventana Mis pruebas
+    void slotMisPruebasReporte();
+    void slotReportes();
     void slotDrifscan();
     void slotDrifscanMod();
     void slotBias();
@@ -63,6 +66,7 @@ private:
     PanelAdministrativo *panelAdministrativo;
     MisPruebas *misPruebas;
     RegistroUsuario *registroUsuario;
+    Reportes *reportes;
     Asistente *asistente;
     QString idUsuario;
     QSqlQuery prueba; //Variable para guardar la prueba que selecciono el usuario

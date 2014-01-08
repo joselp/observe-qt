@@ -19,7 +19,7 @@ public:
     ~RecuperarPassWord();
     
 public slots:
-    void slotEnviar();
+    void slotRecuperar();
 
 private:
     Ui::RecuperarPassWord *ui;
