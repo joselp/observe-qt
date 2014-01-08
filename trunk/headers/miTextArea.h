@@ -9,6 +9,7 @@
 #include <QProcess>
 #include <QMessageBox>
 #include <QBitArray>
+#include <QRegExp>
 
 //Esta clase me permite un area de texto que simulará un terminal.
 
@@ -41,6 +42,9 @@ private:
     bool qnx6; //variable que me indica si estoy dentro de alguna qnx desde la consola
     bool obtupas; //Variable que me indica si estoy ejecutando obtupas
     bool obturador1; //Variable que me indica si estoy ejecutando obtupas
+    bool movd2; //Variable que me indica si estoy ejecutando movde2
+    int posx,posy,posz,post; //Variables que mantienen las posiciones de los dedos
+    bool dedox,dedoy,dedoz,dedot; //Me indica si se esta moviendo un dedo en especifico
     bool error1, error2, error3, error4, error5, error6;
 
 };
