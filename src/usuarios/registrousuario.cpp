@@ -26,12 +26,12 @@ RegistroUsuario::~RegistroUsuario()
 void RegistroUsuario::slotAceptar()
 {
     if(!ui->nombreLineEdit->text().size()==0 && !ui->apellidoLineEdit->text().size()==0 && !ui->eMailLineEdit->text().size()==0
-            && !ui->contrasenaLineEdit->text().size()==0 && !ui->repitaContrasenaLineEdit->text().size()==0
+            && !ui->contrasenaLineEdit->text().size()==0 && !ui->repitaContrasenaLineEdit->text().size()==0 && !ui->fraseSecretaLineEdit->text().size()==0
             && (ui->contrasenaLineEdit->text() == ui->repitaContrasenaLineEdit->text())){
         QSqlQuery query;
         QString sql;
         if(ui->tipoDeUsuarioComboBox->currentText()=="Administrador" && ui->codigoDeAdministradorLineEdit->text()=="admin123"){
-            sql = "INSERT INTO persona (nombre,apellido, email, pass, tipo) VALUES ('"+ui->nombreLineEdit->text()+"','"+ui->apellidoLineEdit->text()+"','"+ui->eMailLineEdit->text()+"','"+ui->contrasenaLineEdit->text()+"','"+ui->tipoDeUsuarioComboBox->currentText()+"')";
+            sql = "INSERT INTO persona (nombre,apellido, email, pass, tipo, frase_secretra) VALUES ('"+ui->nombreLineEdit->text()+"','"+ui->apellidoLineEdit->text()+"','"+ui->eMailLineEdit->text()+"','"+ui->contrasenaLineEdit->text()+"','"+ui->tipoDeUsuarioComboBox->currentText()+"','"+ui->fraseSecretaLineEdit->text()+"')";
             qDebug()<<sql;
             if(query.exec(sql)){
                 this->close();
@@ -45,7 +45,7 @@ void RegistroUsuario::slotAceptar()
             }
         }
         else{
-            sql = "INSERT INTO persona (nombre,apellido, email, pass, tipo) VALUES ('"+ui->nombreLineEdit->text()+"','"+ui->apellidoLineEdit->text()+"','"+ui->eMailLineEdit->text()+"','"+ui->contrasenaLineEdit->text()+"','"+ui->tipoDeUsuarioComboBox->currentText()+"')";
+            sql = "INSERT INTO persona (nombre,apellido, email, pass, tipo, frase_secreta) VALUES ('"+ui->nombreLineEdit->text()+"','"+ui->apellidoLineEdit->text()+"','"+ui->eMailLineEdit->text()+"','"+ui->contrasenaLineEdit->text()+"','"+ui->tipoDeUsuarioComboBox->currentText()+"','"+ui->fraseSecretaLineEdit->text()+"')";
             qDebug()<<sql;
             if(query.exec(sql)){
                 this->close();

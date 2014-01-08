@@ -90,6 +90,8 @@
     <addaction name="actionSistema_de_Adquisici_on_de_Datos"/>
     <addaction name="actionAsignar_Prueba"/>
     <addaction name="actionAsistente"/>
+    <addaction name="actionGenerar_Reporte"/>
+    <addaction name="actionReportes"/>
    </widget>
    <widget class="QMenu" name="menuAyuda">
     <property name="title">
@@ -117,6 +119,8 @@
    <addaction name="separator"/>
    <addaction name="actionCargar_Prueba"/>
    <addaction name="actionAsignar_Prueba"/>
+   <addaction name="actionGenerar_Reporte"/>
+   <addaction name="actionReportes"/>
    <addaction name="actionAsistente"/>
    <addaction name="separator"/>
    <addaction name="actionConsola"/>
@@ -214,6 +218,24 @@
   <action name="actionCerrar_Sesion">
    <property name="text">
     <string>Cerrar Sesion</string>
+   </property>
+  </action>
+  <action name="actionGenerar_Reporte">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/reporte.png</normaloff>:/images/reporte.png</iconset>
+   </property>
+   <property name="text">
+    <string>Generar Reporte</string>
+   </property>
+  </action>
+  <action name="actionReportes">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/images/reporte.png</normaloff>:/images/reporte.png</iconset>
+   </property>
+   <property name="text">
+    <string>Reportes</string>
    </property>
   </action>
  </widget>

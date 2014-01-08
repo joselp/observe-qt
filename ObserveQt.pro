@@ -4,8 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql webkit qsqlpsql qsqlmysql
-
+QT       += core gui sql webkit qsqlpsql qsqlmysql network
 
 TARGET = ObserveQt
 TEMPLATE = app
@@ -44,6 +43,9 @@ SOURCES += bd/manejadorbd.cpp \
     src/controlschmitd/slayall.cpp \
     src/controlschmitd/shutdall.cpp \
     src/usuarios/recuperarpassword.cpp \
+    src/cargas/reporte.cpp \
+    src/cargas/reportes.cpp \
+    src/cargas/reporteadmin.cpp \
 
 HEADERS  += bd/manejadorbd.h \
     headers/visualizador.h \
@@ -78,6 +80,9 @@ HEADERS  += bd/manejadorbd.h \
     headers/controlschmitd/slayall.h \
     headers/controlschmitd/shutdall.h \
     headers/usuarios/recuperarpassword.h \
+    headers/cargas/reporte.h \
+    headers/cargas/reportes.h \
+    headers/cargas/reporteadmin.h \
 
 FORMS    += gui/visualizador.ui \
     gui/simulador.ui \
@@ -104,6 +109,9 @@ FORMS    += gui/visualizador.ui \
     gui/controlschmitd/slayall.ui \
     gui/controlschmitd/shutdall.ui \
     gui/usuarios/recuperarpassword.ui \
+    gui/cargas/reporte.ui \
+    gui/cargas/reportes.ui \
+    gui/cargas/reporteadmin.ui \
 
 LIBS += -L. \
         -lm \

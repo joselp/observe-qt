@@ -102,5 +102,6 @@
         <file>images/obt_abierto.jpg</file>
         <file>images/obt_cerrado.gif</file>
         <file>images/folder_yellow.ico</file>
+        <file>images/reporte.png</file>
     </qresource>
 </RCC>

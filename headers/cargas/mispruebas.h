@@ -7,6 +7,7 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include <headers/cargas/formprotocolo.h>
+#include <headers/cargas/reporte.h>
 
 namespace Ui {
 class MisPruebas;
@@ -19,6 +20,8 @@ class MisPruebas : public QWidget
 public:
     explicit MisPruebas(QWidget *parent = 0);
     void cargarPruebas(QString idUsuario);
+    void setIdPersona(int i);
+    void setReporte(bool r);
     ~MisPruebas();
     
 public slots:
@@ -33,6 +36,9 @@ private:
     QTableWidget *tablePrestamo;
     QTableWidgetItem *item;
     FormProtocolo *formProtocolo;
+    int idUsuarioAux;
+    Reporte *report; //Ventana para generar el reporte.
+    bool reporte; //Me indica si ingrese a esta ventana por la accion reporte.
 };
 
 #endif // MISPRUEBAS_H

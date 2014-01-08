@@ -9,15 +9,16 @@ MisPruebas::MisPruebas(QWidget *parent) :
 
     this->setWindowTitle("Pruebas");
     formProtocolo = new FormProtocolo;
+    reporte = false;
     connect(ui->pushButtonAceptar,SIGNAL(clicked()),this,SLOT(slotAceptar()));
-
+    tablePrestamo = new QTableWidget(this);
+    tablePrestamo->setColumnCount(3);
+    tablePrestamo->setGeometry(10,80,500,200);
 }
 
 void MisPruebas::cargarPruebas(QString idUsuario)
 {
-    tablePrestamo = new QTableWidget(this);
-    tablePrestamo->setColumnCount(3);
-    tablePrestamo->setGeometry(10,20,500,200);
+    idUsuarioAux = idUsuario.toInt();
 
     QStringList listHeader;
     listHeader << "Prueba" << "Protocolo" << "id";
@@ -98,6 +99,17 @@ void MisPruebas::cargarPruebas(QString idUsuario)
     }
 }
 
+void MisPruebas::setIdPersona(int i)
+{
+    report->setIdPersona(i);
+    qDebug()<<i;
+}
+
+void MisPruebas::setReporte(bool r)
+{
+    reporte = r;
+}
+
 MisPruebas::~MisPruebas()
 {
     delete ui;
@@ -114,20 +126,30 @@ void MisPruebas::slotRowSelected(int row)
     QSqlQuery query;
     query.exec(strQuery);
 
-    if( query.next() ) {
-        formProtocolo->asignarFiltro1(query.value(1).toString());
-        formProtocolo->asignarFiltro2(query.value(2).toString());
-        formProtocolo->asignarFiltro3(query.value(3).toString());
-        formProtocolo->asignarFiltro4(query.value(4).toString());
-        formProtocolo->asignarDeclinacion(query.value(5).toString());
-        formProtocolo->asignarAnguloHorario(query.value(6).toString());
-        formProtocolo->asignarTipoObservacion(query.value(7).toString());
-        formProtocolo->asignarDuracion(query.value(8).toString());
-        formProtocolo->asignarProyecto(query.value(9).toString());
-        formProtocolo->asignarInstrumento(query.value(10).toString());
+    if(reporte == false){
+        if( query.next() ) {
+            formProtocolo->asignarFiltro1(query.value(1).toString());
+            formProtocolo->asignarFiltro2(query.value(2).toString());
+            formProtocolo->asignarFiltro3(query.value(3).toString());
+            formProtocolo->asignarFiltro4(query.value(4).toString());
+            formProtocolo->asignarDeclinacion(query.value(5).toString());
+            formProtocolo->asignarAnguloHorario(query.value(6).toString());
+            formProtocolo->asignarTipoObservacion(query.value(7).toString());
+            formProtocolo->asignarDuracion(query.value(8).toString());
+            formProtocolo->asignarProyecto(query.value(9).toString());
+            formProtocolo->asignarInstrumento(query.value(10).toString());
+            //formProtocolo->show();
+            emit enviarDatos(query);
+        }
+    }
 
-        //formProtocolo->show();
-        emit enviarDatos(query);
+    if (reporte == true){
+        if( query.next() ){
+            report = new Reporte;
+            report->show();
+            report->setIdPrueba(query.value(11).toInt());
+            report->setIdPersona(idUsuarioAux);
+        }
     }
 }
 

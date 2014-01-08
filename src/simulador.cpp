@@ -16,10 +16,13 @@ Simulador::Simulador(QWidget *parent) :
     connect(ui->actionConsola,SIGNAL(triggered()),this,SLOT(slotConsola()));
     connect(ui->actionControlShmidt,SIGNAL(triggered()),this,SLOT(slotControlShmitd()));
     connect(ui->actionCerrar_Sesion,SIGNAL(triggered()),this,SLOT(slotCerrarSesion()));
+    connect(ui->actionGenerar_Reporte,SIGNAL(triggered()),this,SLOT(slotMisPruebasReporte()));
+    connect(ui->actionReportes,SIGNAL(triggered()),this,SLOT(slotReportes()));
     //this->showMaximized();
 
     ui->actionConsola->setVisible(false);
     ui->actionControlShmidt->setVisible(false);
+    ui->actionGenerar_Reporte->setVisible(true);
 
     //sistemaDatos = new SistemaDatos;
     babelApagadaRec = false;
@@ -167,12 +170,16 @@ void Simulador::slotAcceder()
             query.next();
             if(query.value(0) == "Estudiante"){
                 ui->actionCargar_Prueba->setVisible(true);
+                ui->actionGenerar_Reporte->setVisible(true);
+                ui->actionReportes->setVisible(false);
                 misPruebas = new MisPruebas;
                 connect(misPruebas, SIGNAL(enviarDatos(QSqlQuery)), this, SLOT(slotCargarPrueba(QSqlQuery)));
             }
 
             if(query.value(0) == "Administrador"){
                 ui->actionAsignar_Prueba->setVisible(true);
+                ui->actionGenerar_Reporte->setVisible(false);
+                ui->actionReportes->setVisible(true);
                 panelAdministrativo = new PanelAdministrativo;
             }
         }
@@ -192,6 +199,20 @@ void Simulador::slotMisPruebas()
 {
     misPruebas->cargarPruebas(idUsuario);
     misPruebas->show();
+}
+
+void Simulador::slotMisPruebasReporte()
+{
+    misPruebas->setReporte(true);
+    misPruebas->cargarPruebas(idUsuario);
+    misPruebas->show();
+}
+
+void Simulador::slotReportes()
+{
+    reportes = new Reportes;
+    reportes->setIdPersona(idUsuario.toInt());
+    reportes->show();
 }
 
 void Simulador::slotDrifscan()
