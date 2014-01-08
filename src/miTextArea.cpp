@@ -14,6 +14,15 @@ miTextArea::miTextArea(QWidget *parent):
     qnx6=false;
     obtupas=false;
     obturador1=false;
+    movd2=false;
+    posx=600;
+    posy=600;
+    posz=600;
+    post=600;
+    dedox=false;
+    dedoy=false;
+    dedoz=false;
+    dedot=false;
     this->setText("usuario>");
     //Posiciono el cursor al final de la cadena de caracteres
     QTextCursor cursor(this->textCursor());
@@ -345,6 +354,273 @@ void miTextArea::ejecutar(QString comando)
                       +"\n[q] salir programa"
                       +"\n>");
         emit ejecutarComando("cerrar");
+    }
+
+    //******************MOVDE2******************************
+    if(comando=="movde2" && qnx5==true){
+        movd2=true;
+        this->setText(this->toPlainText()+"\n"+"Initial board status: 41"
+                      +"Emptying buffer...\n"
+                      +"Board status: 41\n"
+                      +"Trying to flush out/end bad command\n"
+                      +"Status: 1\n"
+                      +"Status: 41\n"
+                      +"Status: 41\n"
+                      +"Searching for board\n"
+                      +"PC34 ver 2.16-4\n"
+                      +"Board responding.\n"
+                      +"Programa de control para dedos.\n"
+                      +"Para llevar los dedos  a una posicion\n"
+                      +"deseada utilice la opcion 'p'\n"
+                      +"Si es necesario puede efectuar correciones de\n"
+                      +"posicion con movimientos diferenciales. Esto se\n"
+                      +"logra con la opcion 'n' .Se pueden introducir\n"
+                      +"pasos tanto negativos como positivos\n"
+                      +"Para llevar los dedos a home utilice la\n"
+                      +"opcion 'h'\n"
+                      +"Emptying buffer...\n"
+                      +"Power is on.\n"
+                      +"Indique dedo a mover (x,y,z,t).\n"
+                      +"\n>");
+
+        return;
+    }
+
+    if(movd2==true && comando=="x"){
+        this->setText(this->toPlainText()+"\n"+"Data file 'fingers.dat' successfully read\n"
+                      +"***********************************************\n"
+                      +"DEDO ACTUAL ES: x\n"
+                      +"Posicion de dedos guardada en memoria es:\n"
+                      +"x = "+QString::number(posx)+", y = "+QString::number(posy)+", z = "+QString::number(posz)+", t = "+QString::number(post)+"\n"
+                      +"*************** Menu Comandos *****************\n"
+                      +"[a] selecciona nuevo dedo\n"
+                      +"[h]ome - mueve dedo a home\n"
+                      +"[p]osicion - mueve dedo a posicion absoluta\n"
+                      +"[n] mueve dedo diferencial n pasos\n"
+                      +"[e]xit - salir del programa\n"
+                      +"\n>");
+        dedox=true;
+    }
+
+    if( (dedox==true || dedoy==true || dedoz==true || dedot==true) && comando=="a"){
+        this->setText(this->toPlainText()+"\n"
+                      +"Indique dedo a mover (x,y,z,t).\n"
+                      +"\n>");
+        dedox=false;
+        dedoy=false;
+        dedoz=false;
+        dedot=false;
+    }
+
+    if( (dedox==true || dedoy==true || dedoz==true || dedot==true) && comando=="e"){
+        this->setText("QNX5>");
+        dedox=false;
+        dedoy=false;
+        dedoz=false;
+        dedot=false;
+    }
+
+    if( dedox==true && comando=="h"){
+        posx=0;
+        this->setText(this->toPlainText()+"\n"+"Fin dedo en home\n"
+                      +"***********************************************\n"
+                      +"DEDO ACTUAL ES: x\n"
+                      +"Posicion de dedos guardada en memoria es:\n"
+                      +"x = "+QString::number(posx)+", y = "+QString::number(posy)+", z = "+QString::number(posz)+", t = "+QString::number(post)+"\n"
+                      +"*************** Menu Comandos *****************\n"
+                      +"[a] selecciona nuevo dedo\n"
+                      +"[h]ome - mueve dedo a home\n"
+                      +"[p]osicion - mueve dedo a posicion absoluta\n"
+                      +"[n] mueve dedo diferencial n pasos\n"
+                      +"[e]xit - salir del programa\n"
+                      +"\n>");
+
+    }
+
+    if( dedox==true && (comando=="p" || comando=="n")){
+        this->setText(this->toPlainText()
+                      +"\n"+"Indique nueva posicion dedo\n"
+                      +"\n>");
+    }
+
+    QRegExp rx4;
+    rx4=QRegExp("([-][0-9][0-9][0-9]|[0-9][0-9][0-9])");
+
+    if( dedox==true && rx4.exactMatch(comando)){
+        posx=comando.toInt();
+        this->setText(this->toPlainText()+"\n"+"***********************************************\n"
+                      +"DEDO ACTUAL ES: y\n"
+                      +"Posicion de dedos guardada en memoria es:\n"
+                      +"x = "+QString::number(posx)+", y = "+QString::number(posy)+", z = "+QString::number(posz)+", t = "+QString::number(post)+"\n"
+                      +"*************** Menu Comandos *****************\n"
+                      +"[a] selecciona nuevo dedo\n"
+                      +"[h]ome - mueve dedo a home\n"
+                      +"[p]osicion - mueve dedo a posicion absoluta\n"
+                      +"[n] mueve dedo diferencial n pasos\n"
+                      +"[e]xit - salir del programa\n"
+                      +"\n>");
+    }
+
+    if(movd2==true && comando=="y"){
+        this->setText(this->toPlainText()+"\n"+"Data file 'fingers.dat' successfully read\n"
+                      +"***********************************************\n"
+                      +"DEDO ACTUAL ES: y\n"
+                      +"Posicion de dedos guardada en memoria es:\n"
+                      +"x = "+QString::number(posx)+", y = "+QString::number(posy)+", z = "+QString::number(posz)+", t = "+QString::number(post)+"\n"
+                      +"*************** Menu Comandos *****************\n"
+                      +"[a] selecciona nuevo dedo\n"
+                      +"[h]ome - mueve dedo a home\n"
+                      +"[p]osicion - mueve dedo a posicion absoluta\n"
+                      +"[n] mueve dedo diferencial n pasos\n"
+                      +"[e]xit - salir del programa\n"
+                      +"\n>");
+        dedoy=true;
+    }
+
+    if( dedoy==true && comando=="h"){
+        posy=0;
+        this->setText(this->toPlainText()+"\n"+"Fin dedo en home\n"
+                      +"***********************************************\n"
+                      +"DEDO ACTUAL ES: y\n"
+                      +"Posicion de dedos guardada en memoria es:\n"
+                      +"x = "+QString::number(posx)+", y = "+QString::number(posy)+", z = "+QString::number(posz)+", t = "+QString::number(post)+"\n"
+                      +"*************** Menu Comandos *****************\n"
+                      +"[a] selecciona nuevo dedo\n"
+                      +"[h]ome - mueve dedo a home\n"
+                      +"[p]osicion - mueve dedo a posicion absoluta\n"
+                      +"[n] mueve dedo diferencial n pasos\n"
+                      +"[e]xit - salir del programa\n"
+                      +"\n>");
+
+    }
+
+    if( dedoy==true && (comando=="p" || comando=="n")){
+        this->setText(this->toPlainText()
+                      +"\n"+"Indique nueva posicion dedo\n"
+                      +"\n>");
+    }
+
+    if( dedoy==true && rx4.exactMatch(comando)){
+        posy=comando.toInt();
+        this->setText(this->toPlainText()+"\n"+"***********************************************\n"
+                      +"DEDO ACTUAL ES: y\n"
+                      +"Posicion de dedos guardada en memoria es:\n"
+                      +"x = "+QString::number(posx)+", y = "+QString::number(posy)+", z = "+QString::number(posz)+", t = "+QString::number(post)+"\n"
+                      +"*************** Menu Comandos *****************\n"
+                      +"[a] selecciona nuevo dedo\n"
+                      +"[h]ome - mueve dedo a home\n"
+                      +"[p]osicion - mueve dedo a posicion absoluta\n"
+                      +"[n] mueve dedo diferencial n pasos\n"
+                      +"[e]xit - salir del programa\n"
+                      +"\n>");
+    }
+
+    if(movd2==true && comando=="z"){
+        this->setText(this->toPlainText()+"\n"+"Data file 'fingers.dat' successfully read\n"
+                      +"***********************************************\n"
+                      +"DEDO ACTUAL ES: z\n"
+                      +"Posicion de dedos guardada en memoria es:\n"
+                      +"x = "+QString::number(posx)+", y = "+QString::number(posy)+", z = "+QString::number(posz)+", t = "+QString::number(post)+"\n"
+                      +"*************** Menu Comandos *****************\n"
+                      +"[a] selecciona nuevo dedo\n"
+                      +"[h]ome - mueve dedo a home\n"
+                      +"[p]osicion - mueve dedo a posicion absoluta\n"
+                      +"[n] mueve dedo diferencial n pasos\n"
+                      +"[e]xit - salir del programa\n"
+                      +"\n>");
+        dedoz=true;
+    }
+
+    if( dedoz==true && comando=="h"){
+        posz=0;
+        this->setText(this->toPlainText()+"\n"+"Fin dedo en home\n"
+                      +"***********************************************\n"
+                      +"DEDO ACTUAL ES: z\n"
+                      +"Posicion de dedos guardada en memoria es:\n"
+                      +"x = "+QString::number(posx)+", y = "+QString::number(posy)+", z = "+QString::number(posz)+", t = "+QString::number(post)+"\n"
+                      +"*************** Menu Comandos *****************\n"
+                      +"[a] selecciona nuevo dedo\n"
+                      +"[h]ome - mueve dedo a home\n"
+                      +"[p]osicion - mueve dedo a posicion absoluta\n"
+                      +"[n] mueve dedo diferencial n pasos\n"
+                      +"[e]xit - salir del programa\n"
+                      +"\n>");
+
+    }
+
+    if( dedoz==true && (comando=="p" || comando=="n")){
+        this->setText(this->toPlainText()
+                      +"\n"+"Indique nueva posicion dedo\n"
+                      +"\n>");
+    }
+
+    if( dedoz==true && rx4.exactMatch(comando)){
+        posz=comando.toInt();
+        this->setText(this->toPlainText()+"\n"+"***********************************************\n"
+                      +"DEDO ACTUAL ES: z\n"
+                      +"Posicion de dedos guardada en memoria es:\n"
+                      +"x = "+QString::number(posx)+", y = "+QString::number(posy)+", z = "+QString::number(posz)+", t = "+QString::number(post)+"\n"
+                      +"*************** Menu Comandos *****************\n"
+                      +"[a] selecciona nuevo dedo\n"
+                      +"[h]ome - mueve dedo a home\n"
+                      +"[p]osicion - mueve dedo a posicion absoluta\n"
+                      +"[n] mueve dedo diferencial n pasos\n"
+                      +"[e]xit - salir del programa\n"
+                      +"\n>");
+    }
+
+    if(movd2==true && comando=="t"){
+        this->setText(this->toPlainText()+"\n"+"Data file 'fingers.dat' successfully read\n"
+                      +"***********************************************\n"
+                      +"DEDO ACTUAL ES: t\n"
+                      +"Posicion de dedos guardada en memoria es:\n"
+                      +"x = "+QString::number(posx)+", y = "+QString::number(posy)+", z = "+QString::number(posz)+", t = "+QString::number(post)+"\n"
+                      +"*************** Menu Comandos *****************\n"
+                      +"[a] selecciona nuevo dedo\n"
+                      +"[h]ome - mueve dedo a home\n"
+                      +"[p]osicion - mueve dedo a posicion absoluta\n"
+                      +"[n] mueve dedo diferencial n pasos\n"
+                      +"[e]xit - salir del programa\n"
+                      +"\n>");
+        dedot=true;
+    }
+
+    if( dedot==true && comando=="h"){
+        post=0;
+        this->setText(this->toPlainText()+"\n"+"Fin dedo en home\n"
+                      +"***********************************************\n"
+                      +"DEDO ACTUAL ES: t\n"
+                      +"Posicion de dedos guardada en memoria es:\n"
+                      +"x = "+QString::number(posx)+", y = "+QString::number(posy)+", z = "+QString::number(posz)+", t = "+QString::number(post)+"\n"
+                      +"*************** Menu Comandos *****************\n"
+                      +"[a] selecciona nuevo dedo\n"
+                      +"[h]ome - mueve dedo a home\n"
+                      +"[p]osicion - mueve dedo a posicion absoluta\n"
+                      +"[n] mueve dedo diferencial n pasos\n"
+                      +"[e]xit - salir del programa\n"
+                      +"\n>");
+
+    }
+
+    if( dedot==true && (comando=="p" || comando=="n")){
+        this->setText(this->toPlainText()
+                      +"\n"+"Indique nueva posicion dedo\n"
+                      +"\n>");
+    }
+
+    if( dedot==true && rx4.exactMatch(comando)){
+        post=comando.toInt();
+        this->setText(this->toPlainText()+"\n"+"***********************************************\n"
+                      +"DEDO ACTUAL ES: t\n"
+                      +"Posicion de dedos guardada en memoria es:\n"
+                      +"x = "+QString::number(posx)+", y = "+QString::number(posy)+", z = "+QString::number(posz)+", t = "+QString::number(post)+"\n"
+                      +"*************** Menu Comandos *****************\n"
+                      +"[a] selecciona nuevo dedo\n"
+                      +"[h]ome - mueve dedo a home\n"
+                      +"[p]osicion - mueve dedo a posicion absoluta\n"
+                      +"[n] mueve dedo diferencial n pasos\n"
+                      +"[e]xit - salir del programa\n"
+                      +"\n>");
     }
 
     if(comandoValido==true){
