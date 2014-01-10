@@ -29,6 +29,7 @@ public:
     void crearRetardoFit();
     void closeEvent(QCloseEvent *); //Captura el evento cerrar Aplicacion.
     void seleccionarComandoDeObservacionComboBox(int);
+    void stopLogTimer();
     ~AdquisicionDatos();
 
     //Getters

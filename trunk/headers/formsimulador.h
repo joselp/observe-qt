@@ -51,6 +51,7 @@ public slots:
     void slotVerificarSesion(); //Verifica la sesion ingresada en babel.
     void slotAbrirObserve(); //Inicia Observe para una prueba libre
     void slotObturador(QString); //Enciende o apaga el obturador
+    void slotCancelarObservacion(); //Cancela la observacion actual
 
 signals:
     void mousePressed(int x, int y);

@@ -48,7 +48,7 @@ ProcesoFits::ProcesoFits(QWidget *parent) :
 void ProcesoFits::leerFits()
 {
     qDebug()<<"entro";
-
+    qDebug()<<finalizado;
     if(finalizado==false){
         //qApp->processEvents();
         fitsfile *fptr;
@@ -354,6 +354,12 @@ void ProcesoFits::resetProceso()
     cambio=true;
     initTimer++;
     leerFits();
+}
+
+void ProcesoFits::finalizar()
+{
+    line = totalLineas;
+    finalizado = false;
 }
 
 void ProcesoFits::pruebaDriftScan()
@@ -738,6 +744,11 @@ void ProcesoFits::setQnx3(bool q)
 void ProcesoFits::setQnx4(bool q)
 {
     qnx4 = q;
+}
+
+void ProcesoFits::setFinalizado(bool f)
+{
+    finalizado = f;
 }
 
 QString ProcesoFits::getQnx()

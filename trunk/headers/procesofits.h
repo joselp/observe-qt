@@ -29,6 +29,7 @@ public:
     void dibujarLinea();
     void barraVisualizador(QScrollArea *scrollArea);
     void resetProceso(); //Funcion que reinicia el proceso de lectura del archivo fits para comenzar la lectura de un nuevo archivo fits
+    void finalizar(); //Finaliza la observacion
 
     //Cargar Pruebas
     void pruebaDriftScan();
@@ -59,6 +60,7 @@ public:
     void setQnx2(bool q);
     void setQnx3(bool q);
     void setQnx4(bool q);
+    void setFinalizado(bool f); //Asigna si se ha finalizado la observacion
 
 protected:
     /*!

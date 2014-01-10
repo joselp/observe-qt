@@ -843,6 +843,15 @@ void AdquisicionDatos::seleccionarComandoDeObservacionComboBox(int i)
         ui->comandoDeObservacionComboBox->setCurrentIndex(i-1);
 }
 
+void AdquisicionDatos::stopLogTimer()
+{
+    logTimer->stop();
+    ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Cancelada");
+    delete logTimer;
+    lineasLeidas=0;
+}
+
+
 bool AdquisicionDatos::getRealizarObservacion()
 {
     return realizarObservacion;

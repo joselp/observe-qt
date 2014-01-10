@@ -118,7 +118,7 @@ void FormSimulador::asignarVentanas()
 
 void FormSimulador::slotIniciarObservacion()
 {
-
+    qDebug()<<"AQUIIII";
     if(adquisicionDatos->getComandoDeObservacionComboBox()->currentText()=="Observacion Drifscan")
         this->getAdquisicionDatos()->getVisualizador()->setPrueba("DriftScan");
     if(adquisicionDatos->getComandoDeObservacionComboBox()->currentText()=="Darks Drifscan")
@@ -135,20 +135,19 @@ void FormSimulador::slotIniciarObservacion()
     if(this->adquisicionDatos->getQnx4() == false)
         this->adquisicionDatos->getVisualizador()->getProcesoFits()->setQnx4(false);
 
-    //    adquisicionDatos->verificarDatos();
-//    if(adquisicionDatos->getRealizarObservacion()==true){
-    //    if(realizarObservacion==true){
-    //        disconnect(ui->observarPushButton,SIGNAL(clicked()),0,0);
-    //        ui->observarPushButton->setStyleSheet("background-color:GRAY;"
-    //                                              "color:RED;"
-    //                                              "border-style: inset;"
-    //                                              "border-width: 1px;"
-    //                                              "border-radius: 1px;"
-    //                                              "border-color: black;");
-    //        ui->observarPushButton->setText("Abortar");
-    //        connect(ui->observarPushButton,SIGNAL(clicked()),this,SLOT(slotCancelarObservacion()));
-    //        ui->LogTextEdit->setHtml(ui->LogTextEdit->toHtml()+"<br><br>"+"Observacion Iniciada");
-    //        crearRetardoFit();
+        adquisicionDatos->verificarDatos();
+    if(adquisicionDatos->getRealizarObservacion()==true){
+        adquisicionDatos->getVisualizador()->getProcesoFits()->setFinalizado(false);
+
+            disconnect(adquisicionDatos->getButtonObservar(),SIGNAL(clicked()),0,0);
+            adquisicionDatos->getButtonObservar()->setStyleSheet("background-color:GRAY;"
+                                                  "color:RED;"
+                                                  "border-style: inset;"
+                                                  "border-width: 1px;"
+                                                  "border-radius: 1px;"
+                                                  "border-color: black;");
+            adquisicionDatos->getButtonObservar()->setText("Abortar");
+            connect(adquisicionDatos->getButtonObservar(),SIGNAL(clicked()),this,SLOT(slotCancelarObservacion()));
 
     //Verifico el tipo de observacion para asi determinar el total de lineas a mostrar en el visualizador
 
@@ -168,6 +167,7 @@ void FormSimulador::slotIniciarObservacion()
     //        qDebug()<<"Observacion no realizada";
     }
     adquisicionDatos->getVisualizador()->setCondicionesCielo(adquisicionDatos->getCabeceraFits()->getCondicionesCielo());
+
     adquisicionDatos->getVisualizador()->initLectura();
     if(anadirProceso==true){
         adquisicionDatos->getVisualizador()->anadirProcesoFits();
@@ -177,7 +177,7 @@ void FormSimulador::slotIniciarObservacion()
 
     //    ui->mdiArea->addSubWindow(adquisicionDatos->getVisualizador());
     //adquisicionDatos->getVisualizador();
-    //}
+    }
 }
 
 void FormSimulador::slotModia()
@@ -396,4 +396,16 @@ void FormSimulador::cancelarPrueba()
 {
     prueba.clear();
     cargarPrueba = false;
+}
+
+void FormSimulador::slotCancelarObservacion()
+{
+    adquisicionDatos->getButtonObservar()->setStyleSheet("");
+    adquisicionDatos->getButtonObservar()->setText("Observar");
+    disconnect(adquisicionDatos->getButtonObservar(),SIGNAL(clicked()),0,0);
+    connect(adquisicionDatos->getButtonObservar(),SIGNAL(clicked()),this,SLOT(slotIniciarObservacion()));
+    adquisicionDatos->stopLogTimer();
+
+    adquisicionDatos->getVisualizador()->getProcesoFits()->finalizar();
+    adquisicionDatos->getVisualizador()->setNumeroLineaActual(0);
 }
